@@ -41,7 +41,7 @@ const menus = [
 const AppPage = () => {
   return (
     <div className="*:mx-auto text-center">
-      <div className="mb-6 sm:mb-8 w-40 h-40 rounded-full overflow-hidden">
+      <div className="mb-6 sm:mb-8 size-40 rounded-full overflow-hidden">
         <Image
           src={profileImage}
           width={160}
@@ -84,7 +84,7 @@ const AppPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github className="h-6 w-6" />
+            <Github className="size-6" />
             <span className="sr-only">GitHub</span>
           </Link>
         </Button>
@@ -94,13 +94,13 @@ const AppPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Linkedin className="h-6 w-6" />
+            <Linkedin className="size-6" />
             <span className="sr-only">LinkedIn</span>
           </Link>
         </Button>
         <Button variant="outline" size="icon" asChild>
           <Link href="mailto:fahrulalwan@gmail.com">
-            <Mail className="h-6 w-6" />
+            <Mail className="size-6" />
             <span className="sr-only">Email</span>
           </Link>
         </Button>
@@ -113,7 +113,7 @@ const AppPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-xl">
                   {menu.title}
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="size-5" />
                 </CardTitle>
               </CardHeader>
               <CardContent>

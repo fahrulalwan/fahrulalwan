@@ -90,15 +90,15 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="bg-background/50 backdrop-blur-sm rounded-full"
+                className="bg-background/50 backdrop-blur-xs rounded-full"
               >
-                <Home className="h-5 w-5" />
+                <Home className="size-5" />
                 <span className="sr-only">Go to homepage</span>
               </Button>
             </Link>
             <ThemeToggle />
           </nav>
-          <main className="flex-grow max-w-screen-lg mx-auto px-5 sm:px-4 py-16">
+          <main className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 py-16">
             {children}
           </main>
           <footer className="border-t border-border p-4 text-center">

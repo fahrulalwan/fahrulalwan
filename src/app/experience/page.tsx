@@ -92,19 +92,19 @@ const experiences = [
 
 const approachItems = [
   {
-    icon: <Briefcase className="w-10 h-10" />,
+    icon: <Briefcase className="size-10" />,
     title: 'Holistic Problem-Solving',
     description:
       'I approach each project with a comprehensive view, considering not just the technical aspects but also the broader business implications and user experience.',
   },
   {
-    icon: <Lightbulb className="w-10 h-10" />,
+    icon: <Lightbulb className="size-10" />,
     title: 'Continuous Innovation',
     description:
       'I stay at the forefront of technology trends, constantly seeking new ways to improve processes and deliver cutting-edge solutions.',
   },
   {
-    icon: <Target className="w-10 h-10" />,
+    icon: <Target className="size-10" />,
     title: 'Results-Driven Focus',
     description:
       'My ultimate goal is to create tangible value. I align technical solutions with business objectives to drive measurable results and growth.',

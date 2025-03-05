@@ -89,7 +89,7 @@ const EducationPage: FC = () => {
       <div className="space-y-8">
         <section>
           <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-            <GraduationCap className="w-6 h-6" />
+            <GraduationCap className="size-6" />
             Education
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
@@ -101,7 +101,7 @@ const EducationPage: FC = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="size-4" />
                     <span>{edu.period}</span>
                   </div>
                   <p className="text-sm">{edu.description}</p>
@@ -109,7 +109,7 @@ const EducationPage: FC = () => {
                   {!!edu.keyActivities.length && (
                     <div>
                       <h4 className="font-semibold mb-2 flex items-center gap-2">
-                        <BookOpen className="w-4 h-4" />
+                        <BookOpen className="size-4" />
                         Key Activities:
                       </h4>
                       <ul className="list-disc list-outside space-y-1 pl-4 text-sm">
@@ -123,7 +123,7 @@ const EducationPage: FC = () => {
                   {!!edu.achievements.length && (
                     <div>
                       <h4 className="font-semibold mb-2 flex items-center gap-2">
-                        <Trophy className="w-4 h-4" />
+                        <Trophy className="size-4" />
                         Achievements:
                       </h4>
                       <ul className="list-disc list-outside space-y-1 pl-4 text-sm">
@@ -141,7 +141,7 @@ const EducationPage: FC = () => {
 
         <section>
           <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-            <Award className="w-6 h-6" />
+            <Award className="size-6" />
             Certification
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
@@ -153,7 +153,7 @@ const EducationPage: FC = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="size-4" />
                     <span>{cert.date}</span>
                   </div>
                   <p className="text-sm">{cert.description}</p>

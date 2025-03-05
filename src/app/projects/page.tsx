@@ -170,15 +170,15 @@ const ProjectsPage = () => {
             <CardFooter className="mt-auto flex-col items-start">
               <div className="grid grid-cols-2 gap-2 text-sm mb-4 w-full">
                 <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-muted-foreground" />
+                  <Briefcase className="size-4 text-muted-foreground" />
                   <span>{project.role}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-muted-foreground" />
+                  <Calendar className="size-4 text-muted-foreground" />
                   <span>{project.year}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-muted-foreground" />
+                  <Tag className="size-4 text-muted-foreground" />
                   <span>{project.category}</span>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const ProjectsPage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="mr-2 h-4 w-4" />
+                    <ExternalLink className="mr-2 size-4" />
                     View Project
                   </a>
                 </Button>
