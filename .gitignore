@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent skills (vendor, re-installable)
+.agents/skills/
+
+# superpowers brainstorm sessions
+.superpowers/
