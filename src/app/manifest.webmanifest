@@ -10,12 +10,7 @@
   "orientation": "portrait",
   "dir": "ltr",
   "lang": "en",
-  "categories": [
-    "portfolio",
-    "personal",
-    "social",
-    "business"
-  ],
+  "categories": ["portfolio", "personal", "social", "business"],
   "icons": [
     {
       "src": "/android-chrome-192x192.jpg",
