@@ -1,17 +1,31 @@
-import { Noto_Sans } from 'next/font/google';
+import { Newsreader, Noto_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import './theme.css';
-import type { FC, PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Home } from 'lucide-react';
-import ThemeToggle from '@/components/ui/theme-toggle';
+import type { Metadata, Viewport } from 'next';
+import type { FC, PropsWithChildren } from 'react';
+import Footer from '@/components/shared/footer';
+import Navbar from '@/components/shared/navbar';
 
 const noto_sans = Noto_Sans({ subsets: ['latin'], variable: '--font-noto' });
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  style: ['normal', 'italic'],
+});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fahrulalwan.vercel.app'),
@@ -56,6 +70,12 @@ export const metadata: Metadata = {
     emails: 'fahrulalwan@gmail.com',
     title: '@fahrulalwan',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '@fahrulalwan',
+    description:
+      'Software Engineer with a passion for building delightful user experiences. I specialize in frontend development with React and Next.js.',
+  },
   robots: {
     follow: true,
     index: true,
@@ -70,43 +90,42 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mohammad Fahrul Alwan',
+  url: 'https://fahrulalwan.vercel.app',
+  jobTitle: 'Product Engineer',
+  sameAs: [
+    'https://github.com/fahrulalwan',
+    'https://linkedin.com/in/fahrulalwan',
+  ],
+};
+
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${noto_sans.variable} font-sans`}
+      className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
     >
       <body className="flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <nav className="fixed top-4 left-4 z-50 flex items-center space-x-4">
-            <Link href="/">
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                className="bg-background/50 backdrop-blur-xs rounded-full"
-              >
-                <Home className="size-5" />
-                <span className="sr-only">Go to homepage</span>
-              </Button>
-            </Link>
-            <ThemeToggle />
-          </nav>
-          <main className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 py-16">
+          <script
+            type="application/ld+json"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from hardcoded constant
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          />
+          <Navbar />
+          <main className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16">
             {children}
           </main>
-          <footer className="border-t border-border p-4 text-center">
-            <p>
-              &copy; {new Date().getFullYear()} Mohammad Fahrul Alwan. All
-              rights reserved.
-            </p>
-          </footer>
+          <Footer />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
