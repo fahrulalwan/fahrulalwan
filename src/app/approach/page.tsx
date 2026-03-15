@@ -166,7 +166,7 @@ const ApproachPage: FC = () => {
 
       {/* Anti-positioning */}
       <ScrollReveal delay="0.1s">
-        <section className="py-10 sm:py-12 bg-muted/20 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
+        <section className="py-10 sm:py-12 bg-muted/50 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
           <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
             Chase the problem, not the framework.
             <br />
