@@ -13,8 +13,8 @@ const CtaSection: FC = () => {
               Let&apos;s talk.
             </h2>
             <p className="text-background/60 mb-8 max-w-md leading-relaxed">
-              Whether it&apos;s a product role, a technical challenge, or just
-              an interesting conversation.
+              Building something that needs to ship &mdash; and keep working
+              after it does? Let&apos;s figure it out.
             </p>
             <a
               href="mailto:fahrulalwan@gmail.com"

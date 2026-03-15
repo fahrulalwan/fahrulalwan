@@ -58,7 +58,7 @@ const ApproachPage: FC = () => {
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
             First, I talk to people. The PM, the designer, whoever filed the
             request. I ask until I can argue{' '}
-            <em className="not-italic text-foreground">against</em> the
+            <em className="not-italic font-medium">against</em> the
             proposed solution. If I can&apos;t, I don&apos;t understand it yet.
           </p>
         </section>
@@ -168,11 +168,11 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="py-10 sm:py-12 bg-muted/20 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
           <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
-            I don&apos;t chase frameworks.
+            Chase the problem, not the framework.
             <br />
-            I don&apos;t write code to impress other engineers.
+            Write code for the next engineer, not for yourself.
             <br />
-            I don&apos;t ship without understanding{' '}
+            Ship when you understand{' '}
             <em className="italic text-accent-warm">why.</em>
           </p>
         </section>

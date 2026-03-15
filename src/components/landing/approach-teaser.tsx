@@ -10,13 +10,13 @@ const ApproachTeaser: FC = () => {
       </p>
 
       <p className="font-display text-[clamp(26px,3.2vw,40px)] leading-[1.3] tracking-tight mb-8 max-w-xl mx-auto">
-        Understand the problem.
+        Clarify before building.
         <br />
-        Frame what success looks like.
+        Challenge before committing.
         <br />
-        Ship iteratively.
+        Ship before it&apos;s perfect.
         <br />
-        <span className="text-accent-warm">Measure what matters.</span>
+        <span className="text-accent-warm">Measure before moving on.</span>
       </p>
 
       <Link

@@ -9,7 +9,7 @@ const Footer: FC = () => {
             &copy; {new Date().getFullYear()} Fahrul Alwan
           </p>
           <p className="font-display italic text-sm text-muted-foreground/60 hidden sm:block">
-            &ldquo;Ship it, then make it beautiful.&rdquo;
+            Still debugging.
           </p>
           <p className="font-mono text-xs text-muted-foreground">Jakarta, ID</p>
         </div>

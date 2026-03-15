@@ -10,14 +10,13 @@ const WhatIBring: FC = () => {
 
         <div className="space-y-4">
           <p className="text-lg sm:text-xl leading-relaxed">
-            I help product teams ship high-quality interfaces that users trust.
-            I bridge the gap between design intent and engineering reality,
-            keeping velocity high without accumulating debt.
+            I lead frontend teams and design the systems behind the product
+            &mdash; from real-time auction engines to fintech platforms serving
+            millions. Some of those systems are still running eight years later.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            With several years building frontend systems across fintech and
-            SaaS, I know where complexity hides and how to contain it before it
-            becomes a bottleneck.
+            Seven years in, I still debug production at 10 PM and review every
+            PR. The title changed. The work ethic didn&apos;t.
           </p>
         </div>
       </div>

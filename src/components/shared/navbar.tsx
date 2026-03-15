@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import MobileNav from '@/components/shared/mobile-nav';
-import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ui/theme-toggle';
 
 const Navbar: FC = () => {
@@ -26,8 +25,11 @@ const Navbar: FC = () => {
           >
             Work
           </Link>
-          <Link href="/#contact">
-            <Button size="sm">Let&apos;s Talk</Button>
+          <Link
+            href="/#contact"
+            className="text-sm font-medium hover:text-foreground transition-colors"
+          >
+            Let&apos;s Talk
           </Link>
           <ThemeToggle />
         </div>
