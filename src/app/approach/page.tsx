@@ -1,147 +1,216 @@
 import type { Metadata } from 'next';
 import type { FC } from 'react';
-import CtaSection from '@/components/shared/cta-section';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 
 export const metadata: Metadata = {
   title: 'Approach',
   description:
-    'How I think about product engineering — my philosophy, process, and approach to building impactful products.',
+    'How I think about product engineering — from understanding the problem through shipping and measuring what matters.',
   alternates: {
     canonical: '/approach',
   },
   openGraph: {
     title: 'Approach',
     description:
-      'How I think about product engineering — my philosophy, process, and approach to building impactful products.',
+      'How I think about product engineering — from understanding the problem through shipping and measuring what matters.',
   },
 };
-
-const processSteps = [
-  {
-    number: '01',
-    title: 'Understand',
-    description:
-      'Before writing a single line of code, I spend time understanding the problem space — talking to stakeholders, reviewing existing systems, and clarifying what success actually looks like.',
-  },
-  {
-    number: '02',
-    title: 'Frame',
-    description:
-      'I translate fuzzy requirements into clear problem statements and constraints. This framing guides every technical decision and helps the team stay aligned on what matters.',
-  },
-  {
-    number: '03',
-    title: 'Build',
-    description:
-      'I favour incremental delivery over big-bang releases. Small, testable slices reduce risk, invite early feedback, and keep momentum high throughout the project.',
-  },
-  {
-    number: '04',
-    title: 'Measure',
-    description:
-      'Shipping is not the finish line. I instrument what I build, watch real-world behaviour, and use that signal to inform the next iteration.',
-  },
-] as const;
-
-const beliefs = [
-  {
-    title: 'Clarity over cleverness',
-    description:
-      'Code is read far more often than it is written. I optimise for the engineer who will maintain this six months from now — often my future self. Straightforward solutions that reveal intent are worth more than impressive abstractions.',
-  },
-  {
-    title: 'Constraints unlock creativity',
-    description:
-      'Working within tight timelines, limited teams, or imperfect data has consistently led me to more elegant solutions than I would have found with unlimited resources. Constraints force prioritisation and focus.',
-  },
-  {
-    title: 'Ownership drives quality',
-    description:
-      'The best work comes from engineers who feel genuine ownership over what they build — from inception through production. I try to create that sense of ownership in myself and the people I work with.',
-  },
-] as const;
 
 const ApproachPage: FC = () => {
   return (
     <>
-      {/* Hero */}
+      {/* Opening — tiny entry, big air */}
       <ScrollReveal>
-        <section className="py-16 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+        <section className="pt-12 sm:pt-20 pb-10 sm:pb-12">
+          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-20 sm:mb-24 flex items-center gap-3.5">
+            <span
+              className="w-6 h-0.5 bg-accent-warm shrink-0"
+              aria-hidden="true"
+            />
             Approach
+          </p>
+
+          <h1 className="font-display text-[clamp(32px,5vw,56px)] font-normal leading-[1.1] tracking-tight max-w-[560px]">
+            I don&apos;t start until I understand{' '}
+            <em className="italic text-accent-warm">why</em> we&apos;re
+            building it.
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I think of product engineering as the craft of turning ambiguous
-            problems into reliable, useful software. Here is how I approach that
-            craft — from the values I hold to the day-to-day habits that shape
-            my work.
+        </section>
+      </ScrollReveal>
+
+      {/* Beat */}
+      <ScrollReveal delay="0.05s">
+        <section className="pb-14 sm:pb-16">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            Not the ticket description. Not the feature request. The actual
+            reason someone needs this to exist. Everything else follows from
+            that.
           </p>
         </section>
       </ScrollReveal>
 
-      {/* Origin Story */}
+      {/* Hairline */}
+      <div className="w-10 h-px bg-border/50" aria-hidden="true" />
+
+      {/* How I actually work */}
       <ScrollReveal delay="0.1s">
-        <section className="py-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-            How I got here
-          </h2>
-          <div className="space-y-4 max-w-2xl mx-auto text-muted-foreground">
-            <p>
-              I did not set out to be an engineer. I started out curious about
-              how things worked — why certain websites felt fast and others did
-              not, why some products stuck and others were abandoned after the
-              first use. That curiosity pulled me deeper into the craft until I
-              realised I had built a career out of it.
-            </p>
-            <p>
-              Over the years I moved between consultant engagements, product
-              teams, and leadership roles. Each context taught me something
-              different: consultancy gave me breadth and the ability to ramp up
-              fast; product work gave me depth and long-term accountability;
-              leadership gave me empathy for the people doing the hard work. I
-              carry all three lenses into everything I build today.
-            </p>
-          </div>
+        <section className="pt-12 sm:pt-14 pb-5">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            First, I talk to people. The PM, the designer, whoever filed the
+            request. I ask until I can argue{' '}
+            <em className="not-italic text-foreground">against</em> the
+            proposed solution. If I can&apos;t, I don&apos;t understand it yet.
+          </p>
         </section>
       </ScrollReveal>
 
-      {/* Philosophy */}
+      <ScrollReveal delay="0.15s">
+        <section className="py-5">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            Then I break it down myself. Challenge my own assumptions. Look at
+            the existing system. Only then &mdash; if needed &mdash; I build a
+            proof of concept before committing to the full thing.
+          </p>
+        </section>
+      </ScrollReveal>
+
       <ScrollReveal delay="0.2s">
-        <section className="py-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">
-            What I believe
-          </h2>
-          <div className="space-y-6 max-w-2xl mx-auto">
-            {beliefs.map((belief) => (
-              <div key={belief.title}>
-                <p className="font-bold mb-2">{belief.title}</p>
-                <p className="text-muted-foreground">{belief.description}</p>
-              </div>
-            ))}
+        <section className="pt-5 pb-12 sm:pb-14">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            This isn&apos;t a framework I read somewhere. It&apos;s how
+            I&apos;ve worked for years &mdash; and the few times I skipped it,
+            the results were worse. Every time.
+          </p>
+        </section>
+      </ScrollReveal>
+
+      {/* Ghost typography moment */}
+      <ScrollReveal delay="0.1s">
+        <section className="py-5 overflow-hidden relative">
+          <p
+            className="font-display text-[clamp(64px,12vw,88px)] leading-[0.85] tracking-tighter text-foreground/[0.04] select-none pointer-events-none"
+            aria-hidden="true"
+          >
+            Clarify.
+            <br />
+            Challenge.
+            <br />
+            Build.
+          </p>
+          <div
+            className="absolute bottom-0 left-5 sm:left-4 w-0.5 h-10 bg-gradient-to-b from-accent-warm to-transparent"
+            aria-hidden="true"
+          />
+        </section>
+      </ScrollReveal>
+
+      {/* Full-bleed inverted block */}
+      <ScrollReveal delay="0.1s">
+        <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
+          <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
+            <p className="font-display text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-tight max-w-[520px] mb-6">
+              I design systems, not just features.
+            </p>
+            <p className="text-background/60 leading-relaxed max-w-[480px] mb-5">
+              Early in my career, I volunteered to architect the real-time
+              communication layer for an auction platform &mdash; WebSocket,
+              bidding state, multi-party sync. That system is still running
+              eight years later.
+            </p>
+            <p className="text-background/60 leading-relaxed max-w-[480px]">
+              At a telco, I designed how the frontend and backend communicate
+              for a dynamic form engine that powered an employee superapp.
+              Delivered ahead of schedule. Engineers liked working with it
+              because the boundaries were clear.
+            </p>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* Process */}
-      <ScrollReveal delay="0.3s">
-        <section className="py-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8">How I work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {processSteps.map((step) => (
-              <div key={step.number}>
-                <p className="text-sm font-mono text-muted-foreground mb-1">
-                  {step.number}
-                </p>
-                <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
-              </div>
-            ))}
-          </div>
+      {/* Impact */}
+      <ScrollReveal delay="0.1s">
+        <section className="pt-14 sm:pt-16 pb-6">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            Leading a large-scale frontend revamp, I took the Lighthouse score
+            from 15 to 70. Not by adding tools &mdash; by removing
+            architectural debt that had accumulated for years.
+          </p>
         </section>
       </ScrollReveal>
 
-      <CtaSection />
+      <ScrollReveal delay="0.15s">
+        <section className="pt-6 pb-14 sm:pb-16">
+          <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.3] tracking-tight max-w-[440px]">
+            The best code I write is the code that makes the next
+            engineer&apos;s job{' '}
+            <span className="text-accent-warm">easier.</span>
+          </p>
+        </section>
+      </ScrollReveal>
+
+      {/* Hairline */}
+      <div className="w-10 h-px bg-border/50" aria-hidden="true" />
+
+      {/* Ownership principle */}
+      <ScrollReveal delay="0.1s">
+        <section className="py-12 sm:py-14">
+          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+            Good code in a broken process still produces bad outcomes. Owning
+            the implementation isn&apos;t enough &mdash; I&apos;ve learned to
+            pay attention to the clarity of requirements, alignment across
+            roles, and whether the team is actually moving in the same
+            direction. The engineering is the easy part.
+          </p>
+        </section>
+      </ScrollReveal>
+
+      {/* Anti-positioning */}
+      <ScrollReveal delay="0.1s">
+        <section className="py-10 sm:py-12 bg-muted/20 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
+          <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
+            I don&apos;t chase frameworks.
+            <br />
+            I don&apos;t write code to impress other engineers.
+            <br />
+            I don&apos;t ship without understanding{' '}
+            <em className="italic text-accent-warm">why.</em>
+          </p>
+        </section>
+      </ScrollReveal>
+
+      {/* Closing — the page IS the CTA */}
+      <ScrollReveal delay="0.1s">
+        <section className="pt-14 sm:pt-16 pb-8">
+          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
+            If this sounds like how you want your team to work, let&apos;s
+            talk.
+          </p>
+          <div className="flex items-center gap-5">
+            <a
+              href="mailto:fahrulalwan@gmail.com"
+              className="link-underline text-sm font-medium transition-colors"
+            >
+              fahrulalwan@gmail.com
+            </a>
+            <a
+              href="https://github.com/fahrulalwan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/fahrulalwan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </section>
+      </ScrollReveal>
     </>
   );
 };
