@@ -1,9 +1,9 @@
-import { placeholderCaseStudy1, placeholderCaseStudy2 } from './placeholder';
+import { careadyCaseStudy } from './caready';
 import type { CaseStudy } from './types';
 
 export type { CaseStudy, CaseStudyDecision, CaseStudyMetric } from './types';
 
-const caseStudies: CaseStudy[] = [placeholderCaseStudy1, placeholderCaseStudy2];
+const caseStudies: CaseStudy[] = [careadyCaseStudy];
 
 export const getAllCaseStudies = (): CaseStudy[] => caseStudies;
 
