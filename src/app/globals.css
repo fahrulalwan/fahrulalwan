@@ -147,6 +147,12 @@
 
 .link-underline {
   position: relative;
+  border-radius: 2px;
+  outline-offset: 4px;
+}
+
+.link-underline:focus-visible {
+  outline: 2px solid var(--ring);
 }
 
 .link-underline::after {

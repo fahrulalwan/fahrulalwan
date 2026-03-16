@@ -9,13 +9,13 @@ interface CaseStudyContentProps {
 const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
   return (
     <div>
-      {/* Context & Challenge */}
+      {/* Context */}
       <ScrollReveal>
         <section className="py-12 sm:py-16 border-t border-border/50">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-12">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Context
-            </p>
+            </h2>
             <p className="text-muted-foreground leading-relaxed max-w-lg">
               {caseStudy.context}
             </p>
@@ -23,12 +23,13 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
         </section>
       </ScrollReveal>
 
+      {/* Challenge */}
       <ScrollReveal delay="0.05s">
         <section className="py-12 sm:py-16 border-t border-border/50">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-12">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Challenge
-            </p>
+            </h2>
             <p className="text-muted-foreground leading-relaxed max-w-lg">
               {caseStudy.challenge}
             </p>
@@ -39,9 +40,9 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
       {/* Key Decisions */}
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-16 border-t border-border/50">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-10 sm:mb-12">
+          <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-10 sm:mb-12">
             Key decisions
-          </p>
+          </h2>
 
           <div className="space-y-10">
             {caseStudy.decisions.map((decision, index) => (
@@ -53,9 +54,9 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <div>
-                  <p className="font-display text-lg sm:text-xl tracking-tight mb-2">
+                  <h3 className="font-display text-lg sm:text-xl tracking-tight mb-2">
                     {decision.title}
-                  </p>
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed max-w-lg">
                     {decision.description}
                   </p>
@@ -70,9 +71,9 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
       <ScrollReveal delay="0.1s">
         <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
           <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
-            <p className="font-mono text-xs tracking-widest text-background/50 uppercase mb-10 sm:mb-12">
+            <h2 className="font-mono text-xs tracking-widest text-background/50 uppercase mb-10 sm:mb-12">
               Results
-            </p>
+            </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
               {caseStudy.results.metrics.map((metric) => (
@@ -113,9 +114,9 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-16">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-12">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Reflections
-            </p>
+            </h2>
             <div className="space-y-6">
               {caseStudy.reflections.map((reflection) => (
                 <p

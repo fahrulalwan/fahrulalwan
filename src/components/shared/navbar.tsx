@@ -15,19 +15,19 @@ const Navbar: FC = () => {
         <div className="hidden md:flex items-center gap-6">
           <Link
             href="/approach"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
           >
             Approach
           </Link>
           <Link
             href="/#work"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
           >
             Work
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-medium hover:text-foreground transition-colors"
+            className="text-sm font-medium hover:text-foreground transition-colors py-2"
           >
             Let&apos;s Talk
           </Link>

@@ -46,7 +46,7 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         <div className="full-bleed">
           <Image
             src={caseStudy.thumbnail}
-            alt={`Team photo for ${caseStudy.slug}`}
+            alt="The engineering and client team at the project office"
             width={1200}
             height={675}
             className="w-full h-auto max-h-[480px] object-cover"

@@ -55,6 +55,7 @@ const ApproachPage: FC = () => {
       {/* How I actually work */}
       <ScrollReveal delay="0.1s">
         <section className="pt-12 sm:pt-14 pb-5">
+          <h2 className="sr-only">How I work</h2>
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
             First, I talk to people. The PM, the designer, whoever filed the
             request. I ask until I can argue{' '}
@@ -108,9 +109,9 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
           <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
-            <p className="font-display text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-tight max-w-[520px] mb-6">
+            <h2 className="font-display text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-tight max-w-[520px] mb-6">
               I design systems, not just features.
-            </p>
+            </h2>
             <p className="text-background/60 leading-relaxed max-w-[480px] mb-5">
               Early in my career, I volunteered to architect the real-time
               communication layer for an auction platform &mdash; WebSocket,
@@ -154,6 +155,7 @@ const ApproachPage: FC = () => {
       {/* Ownership principle */}
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-14">
+          <h2 className="sr-only">Ownership</h2>
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
             Good code in a broken process still produces bad outcomes. Owning
             the implementation isn&apos;t enough &mdash; I&apos;ve learned to
@@ -167,6 +169,7 @@ const ApproachPage: FC = () => {
       {/* Anti-positioning */}
       <ScrollReveal delay="0.1s">
         <section className="py-10 sm:py-12 bg-muted/50 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
+          <h2 className="sr-only">Principles</h2>
           <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
             Chase the problem, not the framework.
             <br />
@@ -181,6 +184,7 @@ const ApproachPage: FC = () => {
       {/* Closing — the page IS the CTA */}
       <ScrollReveal delay="0.1s">
         <section className="pt-14 sm:pt-16 pb-8">
+          <h2 className="sr-only">Contact</h2>
           <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
             If this sounds like how you want your team to work, let&apos;s
             talk.

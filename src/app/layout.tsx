@@ -114,8 +114,17 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
             // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from hardcoded constant
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
           />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
+          >
+            Skip to content
+          </a>
           <Navbar />
-          <main className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16">
+          <main
+            id="main"
+            className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16"
+          >
             {children}
           </main>
           <Footer />
