@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-*Last updated: 2026-03-14*
+*Last updated: 2026-03-20*
 
 ## What This Site Is
 
@@ -26,7 +26,7 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 ## What Makes This Different
 
 - **Product thinking** — understands WHY before building WHAT
-- **Self-made trajectory** — helpdesk → bootcamp → engineering lead in ~4.5 years, Magna Cum Laude while working full-time
+- **Self-made trajectory** — FTTH field technician in Bali → bootcamp → engineering lead. S.Kom Magna Cum Laude (BINUS) while working full-time
 - **Case studies show process** — decisions, trade-offs, and honest reflections (not just highlight reel)
 - **The site IS the proof** — editorial design, performance, accessibility all demonstrate the claimed skills
 - **Builds things that last** — systems still running 8 years later
@@ -51,11 +51,12 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 
 ## Language Reference
 
-**How the audience talks about their problem:**
+**How the audience talks about their problem (assumed, not validated):**
 
 - "I need someone who can own the frontend, not just implement designs"
 - "Tired of engineers who don't think about the user"
 - "We need someone who can ship without being micromanaged"
+- ⚠️ These are fabricated assumptions. Replace with real quotes when available.
 
 **How people describe working with Fahrul (from LinkedIn recommendations):**
 
@@ -105,9 +106,23 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 
 **Do NOT mention:** Founder of Grandboard Strategi Multi Cipta / fartix.id (user prefers to hide)
 
+## Origin Story (reusable narrative)
+
+FTTH field technician in Bali (splicing fiber cables at villas) → helpdesk → coding bootcamp → frontend developer → software engineer → frontend engineering lead. Completed S.Kom at BINUS (Magna Cum Laude, 3.76) while working full-time 2018–2022. The trajectory wasn't planned — "I just kept following the interesting problems."
+
+## Conversion Path
+
+**After someone emails:** No fixed path. Depends on the opportunity — could be a casual call, a deeper portfolio walkthrough, or straight to a technical conversation. Keep it flexible, match the other person's energy.
+
+## Location & Availability
+
+**Based in:** Jakarta, Indonesia
+**Open to (in order of preference):** Remote → Async-friendly → Relocation → Hybrid
+**Timezone:** WIB (UTC+7)
+
 ## Open Questions
 
-1. ~~**Full-stack positioning**~~ — **Answered:** Frontend-first, versatile, can do backend + architecture + PM. Frame as "I go where the problem is."
-2. **Location/timezone** — open to remote? Async? Relocation?
+1. ~~**Full-stack positioning**~~ — **Answered:** Frontend-first, versatile, can do backend + architecture + PM.
+2. ~~**Location/timezone**~~ — **Answered:** Open to all. Prefers remote/async.
 3. **What feedback have you gotten** from people who hired or worked with you? (LinkedIn recs are generic — need real quotes from managers/colleagues)
 
