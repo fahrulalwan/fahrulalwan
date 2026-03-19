@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   applicationName: 'Fahrul Alwan',
   description:
-    'Engineering lead who builds products people rely on. Frontend-first, product-minded, wherever the problem is.',
+    'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and figuring out where complexity hides.',
   keywords: [
     'Mohammad Fahrul Alwan',
     'Engineering Lead',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     alternateLocale: ['idID'],
     countryName: 'Indonesia',
     description:
-      'Engineering lead who builds products people rely on. Frontend-first, product-minded, wherever the problem is.',
+      'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and figuring out where complexity hides.',
     emails: 'fahrulalwan@gmail.com',
     title: 'Fahrul Alwan',
   },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Fahrul Alwan',
     description:
-      'Engineering lead who builds products people rely on. Frontend-first, product-minded, wherever the problem is.',
+      'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and figuring out where complexity hides.',
   },
   robots: {
     follow: true,

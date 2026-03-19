@@ -46,10 +46,11 @@ const MobileNav: FC = () => {
               {item.label}
             </Link>
           ))}
-          <Link href="/#contact">
-            <Button size="sm" className="w-full">
-              Let&apos;s Talk
-            </Button>
+          <Link
+            href="/#contact"
+            className="text-sm font-medium text-foreground"
+          >
+            Say hi
           </Link>
         </nav>
       </SheetContent>

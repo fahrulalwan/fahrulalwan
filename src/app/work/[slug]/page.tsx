@@ -73,8 +73,7 @@ const CaseStudyPage = async ({
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-16 border-t border-border/50">
           <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
-            If this is the kind of thinking you want on your team, let&apos;s
-            talk.
+            If any of this resonated, say hi.
           </p>
           <div className="flex items-center gap-5">
             <a

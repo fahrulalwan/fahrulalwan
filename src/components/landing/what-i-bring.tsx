@@ -10,13 +10,15 @@ const WhatIBring: FC = () => {
 
         <div className="space-y-4">
           <p className="text-lg sm:text-xl leading-relaxed">
-            I lead frontend teams and design the systems behind the product
-            &mdash; from real-time auction engines to fintech platforms serving
-            millions. Some of those systems are still running eight years later.
+            I&apos;ve spent seven years figuring out where complexity hides in
+            frontend systems &mdash; and how to keep it from spreading to the
+            rest of the team.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Seven years in, I still debug production at 10 PM and review every
-            PR. The title changed. The work ethic didn&apos;t.
+            Most of that time was in fintech and consulting &mdash; which
+            wasn&apos;t the plan. Before I wrote code for a living, I was
+            splicing fiber cables in Bali. I just kept following the interesting
+            problems.
           </p>
         </div>
       </div>

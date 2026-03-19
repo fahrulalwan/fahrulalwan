@@ -33,19 +33,21 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 
 ## Brand Voice
 
-**Tone:** Confident but not arrogant. Direct. Slightly dry. No corporate-speak.
-**Style:** Short sentences. Conversational but professional. English-primary.
-**Personality:** Opinionated, pragmatic, craft-conscious, honest, no-bullshit
+**Tone:** Curious, understated, reflective. Slightly dry. No corporate-speak. No selling.
+**Style:** Short sentences. Conversational but professional. English-primary. State facts, let reader draw conclusions.
+**Personality:** Thoughtful, pragmatic, self-aware, honest, quietly confident
 
-**Words to use:** ship, own, product-minded, craft, velocity, iterate, accessible, intentional, lasts
-**Words to avoid:** passionate (overused), guru/ninja/rockstar, "pixel-perfect" (cliché), "full-stack wizard", "I'm passionate about..."
+**Words to use:** figuring out, thinking about, complexity, constraints, trade-offs, shortcuts, ramp
+**Words to avoid:** passionate (overused), guru/ninja/rockstar, "pixel-perfect" (cliché), "full-stack wizard", "I'm passionate about...", rely, own, build products that...
 
 **Anti-patterns in copy:**
 
+- Don't SELL — state. Let the reader decide.
 - Don't sound like a LinkedIn bio
 - Don't use "I help X do Y" formula (everyone does)
 - Don't list tools as identity ("React developer") — lead with thinking
-- Don't hedge with "I believe" / "I think" — just state it
+- Don't make claims — show curiosity instead
+- Don't use parallel-structure taglines (sounds like a consulting firm)
 
 ## Language Reference
 

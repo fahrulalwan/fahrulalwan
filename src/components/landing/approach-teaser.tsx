@@ -9,14 +9,11 @@ const ApproachTeaser: FC = () => {
         How I work
       </p>
 
-      <p className="font-display text-[clamp(26px,3.2vw,40px)] leading-[1.3] tracking-tight mb-8 max-w-xl mx-auto">
-        Clarify before building.
-        <br />
-        Challenge before committing.
-        <br />
-        Ship before it&apos;s perfect.
-        <br />
-        <span className="text-accent-warm">Measure before moving on.</span>
+      <p className="font-display text-[clamp(24px,3vw,36px)] leading-[1.35] tracking-tight mb-8 max-w-lg mx-auto">
+        The longer I do this, the more I realize the hard part was never the
+        code. It&apos;s making sure you&apos;re solving the{' '}
+        <span className="text-accent-warm">right problem</span> in the first
+        place.
       </p>
 
       <Link

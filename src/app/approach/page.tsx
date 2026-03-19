@@ -31,9 +31,9 @@ const ApproachPage: FC = () => {
           </p>
 
           <h1 className="font-display text-[clamp(32px,5vw,56px)] font-normal leading-[1.1] tracking-tight max-w-[560px]">
-            I don&apos;t start until I understand{' '}
-            <em className="italic text-accent-warm">why</em> we&apos;re
-            building it.
+            I keep asking{' '}
+            <em className="italic text-accent-warm">why</em> until the answer
+            stops changing.
           </h1>
         </section>
       </ScrollReveal>
@@ -42,9 +42,9 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.05s">
         <section className="pb-14 sm:pb-16">
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
-            Not the ticket description. Not the feature request. The actual
-            reason someone needs this to exist. Everything else follows from
-            that.
+            Not what the ticket says. Not what the feature request looks like.
+            The actual reason this needs to exist. That&apos;s usually where
+            the interesting problems are.
           </p>
         </section>
       </ScrollReveal>
@@ -110,7 +110,7 @@ const ApproachPage: FC = () => {
         <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
           <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
             <h2 className="font-display text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-tight max-w-[520px] mb-6">
-              I design systems, not just features.
+              Some things I&apos;ve built that are still running.
             </h2>
             <p className="text-background/60 leading-relaxed max-w-[480px] mb-5">
               Early in my career, I volunteered to architect the real-time
@@ -142,9 +142,9 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.15s">
         <section className="pt-6 pb-14 sm:pb-16">
           <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.3] tracking-tight max-w-[440px]">
-            The best code I write is the code that makes the next
-            engineer&apos;s job{' '}
-            <span className="text-accent-warm">easier.</span>
+            I think a lot about the engineer who&apos;ll read this code six
+            months from now. Usually it&apos;s{' '}
+            <span className="text-accent-warm">me.</span>
           </p>
         </section>
       </ScrollReveal>
@@ -186,8 +186,7 @@ const ApproachPage: FC = () => {
         <section className="pt-14 sm:pt-16 pb-8">
           <h2 className="sr-only">Contact</h2>
           <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
-            If this sounds like how you want your team to work, let&apos;s
-            talk.
+            If any of this resonated, say hi.
           </p>
           <div className="flex items-center gap-5">
             <a

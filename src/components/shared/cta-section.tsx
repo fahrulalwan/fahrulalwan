@@ -9,13 +9,9 @@ const CtaSection: FC = () => {
       <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-12 md:items-end">
           <div>
-            <h2 className="font-display text-[clamp(34px,4vw,52px)] tracking-tight leading-none mb-4">
-              Let&apos;s talk.
+            <h2 className="font-display text-[clamp(34px,4vw,52px)] tracking-tight leading-none mb-8">
+              Say hi.
             </h2>
-            <p className="text-background/60 mb-8 max-w-md leading-relaxed">
-              Building something that needs to ship &mdash; and keep working
-              after it does? Let&apos;s figure it out.
-            </p>
             <a
               href="mailto:fahrulalwan@gmail.com"
               className="link-underline text-sm font-medium text-background transition-colors"

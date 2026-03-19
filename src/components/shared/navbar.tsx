@@ -29,7 +29,7 @@ const Navbar: FC = () => {
             href="/#contact"
             className="text-sm font-medium hover:text-foreground transition-colors py-2"
           >
-            Let&apos;s Talk
+            Say hi
           </Link>
           <ThemeToggle />
         </div>
