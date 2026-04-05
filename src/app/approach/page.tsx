@@ -59,7 +59,7 @@ const ApproachPage: FC = () => {
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
             First, I talk to people. The PM, the designer, whoever filed the
             request. I ask until I can argue{' '}
-            <em className="not-italic font-medium">against</em> the
+            <em className="not-italic font-medium">against</em>{' '}the
             proposed solution. If I can&apos;t, I don&apos;t understand it yet.
           </p>
         </section>
