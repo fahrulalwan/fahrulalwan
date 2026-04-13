@@ -7,8 +7,11 @@ const Navbar: FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/40">
       <div className="max-w-(--breakpoint-lg) mx-auto flex items-center justify-between px-5 sm:px-4 h-14">
-        <Link href="/" className="text-sm font-semibold tracking-tight">
-          fahrulalwan
+        <Link
+          href="/"
+          className="font-display text-base tracking-tight"
+        >
+          Fahrul Alwan.
         </Link>
 
         {/* Desktop nav */}
