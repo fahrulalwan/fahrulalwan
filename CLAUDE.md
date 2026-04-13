@@ -144,5 +144,5 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
 ## Project Context
 
 - Product marketing context: `.agents/product-marketing-context.md`
-- Case study requirements: `docs/case-study-requirements.md`
+- Case study framework: `docs/case-study-framework.md`
 - Design specs: `docs/superpowers/specs/`
