@@ -25,9 +25,9 @@ const WhatIBring: FC = () => {
 
         <div className="space-y-4">
           <p className="text-lg sm:text-xl leading-relaxed">
-            I&apos;ve spent seven years figuring out where complexity hides in
-            frontend systems &mdash; and how to keep it from spreading to the
-            rest of the team.
+            I&apos;ve spent seven years building frontend systems at different
+            companies. Most of what I do now is deciding what needs to exist,
+            and keeping the rest useful to the people actually using it.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Most of that time was in fintech and consulting &mdash; which

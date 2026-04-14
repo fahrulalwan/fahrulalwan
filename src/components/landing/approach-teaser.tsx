@@ -10,10 +10,9 @@ const ApproachTeaser: FC = () => {
       </p>
 
       <p className="font-display text-[clamp(24px,3vw,36px)] leading-[1.35] tracking-tight mb-8 max-w-lg mx-auto">
-        The longer I do this, the more I realize the hard part was never the
-        code. It&apos;s making sure you&apos;re solving the{' '}
-        <span className="text-accent-warm">right problem</span> in the first
-        place.
+        Most of my job isn&apos;t writing code. It&apos;s making sure the thing
+        we&apos;re about to build actually{' '}
+        <span className="text-accent-warm">needs to exist.</span>
       </p>
 
       <Link

@@ -12,9 +12,8 @@ const Hero: FC = () => {
       </p>
 
       <h1 className="font-display text-[clamp(32px,4.5vw,52px)] font-normal leading-[1.1] tracking-tight mb-10 sm:mb-12 max-w-[640px]">
-        Lately I&apos;ve been thinking about why the best code comes from
-        the{' '}
-        <em className="italic text-accent-warm">tightest constraints.</em>
+        Lately I&apos;ve been rewriting code I wrote years ago and{' '}
+        <em className="italic text-accent-warm">wondering what I was thinking.</em>
       </h1>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">

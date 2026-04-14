@@ -3,7 +3,7 @@ import type { CaseStudy } from './types';
 export const careadyCaseStudy: CaseStudy = {
   slug: 'caready-auction-platform',
   headline:
-    'Building the real-time backbone of a car auction platform — from first PoC to eight years in production.',
+    'A car auction platform\'s real-time layer, built in 2018. Still in production eight years later.',
   tags: ['WebSocket', 'Real-time Architecture', 'Angular', 'Java Spring Boot'],
   year: '2018',
   metadata: {
@@ -14,7 +14,7 @@ export const careadyCaseStudy: CaseStudy = {
   context:
     'An automotive auction company needed a platform built from zero — live auctions with an auctioneer, online bidders, and offline bidders in the room, all seeing the same state in real time. Our consultancy got the project. Nobody on the team had built anything like this before.',
   challenge:
-    'Real-time bidding has no room for lag. A delay of a few seconds means disputed bids, confused buyers, and lost trust. The system had to keep three types of participants perfectly in sync — each with different roles and permissions — across unreliable network conditions.',
+    'Real-time bidding has no room for lag. Even a couple of seconds means bids get disputed and people stop trusting the platform. The system had to keep three types of participants in sync — the auctioneer, online bidders, and people physically in the room — over unreliable networks.',
   decisions: [
     {
       title: 'Chose WebSocket after weeks of independent research',
@@ -46,12 +46,12 @@ export const careadyCaseStudy: CaseStudy = {
       },
     ],
     qualitative: [
-      'This was my first real engineering project — I was fresh out of a coding bootcamp. The fact that the system is still running is something I carry with quiet pride.',
+      'This was my first real engineering project — I was fresh out of a coding bootcamp. Eight years later the system is still running. I think about that sometimes.',
     ],
   },
   reflections: [
     'The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I\'d invest in best practices earlier instead of discovering them through trial and error.',
-    'I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn\'t know. That\'s something I think about now whenever I lead others — confidence needs to come with self-awareness.',
+    'I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn\'t know. I think about that a lot now, whenever I\'m leading someone who reminds me of how I was back then.',
   ],
   thumbnail: '/images/case-studies/caready-team.jpeg',
 };

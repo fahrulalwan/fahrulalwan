@@ -5,14 +5,14 @@ import { ScrollReveal } from '@/components/shared/scroll-reveal';
 export const metadata: Metadata = {
   title: 'Approach',
   description:
-    'How I think about product engineering — from understanding the problem through shipping and measuring what matters.',
+    'How I think about product engineering. Mostly asking why before writing anything.',
   alternates: {
     canonical: '/approach',
   },
   openGraph: {
     title: 'Approach',
     description:
-      'How I think about product engineering — from understanding the problem through shipping and measuring what matters.',
+      'How I think about product engineering. Mostly asking why before writing anything.',
   },
 };
 
@@ -31,9 +31,9 @@ const ApproachPage: FC = () => {
           </p>
 
           <h1 className="font-display text-[clamp(32px,5vw,56px)] font-normal leading-[1.1] tracking-tight max-w-[560px]">
-            I keep asking{' '}
-            <em className="italic text-accent-warm">why</em> until the answer
-            stops changing.
+            My process is mostly asking{' '}
+            <em className="italic text-accent-warm">why</em> until I get a
+            real answer. It annoys people sometimes.
           </h1>
         </section>
       </ScrollReveal>
@@ -42,9 +42,8 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.05s">
         <section className="pb-14 sm:pb-16">
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
-            Not what the ticket says. Not what the feature request looks like.
-            The actual reason this needs to exist. That&apos;s usually where
-            the interesting problems are.
+            Most of the time, the ticket isn&apos;t the real problem. Figuring
+            out what&apos;s underneath it is where most of my time goes.
           </p>
         </section>
       </ScrollReveal>
@@ -68,8 +67,9 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.15s">
         <section className="py-5">
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
-            Then I break it down myself. Challenge my own assumptions. Look at
-            the existing system. Only then &mdash; if needed &mdash; I build a
+            Then I work through it on my own &mdash; challenge my own
+            assumptions, read the existing code, try to see what I&apos;m
+            actually walking into. If I still need it after that, I build a
             proof of concept before committing to the full thing.
           </p>
         </section>
@@ -78,9 +78,9 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.2s">
         <section className="pt-5 pb-12 sm:pb-14">
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
-            This isn&apos;t a framework I read somewhere. It&apos;s how
+            This isn&apos;t a framework I read somewhere. It&apos;s just how
             I&apos;ve worked for years &mdash; and the few times I skipped it,
-            the results were worse. Every time.
+            I ended up paying for it later.
           </p>
         </section>
       </ScrollReveal>
@@ -120,9 +120,9 @@ const ApproachPage: FC = () => {
             </p>
             <p className="text-background/60 leading-relaxed max-w-[480px]">
               At a telco, I designed how the frontend and backend communicate
-              for a dynamic form engine that powered an employee superapp.
-              Delivered ahead of schedule. Engineers liked working with it
-              because the boundaries were clear.
+              for a dynamic form engine that powered an employee superapp. It
+              shipped ahead of schedule &mdash; one of the few times that
+              actually happened in my career.
             </p>
           </div>
         </section>
@@ -133,8 +133,8 @@ const ApproachPage: FC = () => {
         <section className="pt-14 sm:pt-16 pb-6">
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
             Leading a large-scale frontend revamp, I took the Lighthouse score
-            from 15 to 70. Not by adding tools &mdash; by removing
-            architectural debt that had accumulated for years.
+            from 15 to 70. The work was mostly removing architectural debt
+            that had been slowing readers down without anyone calling it that.
           </p>
         </section>
       </ScrollReveal>
@@ -157,11 +157,11 @@ const ApproachPage: FC = () => {
         <section className="py-12 sm:py-14">
           <h2 className="sr-only">Ownership</h2>
           <p className="text-muted-foreground leading-relaxed max-w-[480px]">
-            Good code in a broken process still produces bad outcomes. Owning
-            the implementation isn&apos;t enough &mdash; I&apos;ve learned to
-            pay attention to the clarity of requirements, alignment across
-            roles, and whether the team is actually moving in the same
-            direction. The engineering is the easy part.
+            Code is usually the easy part. Most of what slows projects down is
+            unclear requirements, people politely agreeing to slightly
+            different things, or teams quietly working toward different
+            definitions of done. I&apos;ve learned to pay attention to that
+            stuff, not just the implementation.
           </p>
         </section>
       </ScrollReveal>
@@ -171,12 +171,11 @@ const ApproachPage: FC = () => {
         <section className="py-10 sm:py-12 bg-muted/50 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
           <h2 className="sr-only">Principles</h2>
           <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
-            Chase the problem, not the framework.
-            <br />
-            Write code for the next engineer, not for yourself.
-            <br />
-            Ship when you understand{' '}
-            <em className="italic text-accent-warm">why.</em>
+            I don&apos;t care much about framework debates. What matters is
+            whether the thing helps the people using it &mdash; and whether
+            the next engineer doesn&apos;t{' '}
+            <em className="italic text-accent-warm">hate me</em> for how I
+            built it.
           </p>
         </section>
       </ScrollReveal>
