@@ -8,8 +8,12 @@ const Footer: FC = () => {
           <p className="font-mono text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Fahrul Alwan
           </p>
-          <p className="font-display italic text-sm text-muted-foreground/60 hidden sm:block">
+          <p className="font-display italic text-sm text-muted-foreground/60 hidden sm:inline-flex items-baseline gap-0.5">
             Still debugging.
+            <span
+              className="animate-terminal-blink inline-block w-[2px] h-[12px] bg-accent-warm translate-y-[1px]"
+              aria-hidden="true"
+            />
           </p>
           <p className="font-mono text-xs text-muted-foreground">Jakarta, ID</p>
         </div>

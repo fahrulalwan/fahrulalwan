@@ -140,6 +140,26 @@
   }
 }
 
+@keyframes terminal-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 1.06s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-terminal-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
