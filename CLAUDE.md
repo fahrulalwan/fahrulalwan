@@ -43,7 +43,7 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 src/components/
 ├── ui/           → shadcn/ui primitives (Sheet, etc.)
 ├── shared/       → Cross-page components (Navbar, Footer, CTA, ScrollReveal, MobileNav)
-├── landing/      → Landing page sections (Hero, WhatIBring, FeaturedWork, ApproachTeaser)
+├── landing/      → Landing page sections (Hero, WhatIBring, Currently, FeaturedWork, ApproachTeaser)
 └── case-study/   → Case study page components (CaseStudyHeader, CaseStudyContent)
 ```
 
@@ -80,12 +80,13 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 
 ### Page Architecture
 
-**Landing page** — 5 sections with varied rhythms:
+**Landing page** — 6 sections with varied rhythms:
 1. Hero (left-aligned, serif headline)
 2. WhatIBring (`[1fr_2fr]` asymmetric grid)
-3. FeaturedWork (list with background numbers)
-4. ApproachTeaser (centered statement)
-5. CTA (`[2fr_1fr]` flipped grid, full-bleed inverted)
+3. Currently (full-width, mono label on top, em-dash bullets in accent-warm)
+4. FeaturedWork (list with background numbers)
+5. ApproachTeaser (centered statement)
+6. CTA (`[2fr_1fr]` flipped grid, full-bleed inverted)
 
 **Approach page** — manifesto-style, no section labels. Continuous flow with ghost typography, inverted block, and inline closing CTA. No `CtaSection` component.
 

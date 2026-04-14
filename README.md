@@ -8,10 +8,10 @@ Frontend engineering lead in Jakarta. Currently at [Bareksa](https://bareksa.com
 
 ### Currently
 
-- Leading frontend at Bareksa, overseeing a handful of repositories
-- Building a few side projects on Hono + Cloudflare Workers — new territory for me
-- Learning to ship LLM-powered tools (Scrimba AI Engineer Path, LangChain)
-- Reading books again — trying to make it a habit
+- Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful.
+- Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.
+- Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.
+- Trying to finish more of the books I start instead of adding new ones to the pile.
 
 ### Tech
 

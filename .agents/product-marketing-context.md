@@ -126,7 +126,7 @@ How the site tells a story across pages:
 
 | Page | Job | Visitor state | What they leave with |
 |------|-----|---------------|---------------------|
-| **Landing** | Intrigue | "Who is this?" | "This person thinks differently. I want to know more." |
+| **Landing** | Intrigue + aliveness | "Who is this? Is this person still active?" | "This person thinks differently, still ships things, still has things on their desk. I want to know more." |
 | **Approach** | Trust | "How do they think?" | "I trust their judgement. They're self-aware." |
 | **Case study** | Proof | "Can they actually deliver?" | "They've done this before. The details check out." |
 | **CTA / Contact** | Action | "Should I reach out?" | "Low commitment. I'll say hi." |
@@ -140,25 +140,31 @@ How the site tells a story across pages:
 
 | Location | File | Key copy |
 |----------|------|----------|
-| Hero headline | `src/components/landing/hero.tsx` | "Lately I've been thinking about why the best code comes from the tightest constraints." |
+| Hero headline | `src/components/landing/hero.tsx` | "Lately I've been rewriting code I wrote years ago and wondering what I was thinking." |
 | Hero sub | same | "Engineering lead · Jakarta" |
-| WhatIBring main | `src/components/landing/what-i-bring.tsx` | "...figuring out where complexity hides..." |
+| WhatIBring main | `src/components/landing/what-i-bring.tsx` | "...deciding what needs to exist, and keeping the rest useful to the people actually using it." |
 | WhatIBring detail | same | "...splicing fiber cables in Bali. I just kept following the interesting problems." |
-| ApproachTeaser | `src/components/landing/approach-teaser.tsx` | "The hard part was never the code..." |
+| Currently (Bareksa) | `src/components/landing/currently.tsx` | "Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful." |
+| Currently (Hono) | same | "Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways." |
+| Currently (AI) | same | "Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful." |
+| Currently (books) | same | "Trying to finish more of the books I start instead of adding new ones to the pile." |
+| ApproachTeaser | `src/components/landing/approach-teaser.tsx` | "Most of my job isn't writing code. It's making sure the thing we're about to build actually needs to exist." |
 | CTA | `src/components/shared/cta-section.tsx` | "Say hi." |
 | Footer | `src/components/shared/footer.tsx` | "Still debugging." |
-| Navbar CTA | `src/components/shared/navbar.tsx` | "Say hi" |
-| Approach opening | `src/app/approach/page.tsx` | "I keep asking why until the answer stops changing." |
+| Navbar logo | `src/components/shared/navbar.tsx` | "Fahrul Alwan." (display serif) |
+| Navbar CTA | same | "Say hi" |
+| Mobile nav CTA | `src/components/shared/mobile-nav.tsx` | "Say hi" |
+| Approach hero | `src/app/approach/page.tsx` | "My process is mostly asking 'why' until I get a real answer. It annoys people sometimes." |
 | Approach inverted | same | "Some things I've built that are still running." |
-| Approach impact | same | "...the engineer who'll read this code six months from now. Usually it's me." |
+| Approach impact quote | same | "...the engineer who'll read this code six months from now. Usually it's me." |
+| Approach anti-positioning | same | "...whether the thing helps the people using it — and whether the next engineer doesn't hate me for how I built it." |
 | Approach closing | same | "If any of this resonated, say hi." |
+| Case study headline | `src/content/case-studies/caready.ts` | "A car auction platform's real-time layer, built in 2018. Still in production eight years later." |
+| Case study reflections | same | "I was too aggressive when I joined the core team..." |
 | Case study closing | `src/app/work/[slug]/page.tsx` | "If any of this resonated, say hi." |
 | 404 | `src/app/not-found.tsx` | "This page doesn't exist." |
-| Mobile nav CTA | `src/components/shared/mobile-nav.tsx` | "Say hi" |
-| Case study headline | `src/content/case-studies/caready.ts` | "Building the real-time backbone of a car auction platform..." |
-| Case study context | same | "An automotive auction company needed a platform built from zero..." |
-| Case study reflections | same | "I was too aggressive when I joined the core team..." |
-| Meta description | `src/app/layout.tsx` | "...engineering lead in Jakarta. Frontend systems, fintech, and figuring out where complexity hides." |
+| Meta description | `src/app/layout.tsx` | "...engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build." |
+| Approach meta | `src/app/approach/page.tsx` | "How I think about product engineering. Mostly asking why before writing anything." |
 
 ## Open Questions
 

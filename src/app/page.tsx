@@ -1,4 +1,5 @@
 import ApproachTeaser from '@/components/landing/approach-teaser';
+import Currently from '@/components/landing/currently';
 import FeaturedWork from '@/components/landing/featured-work';
 import Hero from '@/components/landing/hero';
 import WhatIBring from '@/components/landing/what-i-bring';
@@ -11,6 +12,9 @@ const LandingPage = () => {
       <Hero />
       <ScrollReveal>
         <WhatIBring />
+      </ScrollReveal>
+      <ScrollReveal delay="0.05s">
+        <Currently />
       </ScrollReveal>
       <ScrollReveal delay="0.1s">
         <FeaturedWork />
