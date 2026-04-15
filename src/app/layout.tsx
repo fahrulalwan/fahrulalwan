@@ -81,6 +81,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'x-hello-curious':
+      "if you're reading this in view-source, we should talk. fahrulalwan@gmail.com — i actually read every email.",
+  },
 };
 
 const personJsonLd = {
