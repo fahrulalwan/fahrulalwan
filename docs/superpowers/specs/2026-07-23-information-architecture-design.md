@@ -1,6 +1,6 @@
 # Information architecture — design spec
 
-*Status: **draft, not yet reviewed.** Written 2026-07-23. Derives from `docs/brand-philosophy.md`. The visual system is specced in `2026-07-23-design-system-design.md` and the craft-proof section in `2026-07-23-craft-proof-section-design.md`, which this spec finally gives a home.*
+*Status: **reviewed, ready to implement.*** Written 2026-07-23. Derives from `docs/brand-philosophy.md`. The visual system is specced in `2026-07-23-design-system-design.md` and the craft-proof section in `2026-07-23-craft-proof-section-design.md`, which this spec finally gives a home.*
 
 ---
 
@@ -72,7 +72,7 @@ Five sections. The current page has six and puts narrative before proof; this in
 
 *Currently was nearly cut as "not evidence". That was wrong. One of the fastest doubts about any candidate is not "can he build" but "is this person still in it, or is this a portfolio from 2022". Recency is a property worth verifying, and a line about live work kills that doubt in the same screen as the identity facts.*
 
-**2 · The work you can check.** caready and Fartix lead, because both are live and clickable right now. **The link working is the argument.** The coverage ratchet sits third.
+**2 · The work you can check.** caready and Fartix lead, because both are live and clickable right now. **The link working is the argument.** The coverage ratchet sits third. External evidence links open in a new tab (`target="_blank" rel="noopener"`): a verification page that navigates the reader away to caready.co.id in the same tab has lost them, and losing the reader is the one thing this page cannot afford.
 
 **3 · The gates.** The craft-proof section, specced separately, finally placed. It sits below the checkable work and is framed honestly as something describable but not showable.
 
@@ -104,16 +104,20 @@ It also has no navigable structure: four of its sections carry `sr-only` heading
 
 ## Mechanical consequences
 
-| Change | Note |
-|---|---|
-| `/approach` → 308 → `/` | Matches the existing old-route redirect pattern |
-| `next.config.ts:7` | ⛔ **`/about` currently redirects to `/approach`.** Removing that route turns an existing redirect into a chain ending in 404. It must be repointed to `/` in the same change, not afterwards. |
-| `navbar.tsx` | Drops the `/approach` link. Nav becomes the name, Work, Contact. |
-| `sitemap.ts` | Drops `/approach` |
-| `src/app/approach/` | Deleted after its two surviving lines are moved |
-| `src/components/landing/` | `ApproachTeaser` deleted; `WhatIBring` and `Currently` fold into sections 1 and 4 |
+⛔ **`/approach` is referenced in seven files, not the three an earlier draft of this table claimed. The count was checked with `rg -l`, not recalled.** The draft also asserted "mobile nav already only carries `/#contact`", which was **flatly wrong** — `mobile-nav.tsx:17` carries an `Approach` link. Building from the wrong list ships a dead nav item, which is exactly the "done that isn't" this project exists to prevent. The complete list:
 
-Case study pages change structurally not at all. They already carry the current design system.
+| File | Change |
+|---|---|
+| `next.config.ts` | Add `/approach` → `/`. And ⛔ **repoint the existing `/about` → `/approach` to `/about` → `/` in the same change** — otherwise it becomes a chain ending in 404. |
+| `src/app/approach/page.tsx` | Deleted after its two surviving lines are moved. Carries a `canonical: '/approach'` that dies with it. |
+| `src/app/page.tsx` | Remove the `ApproachTeaser` import and its render. |
+| `src/app/sitemap.ts` | Drop the `/approach` entry. |
+| `src/components/landing/approach-teaser.tsx` | Deleted. |
+| `src/components/shared/navbar.tsx` | Drop the `/approach` link. Nav becomes the name, Work, Contact. |
+| `src/components/shared/mobile-nav.tsx` | Drop the `Approach` item from `navItems`. |
+| `src/components/landing/` | `WhatIBring` and `Currently` fold into sections 1 and 4. |
+
+Case study pages change structurally not at all.
 
 ## Done means
 
@@ -122,6 +126,9 @@ Case study pages change structurally not at all. They already carry the current 
 - The landing page renders five sections in the order above
 - Both live links in section 2 return 200 at review time, checked rather than assumed. A dead link on a verification page is worse than no link, and §15 of the design system spec already scopes a CI link check that would make this continuous rather than one-off.
 - The craft-proof section has a home and its own spec's preconditions are still respected
+- **`curl -I /approach` returns 308 to `/`, and `curl -I /about` returns 308 to `/` in one hop** — the redirect is observed to fire, not just written
+- **`rg /approach src next.config.ts` returns nothing** after the change — all seven references gone
+- The generated preview card is confirmed by fetching the built image and viewing one real unfurl, not by assuming the file renders
 - **One job title across every surface.** Today the preview card, the JSON-LD and the site copy disagree. Whatever the title is, it appears identically in all three.
 - **The preview card renders from `opengraph-image.tsx` using design tokens**, and no static `opengraph-image.jpeg` / `twitter-image.jpeg` remains
 - **No CV file, link, or "CV on request" line exists anywhere on the site**
@@ -133,4 +140,16 @@ Case study pages change structurally not at all. They already carry the current 
 - **Copy for sections 1 and 4 is not written.** The structure is decided, the words are not.
 - **Em-dashes remain in published copy** across five files, which the design system's anti-tell list forbids. Unruled.
 - **The job title itself is undecided.** Three surfaces currently disagree, and picking the right one is a positioning question this spec does not answer. It only requires that the answer be applied consistently.
-- **This spec has not been reviewed.** Per the project workflow it needs the review pipeline before implementation.
+- **The reader arriving via an LLM is unhandled, and by 2026 it is a real path.** Someone asking an assistant "who is Mohammad Fahrul Alwan" gets an answer synthesised from the JSON-LD `jobTitle`, the meta description, and the page text — which is a form of the forwarding this site is built around, with no human in the loop. It costs nothing to serve well and it makes the title-consistency requirement load-bearing rather than cosmetic: the machine reads the structured field, not the design. No new work, but the title decision now has three consumers, not two.
+
+## Review closure
+
+**Review-closure:** 3-phase pipeline complete 2026-07-23, verdict **SHIP-AFTER-FIXES**, all findings applied. Run inline rather than via subagents, per the session's standing constraint.
+
+*Phase 1 (self-review + `/blindspot`, run against the live codebase):* self-review caught an overstated beat count and a vague done-check. The blindspot pass then left the document and `rg`-counted the live references — and found the mechanical-consequences table **factually wrong**: it listed roughly three change sites when `/approach` is referenced in **seven** files, and it asserted "mobile nav already only carries `/#contact`" when `mobile-nav.tsx:17` carries an `Approach` link. Building from that table ships a dead nav item, the precise "done that isn't" the project guards against. The table was rewritten from the `rg -l` output. The pass also surfaced two entry points the route-framed spec was blind to: the `x-hello-curious` view-source easter egg (a deliberate surface, left as-is) and the LLM-summary reader (now an Open item).
+
+*Phase 2 (red-team + pressure-test):* red-team found a mild internal tension — section 1 front-loads identity facts for a stranger while the brief says the primary reader already has context; kept, because the forwarded/screenshot case justifies it. Pressure-test walked the concrete scenarios: an old `/approach` bookmark (needs the 308, now required), the `/about` chain (repoint required, now explicit), a same-tab evidence link losing the reader (fixed: external links open in a new tab), and the LLM reader (logged). The evidence-decay case — a lead link 404ing if caready.co.id dies — is accepted rather than engineered around; the done-check verifies 200 at review, and §15's link check would make it continuous.
+
+*Phase 3 (tech-lead synthesis gate, last):* one P0 — the wrong reference table — now closed. Two P1s: the title is undecided and sits on the critical path for section-1 copy, the OG card and the JSON-LD, so it blocks implementation and is flagged as such; and external-link behaviour, now specified. Loop-closure: the redirect and the generated card are things that must *fire*, so the done-check now requires observing them (`curl -I`, a real unfurl) rather than assuming. Definition-of-done is greppable.
+
+- ~~This spec has not been reviewed~~ — **review complete 2026-07-23**, see above.
