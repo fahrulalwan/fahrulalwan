@@ -47,3 +47,6 @@ next-env.d.ts
 
 # Lighthouse CI output
 .lighthouseci/
+
+# ground-up rebuild marker (local; drives ~/.claude ground-up-gate hook)
+.ground-up
