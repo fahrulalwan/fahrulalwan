@@ -3,7 +3,7 @@ import type { CaseStudy } from './types';
 export const careadyCaseStudy: CaseStudy = {
   slug: 'caready-auction-platform',
   headline:
-    'A car auction platform\'s real-time layer, built in 2018. Still in production eight years later.',
+    "A car auction platform's real-time layer, built in 2018. Still in production eight years later.",
   tags: ['WebSocket', 'Real-time Architecture', 'Angular', 'Java Spring Boot'],
   year: '2018',
   metadata: {
@@ -19,7 +19,7 @@ export const careadyCaseStudy: CaseStudy = {
     {
       title: 'Chose WebSocket after weeks of independent research',
       description:
-        'The system needed server-pushed updates — polling couldn\'t keep up with live bidding. I spent weeks reading, comparing approaches, and testing before committing to WebSocket as the communication layer. It was the only approach that fit reactive, low-latency multi-party communication.',
+        "The system needed server-pushed updates — polling couldn't keep up with live bidding. I spent weeks reading, comparing approaches, and testing before committing to WebSocket as the communication layer. It was the only approach that fit reactive, low-latency multi-party communication.",
     },
     {
       title: 'Proved it with a two-machine PoC first',
@@ -29,7 +29,7 @@ export const careadyCaseStudy: CaseStudy = {
     {
       title: 'Handled silent connection drops with heartbeat and reconnect',
       description:
-        'After launch, WebSocket connections would silently die after a few minutes — no error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn\'t eliminate the problem entirely, but it made auctions reliable enough to run without interruption.',
+        "After launch, WebSocket connections would silently die after a few minutes — no error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn't eliminate the problem entirely, but it made auctions reliable enough to run without interruption.",
     },
   ],
   results: {
@@ -40,9 +40,9 @@ export const careadyCaseStudy: CaseStudy = {
         context: 'Platform still active at caready.co.id',
       },
       {
-        label: 'Platform users',
-        value: '100K+',
-        context: 'Serving the Indonesian automotive auction market',
+        label: 'Market',
+        value: 'B2B auctions',
+        context: 'Indonesian automotive auction market',
       },
     ],
     qualitative: [
@@ -50,8 +50,8 @@ export const careadyCaseStudy: CaseStudy = {
     ],
   },
   reflections: [
-    'The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I\'d invest in best practices earlier instead of discovering them through trial and error.',
-    'I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn\'t know. I think about that a lot now, whenever I\'m leading someone who reminds me of how I was back then.',
+    "The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I'd invest in best practices earlier instead of discovering them through trial and error.",
+    "I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn't know. I think about that a lot now, whenever I'm leading someone who reminds me of how I was back then.",
   ],
   thumbnail: '/images/case-studies/caready-team.jpeg',
 };
