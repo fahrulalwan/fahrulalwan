@@ -12,7 +12,7 @@ const ApproachTeaser: FC = () => {
       <p className="font-display text-display-m font-medium mb-8 max-w-[22ch] mx-auto">
         Most of my job isn&apos;t writing code. It&apos;s making sure the thing
         we&apos;re about to build actually{' '}
-        <span className="text-accent-warm">needs to exist.</span>
+        <span className="text-signal">needs to exist.</span>
       </p>
 
       <Link

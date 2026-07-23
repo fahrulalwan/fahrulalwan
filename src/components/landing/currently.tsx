@@ -21,7 +21,7 @@ const Currently: FC = () => {
             className="flex gap-4 text-muted-foreground leading-relaxed"
           >
             <span
-              className="w-3 h-px bg-accent-warm shrink-0 mt-3"
+              className="w-3 h-px bg-signal shrink-0 mt-3"
               aria-hidden="true"
             />
             <span>{item}</span>

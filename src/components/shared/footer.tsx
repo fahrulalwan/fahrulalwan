@@ -11,7 +11,7 @@ const Footer: FC = () => {
           <p className="font-display text-sm text-muted-foreground/60 hidden sm:inline-flex items-baseline gap-0.5">
             Still debugging.
             <span
-              className="animate-terminal-blink inline-block w-[2px] h-[12px] bg-accent-warm translate-y-[1px]"
+              className="animate-terminal-blink inline-block w-[2px] h-[12px] bg-signal translate-y-[1px]"
               aria-hidden="true"
             />
           </p>

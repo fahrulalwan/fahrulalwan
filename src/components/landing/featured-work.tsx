@@ -48,13 +48,13 @@ const FeaturedWork: FC = () => {
                 </span>
               </div>
 
-              <h3 className="font-display text-display-l font-medium mb-4 max-w-[22ch] transition-colors duration-300 group-hover:text-accent-warm">
+              <h3 className="font-display text-display-l font-medium mb-4 max-w-[22ch] transition-colors duration-300 group-hover:text-signal">
                 {study.headline}
               </h3>
 
               {study.results.metrics[0] && (
                 <div className="flex items-baseline gap-2.5 mb-3">
-                  <span className="font-display text-display-m font-medium text-accent-warm">
+                  <span className="font-display text-display-m font-medium text-signal">
                     {study.results.metrics[0].value}
                   </span>
                   <span className="text-sm text-muted-foreground">

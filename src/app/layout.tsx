@@ -33,8 +33,8 @@ export const viewport: Viewport = {
   themeColor: [
     // Matches --background in globals.css / theme.css. On a phone this band sits
     // directly above the page, so a mismatch is the first thing a visitor sees.
-    { media: '(prefers-color-scheme: light)', color: 'hsl(34 44% 97.5%)' },
-    { media: '(prefers-color-scheme: dark)', color: 'hsl(24 11% 4.5%)' },
+    { media: '(prefers-color-scheme: light)', color: 'hsl(210 18% 97.5%)' },
+    { media: '(prefers-color-scheme: dark)', color: 'hsl(215 18% 6%)' },
   ],
 };
 

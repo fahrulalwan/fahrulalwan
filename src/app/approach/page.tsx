@@ -24,7 +24,7 @@ const ApproachPage: FC = () => {
         <section className="pt-12 sm:pt-20 pb-10 sm:pb-12">
           <p className="text-label font-medium text-muted-foreground uppercase mb-20 sm:mb-24 flex items-center gap-3.5">
             <span
-              className="w-6 h-0.5 bg-accent-warm shrink-0"
+              className="w-6 h-0.5 bg-signal shrink-0"
               aria-hidden="true"
             />
             Approach
@@ -32,7 +32,7 @@ const ApproachPage: FC = () => {
 
           <h1 className="font-display text-display-xl font-medium max-w-[19ch]">
             My process is mostly asking{' '}
-            <em className="not-italic text-accent-warm">why</em> until I get a
+            <em className="not-italic text-signal">why</em> until I get a
             real answer. It annoys people sometimes.
           </h1>
         </section>
@@ -99,7 +99,7 @@ const ApproachPage: FC = () => {
             Build.
           </p>
           <div
-            className="absolute bottom-0 left-5 sm:left-4 w-0.5 h-10 bg-gradient-to-b from-accent-warm to-transparent"
+            className="absolute bottom-0 left-5 sm:left-4 w-0.5 h-10 bg-gradient-to-b from-signal to-transparent"
             aria-hidden="true"
           />
         </section>
@@ -144,7 +144,7 @@ const ApproachPage: FC = () => {
           <p className="font-display text-display-m font-medium max-w-[22ch]">
             I think a lot about the engineer who&apos;ll read this code six
             months from now. Usually it&apos;s{' '}
-            <span className="text-accent-warm">me.</span>
+            <span className="text-signal">me.</span>
           </p>
         </section>
       </ScrollReveal>
@@ -174,7 +174,7 @@ const ApproachPage: FC = () => {
             I don&apos;t care much about framework debates. What matters is
             whether the thing helps the people using it &mdash; and whether
             the next engineer doesn&apos;t{' '}
-            <em className="not-italic text-accent-warm">hate me</em> for how I
+            <em className="not-italic text-signal">hate me</em> for how I
             built it.
           </p>
         </section>

@@ -5,45 +5,45 @@
    Every ratio below was computed against these exact values (spec §1). */
 :root {
   /* surfaces */
-  --background: hsl(34 44% 97.5%);           /* warm paper */
-  --foreground: hsl(24 12% 11%);             /* 16.21:1 on background */
+  --background: hsl(210 18% 97.5%);          /* cool paper */
+  --foreground: hsl(215 26% 12%);            /* 15.98:1 on background */
 
-  --card: hsl(34 44% 97.5%);                 /* flat with the page, spec §5 */
-  --card-foreground: hsl(24 12% 11%);
+  --card: hsl(210 18% 97.5%);                /* flat with the page, spec §5 */
+  --card-foreground: hsl(215 26% 12%);
 
-  --popover: hsl(34 50% 99%);                /* lifts above the page */
-  --popover-foreground: hsl(24 12% 11%);     /* 16.70:1 */
+  --popover: hsl(210 24% 99%);               /* lifts above the page */
+  --popover-foreground: hsl(215 26% 12%);    /* 16.52:1 */
 
-  --primary: hsl(24 12% 11%);
-  --primary-foreground: hsl(34 44% 97.5%);   /* 16.21:1 on primary */
+  --primary: hsl(215 26% 12%);
+  --primary-foreground: hsl(210 18% 97.5%);  /* 15.98:1 on primary */
 
-  --secondary: hsl(32 34% 94%);
-  --secondary-foreground: hsl(24 12% 11%);   /* 15.03:1 */
+  --secondary: hsl(212 16% 94%);
+  --secondary-foreground: hsl(215 26% 12%);  /* 14.73:1 */
 
-  --muted: hsl(32 34% 94%);
-  --muted-foreground: hsl(24 9% 42%);        /* 5.06:1 on bg, 4.69:1 on muted */
+  --muted: hsl(212 16% 94%);
+  --muted-foreground: hsl(215 11% 40%);      /* 5.66:1 on bg, 5.21:1 on muted */
 
-  /* NOT the orange. --accent is shadcn's neutral hover surface. See --accent-warm. */
-  --accent: hsl(32 30% 90%);                 /* 13.76:1 for foreground */
-  --accent-foreground: hsl(24 12% 11%);
+  /* NOT the signal colour. --accent is shadcn's neutral hover surface. */
+  --accent: hsl(212 14% 90%);                /* 13.39:1 for foreground */
+  --accent-foreground: hsl(215 26% 12%);
 
-  --destructive: hsl(0 72% 45%);             /* 5.53:1 on background */
-  --destructive-foreground: hsl(34 44% 97.5%); /* 5.81:1 on destructive */
+  --destructive: hsl(0 72% 45%);             /* 5.49:1 on background */
+  --destructive-foreground: hsl(210 18% 97.5%);
 
   /* lines. --border is a decorative hairline and is exempt from contrast minimums.
      --input must reach 3:1 the moment a real form control exists (spec §1). */
-  --border: hsl(30 22% 87%);
-  --input: hsl(30 22% 87%);
-  --ring: hsl(18 88% 41%);                   /* 4.77:1, clears the 3:1 focus floor */
+  --border: hsl(213 16% 87%);
+  --input: hsl(213 16% 87%);
+  --ring: hsl(192 88% 28%);                  /* 5.60:1, clears the 3:1 focus floor */
 
-  /* the one accent hue, two surfaces */
-  --accent-warm: hsl(18 88% 41%);            /* 4.77:1 on paper */
-  --accent-warm-inverted: hsl(18 88% 58%);   /* 5.73:1 on the inverted block */
+  /* The signal colour. Appears only where it carries information. */
+  --signal: hsl(192 88% 28%);           /* 5.60:1 on paper */
+  --signal-inverted: hsl(190 70% 62%);  /* 8.94:1 on the inverted block */
 
   /* Scrim behind an overlay. Needs its own token: --foreground inverts per theme,
      so bg-foreground/80 would paint a WHITE wash over dark mode. A scrim is
      always dark, in both themes. */
-  --overlay: hsl(24 12% 11% / 0.72);
+  --overlay: hsl(215 26% 12% / 0.72);
 
   --radius: 0.5rem;
 
@@ -129,8 +129,8 @@
 
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent-warm: var(--accent-warm);
-  --color-accent-warm-inverted: var(--accent-warm-inverted);
+  --color-signal: var(--signal);
+  --color-signal-inverted: var(--signal-inverted);
   --color-overlay: var(--overlay);
 
   --color-destructive: var(--destructive);
@@ -249,8 +249,8 @@
     --secondary: #fff;
     --muted: #fff;
     --border: #bbb;
-    --accent-warm: #000;
-    --accent-warm-inverted: #000;
+    --signal: #000;
+    --signal-inverted: #000;
   }
 
   /* The inverted blocks are all `.full-bleed bg-foreground text-background`.

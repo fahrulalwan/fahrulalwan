@@ -29,67 +29,71 @@ From the philosophy and the research, in priority order:
 
 ## 1 · Colour
 
-One temperature across both themes. Warm paper and warm ink in light, warm charcoal in dark. A single accent hue, used sparingly.
+One temperature across both themes: cool graphite, light and dark. **Colour appears only where it carries information** — a link, a focus ring, a figure. Everything else is neutral.
+
+**Palette chosen 2026-07-23 against two rendered alternatives**, after the owner noticed that colour had never been given the treatment the type ramp got. It hadn't: the shipped accent sat three degrees of hue from the one the old site already used, so it was inherited rather than picked. A warm-paper-and-orange direction was rejected as the 2026 warm-editorial genre §12 already admits is a residue rather than an identity. An oxblood direction was rejected on semantics: in fintech red means *failed*, and every metric on this site is a good number, so oxblood makes achievements look like alarms. Graphite won because a system where colour appears only on state argues the "legible verifiable competence" thesis instead of decorating it. **Its cost is real and was accepted: graphite is colder, and warmth is part of reading as a person rather than a dashboard.**
 
 ### The full token map
 
-⛔ **This is the complete set, not a highlight reel.** `globals.css` and `theme.css` define **21 tokens per theme**. An earlier draft of this spec governed six of them, which would have swapped the page background to warm paper while every button, dropdown, card, popover, focus ring and hover surface stayed cool blue-slate. A half-swapped palette is worse than no swap, because the mismatch is visible and looks like carelessness rather than a default.
+⛔ **This is the complete set, not a highlight reel.** `globals.css` and `theme.css` define **21 tokens per theme**. An earlier draft of this spec governed six of them, which would have swapped the page background while every button, dropdown, card, popover, focus ring and hover surface kept the stock shadcn values. A half-swapped palette is worse than no swap, because the mismatch is visible and looks like carelessness rather than a default.
 
 **Light**
 
 | Token | Value | Checked |
 |---|---|---|
-| `--background` | `hsl(34 44% 97.5%)` | warm paper |
-| `--foreground` | `hsl(24 12% 11%)` | 16.21:1 on background |
-| `--card` | `hsl(34 44% 97.5%)` | flat with the page, per §5 |
-| `--card-foreground` | `hsl(24 12% 11%)` | 16.21:1 |
-| `--popover` | `hsl(34 50% 99%)` | lifts above the page |
-| `--popover-foreground` | `hsl(24 12% 11%)` | 16.70:1 |
-| `--primary` | `hsl(24 12% 11%)` | |
-| `--primary-foreground` | `hsl(34 44% 97.5%)` | 16.21:1 on primary |
-| `--secondary` | `hsl(32 34% 94%)` | 15.03:1 for foreground |
-| `--secondary-foreground` | `hsl(24 12% 11%)` | |
-| `--muted` | `hsl(32 34% 94%)` | |
-| `--muted-foreground` | `hsl(24 9% 42%)` | 5.06:1 on background, 4.69:1 on muted |
-| `--accent` | `hsl(32 30% 90%)` | neutral hover surface, 13.76:1 for foreground |
-| `--accent-foreground` | `hsl(24 12% 11%)` | |
-| `--destructive` | `hsl(0 72% 45%)` | 5.53:1 on background |
-| `--destructive-foreground` | `hsl(34 44% 97.5%)` | 5.81:1 on destructive |
-| `--border` | `hsl(30 22% 87%)` | decorative hairline |
-| `--input` | `hsl(30 22% 87%)` | see the input-border guard below |
-| `--ring` | `hsl(18 88% 41%)` | 4.77:1 on background, clears the 3:1 focus floor |
-| `--accent-warm` | `hsl(18 88% 41%)` | 4.77:1 on paper |
-| `--accent-warm-inverted` | `hsl(18 88% 58%)` | 5.73:1 on the inverted block |
+| `--background` | `hsl(210 18% 97.5%)` | cool paper |
+| `--foreground` | `hsl(215 26% 12%)` | 15.98:1 on background |
+| `--card` | `hsl(210 18% 97.5%)` | flat with the page, per §5 |
+| `--card-foreground` | `hsl(215 26% 12%)` | 15.98:1 |
+| `--popover` | `hsl(210 24% 99%)` | lifts above the page |
+| `--popover-foreground` | `hsl(215 26% 12%)` | 16.52:1 |
+| `--primary` | `hsl(215 26% 12%)` | |
+| `--primary-foreground` | `hsl(210 18% 97.5%)` | 15.98:1 on primary |
+| `--secondary` | `hsl(212 16% 94%)` | 14.73:1 for foreground |
+| `--secondary-foreground` | `hsl(215 26% 12%)` | |
+| `--muted` | `hsl(212 16% 94%)` | |
+| `--muted-foreground` | `hsl(215 11% 40%)` | 5.66:1 on background, 5.21:1 on muted |
+| `--accent` | `hsl(212 14% 90%)` | neutral hover surface, 13.39:1 for foreground |
+| `--accent-foreground` | `hsl(215 26% 12%)` | |
+| `--destructive` | `hsl(0 72% 45%)` | 5.49:1 on background |
+| `--destructive-foreground` | `hsl(210 18% 97.5%)` | |
+| `--border` | `hsl(213 16% 87%)` | decorative hairline |
+| `--input` | `hsl(213 16% 87%)` | see the input-border guard below |
+| `--ring` | `hsl(192 88% 28%)` | 5.60:1, clears the 3:1 focus floor |
+| `--signal` | `hsl(192 88% 28%)` | 5.60:1 on paper |
+| `--signal-inverted` | `hsl(190 70% 62%)` | 8.94:1 on the inverted block |
 
 **Dark**
 
 | Token | Value | Checked |
 |---|---|---|
-| `--background` | `hsl(24 11% 4.5%)` | warm charcoal |
-| `--foreground` | `hsl(34 30% 96%)` | 18.08:1 on background |
-| `--card` | `hsl(26 8% 9%)` | lifted, per §5 |
-| `--card-foreground` | `hsl(34 30% 96%)` | 16.51:1 |
-| `--popover` | `hsl(26 8% 11%)` | lifted above card |
-| `--popover-foreground` | `hsl(34 30% 96%)` | 15.67:1 |
-| `--primary` | `hsl(34 30% 96%)` | |
-| `--primary-foreground` | `hsl(24 11% 4.5%)` | 18.08:1 on primary |
-| `--secondary` | `hsl(26 8% 14%)` | 14.33:1 for foreground |
-| `--secondary-foreground` | `hsl(34 30% 96%)` | |
-| `--muted` | `hsl(26 8% 14%)` | |
-| `--muted-foreground` | `hsl(28 8% 62%)` | 7.40:1 on background, 5.87:1 on muted |
-| `--accent` | `hsl(26 8% 18%)` | neutral hover surface, 12.49:1 for foreground |
-| `--accent-foreground` | `hsl(34 30% 96%)` | |
-| `--destructive` | `hsl(0 70% 58%)` | 4.84:1 on background |
-| `--destructive-foreground` | `hsl(24 11% 4.5%)` | |
-| `--border` | `hsl(26 8% 16%)` | decorative hairline |
-| `--input` | `hsl(26 8% 16%)` | see the input-border guard below |
-| `--ring` | `hsl(20 92% 52%)` | 6.11:1 on background |
-| `--accent-warm` | `hsl(20 92% 52%)` | 6.11:1 on charcoal |
-| `--accent-warm-inverted` | `hsl(20 92% 40%)` | 4.56:1 on the inverted block |
+| `--background` | `hsl(215 18% 6%)` | graphite |
+| `--foreground` | `hsl(210 16% 95%)` | 17.16:1 on background |
+| `--card` | `hsl(214 14% 10%)` | lifted, per §5 |
+| `--card-foreground` | `hsl(210 16% 95%)` | 15.75:1 |
+| `--popover` | `hsl(214 14% 12.5%)` | lifted above card |
+| `--popover-foreground` | `hsl(210 16% 95%)` | 14.74:1 |
+| `--primary` | `hsl(210 16% 95%)` | |
+| `--primary-foreground` | `hsl(215 18% 6%)` | 17.16:1 on primary |
+| `--secondary` | `hsl(214 12% 15%)` | 13.65:1 for foreground |
+| `--secondary-foreground` | `hsl(210 16% 95%)` | |
+| `--muted` | `hsl(214 12% 15%)` | |
+| `--muted-foreground` | `hsl(213 9% 62%)` | 7.03:1 on background, 5.59:1 on muted |
+| `--accent` | `hsl(214 12% 19%)` | neutral hover surface, 11.93:1 for foreground |
+| `--accent-foreground` | `hsl(210 16% 95%)` | |
+| `--destructive` | `hsl(0 70% 58%)` | 4.74:1 on background |
+| `--destructive-foreground` | `hsl(215 18% 6%)` | |
+| `--border` | `hsl(214 10% 17%)` | decorative hairline |
+| `--input` | `hsl(214 10% 17%)` | see the input-border guard below |
+| `--ring` | `hsl(188 72% 54%)` | 9.55:1 on background |
+| `--signal` | `hsl(188 72% 54%)` | 9.55:1 on graphite |
+| `--signal-inverted` | `hsl(192 88% 30%)` | 4.74:1 on the inverted block |
 
 ### Naming traps in this map
 
-⛔ **`--accent` is not the orange.** In the shadcn token vocabulary `--accent` is the *neutral hover surface* for menu items and list rows. The orange is `--accent-warm`. Anyone who reads "one accent hue" in this section and then writes `bg-accent` gets a beige-grey and will not immediately understand why. The names are inherited from shadcn and renaming them would break every primitive in `src/components/ui/`, so the collision stays and this warning is the mitigation.
+⛔ **`--accent` is not the signal colour.** In the shadcn token vocabulary `--accent` is the *neutral hover surface* for menu items and list rows. The colour is `--signal`. Anyone who reads this section and then writes `bg-accent` gets a neutral grey and will not immediately understand why. The names are inherited from shadcn and renaming them would break every primitive in `src/components/ui/`, so the collision stays and this warning is the mitigation.
+
+*The project's own token was `--signal` until the palette moved to graphite. **A token named "warm" holding a cyan is the same trap one level down**, so it was renamed to `--signal` across 11 files. The name now says what the token is for: colour that carries information.*
 
 ⛔ **`--chart-1` through `--chart-5` are dead.** The `@theme inline` block in `globals.css` maps `--color-chart-1: var(--chart-1)` and so on, but neither `:root` nor `.dark` ever defines `--chart-1`. Five Tailwind colour utilities currently resolve to nothing. There are no charts on this site. **Delete the mappings** rather than inventing values for them.
 
@@ -98,7 +102,9 @@ One temperature across both themes. Warm paper and warm ink in light, warm charc
 ### Rules
 
 - **One accent HUE, two tokens per theme.** No second accent, no gradient, no purple or blue glow. But a single lightness cannot serve both a paper background and a `bg-foreground` block, because the two run in opposite directions. The original single `hsl(18 88% 45%)` failed AA on both, at 4.08:1 on paper and 3.98:1 inverted, while `featured-work.tsx:53` renders the case-study metric in it at `text-lg font-semibold`, which WCAG counts as normal text. The receipt number was failing the standard the page exists to demonstrate.
-- ⛔ **Text on the inverted block floors at 70% alpha.** `text-background/50` is live at `cta-section.tsx:28,36` and `case-study-content.tsx:88` and measures **3.61:1 in dark mode**, a fail on body copy and on links. `/70` gives 7.24:1 dark and 8.48:1 light. Below `/70` is decoration only, never text.
+- ⛔ **The inverted token has to be APPLIED, not just defined.** When the accent's inverted variant was created to fix an AA failure on the `bg-foreground` block, the token landed in CSS, the fix was written up here, and **the one call site that needed it was never changed**. It sat defined and used zero times for hours while this document said the problem was closed. Under graphite the same call site measured **2.86:1 in light and 1.80:1 in dark** — the case-study results metric, the headline receipt number, nearly invisible. Fixed at `case-study-content.tsx:80`. **A token is not a fix until something uses it**, which is the same failure as a type ramp nobody imports (§13).
+
+⛔ **Text on the inverted block floors at 70% alpha.** `text-background/50` is live at `cta-section.tsx:28,36` and `case-study-content.tsx:88` and measures **3.61:1 in dark mode**, a fail on body copy and on links. `/70` gives 7.24:1 dark and 8.48:1 light. Below `/70` is decoration only, never text.
 - **Accent occupies ≤3% of any viewport.** It is a highlighter, not a fill. Never a large filled button.
 - ⛔ **No pure `#000` or `#fff` surfaces.** Neutrals stay tinted toward the accent hue. *(`sheet.tsx:24` currently uses `bg-black/80` for the mobile-nav backdrop. That is pure black and it violates this rule on the one surface that covers the entire viewport. It becomes `bg-foreground/80`.)*
 
@@ -242,7 +248,7 @@ Every interactive element declares all five states. A missing state is not a neu
 | State | Rule |
 |---|---|
 | **default** | as specified |
-| **hover** | `--accent` as the surface, or the accent-warm hue on text. Never a scale transform. |
+| **hover** | `--accent` as the surface, or `--signal` on text. Never a scale transform. |
 | **focus-visible** | `--ring` at 2px with a 2px offset. **Always visible, never removed.** `outline-none` is only acceptable when an explicit ring replaces it in the same class list. |
 | **active** | a perceptible change, most often the next surface step down |
 | **disabled** | reduced opacity plus `pointer-events-none`. Contrast minimums are relaxed here by WCAG, but the element must still read as present rather than missing. |
@@ -365,7 +371,7 @@ Greppable, so it cannot be declared done by feel:
 - **`.dark` is defined exactly once**, in `theme.css`. It was defined twice until 2026-07-23 and only import order decided the winner.
 - **Computed AA pass on both themes**, including the inverted block and any accent-coloured text. Run the arithmetic; do not eyeball it.
 - **One recorded Lighthouse run** on mobile against the §11 targets. *(Run 2026-07-23: **accessibility 100, SEO 100**, CLS 0.00, LCP 1447ms. Accessibility reached 100 only after a real fix — see below. Best Practices read 73 but is **not measurable in a browser with extensions**: both console errors were `_vercel/insights` and `_vercel/speed-insights` blocked by an ad blocker in the profile. CI is the only clean read.)*
-- ⛔ **Performance ≥95 is NOT met and NOT yet honestly measurable.** Local medians across three routes were 0.66 to 0.71, on a loaded machine against `localhost` with no CDN. That number is not the deployed number and must not be reported as one. **It is also not evidence the target is met.** This stays open until it is measured against the deployed URL.
+- ✅ **Performance ≥95: MET, 98.** Measured 2026-07-23 by the CI gate on its first run (PR #1242, mobile): **performance 98, accessibility 100, best practices 96, SEO 100**, with CLS 0, TBT 40ms, LCP 2.3s, FCP 0.9s. The earlier local medians of 0.66 to 0.71 were a loaded machine against `localhost`, and were correctly refused as evidence in either direction. **Best Practices reading 73 locally was diagnosed as ad-blocker contamination rather than a defect, and CI confirmed it at 96.**
 - **Print styles exist** and the inverted blocks do not print as black slabs.
 - **Zero `transition-all`** anywhere, per §7.
 - **Zero `min-h-screen` / `h-screen`**, per §11.
@@ -384,7 +390,7 @@ That matters more here than on a normal site. The craft-proof section stakes the
 
 ⛔ **What blocks and what warns is a deliberate split, and it is now backed by measurement rather than by instinct.** Accessibility, SEO, contrast, heading order, `lang`, viewport and CLS are deterministic: the same page scores the same every run, so a failure is real and blocking on it is safe. **The performance score is not.** Three consecutive local runs of the same URL returned 0.36, 0.70 and 0.34; another returned 0.63, 0.25 and 0.71. A gate that fails on that spread is a gate somebody disables inside a week, which is worse than no gate at all. Performance therefore warns, with a budget, until there is enough history to set a threshold that will not cry wolf.
 
-**Observed to fire, locally, on 2026-07-23**: three routes, three runs each, every hard assertion passing and performance warning as designed. It has not yet run in CI, because that needs a push. Until it does, the mechanism is verified but the loop is not closed (`agent-guardrails.md` § Installed ≠ operational).
+✅ **Fired in CI on 2026-07-23**, first run, PR #1242: three routes, three runs each, **green**. Every blocking assertion passed and performance did not even warn, scoring 98 on a runner rather than the 0.66 to 0.71 seen locally. The loop is closed: this is observed-to-run, not merely installed.
 
 There is a second reason to build it. The craft-proof spec's Accepted Risks says the one move that would make that section falsifiable is putting real gate definitions somewhere a reader can open. **This repo is already public.** A working gate here is simultaneously the enforcement §11 lacks and a small, honest, clickable instance of the thing that section describes. It is the cheapest available link between the claim and the evidence.
 
@@ -393,8 +399,8 @@ There is a second reason to build it. The craft-proof spec's Accepted Risks says
 - ~~Type ramp and spacing~~ — **locked 2026-07-23** (§2, §3), chosen against two rendered alternatives.
 - ~~Mono: drop or load~~ — **resolved 2026-07-23** (§2): seed the token, no webfont, audit usage to real data.
 - ~~Partial token coverage~~ — **closed 2026-07-23** (§1): all 21 tokens mapped and computed.
-- ~~The CI gate is scoped but not built~~ — **built and observed to fire locally 2026-07-23** (§15). It has not yet run in CI; that needs a push.
-- ⛔ **Performance ≥95 is unverified**, and the local numbers do not stand in for it (§14). Needs a measurement against the deployed URL.
+- ~~The CI gate is scoped but not built~~ — **built, and fired green in CI 2026-07-23** on PR #1242 (§15).
+- ~~Performance ≥95 is unverified~~ — **met, 98**, measured by that same first CI run (§14).
 - **A real accessibility defect was found by measuring rather than by reading.** The landing page ran `h1` straight to `h3`: every section label was a `<p>`, so the sections had visual names and no semantic ones. Promoting the four landing labels to `<h2>` took accessibility from 98 to 100, and it is also what §8 already asked for, since those labels are real content. **Nine review passes over this spec did not catch it. One audit did.**
 - **The page inventory is deliberately unresolved** and sits above this spec (§8). Only Stage 4 of §13 depends on it.
 - The craft-proof section carries its own open gate, the owner's wife's sign-off on the exact paragraph. See its spec.

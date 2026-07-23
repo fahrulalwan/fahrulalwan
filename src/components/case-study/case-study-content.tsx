@@ -77,7 +77,10 @@ const CaseStudyContent: FC<CaseStudyContentProps> = ({ caseStudy }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
               {caseStudy.results.metrics.map((metric) => (
                 <div key={metric.label}>
-                  <p className="font-display text-display-l font-medium text-accent-warm mb-1">
+                  {/* signal-inverted, not signal: this sits on the bg-foreground
+                      block, where the on-surface value measures 2.86:1 light and
+                      1.80:1 dark. That is what the inverted token exists for. */}
+                  <p className="font-display text-display-l font-medium text-signal-inverted mb-1">
                     {metric.value}
                   </p>
                   <p className="text-sm text-background/80 mb-1">

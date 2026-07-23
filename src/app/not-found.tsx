@@ -6,7 +6,7 @@ const NotFoundPage: FC = () => {
     <section className="pt-12 sm:pt-20 pb-16 sm:pb-24">
       <p className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
         <span
-          className="w-6 h-0.5 bg-accent-warm shrink-0"
+          className="w-6 h-0.5 bg-signal shrink-0"
           aria-hidden="true"
         />
         404
