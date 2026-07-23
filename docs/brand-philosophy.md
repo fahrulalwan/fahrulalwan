@@ -6,7 +6,7 @@
 
 ## 1. The center is legible, verifiable competence
 
-Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point — the coverage program to ~99% behind CI floors, a real-time system still running eight years on, the agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
+Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point — the coverage program to ~99% behind CI floors, a ticketing venture he founded and ran live at the stadium gate, the agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
 
 This is the load-bearing signal, and it's deliberate. "Judgment" or "taste" as the *headline* is unfalsifiable, and by 2026 it's what everyone says — a skimmer can't verify a vibe. The receipts are checkable and comparatively rare. Lead with them; let judgment be the conclusion a reader draws, never the claim you open with.
 

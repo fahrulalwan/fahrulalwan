@@ -94,7 +94,7 @@ Replace with:
 
 | Situation | Action |
 |-----------|--------|
-| Public website + brand is part of the story | Reveal (e.g. CarEADY is public, caready.co.id is in the case study metric) |
+| Public website + brand is part of the story | Reveal (e.g. Fartix is public, fartix.id is in the case study metric) |
 | Current employer | **Never reveal.** Anonymize aggressively, stay vague on business context. |
 | Confidential client/NDA | Never reveal. |
 | Unsure | Ask user explicitly. Default to anonymize. |
@@ -151,7 +151,7 @@ After raw draft, refine using these rules. The goal: curious, understated, refle
 - One sentence. Period at the end.
 - Describes **what you did** or **what you learned**, not what it means.
 - Specific > generic.
-- Good: "Building the real-time backbone of a car auction platform — from first PoC to eight years in production."
+- Good: "Building the real-time backbone of a car auction platform — from a two-machine PoC to a live multi-party auction."
 - Bad: "Rebuilding a legacy monolith into a scalable frontend platform." (generic, jargon-heavy)
 
 ### Decision title rules

@@ -3,7 +3,7 @@ import type { CaseStudy } from './types';
 export const careadyCaseStudy: CaseStudy = {
   slug: 'caready-auction-platform',
   headline:
-    "A car auction platform's real-time layer, built in 2018. Still in production eight years later.",
+    'Live car auctions need everyone to see the same bid at the same instant. I built that real-time layer in 2018, fresh out of a bootcamp.',
   tags: ['WebSocket', 'Real-time Architecture', 'Angular', 'Java Spring Boot'],
   year: '2018',
   metadata: {
@@ -35,9 +35,9 @@ export const careadyCaseStudy: CaseStudy = {
   results: {
     metrics: [
       {
-        label: 'Years in production',
-        value: '8+',
-        context: 'Platform still active at caready.co.id',
+        label: 'Kept in sync',
+        value: '3 roles',
+        context: 'Auctioneer, online bidders, in-room bidders, one live state',
       },
       {
         label: 'Market',
@@ -46,7 +46,7 @@ export const careadyCaseStudy: CaseStudy = {
       },
     ],
     qualitative: [
-      'This was my first real engineering project — I was fresh out of a coding bootcamp. Eight years later the system is still running. I think about that sometimes.',
+      'This was my first real engineering project, fresh out of a coding bootcamp. I was learning the fundamentals on the job, building something none of us had done before.',
     ],
   },
   reflections: [

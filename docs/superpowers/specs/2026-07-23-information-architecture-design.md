@@ -14,13 +14,15 @@ Three answers from the owner set every decision below. They are recorded because
 
 **3 · Checkable evidence leads.** The owner's material splits cleanly and uncomfortably:
 
-| Checkable by a stranger | Not checkable |
+| Checkable by a stranger, and genuinely his | Not his to show live |
 |---|---|
-| caready.co.id, live, verified HTTP 200 | the coverage ratchet — private repo, current employer |
-| fartix.id, live, verified HTTP 200 | the agent loop and its gates — private, and its own spec calls it "unfalsifiable by construction" |
-| the site itself — accessibility 100, performance 98, measured in CI | |
+| fartix.id, live, verified HTTP 200 — his own founded venture, still his build, recent | the coverage ratchet — private repo, current employer |
+| the site itself — accessibility 100, performance 98, measured in CI | the agent loop and its gates — private, and its own spec calls it "unfalsifiable by construction" |
+| | caready.co.id — vendor work under a consultancy, and the live site has since been revamped by others, so a click shows work that is not his |
 
-**Two of the four strongest stories cannot be verified, and they are the two most impressive.** That is an awkward fact for a site whose job is killing doubt, and the structure below is the response to it: put the clickable things first so the unclickable thing inherits their credibility.
+⚠️ **caready was demoted from checkable evidence on 2026-07-24, after the review closed.** The owner is a vendor who built the 2018 real-time layer under a consultancy, not an owner; and the live site has since been revamped, so the link no longer shows his work and its liveness cannot be claimed for his code. The case-study copy was corrected the same day (the false "still in production eight years later / still active at caready.co.id" claims removed). **caready survives as an early-career story, never as a live "check it, it's mine" link.**
+
+**The genuinely-checkable, genuinely-his set is now fartix.id plus the site itself.** fartix is the stronger anchor than caready ever was — it is his own founded venture, not vendor work. The two strongest deep stories (the coverage ratchet, the agent loop) still cannot be shown live, so the structure holds: put the checkable things first so the unclickable ones inherit their credibility.
 
 ## The shape
 
@@ -72,7 +74,7 @@ Five sections. The current page has six and puts narrative before proof; this in
 
 *Currently was nearly cut as "not evidence". That was wrong. One of the fastest doubts about any candidate is not "can he build" but "is this person still in it, or is this a portfolio from 2022". Recency is a property worth verifying, and a line about live work kills that doubt in the same screen as the identity facts.*
 
-**2 · The work you can check.** caready and Fartix lead, because both are live and clickable right now. **The link working is the argument.** The coverage ratchet sits third. External evidence links open in a new tab (`target="_blank" rel="noopener"`): a verification page that navigates the reader away to caready.co.id in the same tab has lost them, and losing the reader is the one thing this page cannot afford.
+**2 · The work you can check.** Fartix leads, because it is his own founded venture, live and clickable right now, and recent. **The link working is the argument.** The coverage ratchet sits second. caready follows as an early-career story, not a live link: vendor work under a consultancy, since revamped, so it is never sold as "check it, it's mine." External evidence links open in a new tab (`target="_blank" rel="noopener"`): a verification page that navigates the reader away to fartix.id in the same tab has lost them, and losing the reader is the one thing this page cannot afford.
 
 **3 · The gates.** The craft-proof section, specced separately, finally placed. It sits below the checkable work and is framed honestly as something describable but not showable.
 
@@ -124,7 +126,7 @@ Case study pages change structurally not at all.
 - No route, link, redirect or sitemap entry resolves to `/approach`
 - `/about` reaches `/` in one hop, not two
 - The landing page renders five sections in the order above
-- Both live links in section 2 return 200 at review time, checked rather than assumed. A dead link on a verification page is worse than no link, and §15 of the design system spec already scopes a CI link check that would make this continuous rather than one-off.
+- The live link in section 2 (fartix.id) returns 200 at review time, checked rather than assumed. A dead link on a verification page is worse than no link, and §15 of the design system spec already scopes a CI link check that would make this continuous rather than one-off. caready is not a live link and carries no 200 requirement.
 - The craft-proof section has a home and its own spec's preconditions are still respected
 - **`curl -I /approach` returns 308 to `/`, and `curl -I /about` returns 308 to `/` in one hop** — the redirect is observed to fire, not just written
 - **`rg /approach src next.config.ts` returns nothing** after the change — all seven references gone
