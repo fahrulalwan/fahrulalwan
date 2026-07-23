@@ -18,3 +18,18 @@ Distillation approach when we get to it: read each `SKILL.md` via `gh api` (don'
 `design-with-taste` · `high-end-visual-design` · `redesign-existing-projects` · `shadcn` · `migrate-radix-to-base` · `tailwindcss-mobile-first` · `web-design-guidelines` · `accessibility-review` · `copywriting` · `marketing-psychology` · `nextjs-seo` · `vercel-react-best-practices`.
 
 ⚠️ `landing-page-design` installed but flagged wrong-fit (SaaS-conversion, fights the editorial voice) — not distilled.
+
+## Added 2026-07-24 (find-skills discovery pass — the visual-language rabbit hole)
+
+The `anthropics/skills@frontend-design` skill (below) is the one that mattered: its calibration section named the 3 AI-design defaults and revealed all three of our "fresh" directions were clichés. **Read it first next session** — it prescribes the ground-in-the-subject + one-signature + critique-against-defaults method that the redesign now follows.
+
+| Repo@skill | Installs | Why it matters for THIS redesign |
+|---|---|---|
+| `anthropics/skills@frontend-design` | 696K | ⭐ The method. Names the 3 AI-defaults; "ground it in the subject's vernacular"; one signature; critique-before-build. NOT installed — read via `gh api`. |
+| `emilkowalski/skills` (apple-design · emil-design-eng · animation-vocabulary · review-animations) | — | Emil Kowalski (Sonner/Vaul). Design-engineer craft + Apple-tier detail + a real motion vocabulary. The execution layer once the signature is chosen. |
+| `owl-listener/designer-skills` (typography-scale · aesthetic-usability · critique-typography) | — | Designer-grade typography + an aesthetic critique pass. |
+| `anthropics/skills@theme-factory` · `@brand-guidelines` · `@canvas-design` | 69K+ | Theming + brand systems from Anthropic. |
+| `leonxlnx/taste-skill@brandkit` | 170K | Brand-identity kit (same family as the installed design-with-taste / high-end-visual-design). |
+| `nutlope/hallmark` · `petergyang/no-ai-slop` | 16K / 1.5K | Anti-AI-slop passes — directly the "doesn't look like a template" goal. |
+
+Plus the tactical candidates already listed in `docs/superpowers/specs/2026-03-12-portfolio-refactor-design.md` § Candidates from skills.sh (awwwards-landing-page, awwwards-animations, micro-interactions, tailwind pattern skills) — execution-layer, lower priority than the method above.
