@@ -23,12 +23,14 @@ const MobileNav: FC = () => {
 
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="size-5" />
-          <span className="sr-only">Open menu</span>
-        </Button>
-      </SheetTrigger>
+      <SheetTrigger
+        render={
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="size-5" />
+            <span className="sr-only">Open menu</span>
+          </Button>
+        }
+      />
       <SheetContent side="right" className="w-64">
         <SheetTitle className="sr-only">Navigation menu</SheetTitle>
         <nav className="mt-8 flex flex-col gap-4">
