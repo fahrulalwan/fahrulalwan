@@ -142,6 +142,27 @@ Case study pages change structurally not at all.
 - ~~The job title is undecided~~ — **decided 2026-07-23: "Software Engineering Lead"**, applied identically to the site copy, the generated preview card, and the JSON-LD `jobTitle`. Chosen because it is already what the JSON-LD and any LLM summary read, it is broader than "Frontend" without overclaiming, and it matches the hunt's positioning. The old surfaces said three different things ("Senior Frontend Engineer & Tech Lead", "Software Engineering Lead", "Engineering lead"); this is the single value.
 - **The reader arriving via an LLM is unhandled, and by 2026 it is a real path.** Someone asking an assistant "who is Mohammad Fahrul Alwan" gets an answer synthesised from the JSON-LD `jobTitle`, the meta description, and the page text — which is a form of the forwarding this site is built around, with no human in the loop. It costs nothing to serve well and it makes the title-consistency requirement load-bearing rather than cosmetic: the machine reads the structured field, not the design. No new work, but the title decision now has three consumers, not two.
 
+## Final copy (locked 2026-07-24)
+
+Written ground-up, not adapted from the existing site. Every line built from verified facts, in a spoken/humble register, no value-prop rhythm, no buzzwords, no em-dashes.
+
+**Section 1 — identity**
+- Eyebrow: `Fahrul Alwan`
+- Headline: **"I've been building software long enough to have strong opinions, and to distrust half of them."**
+- Facts strip: `Software Engineering Lead · Jakarta · UTC+7 · Currently leading frontend at Bareksa`
+
+*Chosen against ~12 alternatives across two register-explorations. The headline is neutral about position (safe while employed at Bareksa), carries the identity load in the strip so the line itself can sound like a person, and its judgment framing is AI-durable by implication without claiming judgment outright. The strip drops "WIB" (local jargon, redundant with UTC+7 for an international reader) and "remote-ready" (an availability plea the overshare rule bans); Jakarta stays as a plain location fact, UTC+7 as the universal overlap signal.*
+
+**Section 4 — origin**
+- **"I came up the long way: vocational school, fiber cable in the field, a help desk, a bootcamp. The degree came at night, after work."**
+
+*Carries the self-made arc without boasting, and folds the BINUS Information Systems (Magna Cum Laude) credential in as "at night, after work" — verified true, specifically his, and unfakeable by a template. This resolves the credential-placement question: the degree lives inside the story rather than as a bolted-on line.*
+
+**Sections 2, 3, 5 — status**
+- **§2 (work you can check):** copy is the existing case-study data; only the section label + external-link behaviour remain (light).
+- **§3 (the gates):** copy lives in `2026-07-23-craft-proof-section-design.md`; still gated on the wife's sign-off.
+- **§5 (contact):** light, not yet written.
+
 ## Review closure
 
 **Review-closure:** 3-phase pipeline complete 2026-07-23, verdict **SHIP-AFTER-FIXES**, all findings applied. Run inline rather than via subagents, per the session's standing constraint.
