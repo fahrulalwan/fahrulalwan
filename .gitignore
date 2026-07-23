@@ -40,3 +40,10 @@ next-env.d.ts
 
 # superpowers brainstorm sessions
 .superpowers/
+
+# direnv
+.direnv/
+.envrc
+
+# Lighthouse CI output
+.lighthouseci/

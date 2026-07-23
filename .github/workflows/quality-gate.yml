@@ -1,0 +1,45 @@
+# Accessibility and performance gate, per the design system spec §15.
+#
+# The spec states that accessibility and performance are "not hygiene, they are the
+# argument". Without a mechanism that fails a build, that claim is an intention, and
+# intentions lose to the first hurried commit.
+#
+# What blocks and what only warns is a deliberate split. Accessibility, SEO, contrast
+# and heading order are deterministic: the same page scores the same on every run, so
+# a failure is real and blocking it is safe. The performance score on a shared runner
+# is noisy, and a gate that flakes is a gate someone eventually disables, which is
+# worse than no gate. Performance warns until there is enough history to set a
+# threshold that will not cry wolf.
+name: Quality gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    name: Accessibility and performance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          # Assertions live in lighthouserc.json so they can be run locally with
+          # `bunx @lhci/cli autorun` and give the same verdict as CI.
+          uploadArtifacts: true
+          temporaryPublicStorage: true
