@@ -24,7 +24,7 @@ Three answers from the owner set every decision below. They are recorded because
 
 ## The shape
 
-**Two surfaces, down from three.**
+**Two routes, down from three.** Routes are not the whole surface list — see the section below for the three that are not pages.
 
 | Route | Job |
 |---|---|
@@ -32,6 +32,37 @@ Three answers from the owner set every decision below. They are recorded because
 | `/work/[slug]` | Depth, for the reader who clicks. Structurally unchanged. |
 
 `/approach` is removed. `404` stays.
+
+## Surfaces that are not routes
+
+⚠️ **The first pass at this spec was a reduction, not an inventory.** It asked "does `/approach` survive" and never asked "what surfaces should exist." Three were missed, and one of them is probably the most-seen thing in the project. Recorded here because the omission is instructive: a route list is not a surface list.
+
+### The link-preview card — the highest-traffic surface
+
+Distribution is the owner sending the link. So the first thing most readers see is **not the page**, it is the unfurl in Slack, WhatsApp or email. The existing card is the weakest artifact in the project and it fails on four axes at once:
+
+1. **The copy is what the project's own rules forbid.** It reads *"An M-shaped professional with a passion for structured thinking, business impact, and innovative solutions. Bridging the gap between technology and business objectives."* `.agents/product-marketing-context.md` lists "passionate" under words to avoid and says explicitly *don't sound like a LinkedIn bio*. "Bridging the gap", "driving business impact" and "innovative solutions" are marketing filler the design system's anti-tell list bans in published copy.
+2. **It claims a different level than every other surface.** The card says *Senior Frontend Engineer & Tech Lead*, the JSON-LD in `layout.tsx` says *Software Engineering Lead*, the site copy says *Engineering lead*. **Three surfaces, three titles.**
+3. **The photograph is taken in front of Google branding**, which the owner has no affiliation with. On the one artifact that cannot carry a caveat, that is a claim risk rather than a neutral backdrop.
+4. **It is visually unrelated to the site it previews** — white background, unrelated typography, nothing from the graphite system.
+
+**Decision: generate the card from code.** `opengraph-image.tsx` rendered with the real design tokens. It cannot drift from the palette, it gets reviewed like any other code, and the title comes from one source instead of being retyped into a JPEG. Static replacement was rejected because it drifts the next time a token moves and buries the title inside a picture.
+
+### The CV — deliberately absent
+
+A CV pipeline exists in the vault (`base-cv.md` plus one-page and two-page builders), **but the source is `status: deprecated` and marked "SKELETON … not sendable"**, so there is nothing to link today regardless.
+
+⛔ **Decision: the site carries no CV, and this is a standing decision rather than a deferral.** The owner's reasoning is the operative one: a public CV carries a full name, phone number and employment history, which is exactly the material harvested for identity fraud and fake-recruiter scams. **Fear of misuse, not strategy.**
+
+*A secondary argument points the same way and is recorded for completeness: `agent-guardrails-artifacts.md` § Don't-overshare holds that public surfaces carry evidence and standards while private surfaces carry status. A downloadable CV is a status artifact announcing candidacy. It is the same reasoning that cut "Open to roles" from the LinkedIn About.*
+
+A recruiter who wants a CV asks, and receives a tailored copy through the channel already open. That is what the next-job runbook already does.
+
+### The photograph — wire up the one that exists
+
+`public/profile.webp` exists (9.9KB). `what-i-bring.tsx:13` looks for `/images/profile.jpg`, does not find it, and renders a grey gradient placeholder beside a `TODO`. **The photo was shot and never connected.**
+
+**Decision: use it**, in section 4 and as the image on the generated preview card. It is the only human element on a page that is otherwise entirely evidence, and its marginal exposure is small — a face carries no contact details and cannot be used to impersonate someone in an application, unlike a CV.
 
 ## The landing page
 
@@ -91,10 +122,15 @@ Case study pages change structurally not at all. They already carry the current 
 - The landing page renders five sections in the order above
 - Both live links in section 2 return 200 at review time, checked rather than assumed. A dead link on a verification page is worse than no link, and §15 of the design system spec already scopes a CI link check that would make this continuous rather than one-off.
 - The craft-proof section has a home and its own spec's preconditions are still respected
+- **One job title across every surface.** Today the preview card, the JSON-LD and the site copy disagree. Whatever the title is, it appears identically in all three.
+- **The preview card renders from `opengraph-image.tsx` using design tokens**, and no static `opengraph-image.jpeg` / `twitter-image.jpeg` remains
+- **No CV file, link, or "CV on request" line exists anywhere on the site**
+- **`profile.webp` renders**, and no placeholder gradient or `TODO` about a photo survives
 
 ## Open
 
 - **The craft-proof section still carries its own hard gate**: the owner's wife must sign off on the exact published paragraph. This spec places the section; it does not unblock it.
 - **Copy for sections 1 and 4 is not written.** The structure is decided, the words are not.
 - **Em-dashes remain in published copy** across five files, which the design system's anti-tell list forbids. Unruled.
+- **The job title itself is undecided.** Three surfaces currently disagree, and picking the right one is a positioning question this spec does not answer. It only requires that the answer be applied consistently.
 - **This spec has not been reviewed.** Per the project workflow it needs the review pipeline before implementation.
