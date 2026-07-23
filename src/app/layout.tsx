@@ -9,11 +9,20 @@ import type { FC, PropsWithChildren } from 'react';
 import Footer from '@/components/shared/footer';
 import Navbar from '@/components/shared/navbar';
 
-const noto_sans = Noto_Sans({ subsets: ['latin'], variable: '--font-noto' });
+// Font budget, spec §11. `swap` is Next's default; it is stated here because the
+// ≥95 mobile target depends on it rather than on a default staying put.
+const noto_sans = Noto_Sans({
+  subsets: ['latin'],
+  variable: '--font-noto',
+  display: 'swap',
+});
+// Roman only. The italic face was loaded for exactly one 14px line in the footer,
+// and §2 permits italic solely for whole pull-quotes, a role nothing uses yet.
+// Add it back the day a pull-quote actually needs it.
 const newsreader = Newsreader({
   subsets: ['latin'],
   variable: '--font-newsreader',
-  style: ['normal', 'italic'],
+  display: 'swap',
 });
 
 export const viewport: Viewport = {
@@ -22,8 +31,10 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+    // Matches --background in globals.css / theme.css. On a phone this band sits
+    // directly above the page, so a mismatch is the first thing a visitor sees.
+    { media: '(prefers-color-scheme: light)', color: 'hsl(34 44% 97.5%)' },
+    { media: '(prefers-color-scheme: dark)', color: 'hsl(24 11% 4.5%)' },
   ],
 };
 
@@ -39,6 +50,7 @@ export const metadata: Metadata = {
     'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
   keywords: [
     'Mohammad Fahrul Alwan',
+    'Software Engineering Lead',
     'Engineering Lead',
     'Frontend Engineering Lead',
     'Technical Lead',
@@ -92,7 +104,7 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Mohammad Fahrul Alwan',
   url: 'https://fahrulalwan.vercel.app',
-  jobTitle: 'Frontend Engineering Lead',
+  jobTitle: 'Software Engineering Lead',
   sameAs: [
     'https://github.com/fahrulalwan',
     'https://linkedin.com/in/fahrulalwan',
@@ -106,7 +118,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       suppressHydrationWarning
       className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-dvh">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -120,7 +132,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
           />
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip)] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
           >
             Skip to content
           </a>

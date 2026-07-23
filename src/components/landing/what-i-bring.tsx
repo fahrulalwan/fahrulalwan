@@ -6,9 +6,9 @@ const WhatIBring: FC = () => {
     <section className="py-16 sm:py-20 border-t border-border/50">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-12">
         <div>
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-6">
+          <h2 className="text-label font-medium text-muted-foreground uppercase mb-6">
             What I bring
-          </p>
+          </h2>
           {/* TODO: Replace with real B&W photo at /public/images/profile.jpg */}
           <div
             className="w-32 h-40 sm:w-36 sm:h-44 rounded-sm bg-gradient-to-br from-muted/40 to-muted/20"
@@ -24,7 +24,7 @@ const WhatIBring: FC = () => {
         </div>
 
         <div className="space-y-4">
-          <p className="text-lg sm:text-xl leading-relaxed">
+          <p className="text-body-l">
             I&apos;ve spent seven years building frontend systems at different
             companies. Most of what I do now is deciding what needs to exist,
             and keeping the rest useful to the people actually using it.

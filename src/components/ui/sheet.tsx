@@ -21,7 +21,7 @@ const SheetOverlay = ({
 }: SheetPrimitive.Backdrop.Props) => (
   <SheetPrimitive.Backdrop
     className={cn(
-      'fixed inset-0 z-50 bg-black/80 transition-opacity duration-300 data-starting-style:opacity-0 data-ending-style:opacity-0',
+      'fixed inset-0 z-[var(--z-overlay)] bg-overlay transition-opacity duration-300 data-starting-style:opacity-0 data-ending-style:opacity-0',
       className,
     )}
     {...props}
@@ -30,7 +30,7 @@ const SheetOverlay = ({
 SheetOverlay.displayName = 'SheetOverlay';
 
 const sheetVariants = cva(
-  'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-starting-style:duration-500 data-ending-style:duration-300',
+  'fixed z-[var(--z-popover)] gap-4 bg-background p-6 shadow-lg transition ease-in-out data-starting-style:duration-500 data-ending-style:duration-300',
   {
     variants: {
       side: {

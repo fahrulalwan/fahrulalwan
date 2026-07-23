@@ -10,22 +10,20 @@ const currentItems = [
 const Currently: FC = () => {
   return (
     <section className="py-16 sm:py-20 border-t border-border/50">
-      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-10 sm:mb-12">
+      <h2 className="text-label font-medium text-muted-foreground uppercase mb-10 sm:mb-12">
         Currently
-      </p>
+      </h2>
 
-      <ul className="space-y-6 max-w-2xl">
+      <ul className="space-y-6 max-w-[65ch]">
         {currentItems.map((item) => (
           <li
             key={item}
             className="flex gap-4 text-muted-foreground leading-relaxed"
           >
             <span
-              className="font-mono text-accent-warm shrink-0 pt-0.5"
+              className="w-3 h-px bg-accent-warm shrink-0 mt-3"
               aria-hidden="true"
-            >
-              —
-            </span>
+            />
             <span>{item}</span>
           </li>
         ))}

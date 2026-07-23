@@ -3,7 +3,7 @@ import type { FC } from 'react';
 const Hero: FC = () => {
   return (
     <section className="pt-12 sm:pt-20 pb-16 sm:pb-24">
-      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
+      <p className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
         <span
           className="w-6 h-0.5 bg-accent-warm shrink-0"
           aria-hidden="true"
@@ -11,9 +11,9 @@ const Hero: FC = () => {
         Fahrul Alwan &middot; Jakarta
       </p>
 
-      <h1 className="font-display text-[clamp(32px,4.5vw,52px)] font-normal leading-[1.1] tracking-tight mb-10 sm:mb-12 max-w-[640px]">
+      <h1 className="font-display text-display-xl font-medium mb-10 sm:mb-12 max-w-[19ch]">
         Lately I&apos;ve been rewriting code I wrote years ago and{' '}
-        <em className="italic text-accent-warm">wondering what I was thinking.</em>
+        <em className="not-italic text-accent-warm">wondering what I was thinking.</em>
       </h1>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">

@@ -9,7 +9,7 @@ const CtaSection: FC = () => {
       <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-12 md:items-end">
           <div>
-            <h2 className="font-display text-[clamp(34px,4vw,52px)] tracking-tight leading-none mb-8">
+            <h2 className="font-display text-display-xl font-medium mb-8">
               Say hi.
             </h2>
             <a
@@ -25,7 +25,7 @@ const CtaSection: FC = () => {
               href="https://github.com/fahrulalwan"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-underline text-sm text-background/50 hover:text-background/90 transition-colors"
+              className="link-underline text-sm text-background/70 hover:text-background/90 transition-colors"
             >
               GitHub
             </a>
@@ -33,11 +33,11 @@ const CtaSection: FC = () => {
               href="https://linkedin.com/in/fahrulalwan"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-underline text-sm text-background/50 hover:text-background/90 transition-colors"
+              className="link-underline text-sm text-background/70 hover:text-background/90 transition-colors"
             >
               LinkedIn
             </a>
-            <p className="font-mono text-xs text-background/35 uppercase tracking-widest mt-0 md:mt-4">
+            <p className="text-label font-medium text-background/70 uppercase mt-0 md:mt-4">
               Jakarta, ID
             </p>
           </div>

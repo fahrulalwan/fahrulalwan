@@ -1,29 +1,46 @@
+/* Dark theme. This is the ONLY definition of `.dark` in the project — globals.css
+   carried a second, competing cool-slate block until 2026-07-23, which only lost
+   because of the import order in layout.tsx.
+   Design system: docs/superpowers/specs/2026-07-23-design-system-design.md §1.
+   Every ratio below was computed against these exact values. */
 .dark {
-  --background: hsl(24 10% 3.9%);
-  --foreground: hsl(0 0% 98%);
+  /* surfaces */
+  --background: hsl(24 11% 4.5%);            /* warm charcoal */
+  --foreground: hsl(34 30% 96%);             /* 18.08:1 on background */
 
-  --card: hsl(24 10% 3.9%);
-  --card-foreground: hsl(0 0% 98%);
+  /* Elevation in dark comes from a lighter surface, not a heavier shadow (spec §5). */
+  --card: hsl(26 8% 9%);
+  --card-foreground: hsl(34 30% 96%);        /* 16.51:1 */
 
-  --popover: hsl(24 10% 3.9%);
-  --popover-foreground: hsl(0 0% 98%);
+  --popover: hsl(26 8% 11%);
+  --popover-foreground: hsl(34 30% 96%);     /* 15.67:1 */
 
-  --primary: hsl(0 0% 98%);
-  --primary-foreground: hsl(24 5.9% 10%);
+  --primary: hsl(34 30% 96%);
+  --primary-foreground: hsl(24 11% 4.5%);    /* 18.08:1 on primary */
 
-  --secondary: hsl(24 6% 15.9%);
-  --secondary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(26 8% 14%);
+  --secondary-foreground: hsl(34 30% 96%);   /* 14.33:1 */
 
-  --muted: hsl(24 6% 15.9%);
-  --muted-foreground: hsl(24 5% 64.9%);
+  --muted: hsl(26 8% 14%);
+  --muted-foreground: hsl(28 8% 62%);        /* 7.40:1 on bg, 5.87:1 on muted */
 
-  --accent: hsl(24 6% 15.9%);
-  --accent-foreground: hsl(0 0% 98%);
+  /* NOT the orange. --accent is shadcn's neutral hover surface. See --accent-warm. */
+  --accent: hsl(26 8% 18%);                  /* 12.49:1 for foreground */
+  --accent-foreground: hsl(34 30% 96%);
 
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 70% 58%);             /* 4.84:1 on background */
+  --destructive-foreground: hsl(24 11% 4.5%);
 
-  --border: hsl(24 6% 15.9%);
-  --input: hsl(24 6% 15.9%);
-  --ring: hsl(24 5% 83.9%);
+  /* lines. --border is a decorative hairline and is exempt from contrast minimums.
+     --input must reach 3:1 the moment a real form control exists (spec §1). */
+  --border: hsl(26 8% 16%);
+  --input: hsl(26 8% 16%);
+  --ring: hsl(20 92% 52%);                   /* 6.11:1, clears the 3:1 focus floor */
+
+  /* the one accent hue, two surfaces */
+  --accent-warm: hsl(20 92% 52%);            /* 6.11:1 on charcoal */
+  --accent-warm-inverted: hsl(20 92% 40%);   /* 4.56:1 on the inverted block */
+
+  /* Scrim, always dark in both themes. See globals.css. */
+  --overlay: hsl(24 11% 2% / 0.8);
 }

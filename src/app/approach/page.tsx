@@ -22,7 +22,7 @@ const ApproachPage: FC = () => {
       {/* Opening — tiny entry, big air */}
       <ScrollReveal>
         <section className="pt-12 sm:pt-20 pb-10 sm:pb-12">
-          <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-20 sm:mb-24 flex items-center gap-3.5">
+          <p className="text-label font-medium text-muted-foreground uppercase mb-20 sm:mb-24 flex items-center gap-3.5">
             <span
               className="w-6 h-0.5 bg-accent-warm shrink-0"
               aria-hidden="true"
@@ -30,9 +30,9 @@ const ApproachPage: FC = () => {
             Approach
           </p>
 
-          <h1 className="font-display text-[clamp(32px,5vw,56px)] font-normal leading-[1.1] tracking-tight max-w-[560px]">
+          <h1 className="font-display text-display-xl font-medium max-w-[19ch]">
             My process is mostly asking{' '}
-            <em className="italic text-accent-warm">why</em> until I get a
+            <em className="not-italic text-accent-warm">why</em> until I get a
             real answer. It annoys people sometimes.
           </h1>
         </section>
@@ -41,7 +41,7 @@ const ApproachPage: FC = () => {
       {/* Beat */}
       <ScrollReveal delay="0.05s">
         <section className="pb-14 sm:pb-16">
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             Most of the time, the ticket isn&apos;t the real problem. Figuring
             out what&apos;s underneath it is where most of my time goes.
           </p>
@@ -55,7 +55,7 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="pt-12 sm:pt-14 pb-5">
           <h2 className="sr-only">How I work</h2>
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             First, I talk to people. The PM, the designer, whoever filed the
             request. I ask until I can argue{' '}
             <em className="not-italic font-medium">against</em>{' '}the
@@ -66,7 +66,7 @@ const ApproachPage: FC = () => {
 
       <ScrollReveal delay="0.15s">
         <section className="py-5">
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             Then I work through it on my own &mdash; challenge my own
             assumptions, read the existing code, try to see what I&apos;m
             actually walking into. If I still need it after that, I build a
@@ -77,7 +77,7 @@ const ApproachPage: FC = () => {
 
       <ScrollReveal delay="0.2s">
         <section className="pt-5 pb-12 sm:pb-14">
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             This isn&apos;t a framework I read somewhere. It&apos;s just how
             I&apos;ve worked for years &mdash; and the few times I skipped it,
             I ended up paying for it later.
@@ -89,7 +89,7 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="py-5 overflow-hidden relative">
           <p
-            className="font-display text-[clamp(64px,12vw,88px)] leading-[0.85] tracking-tighter text-foreground/[0.04] select-none pointer-events-none"
+            className="font-display text-ghost text-foreground/[0.04] select-none pointer-events-none"
             aria-hidden="true"
           >
             Clarify.
@@ -109,16 +109,16 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
           <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
-            <h2 className="font-display text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-tight max-w-[520px] mb-6">
+            <h2 className="font-display text-display-l font-medium max-w-[22ch] mb-6">
               Some things I&apos;ve built that are still running.
             </h2>
-            <p className="text-background/60 leading-relaxed max-w-[480px] mb-5">
+            <p className="text-background/70 leading-relaxed max-w-[65ch] mb-5">
               Early in my career, I volunteered to architect the real-time
               communication layer for an auction platform &mdash; WebSocket,
               bidding state, multi-party sync. That system is still running
               eight years later.
             </p>
-            <p className="text-background/60 leading-relaxed max-w-[480px]">
+            <p className="text-background/70 leading-relaxed max-w-[65ch]">
               At a telco, I designed how the frontend and backend communicate
               for a dynamic form engine that powered an employee superapp. It
               shipped ahead of schedule &mdash; one of the few times that
@@ -131,7 +131,7 @@ const ApproachPage: FC = () => {
       {/* Impact */}
       <ScrollReveal delay="0.1s">
         <section className="pt-14 sm:pt-16 pb-6">
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             Leading a large-scale frontend revamp, I took the Lighthouse score
             from 15 to 70. The work was mostly removing architectural debt
             that had been slowing readers down without anyone calling it that.
@@ -141,7 +141,7 @@ const ApproachPage: FC = () => {
 
       <ScrollReveal delay="0.15s">
         <section className="pt-6 pb-14 sm:pb-16">
-          <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.3] tracking-tight max-w-[440px]">
+          <p className="font-display text-display-m font-medium max-w-[22ch]">
             I think a lot about the engineer who&apos;ll read this code six
             months from now. Usually it&apos;s{' '}
             <span className="text-accent-warm">me.</span>
@@ -156,7 +156,7 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-14">
           <h2 className="sr-only">Ownership</h2>
-          <p className="text-muted-foreground leading-relaxed max-w-[480px]">
+          <p className="text-muted-foreground leading-relaxed max-w-[65ch]">
             Code is usually the easy part. Most of what slows projects down is
             unclear requirements, people politely agreeing to slightly
             different things, or teams quietly working toward different
@@ -170,11 +170,11 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="py-10 sm:py-12 bg-muted/50 -mx-5 sm:-mx-4 px-5 sm:px-4 rounded-lg">
           <h2 className="sr-only">Principles</h2>
-          <p className="font-display text-[clamp(20px,2.5vw,26px)] leading-[1.35] tracking-tight max-w-[500px]">
+          <p className="font-display text-display-m font-medium max-w-[22ch]">
             I don&apos;t care much about framework debates. What matters is
             whether the thing helps the people using it &mdash; and whether
             the next engineer doesn&apos;t{' '}
-            <em className="italic text-accent-warm">hate me</em> for how I
+            <em className="not-italic text-accent-warm">hate me</em> for how I
             built it.
           </p>
         </section>
@@ -184,7 +184,7 @@ const ApproachPage: FC = () => {
       <ScrollReveal delay="0.1s">
         <section className="pt-14 sm:pt-16 pb-8">
           <h2 className="sr-only">Contact</h2>
-          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
+          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[65ch] mb-5">
             If any of this resonated, say hi.
           </p>
           <div className="flex items-center gap-5">

@@ -5,7 +5,7 @@ import ThemeToggle from '@/components/ui/theme-toggle';
 
 const Navbar: FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/40">
+    <header className="fixed top-0 left-0 right-0 z-[var(--z-sticky)] bg-background/80 backdrop-blur-sm border-b border-border/40">
       <div className="max-w-(--breakpoint-lg) mx-auto flex items-center justify-between px-5 sm:px-4 h-14">
         <Link
           href="/"

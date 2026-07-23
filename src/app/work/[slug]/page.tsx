@@ -72,7 +72,7 @@ const CaseStudyPage = async ({
       {/* Inline closing CTA */}
       <ScrollReveal delay="0.1s">
         <section className="py-12 sm:py-16 border-t border-border/50">
-          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[440px] mb-5">
+          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[65ch] mb-5">
             If any of this resonated, say hi.
           </p>
           <div className="flex items-center gap-5">
