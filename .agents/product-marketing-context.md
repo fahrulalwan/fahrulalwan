@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-*Last updated: 2026-03-20*
+*Last updated: 2026-07-23*
 
 ## What This Site Is
 
@@ -79,14 +79,18 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 - Auction platform real-time WebSocket system — still running 8 years later (2018)
 - Employee superapp dynamic form engine at telco — delivered ahead of schedule (2021)
 - Fintech news portal revamp — Lighthouse score 15 → 70 (2024)
-- Design system migration across dozens of repositories at current company
+- Signed-URL security migration at current company — led within own team's scope
+- Test-coverage program on a legacy service — near-zero to ~99% lines / 96% branches, behind CI floors
+- Ticketing platform for a Liga-2 football club — solo-built, 9 live match-days (2026)
+- An autonomous agent loop with a self-review and screenshot-scoring gate. On an internal system he works on, it now writes most of the feature code; his own commits there are almost entirely gates, ADRs and tests. ⛔ **Built with one other engineer (Tigor) — never "I designed it" / "solo".** ⛔ **Never "his own product"** — the venture is his wife's; he owns engineering, not ownership. ⛔ **Never quote a commit-share %** — ~6 machine commits per ticket makes it a vanity metric, and it contradicts the coverage case study's own "rather say zero and be honest" line.
 
 **Metrics:**
 
 - Lighthouse 15 → 70 (frontend revamp)
-- Team of 4 engineers managed
-- Dozens of repositories overseen
-- 627 GitHub contributions/year, 50 repos
+- Test coverage near-zero → ~99% lines / 96% branches (verified from the repo's own coverage output)
+- 2.5M+ investors on the current employer's platform (their own published figure)
+
+> ⛔ **NDA floor — do not restore what was removed here.** Headcount, repository counts, MAU, and AUM figures for the current employer are **internal metrics** and were struck 2026-07-23. Only publicly-published employer figures are usable. Canonical list: the `employment-public-facts` note in the Obsidian vault.
 
 **Speaking:**
 
@@ -94,17 +98,20 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 
 **Technical breadth:**
 
-- Frontend-first (React, Next.js, TypeScript, Tailwind)
-- Backend capable (Node.js, Java Spring Boot, PostgreSQL)
-- DevOps literate (Docker, K8s, GCP, AWS)
-- AI-curious (Scrimba AI Engineer Path, LangChain)
+- Frontend-first (React, Next.js, TypeScript, Angular, Tailwind)
+- Backend real, not aspirational — a fullstack role shipping Angular + Spring Boot, plus solo services in Node/Hono, Go, Python and Rust
+- DevOps literate (Docker, K8s, Cloudflare Workers, GCP, AWS)
+- AI engineering, hands-on — **co-built** an autonomous agent loop that ships production features against real tickets (his contribution is the gate machinery: ADRs, verification rules, behavioral tests); authored an MCP server
 - Can act as Product Manager
 
 ## Positioning
 
 **Frame as:** Frontend-first engineering lead who goes wherever the problem is. Versatile without claiming "full-stack." Can do backend, architecture, and PM — but leads from the frontend.
 
-**Do NOT mention:** Founder of Grandboard Strategi Multi Cipta / fartix.id (user prefers to hide)
+**⛔ Founder work is now PUBLIC and featured — reversed 2026-07-23.** The earlier instruction here said to hide Grandboard Strategi Multi Cipta / fartix.id. That is no longer true: the founder role is live on LinkedIn, the ticketing platform is on the CV, and a Fartix case study is planned for this site. Do not strip it.
+
+- **Name the club as "a Liga-2 club in the Pegadaian Championship," never "Adhyaksa FC."** The client carries an unpaid receivable and is being chased; naming a debtor as a happy public reference is a lever outside his control. The league framing carries identical credibility to an overseas reader.
+- **Do not claim a managed team at Grandboard.** The collaborators are an unresolved informal partnership, so "team management" would be both an overclaim and legally adverse while that status is open. Solo authorship of the consumer platform is the claim.
 
 ## Origin Story (reusable narrative)
 

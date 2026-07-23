@@ -27,6 +27,8 @@ Show-don't-name is right, but scoped. A skimmer won't reconstruct judgment from 
 
 The three receipts carry the argument without naming it: the agent loop (AI-native — you direct the tools), the project killed after three days (judgment in action), the correctness work (fintech stakes).
 
+⛔ **The craft-proof must be a built artifact, not a cadence.** Showing thinking is the differentiator, but for most people that means an ongoing content stream — a blog, a newsletter, weekly posts. That is the wrong shape here: the goal is to be trusted by a handful of hiring people, not to grow an audience, and sustained publishing is the one behaviour with a measured track record of not holding (~3–6% delivery against promise; hence the standing "don't position as a content creator" guardrail). **So the craft-proof is something that ships once and keeps paying** — a live interactive demo, an explorable explanation of a real system, the agent loop shown working, or one deep case-study of a single decision. Never something that needs feeding.
+
 ---
 
 ## Why it works
