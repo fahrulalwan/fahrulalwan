@@ -47,13 +47,10 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   applicationName: 'Fahrul Alwan',
   description:
-    'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+    'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
   keywords: [
     'Mohammad Fahrul Alwan',
     'Software Engineering Lead',
-    'Engineering Lead',
-    'Frontend Engineering Lead',
-    'Technical Lead',
     'Software Engineer',
     'Product Engineer',
     'React',
@@ -66,12 +63,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'enUS',
+    locale: 'en_US',
     siteName: 'Fahrul Alwan',
-    alternateLocale: ['idID'],
+    alternateLocale: ['id_ID'],
     countryName: 'Indonesia',
     description:
-      'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
     emails: 'fahrulalwan@gmail.com',
     title: 'Fahrul Alwan',
   },
@@ -79,7 +76,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Fahrul Alwan',
     description:
-      'Fahrul Alwan — engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
   },
   robots: {
     follow: true,

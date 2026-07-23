@@ -1,6 +1,6 @@
 # Mohammad Fahrul Alwan
 
-Frontend engineering lead in Jakarta. Currently at [Bareksa](https://bareksa.com), a fintech. Before that: consulting, a telco, and a few years splicing fiber cables in villas in Bali.
+Software engineering lead in Jakarta. Currently at [Bareksa](https://bareksa.com), a fintech. Before that: consulting, a telco, and a few years splicing fiber cables in villas in Bali.
 
 → **[fahrulalwan.vercel.app](https://fahrulalwan.vercel.app)** — portfolio & case studies
 
