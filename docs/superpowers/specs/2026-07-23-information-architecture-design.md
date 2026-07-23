@@ -139,7 +139,7 @@ Case study pages change structurally not at all.
 - **The craft-proof section still carries its own hard gate**: the owner's wife must sign off on the exact published paragraph. This spec places the section; it does not unblock it.
 - **Copy for sections 1 and 4 is not written.** The structure is decided, the words are not.
 - **Em-dashes remain in published copy** across five files, which the design system's anti-tell list forbids. Unruled.
-- **The job title itself is undecided.** Three surfaces currently disagree, and picking the right one is a positioning question this spec does not answer. It only requires that the answer be applied consistently.
+- ~~The job title is undecided~~ — **decided 2026-07-23: "Software Engineering Lead"**, applied identically to the site copy, the generated preview card, and the JSON-LD `jobTitle`. Chosen because it is already what the JSON-LD and any LLM summary read, it is broader than "Frontend" without overclaiming, and it matches the hunt's positioning. The old surfaces said three different things ("Senior Frontend Engineer & Tech Lead", "Software Engineering Lead", "Engineering lead"); this is the single value.
 - **The reader arriving via an LLM is unhandled, and by 2026 it is a real path.** Someone asking an assistant "who is Mohammad Fahrul Alwan" gets an answer synthesised from the JSON-LD `jobTitle`, the meta description, and the page text — which is a form of the forwarding this site is built around, with no human in the loop. It costs nothing to serve well and it makes the title-consistency requirement load-bearing rather than cosmetic: the machine reads the structured field, not the design. No new work, but the title decision now has three consumers, not two.
 
 ## Review closure
