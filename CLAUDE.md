@@ -76,7 +76,7 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 - Full-bleed inverted blocks: `bg-foreground text-background` for visual punctuation
 - Hairline separators: `w-10 h-px bg-border/50`
 
-**References:** Design language inspired by [milhamakbarjr.com](https://www.milhamakbarjr.com/) + [harrygeorge.design](https://www.harrygeorge.design/). When adding sections, match their editorial restraint — not generic portfolio aesthetics.
+**References:** Design language takes its **restraint** from [milhamakbarjr.com](https://www.milhamakbarjr.com/) (layout carries the design — stock shadcn tokens, untouched; hero dropped to the bottom third of the fold) and [harrygeorge.design](https://www.harrygeorge.design/) (one face, one weight, emphasis by dimming rather than colour). **The editorial serif voice is this site's own — neither reference uses a serif at all.** When adding sections, match their restraint, not generic portfolio aesthetics. Measured DNA for both: `~/.claude/design-taste/library/`.
 
 ### Page Architecture
 
