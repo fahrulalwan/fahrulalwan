@@ -25,7 +25,14 @@ Show-don't-name is right, but scoped. A skimmer won't reconstruct judgment from 
 - **Above the fold — explicit.** Level, domain, experience, remote-ready, in one glance. Legible enough to forward.
 - **Below the fold / deep pages — implicit.** The case studies, the killed project, the correctness work. The reader who stays draws the conclusion; the site never asserts the trait.
 
-The three receipts carry the argument without naming it: the agent loop (AI-native — you direct the tools), the project killed after three days (judgment in action), the correctness work (fintech stakes).
+The receipts carry the argument without naming it: the agent loop (AI-native — you direct the tools) and the correctness work (fintech stakes).
+
+> [!warning] The third receipt was struck on 2026-08-05, and how it got here matters more than its removal.
+> This section named a third item — *"the project killed after three days (judgment in action)"* — meaning the `umbrella` repo. **The repo does not support any part of that claim.** It ran 2025-10-28 to 2025-12-08, thirty-one active days across six weeks, and of its 213 commits **205 are Tigor's and 6 are Fahrul's**, all in the final three days: a Next.js dashboard scaffold, a Biome config, two merges, and the README. Three days is how long *he* was on it, not how long it lived, and it was never his to kill.
+>
+> **It was never verified before being promoted into this document**, and it then survived the 2026-07-10 integrity audit — the pass built to catch exactly this. It was caught only because the owner asked what Umbrella was.
+>
+> ⛔ **A receipt gets its repo opened before it is named here.** Commits, authorship, dates. The claim reading well is what let this one through.
 
 ⛔ **The craft-proof must be a built artifact, not a cadence.** Showing thinking is the differentiator, but for most people that means an ongoing content stream — a blog, a newsletter, weekly posts. That is the wrong shape here: the goal is to be trusted by a handful of hiring people, not to grow an audience, and sustained publishing is the one behaviour with a measured track record of not holding (~3–6% delivery against promise; hence the standing "don't position as a content creator" guardrail). **So the craft-proof is something that ships once and keeps paying** — a live interactive demo, an explorable explanation of a real system, the agent loop shown working, or one deep case-study of a single decision. Never something that needs feeding.
 

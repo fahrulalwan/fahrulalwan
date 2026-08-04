@@ -26,11 +26,6 @@ export const coverageRatchetCaseStudy: CaseStudy = {
       description:
         "The global threshold in that config is deliberately set to zero, with a comment explaining why. Jest's global bucket only counts files no directory glob has claimed, so leaving a real number there would average well-tested areas together with untested ones and produce something that reads impressive and means nothing. I would rather the config say zero and be honest than say a number and lie. Anyone who opens the file gets told which figure to trust.",
     },
-    {
-      title: 'Used mutation testing to check the tests were real',
-      description:
-        'High coverage proves lines executed. It does not prove anything was asserted. So I brought in Stryker over the utility and service layers, where the logic that matters actually lives, and let it flip conditions and return values to see whether the suite noticed. It found tests that ran the code and checked nothing. Thresholds there are advisory rather than blocking, on purpose: mutation runs are slow, and a gate that makes people wait is a gate people learn to skip.',
-    },
   ],
   results: {
     metrics: [
