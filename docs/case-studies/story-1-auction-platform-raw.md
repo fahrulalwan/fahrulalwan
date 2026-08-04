@@ -1,7 +1,14 @@
 # Story 1: Auction Platform (2018) — Raw Draft
 
+> [!warning] SUPERSEDED — do not mine this file for copy.
+> The live version is `src/content/case-studies/caready.ts`. This draft is kept for its
+> narrative material only. On 2026-07-24 CarEADY was demoted from checkable evidence: he was
+> a vendor under a consultancy rather than an owner, and the site has since been revamped by
+> other people, so the link no longer shows his work. **Four claims below were corrected on
+> 2026-08-05** — they had survived here after being removed from four other files.
+
 ## Headline
-Built the real-time auction system for a car platform from scratch — as a fresh graduate. It's still running eight years later.
+Built the real-time auction system for a car platform from scratch — as a fresh graduate.
 
 ## Tags
 WebSocket, Angular, Java Spring Boot, Real-time, Architecture
@@ -33,10 +40,17 @@ Instead of diving into the full system, my partner and I proved it worked betwee
 After going live, we discovered WebSocket connections would silently die after a few minutes. We added ping-pong heartbeats and automatic reconnection when the timeout was missed. It didn't eliminate the problem entirely — but it minimized it enough to keep auctions running reliably.
 
 ## Results
-- System is still in production eight years later (2026)
-- Hundreds of thousands of users, thousands of vehicles sold through the platform
-- The core real-time architecture hasn't been replaced
+- The platform shipped and ran auctions
 - Overall project delivery was delayed
+
+<!-- Struck 2026-08-05, each for a stated reason:
+     "still in production eight years later" — the site has been revamped by other people
+       since; what runs at caready.co.id today is not his work.
+     "hundreds of thousands of users, thousands of vehicles sold" — no source survives, and
+       the repo CLAUDE.md bans user-volume claims without confirmation.
+     "the core real-time architecture hasn't been replaced" — banned by name in the same
+       guardrail, and unknowable from outside a company he left. -->
+
 
 ## Honest Reflections
 - If I could redo it, I'd apply best practices from day one instead of learning them along the way — the research phase was valuable but cost us time.

@@ -1,7 +1,14 @@
 # Story 1: CarEADY Auction Platform — Final Draft
 
+> [!warning] SUPERSEDED — do not mine this file for copy.
+> The live version is `src/content/case-studies/caready.ts`. This draft is kept for its
+> narrative material only. On 2026-07-24 CarEADY was demoted from checkable evidence: he was
+> a vendor under a consultancy rather than an owner, and the site has since been revamped by
+> other people, so the link no longer shows his work. **Four claims below were corrected on
+> 2026-08-05** — they had survived here after being removed from four other files.
+
 ## Headline
-I was weeks out of a coding bootcamp when I volunteered to build the real-time core of CarEADY's auction platform. That system is still running eight years later.
+I was weeks out of a coding bootcamp when I volunteered to build the real-time core of CarEADY's auction platform.
 
 ## Tags
 WebSocket, Real-time Architecture, Angular, Java Spring Boot
@@ -33,10 +40,19 @@ Instead of designing the full system on paper, my partner and I proved it worked
 After launch, WebSocket connections would silently die after a few minutes — no error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn't eliminate the problem entirely. But it made auctions reliable enough to run without interruption.
 
 ## Results
-- System still in production — eight years and counting
-- Hundreds of thousands of users, thousands of vehicles sold
-- The core real-time architecture has never been replaced
-- Platform still active at caready.co.id
+- The platform shipped and ran auctions
+- Delivered late, for the reasons in Honest Reflections below
+
+<!-- Struck 2026-08-05, each for a stated reason:
+     "still in production — eight years and counting" and "platform still active at
+       caready.co.id" — the site has been revamped by other people since; what runs there
+       today is not his work. Both were removed from caready.ts, the IA spec,
+       brand-philosophy.md and case-study-framework.md on 2026-07-24 and survived here.
+     "hundreds of thousands of users, thousands of vehicles sold" — no source survives, and
+       the repo CLAUDE.md bans user-volume claims without confirmation.
+     "the core real-time architecture has never been replaced" — banned by name in the same
+       guardrail, and unknowable from outside a company he left. -->
+
 
 ## Honest Reflections
 The project delivered late. The research phase was necessary but it cost us time — I was learning fundamentals that a more experienced engineer would have known on day one. If I did it again, I'd apply best practices earlier instead of discovering them through trial and error.
