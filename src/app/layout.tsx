@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   },
   other: {
     'x-hello-curious':
-      "if you're reading this in view-source, we should talk. fahrulalwan@gmail.com — i actually read every email.",
+      "if you're reading this in view-source, we should talk. fahrulalwan@gmail.com. i actually read every email.",
   },
 };
 
