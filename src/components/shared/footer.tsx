@@ -8,7 +8,7 @@ const Footer: FC = () => {
           <p className="text-label font-medium text-muted-foreground uppercase">
             &copy; {new Date().getFullYear()} Fahrul Alwan
           </p>
-          <p className="font-display text-sm text-muted-foreground/60 hidden sm:inline-flex items-baseline gap-0.5">
+          <p className="font-display text-sm text-muted-foreground hidden sm:inline-flex items-baseline gap-0.5">
             Still debugging.
             <span
               className="animate-terminal-blink inline-block w-[2px] h-[12px] bg-signal translate-y-[1px]"
