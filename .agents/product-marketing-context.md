@@ -4,10 +4,13 @@
 
 ## What This Site Is
 
-Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead. Not a resume — a demonstration of craft and thinking. The site itself is the proof.
+> [!warning] Framing reconciled 2026-08-05. `docs/brand-philosophy.md` governs; this file operationalises it.
+> This section opened on a conversion-funnel frame — *"the site itself is the proof"*, a goal expressed as `lands → reads → reaches out`, and a `Conversion:` line. **`brand-philosophy.md` superseded that on 2026-07-23** and said so in its own § What this changes, which has been waiting to be applied ever since. Two reasons it goes: optimising a stranger's impression is the frame that produces copy reading *jumawa*, and **"the site IS the proof" under-sells a lead** — a lead is hired on judgment, leadership and communication, not on a static page's craft. **The voice rules and proof-points below are unaffected and still binding.**
 
-**Goal:** Visitor lands → reads → feels confident enough to reach out
-**Conversion:** Email ([fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)) or LinkedIn message
+Personal portfolio for Fahrul Alwan, an engineering lead. **The centre is legible, verifiable competence**: a reader skimming for six seconds learns who he is, at what level, what he has built, and that he is remote-ready — and every load-bearing claim is one a stranger can check.
+
+**What it is for:** being trusted by a small number of hiring people. Not audience growth, not traffic.
+**How someone responds:** email ([fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)) or LinkedIn.
 
 ## Who's Reading This
 
@@ -28,8 +31,9 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 - **Product thinking** — understands WHY before building WHAT
 - **Self-made trajectory** — FTTH field technician in Bali → bootcamp → engineering lead. S.Kom Magna Cum Laude (BINUS) while working full-time
 - **Case studies show process** — decisions, trade-offs, and honest reflections (not just highlight reel)
-- **The site IS the proof** — editorial design, performance, accessibility all demonstrate the claimed skills
-- **Builds things that last** — systems still running 8 years later
+- **The craft is visible in the build** — editorial design, performance and accessibility are demonstrated rather than asserted. ⚠️ But **this is a supporting signal, not the argument** (see the framing note above), and it only counts while the numbers are real: measured 2026-08-05, accessibility was **96** and not the 100 the docs claimed, on one genuine defect.
+
+⛔ **Struck 2026-08-05 — do not reinstate:** *"Builds things that last — systems still running 8 years later."* That is the CarEADY claim, and CarEADY was demoted from checkable evidence on **2026-07-24**: he was a vendor under a consultancy rather than an owner, and the site has since been revamped by other people, so nothing running there today is his. **It was removed from `caready.ts`, the IA spec, `brand-philosophy.md` and `case-study-framework.md` that day — and survived here, in the one file that tells agents what to write.** That is why it kept reappearing downstream.
 
 ## Brand Voice
 
@@ -76,7 +80,7 @@ Personal portfolio positioning Fahrul Alwan as a product-minded engineering lead
 
 **Notable work (anonymized for NDA safety):**
 
-- Auction platform real-time WebSocket system — still running 8 years later (2018)
+- Auction platform real-time WebSocket system, built from zero as a fresh graduate (2018). ⛔ **Never "still running N years later" and never "never replaced"** — struck 2026-07-24 and again 2026-08-05. He was a vendor under a consultancy, not an owner, and the live site has since been revamped by other people. **An early-career story, never a check-it-yourself link.**
 - Employee superapp dynamic form engine at telco — delivered ahead of schedule (2021)
 - Fintech news portal revamp — Lighthouse score 15 → 70 (2024)
 - Signed-URL security migration at current company — led within own team's scope
@@ -166,7 +170,7 @@ How the site tells a story across pages:
 | Approach impact quote | same | "...the engineer who'll read this code six months from now. Usually it's me." |
 | Approach anti-positioning | same | "...whether the thing helps the people using it — and whether the next engineer doesn't hate me for how I built it." |
 | Approach closing | same | "If any of this resonated, say hi." |
-| Case study headline | `src/content/case-studies/caready.ts` | "A car auction platform's real-time layer, built in 2018. Still in production eight years later." |
+| Case study headline | `src/content/case-studies/caready.ts` | ⛔ **STALE — do not copy this row.** It read *"…Still in production eight years later."* The live file was corrected on 2026-07-24; **this row was not, and it is a row that instructs an agent what to write into that file.** Read `caready.ts` for the current headline; never restore a "still in production" or "never replaced" clause. |
 | Case study reflections | same | "I was too aggressive when I joined the core team..." |
 | Case study closing | `src/app/work/[slug]/page.tsx` | "If any of this resonated, say hi." |
 | 404 | `src/app/not-found.tsx` | "This page doesn't exist." |

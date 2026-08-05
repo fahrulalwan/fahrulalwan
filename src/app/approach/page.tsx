@@ -110,13 +110,12 @@ const ApproachPage: FC = () => {
         <section className="full-bleed bg-foreground text-background py-14 sm:py-16">
           <div className="max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4">
             <h2 className="font-display text-display-l font-medium max-w-[22ch] mb-6">
-              Some things I&apos;ve built that are still running.
+              Some things I&apos;ve built.
             </h2>
             <p className="text-background/70 leading-relaxed max-w-[65ch] mb-5">
               Early in my career, I volunteered to architect the real-time
-              communication layer for an auction platform &mdash; WebSocket,
-              bidding state, multi-party sync. That system is still running
-              eight years later.
+              communication layer for an auction platform. WebSocket, bidding
+              state, multi-party sync, written weeks out of a bootcamp.
             </p>
             <p className="text-background/70 leading-relaxed max-w-[65ch]">
               At a telco, I designed how the frontend and backend communicate
