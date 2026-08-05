@@ -1,6 +1,6 @@
 # Brand Philosophy
 
-*The foundation the site answers to. Locked 2026-07-23, then reviewed (self-review + `/blindspot` + red-team) and reframed the same day. Everything downstream — the design system, the copy, what gets featured — derives from this. `.agents/product-marketing-context.md` operationalizes it and needs reconciling: it still opens on the conversion-funnel framing this supersedes.*
+*The foundation the site answers to. Locked 2026-07-23, then reviewed (self-review + `/blindspot` + red-team) and reframed the same day. Everything downstream — the design system, the copy, what gets featured — derives from this. `docs/product-marketing-context.md` operationalizes it, and was reconciled to it on 2026-08-05 — the conversion-funnel opening this superseded is gone. That file also moved out of `.agents/` the same day, because a document governing what every agent writes had been sitting in a hidden directory, which is how a struck claim survived in it for twelve days and kept re-seeding the files it had already been removed from.*
 
 ---
 
@@ -75,7 +75,7 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 
 ## What this changes
 
-- **Supersedes** the conversion-funnel framing in `.agents/product-marketing-context.md` (the "positioning as / what convinces them / the site IS proof" opening — the Personality Ethic, the jumawa source). That doc's *voice rules and proof-points stay*; its *framing* reconciles here. Note "the site IS the proof" also under-sells a **lead** — a lead is hired on judgment, leadership, and communication, not a static site's craft — another reason the frame is competence-shown, not site-as-proof.
+- **Supersedes** the conversion-funnel framing in `docs/product-marketing-context.md` (the "positioning as / what convinces them / the site IS proof" opening — the Personality Ethic, the jumawa source). That doc's *voice rules and proof-points stay*; its *framing* reconciles here. Note "the site IS the proof" also under-sells a **lead** — a lead is hired on judgment, leadership, and communication, not a static site's craft — another reason the frame is competence-shown, not site-as-proof.
 - **Design + copy derive from here.** Above-fold legibility + a restrained warm palette (Direction A) + implicit depth below.
 
 ## Review closure

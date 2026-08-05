@@ -142,8 +142,8 @@ User's #1 recurring feedback: reject AI-sounding copy. Before writing or editing
 - **Has soul** — concrete detail > abstract claim. Specific anecdote > generic principle. One sharp line > three hedged ones.
 - **Offer variants** — when proposing copy, give 2-4 options across tones/POVs. User always asks for variants anyway.
 - **Bareksa NDA** — current employer. Do not spill specifics about internal work, architecture, or metrics.
-- **CarEADY claims** — system still runs at caready.co.id; do not claim "never replaced" or user volume without confirmation.
-- **Bio source of truth** — `.agents/product-marketing-context.md` holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76), career timeline. Update it when facts shift; do not duplicate here.
+- **CarEADY claims** — ⛔ **do not claim it is still running, still in production, still active at caready.co.id, or that the architecture was never replaced. Do not claim user volume.** Demoted from checkable evidence 2026-07-24: he was a vendor under a consultancy rather than an owner, and the site has since been revamped by other people, so nothing running there today is his. **An early-career story, never a check-it-yourself link.** *(This line previously opened "system still runs at caready.co.id", asserting the very claim it exists to prevent. Corrected 2026-08-05.)*
+- **Bio source of truth** — `docs/product-marketing-context.md` holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76), career timeline. Update it when facts shift; do not duplicate here.
 
 ## Workflow
 
@@ -175,7 +175,7 @@ For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and 
 
 ## Project Context
 
-- Product marketing + bio: `.agents/product-marketing-context.md`
+- Product marketing + bio: `docs/product-marketing-context.md`
 - Case study framework: `docs/case-study-framework.md`
 - Design specs: `docs/superpowers/specs/`
 - Implementation plans: `docs/superpowers/plans/`
