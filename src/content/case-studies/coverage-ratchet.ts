@@ -41,7 +41,7 @@ export const coverageRatchetCaseStudy: CaseStudy = {
       },
     ],
     qualitative: [
-      'The coverage went from near zero to comfortably clear of the floor on every directory that has one. I am deliberately not putting that percentage on this page. It is a real number and it is in the repo, but the repo is private, so quoting it here would be asking you to take it on faith — and this is the case study where I argue against exactly that.',
+      'The coverage went from near zero to comfortably clear of the floor on every directory that has one. I am deliberately not putting that percentage on this page. It is a real number and it is in the repo, but the repo is private, so quoting it here would be asking you to take it on faith. This is the case study where I argue against exactly that.',
       'The part I am most pleased with is not the percentage anyway. It is that the exceptions are counted. Every place we knowingly fell short of the floor is tracked as an explicit carve-out with a reason attached, so the debt is a number someone can argue with rather than a feeling. It went to eight, and the plan was to keep pulling it down.',
     ],
   },
