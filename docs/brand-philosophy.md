@@ -50,7 +50,17 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 
 ⛔ **The rule that falls out of it: no number on this site that a reader is asked to take on trust.** A figure either has a link behind it or it does not appear. That governs the coverage percentages too — they are real, they verify against the repo's own config, and **a stranger still cannot open that config**, so they are described rather than quoted.
 
-⚠️ **Prerequisite, and it is currently unmet.** If the page's device is that it shows its own verdicts, the verdicts have to hold. Measured 2026-08-05: **accessibility 96, not the 100 the docs claimed**, on one real defect — now fixed but not re-measured — and **performance is unverified**, since a score needs throttling against a deployed URL. **Re-measure before that device ships**, or the single most checkable thing on the page is the thing that is wrong.
+✅ **Prerequisite — raised the same day and cleared the same day.** If the page's device is that it shows its own verdicts, the verdicts have to hold. They now do, and both numbers were checked rather than inherited:
+
+| | Claimed | Verified 2026-08-05 |
+|---|---|---|
+| Accessibility | 100 | **100** — but it read **96** first, on a real defect at `footer.tsx:11`. Fixed, then re-measured. |
+| Performance | 98 | **98** — LCP 0.9 s · CLS 0 · TBT 100 ms · Speed Index 0.7 s |
+| SEO | 100 | **100** |
+
+⛔ **How each was measured matters, because the first attempt gave the wrong answer.** Accessibility and SEO come from a Lighthouse navigation run; **performance comes from the Lighthouse CLI under desktop throttling, against the deployed preview** — an unthrottled localhost trace produces plausible numbers and no score at all, which is what made this claim look unverifiable for a day. **Re-measure this way, or not at all.**
+
+⚠️ **These are the only figures on the site a reader can reproduce**, which is what earns them their place under the no-unverifiable-numbers rule above. They are also perishable: any of them can regress on a single commit, so a figure quoted in copy carries the date it was measured.
 
 **Where this could change:** the loop becomes checkable if the ~48 non-domain rules in that repo are published — 63 total, 15 carrying `domain-` or `sesi-` prefixes. That is gated on the other engineer who co-built it, not on effort. If it happens, the loop leads on merit instead of on trust and this section gets revisited.
 
