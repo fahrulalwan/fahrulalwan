@@ -30,18 +30,19 @@ export const coverageRatchetCaseStudy: CaseStudy = {
   results: {
     metrics: [
       {
-        label: 'Line coverage',
-        value: '99.7%',
-        context: 'From near zero on a service nobody wanted to touch',
+        label: 'The floor, per directory',
+        value: '95 / 90',
+        context: 'Lines and branches. Enforced in CI, so it ratchets and cannot drop back',
       },
       {
-        label: 'Branch coverage',
-        value: '96.4%',
-        context: 'Behind a 90% floor enforced per directory in CI',
+        label: 'Carve-outs, counted',
+        value: '8',
+        context: 'Every place we knowingly fell short, each with a reason attached',
       },
     ],
     qualitative: [
-      'The part I am most pleased with is not the percentage. It is that the exceptions are counted. Every place we knowingly fell short of the floor is tracked as an explicit carve-out with a reason attached, so the debt is a number someone can argue with rather than a feeling. It went to eight, and the plan was to keep pulling it down.',
+      'The coverage went from near zero to comfortably clear of the floor on every directory that has one. I am deliberately not putting that percentage on this page. It is a real number and it is in the repo, but the repo is private, so quoting it here would be asking you to take it on faith — and this is the case study where I argue against exactly that.',
+      'The part I am most pleased with is not the percentage anyway. It is that the exceptions are counted. Every place we knowingly fell short of the floor is tracked as an explicit carve-out with a reason attached, so the debt is a number someone can argue with rather than a feeling. It went to eight, and the plan was to keep pulling it down.',
     ],
   },
   reflections: [
