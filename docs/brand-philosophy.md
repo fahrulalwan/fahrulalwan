@@ -36,6 +36,24 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 
 ⛔ **The craft-proof must be a built artifact, not a cadence.** Showing thinking is the differentiator, but for most people that means an ongoing content stream — a blog, a newsletter, weekly posts. That is the wrong shape here: the goal is to be trusted by a handful of hiring people, not to grow an audience, and sustained publishing is the one behaviour with a measured track record of not holding (~3–6% delivery against promise; hence the standing "don't position as a content creator" guardrail). **So the craft-proof is something that ships once and keeps paying** — a live interactive demo, an explorable explanation of a real system, the agent loop shown working, or one deep case-study of a single decision. Never something that needs feeding.
 
+## 4. Verifiable context leads. One checkable artifact anchors. Private work is claimed, never counted.
+
+*Settled 2026-08-05, after an audit that opened every named receipt against its repo.*
+
+**The problem, stated honestly.** His strongest work is unverifiable by a stranger: the agent loop, the coverage program, `fifada-web`, `kitetsu`, the early XPrivate codebases — roughly 2,700 commits, all in private or NDA-bound repos. What is public is a football ticketing site, a protest tracker, and this repo. **A page whose signature is *"it shows its own verdicts"* cannot rest on evidence nobody can open.**
+
+**The resolution is that "checkable" has two forms, and only one of them needs a repo.**
+
+- **Verifiable context** — *frontend engineering lead at an OJK-licensed investment platform with 2.5M+ investors.* Every element of that is publicly checkable, none of it touches the NDA, and it is the strongest single sentence available. **It leads.**
+- **A checkable artifact** — **`fartix.id`**. Live, his, still standing. **One is enough.** A second adds nothing a sceptic would weigh differently.
+- **Private work is described as a claim about what he did, never as a metric.** *"Most of the commits on one live product are not written by me any more. I decided what was allowed to merge."* A hiring engineer can judge whether the person saying that understands what it means. **The 72% comes out** — not because it is false, but because it is the part that asks for faith, and asking for faith is precisely what this document refuses.
+
+⛔ **The rule that falls out of it: no number on this site that a reader is asked to take on trust.** A figure either has a link behind it or it does not appear. That governs the coverage percentages too — they are real, they verify against the repo's own config, and **a stranger still cannot open that config**, so they are described rather than quoted.
+
+⚠️ **Prerequisite, and it is currently unmet.** If the page's device is that it shows its own verdicts, the verdicts have to hold. Measured 2026-08-05: **accessibility 96, not the 100 the docs claimed**, on one real defect — now fixed but not re-measured — and **performance is unverified**, since a score needs throttling against a deployed URL. **Re-measure before that device ships**, or the single most checkable thing on the page is the thing that is wrong.
+
+**Where this could change:** the loop becomes checkable if the ~48 non-domain rules in that repo are published — 63 total, 15 carrying `domain-` or `sesi-` prefixes. That is gated on the other engineer who co-built it, not on effort. If it happens, the loop leads on merit instead of on trust and this section gets revisited.
+
 ---
 
 ## Why it works
@@ -57,4 +75,5 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 ## Status
 
 - **2026-07-23** — foundation locked + reviewed + reframed. Center = verifiable competence · voice = door (constraint) · IA = explicit-above / implicit-below.
-- **Next** — translate → design-system spec (visual identity), then copy.
+- **2026-08-05** — **§4 added and the third receipt struck.** An audit opened all three named receipts against their repos for the first time: one was fabricated, one verified and was understated, one had a paragraph on the live site the owner had disowned in July. §4 settles what the page leads with now that the strongest evidence is provably unverifiable. **New standing rule: a receipt gets its repo opened — commits, authorship, dates — before it is named in this document.**
+- **Next** — the copy is now the blocker, not the visual language. The landing page was rejected on 2026-08-04 for its *information*, not its design: it is built from disposition claims where every studied portfolio is built from checkable nouns. **Ground-up on content, bottom-up — facts first, layout second.** The visual language may dissolve rather than get solved, because the structure falls out of what the evidence needs.
