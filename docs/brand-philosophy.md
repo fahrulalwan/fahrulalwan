@@ -9,7 +9,9 @@
 
 ## 1. The center is legible, verifiable competence
 
-Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point — a coverage program taken from almost nothing to a floor that ratchets in CI, a ticketing venture he founded and ran live at the stadium gate, an agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
+Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point: the call to spend a stretch of the year making a core service safe to change and the merges that decided what counted as done, a ticketing venture he founded and ran live at the stadium gate, an agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
+
+⛔ **The first receipt was reworded on 2026-08-10 and the reason generalises.** It read *"a coverage program taken from almost nothing to a floor that ratchets in CI"*, which credits him with a design that was not his. What is his is the decision that the work was worth doing and the judgement about what shipped. **Name the decision, not the artifact, whenever the artifact was not designed by the person being described.**
 
 This is the load-bearing signal, and it's deliberate. "Judgment" or "taste" as the *headline* is unfalsifiable, and by 2026 it's what everyone says — a skimmer can't verify a vibe. The receipts are checkable and comparatively rare. Lead with them; let judgment be the conclusion a reader draws, never the claim you open with.
 

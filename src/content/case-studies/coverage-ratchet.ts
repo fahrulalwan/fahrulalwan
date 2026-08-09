@@ -3,50 +3,50 @@ import type { CaseStudy } from './types';
 export const coverageRatchetCaseStudy: CaseStudy = {
   slug: 'test-coverage-ratchet',
   headline:
-    'A core service nobody wanted to touch, taken from almost no tests to a floor that cannot slip back.',
-  tags: ['Testing', 'CI/CD', 'Mutation Testing', 'Legacy Code'],
+    'A core service nobody wanted to touch, and a stretch of the year spent making it safe to change.',
+  tags: ['Testing', 'CI/CD', 'Legacy Code', 'Technical Leadership'],
   year: '2026',
   metadata: {
     role: 'Frontend Engineering Lead',
     timeline: '2026',
-    teamSize: 'Frontend squad; I led the effort',
+    teamSize: 'Frontend squad; I owned the decision and the merges',
   },
   context:
     'A core service at the investment platform I work on had almost no test coverage. It was still shipping, still making money, and every change to it came with a quiet negotiation about who was willing to be the one who touched it. Nobody had done anything wrong. Coverage is the thing that never wins the prioritisation argument, right up until the week it does.',
   challenge:
-    'The obvious move is to write a pile of tests and announce a number. That fails twice over. A one-time push decays the moment attention moves on, and a single headline percentage hides exactly the places that are still bare. I wanted the end state to be a floor the codebase could not fall below, not a milestone we would celebrate and then quietly regress from.',
+    'The hard part was not writing tests. It was deciding this was worth a stretch of the year at all, and then holding a line on what counted as finished once the work was underway. Both of those are judgement calls that arrive without a deadline attached, which is exactly why they usually lose.',
   decisions: [
     {
-      title: 'Put the floor in CI, per directory, so it ratchets',
+      title: 'Decided it was worth the year',
       description:
-        'Each area of the codebase carries its own threshold in the test config: 95% lines, functions and statements, 90% branches. CI enforces them. That last part is the whole design. A per-directory floor cannot be diluted by a well-tested neighbour the way a single global number can, and once a directory is above its floor it can never quietly drop below it again. The tests stop being something we maintain by remembering to.',
+        'Coverage work is unglamorous and nobody asks for it. Somebody has to decide it wins this quarter instead of a feature, and that decision is the entire reason the work exists. I made that call and I would make it again, though I understand completely why it usually goes the other way.',
     },
     {
-      title: 'Refused to publish the flattering number',
+      title: 'Set the thresholds that stopped the work, then took the calls when they fired',
       description:
-        "The global threshold in that config is deliberately set to zero, with a comment explaining why. Jest's global bucket only counts files no directory glob has claimed, so leaving a real number there would average well-tested areas together with untested ones and produce something that reads impressive and means nothing. I would rather the config say zero and be honest than say a number and lie. Anyone who opens the file gets told which figure to trust.",
+        'The rules for when to stop were written up front rather than argued case by case in the moment. One of them fired partway through: a check found more gaps than the threshold allowed and escalated instead of continuing. I looked at the cost of closing them against what closing them would actually buy, and deferred most of them to a later phase. Another tool got dropped entirely after three failed attempts, with the reasons written down rather than quietly abandoned.',
+    },
+    {
+      title: 'Shipped the worse number',
+      description:
+        'The plan was to bring the tracked exceptions down to seven. The work got to eight. I shipped eight and put the reversion in the title of the merge request, rather than quietly rounding to the number the plan had promised. It is a small thing and it is the part of this I would point at first, because a plan that always hits its target is a plan nobody is measuring honestly.',
     },
   ],
   results: {
     metrics: [
       {
-        label: 'The floor, per directory',
-        value: '95 / 90',
-        context: 'Lines and branches. Enforced in CI, so it ratchets and cannot drop back',
-      },
-      {
-        label: 'Carve-outs, counted',
+        label: 'Tracked exceptions, against a plan of 7',
         value: '8',
-        context: 'Every place we knowingly fell short, each with a reason attached',
+        context: 'Shipped the real number rather than the one that was promised',
       },
     ],
     qualitative: [
-      'The coverage went from near zero to comfortably clear of the floor on every directory that has one. I am deliberately not putting that percentage on this page. It is a real number and it is in the repo, but the repo is private, so quoting it here would be asking you to take it on faith. This is the case study where I argue against exactly that.',
-      'The part I am most pleased with is not the percentage anyway. It is that the exceptions are counted. Every place we knowingly fell short of the floor is tracked as an explicit carve-out with a reason attached, so the debt is a number someone can argue with rather than a feeling. It went to eight, and the plan was to keep pulling it down.',
+      'The coverage went from almost nothing to comfortably clear of the floor on every directory that has one. I am deliberately not putting that percentage here. It is a real number and it is in the repo, but the repo is private, so quoting it would be asking you to take it on faith, and this is the case study where I argue against exactly that.',
+      'What I am most pleased with is not the number anyway. It is that the exceptions are counted. Every place we knowingly fell short is tracked with a reason attached, so the debt is something you can argue with rather than a feeling.',
     ],
   },
   reflections: [
-    'This ran in phases with a retrospective after each one, which sounds like process for its own sake and mostly was not. The useful part was that the rules kept changing as we learned what a realistic floor looked like on real legacy code. The first thresholds we picked were wrong. Writing down why we moved them is the only reason the next person will not move them back.',
-    'Coverage work is unglamorous and nobody thanks you for it. I still think it was the right thing to spend a stretch of the year on, but I understand why it usually loses to a feature, and I would not pretend the trade was free.',
+    'I am not the one who designed the approach here. I decided the work was worth doing, I wrote the rules it had to obey, and I decided what was allowed to merge. That is a real job and it is most of what leading turned out to mean, but it is not the same as having invented the method, and an earlier version of this page said otherwise.',
+    'The thresholds we set at the start were wrong, and moving them was the useful part rather than an embarrassment. What I would keep is the habit of writing down why they moved. Without that, the next person just moves them back.',
   ],
 };
