@@ -1,12 +1,15 @@
 # Brand Philosophy
 
-*The foundation the site answers to. Locked 2026-07-23, then reviewed (self-review + `/blindspot` + red-team) and reframed the same day. Everything downstream — the design system, the copy, what gets featured — derives from this. `docs/product-marketing-context.md` operationalizes it, and was reconciled to it on 2026-08-05 — the conversion-funnel opening this superseded is gone. That file also moved out of `.agents/` the same day, because a document governing what every agent writes had been sitting in a hidden directory, which is how a struck claim survived in it for twelve days and kept re-seeding the files it had already been removed from.*
+*The foundation the site answers to. Locked 2026-07-23, then reviewed (self-review + `/blindspot` + red-team) and reframed the same day. Everything downstream — the design system, the copy, what gets featured — derives from this. `docs/product-marketing-context.md` operationalizes it.*
+
+> [!info] This repository is public, and this document is written for that.
+> It carries **standards the code and copy must meet**. It deliberately carries no evidence, no authorship figures, no names of collaborators or private repositories, and no record of claims that were tried and struck. That material is real and it is kept, privately. See `CLAUDE.md` § What belongs in this repo.
 
 ---
 
 ## 1. The center is legible, verifiable competence
 
-Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point — the coverage program to ~99% behind CI floors, a ticketing venture he founded and ran live at the stadium gate, the agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
+Above the fold, a person skimming for six seconds knows: who you are, what level, what you've built, that you're remote-ready. The proof is the point — a coverage program taken from almost nothing to a floor that ratchets in CI, a ticketing venture he founded and ran live at the stadium gate, an agent loop that writes most of the commits on a live product, the fintech-correctness work where a wrong line is real money.
 
 This is the load-bearing signal, and it's deliberate. "Judgment" or "taste" as the *headline* is unfalsifiable, and by 2026 it's what everyone says — a skimmer can't verify a vibe. The receipts are checkable and comparatively rare. Lead with them; let judgment be the conclusion a reader draws, never the claim you open with.
 
@@ -27,12 +30,10 @@ Show-don't-name is right, but scoped. A skimmer won't reconstruct judgment from 
 
 The receipts carry the argument without naming it: the agent loop (AI-native — you direct the tools) and the correctness work (fintech stakes).
 
-> [!warning] The third receipt was struck on 2026-08-05, and how it got here matters more than its removal.
-> This section named a third item — *"the project killed after three days (judgment in action)"* — meaning the `umbrella` repo. **The repo does not support any part of that claim.** It ran 2025-10-28 to 2025-12-08, thirty-one active days across six weeks, and of its 213 commits **205 are Tigor's and 6 are Fahrul's**, all in the final three days: a Next.js dashboard scaffold, a Biome config, two merges, and the README. Three days is how long *he* was on it, not how long it lived, and it was never his to kill.
+> [!warning] ⛔ A receipt gets its repo opened before it is named here. Commits, authorship, dates.
+> This section once named a third receipt that the underlying repository did not support in any part. It was promoted into this document unverified, then survived a later integrity audit — the pass built to catch exactly that. It was removed on 2026-08-05.
 >
-> **It was never verified before being promoted into this document**, and it then survived the 2026-07-10 integrity audit — the pass built to catch exactly this. It was caught only because the owner asked what Umbrella was.
->
-> ⛔ **A receipt gets its repo opened before it is named here.** Commits, authorship, dates. The claim reading well is what let this one through.
+> **The claim reading well is what let it through**, and that is the whole lesson: fluent prose is the vector. A receipt that has not been opened is not a receipt.
 
 ⛔ **The craft-proof must be a built artifact, not a cadence.** Showing thinking is the differentiator, but for most people that means an ongoing content stream — a blog, a newsletter, weekly posts. That is the wrong shape here: the goal is to be trusted by a handful of hiring people, not to grow an audience, and sustained publishing is the one behaviour with a measured track record of not holding (~3–6% delivery against promise; hence the standing "don't position as a content creator" guardrail). **So the craft-proof is something that ships once and keeps paying** — a live interactive demo, an explorable explanation of a real system, the agent loop shown working, or one deep case-study of a single decision. Never something that needs feeding.
 
@@ -40,13 +41,13 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 
 *Settled 2026-08-05, after an audit that opened every named receipt against its repo.*
 
-**The problem, stated honestly.** His strongest work is unverifiable by a stranger: the agent loop, the coverage program, `fifada-web`, `kitetsu`, the early XPrivate codebases — roughly 2,700 commits, all in private or NDA-bound repos. What is public is a football ticketing site, a protest tracker, and this repo. **A page whose signature is *"it shows its own verdicts"* cannot rest on evidence nobody can open.**
+**The problem, stated honestly.** The strongest work is unverifiable by a stranger. Most of it sits in private or NDA-bound repositories, and the great majority of the commit history behind it can never be opened by a reader. What is public is a football ticketing site, a protest tracker, and this repo. **A page whose signature is *"it shows its own verdicts"* cannot rest on evidence nobody can open.**
 
 **The resolution is that "checkable" has two forms, and only one of them needs a repo.**
 
 - **Verifiable context** — *frontend engineering lead at an OJK-licensed investment platform with 2.5M+ investors.* Every element of that is publicly checkable, none of it touches the NDA, and it is the strongest single sentence available. **It leads.**
 - **A checkable artifact** — **`fartix.id`**. Live, his, still standing. **One is enough.** A second adds nothing a sceptic would weigh differently.
-- **Private work is described as a claim about what he did, never as a metric.** *"Most of the commits on one live product are not written by me any more. I decided what was allowed to merge."* A hiring engineer can judge whether the person saying that understands what it means. **The 72% comes out** — not because it is false, but because it is the part that asks for faith, and asking for faith is precisely what this document refuses.
+- **Private work is described as a claim about what he did, never as a metric.** *"Most of the commits on one live product are not written by me any more. I decided what was allowed to merge."* A hiring engineer can judge whether the person saying that understands what it means. **The share comes out** — not because it is false, but because it is the part that asks for faith, and asking for faith is precisely what this document refuses.
 
 ⛔ **The rule that falls out of it: no number on this site that a reader is asked to take on trust.** A figure either has a link behind it or it does not appear. That governs the coverage percentages too — they are real, they verify against the repo's own config, and **a stranger still cannot open that config**, so they are described rather than quoted.
 
@@ -62,7 +63,7 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 
 ⚠️ **These are the only figures on the site a reader can reproduce**, which is what earns them their place under the no-unverifiable-numbers rule above. They are also perishable: any of them can regress on a single commit, so a figure quoted in copy carries the date it was measured.
 
-**Where this could change:** the loop becomes checkable if the ~48 non-domain rules in that repo are published — 63 total, 15 carrying `domain-` or `sesi-` prefixes. That is gated on the other engineer who co-built it, not on effort. If it happens, the loop leads on merit instead of on trust and this section gets revisited.
+**Where this could change:** the private work becomes checkable only if some part of it is published in a form that stands on its own. That is gated on people other than the author, not on effort. If it happens, that work leads on merit instead of on trust and this section gets revisited.
 
 ---
 
@@ -85,5 +86,6 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 ## Status
 
 - **2026-07-23** — foundation locked + reviewed + reframed. Center = verifiable competence · voice = door (constraint) · IA = explicit-above / implicit-below.
-- **2026-08-05** — **§4 added and the third receipt struck.** An audit opened all three named receipts against their repos for the first time: one was fabricated, one verified and was understated, one had a paragraph on the live site the owner had disowned in July. §4 settles what the page leads with now that the strongest evidence is provably unverifiable. **New standing rule: a receipt gets its repo opened — commits, authorship, dates — before it is named in this document.**
+- **2026-08-05** — **§4 added and the third receipt struck.** An audit opened every named receipt against its repository for the first time, and none survived unchanged. §4 settles what the page leads with now that the strongest evidence is provably unverifiable. **New standing rule: a receipt gets its repo opened — commits, authorship, dates — before it is named in this document.**
+- **2026-08-09** — **split for publication.** This repository is public, and this document was carrying collaborator names, private repository names, authorship figures and a record of struck claims. All of it moved to the private project record; the standards stayed. See `CLAUDE.md` § What belongs in this repo.
 - **Next** — the copy is now the blocker, not the visual language. The landing page was rejected on 2026-08-04 for its *information*, not its design: it is built from disposition claims where every studied portfolio is built from checkable nouns. **Ground-up on content, bottom-up — facts first, layout second.** The visual language may dissolve rather than get solved, because the structure falls out of what the evidence needs.

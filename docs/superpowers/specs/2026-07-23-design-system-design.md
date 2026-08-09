@@ -1,6 +1,6 @@
 # Design system — design spec
 
-*Status: **complete and reviewed, ready to implement.** Written and reviewed 2026-07-23. Derives from `docs/brand-philosophy.md` and the research bundle at `next-job/cv-portfolio/research/2026-07-23-portfolio-design-directions.md`. The craft-proof section is specced separately in `2026-07-23-craft-proof-section-design.md`.*
+*Status: **complete and reviewed, ready to implement.** Written and reviewed 2026-07-23. Derives from `docs/brand-philosophy.md` and from a design-directions research bundle kept in the private project record. The craft-proof section is specced separately, also privately — its copy names a third party's business and cannot live in a public repository.*
 
 *Every colour ratio in this document was computed against the actual token values. None was estimated. Re-compute before changing any of them.*
 
@@ -403,7 +403,7 @@ There is a second reason to build it. The craft-proof spec's Accepted Risks says
 - ~~Performance ≥95 is unverified~~ — **met, 98**, measured by that same first CI run (§14).
 - **A real accessibility defect was found by measuring rather than by reading.** The landing page ran `h1` straight to `h3`: every section label was a `<p>`, so the sections had visual names and no semantic ones. Promoting the four landing labels to `<h2>` took accessibility from 98 to 100, and it is also what §8 already asked for, since those labels are real content. **Nine review passes over this spec did not catch it. One audit did.**
 - **The page inventory is deliberately unresolved** and sits above this spec (§8). Only Stage 4 of §13 depends on it.
-- The craft-proof section carries its own open gate, the owner's wife's sign-off on the exact paragraph. See its spec.
+- The craft-proof section carries its own open gate: sign-off from the owner of the business it describes, on the exact published paragraph. Its spec is private.
 
 ## Review closure
 

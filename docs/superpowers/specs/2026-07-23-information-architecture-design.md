@@ -1,6 +1,6 @@
 # Information architecture — design spec
 
-*Status: **reviewed, ready to implement.*** Written 2026-07-23. Derives from `docs/brand-philosophy.md`. The visual system is specced in `2026-07-23-design-system-design.md` and the craft-proof section in `2026-07-23-craft-proof-section-design.md`, which this spec finally gives a home.*
+*Status: **reviewed, ready to implement.*** Written 2026-07-23. Derives from `docs/brand-philosophy.md`. The visual system is specced in `2026-07-23-design-system-design.md`. The craft-proof section has its own spec, kept in the private project record because its copy names a third party's business; this spec is what finally gives that section a home.*
 
 ---
 
@@ -52,7 +52,7 @@ Distribution is the owner sending the link. So the first thing most readers see 
 
 ### The CV — deliberately absent
 
-A CV pipeline exists in the vault (`base-cv.md` plus one-page and two-page builders), **but the source is `status: deprecated` and marked "SKELETON … not sendable"**, so there is nothing to link today regardless.
+A CV pipeline exists privately, **but its source was deprecated and is not sendable as-is**, so there is nothing to link today regardless.
 
 ⛔ **Decision: the site carries no CV, and this is a standing decision rather than a deferral.** The owner's reasoning is the operative one: a public CV carries a full name, phone number and employment history, which is exactly the material harvested for identity fraud and fake-recruiter scams. **Fear of misuse, not strategy.**
 
@@ -138,7 +138,7 @@ Case study pages change structurally not at all.
 
 ## Open
 
-- **The craft-proof section still carries its own hard gate**: the owner's wife must sign off on the exact published paragraph. This spec places the section; it does not unblock it.
+- **The craft-proof section still carries its own hard gate**: the owner of the business it describes must sign off on the exact published paragraph. This spec places the section; it does not unblock it.
 - ~~**Copy for sections 1 and 4 is not written.**~~ — **closed 2026-07-24 by § Final copy below**, which locks both the hero and the origin paragraph. This line contradicted that section for twelve days; corrected 2026-08-05. Sections 2 and 5 remain drafted-but-held, and they are held on the visual language rather than on the words.
 - **Em-dashes remain in published copy** across five files, which the design system's anti-tell list forbids. Unruled.
 - ~~The job title is undecided~~ — **decided 2026-07-23: "Software Engineering Lead"**, applied identically to the site copy, the generated preview card, and the JSON-LD `jobTitle`. Chosen because it is already what the JSON-LD and any LLM summary read, it is broader than "Frontend" without overclaiming, and it matches the hunt's positioning. The old surfaces said three different things ("Senior Frontend Engineer & Tech Lead", "Software Engineering Lead", "Engineering lead"); this is the single value.
@@ -162,7 +162,7 @@ Written ground-up, not adapted from the existing site. Every line built from ver
 
 **Sections 2, 3, 5 — status**
 - **§2 (work you can check):** copy is the existing case-study data; only the section label + external-link behaviour remain (light).
-- **§3 (the gates):** copy lives in `2026-07-23-craft-proof-section-design.md`; still gated on the wife's sign-off.
+- **§3 (the gates):** copy lives in the craft-proof spec, kept privately; still gated on that sign-off.
 - **§5 (contact):** light, not yet written.
 
 ## Review closure

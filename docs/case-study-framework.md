@@ -30,13 +30,13 @@ This usually takes 15–30 minutes of back-and-forth.
 
 ### Pass 2 — Raw draft
 
-Write up the inputs into the `CaseStudy` interface shape. No polish. Save to `docs/case-studies/story-N-[slug]-raw.md` for reference.
+Write up the inputs into the `CaseStudy` interface shape. No polish. **Save the raw draft to the private project record, not to this repository** — a raw draft is where unverified claims and NDA-bound detail live before they are cut, and this repo is public. Only the shipped `src/content/case-studies/*.ts` belongs here.
 
 ### Pass 3 — Copywriting refinement
 
 Apply the site's voice: curious, understated, reflective, no selling. Use the [refinement checklist](#copywriting-refinement-checklist) below.
 
-Save refined version to `docs/case-studies/story-N-[slug]-final.md`.
+Keep the refined version alongside the raw draft in the private project record until it ships. What lands in this repo is the `.ts` file, nothing before it.
 
 ### Pass 4 — Implementation
 

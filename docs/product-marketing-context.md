@@ -1,6 +1,9 @@
 # Product Marketing Context
 
-*Last updated: 2026-07-23*
+*Last updated: 2026-08-09*
+
+> [!info] This repository is public, and this file is written for that.
+> It carries **rules for what the site may say**, in the imperative and forward-looking. It deliberately carries no collaborator names, no private repository names, no figures a reader cannot check, and no history of claims that were tried and struck. That record is real and it is kept privately. See `CLAUDE.md` § What belongs in this repo.
 
 ## What This Site Is
 
@@ -33,7 +36,7 @@ Personal portfolio for Fahrul Alwan, an engineering lead. **The centre is legibl
 - **Case studies show process** — decisions, trade-offs, and honest reflections (not just highlight reel)
 - **The craft is visible in the build** — editorial design, performance and accessibility are demonstrated rather than asserted. ⚠️ But **this is a supporting signal, not the argument** (see the framing note above), and it only counts while the numbers are real: measured 2026-08-05, accessibility was **96** and not the 100 the docs claimed, on one genuine defect.
 
-⛔ **Struck 2026-08-05 — do not reinstate:** *"Builds things that last — systems still running 8 years later."* That is the CarEADY claim, and CarEADY was demoted from checkable evidence on **2026-07-24**: he was a vendor under a consultancy rather than an owner, and the site has since been revamped by other people, so nothing running there today is his. **It was removed from `caready.ts`, the IA spec, `brand-philosophy.md` and `case-study-framework.md` that day — and survived here, in the one file that tells agents what to write.** That is why it kept reappearing downstream.
+⛔ **Never claim longevity for the auction platform.** No *"still running N years later"*, no *"never replaced"*, no *"builds things that last"*. The work was done as a vendor under a consultancy rather than as an owner, and the site has since been rebuilt by other people, so nothing running there today is his. **It is an early-career story, never a check-it-yourself link.**
 
 ## Brand Voice
 
@@ -80,21 +83,24 @@ Personal portfolio for Fahrul Alwan, an engineering lead. **The centre is legibl
 
 **Notable work (anonymized for NDA safety):**
 
-- Auction platform real-time WebSocket system, built from zero as a fresh graduate (2018). ⛔ **Never "still running N years later" and never "never replaced"** — struck 2026-07-24 and again 2026-08-05. He was a vendor under a consultancy, not an owner, and the live site has since been revamped by other people. **An early-career story, never a check-it-yourself link.**
+- Auction platform real-time WebSocket system, built from zero as a fresh graduate (2018). See the longevity ban above.
 - Employee superapp dynamic form engine at telco — delivered ahead of schedule (2021)
 - Fintech news portal revamp — Lighthouse score 15 → 70 (2024)
 - Signed-URL security migration at current company — led within own team's scope
-- Test-coverage program on a legacy service — near-zero to ~99% lines / 96% branches, behind CI floors
-- Ticketing platform for a Liga-2 football club — solo-built, 9 live match-days (2026)
-- An autonomous agent loop with a self-review and screenshot-scoring gate. On an internal system he works on, it now writes most of the feature code; his own commits there are almost entirely gates, ADRs and tests. ⛔ **Built with one other engineer (Tigor) — never "I designed it" / "solo".** ⛔ **Never "his own product"** — the venture is his wife's; he owns engineering, not ownership. ⛔ **Never quote a commit-share %** — ~6 machine commits per ticket makes it a vanity metric, and it contradicts the coverage case study's own "rather say zero and be honest" line.
+- Test-coverage program on a legacy service — taken from almost no coverage to a per-directory floor enforced in CI, so it ratchets and cannot drop back
+- Ticketing platform for a Liga-2 football club — he founded the venture and built the consumer platform; 9 live match-days (2026)
+- An autonomous agent loop with a self-review and screenshot-scoring gate. On an internal system he works on, it now writes most of the feature code; his own commits there are almost entirely gates, ADRs and tests. ⛔ **Built with one other engineer — never "I designed it" or "solo", and never name the collaborator on a public surface.** ⛔ **Never "his own product"** — he owns the engineering, not the venture. ⛔ **Never quote a commit-share percentage** — it is a vanity metric, and it contradicts the coverage case study's own *"rather say zero and be honest"* line.
 
 **Metrics:**
 
 - Lighthouse 15 → 70 (frontend revamp)
-- Test coverage near-zero → ~99% lines / 96% branches (verified from the repo's own coverage output)
 - 2.5M+ investors on the current employer's platform (their own published figure)
 
-> ⛔ **NDA floor — do not restore what was removed here.** Headcount, repository counts, MAU, and AUM figures for the current employer are **internal metrics** and were struck 2026-07-23. Only publicly-published employer figures are usable. Canonical list: the `employment-public-facts` note in the Obsidian vault.
+> ⛔ **The floor on numbers, and it has two independent parts.**
+>
+> **NDA** — headcount, repository counts, MAU and AUM for the current employer are internal metrics. Only figures the employer has published itself may be used.
+>
+> **Checkability** — no figure appears on this site that a reader is asked to take on trust. A number either has a link behind it or it does not appear. **That governs the coverage percentages too**: they are real and they verify against the repository's own config, and a stranger still cannot open that config, so they are *described* rather than quoted.
 
 **Speaking:**
 
@@ -114,8 +120,8 @@ Personal portfolio for Fahrul Alwan, an engineering lead. **The centre is legibl
 
 **⛔ Founder work is now PUBLIC and featured — reversed 2026-07-23.** The earlier instruction here said to hide Grandboard Strategi Multi Cipta / fartix.id. That is no longer true: the founder role is live on LinkedIn, the ticketing platform is on the CV, and a Fartix case study is planned for this site. Do not strip it.
 
-- **Name the club as "a Liga-2 club in the Pegadaian Championship," never "Adhyaksa FC."** The client carries an unpaid receivable and is being chased; naming a debtor as a happy public reference is a lever outside his control. The league framing carries identical credibility to an overseas reader.
-- **Do not claim a managed team at Grandboard.** The collaborators are an unresolved informal partnership, so "team management" would be both an overclaim and legally adverse while that status is open. Solo authorship of the consumer platform is the claim.
+- **Name the client as "a Liga-2 club in the Pegadaian Championship," never by name.** The commercial relationship is not closed, and naming a specific club as a happy public reference is a lever outside his control. The league framing carries identical credibility to an overseas reader.
+- **Do not claim a managed team at Grandboard.** The working arrangement with the collaborators is not formally settled, so a team-management claim would be an overclaim. Authorship of the consumer platform is the claim.
 
 ## Origin Story (reusable narrative)
 
@@ -170,7 +176,7 @@ How the site tells a story across pages:
 | Approach impact quote | same | "...the engineer who'll read this code six months from now. Usually it's me." |
 | Approach anti-positioning | same | "...whether the thing helps the people using it — and whether the next engineer doesn't hate me for how I built it." |
 | Approach closing | same | "If any of this resonated, say hi." |
-| Case study headline | `src/content/case-studies/caready.ts` | ⛔ **STALE — do not copy this row.** It read *"…Still in production eight years later."* The live file was corrected on 2026-07-24; **this row was not, and it is a row that instructs an agent what to write into that file.** Read `caready.ts` for the current headline; never restore a "still in production" or "never replaced" clause. |
+| Case study headline | `src/content/case-studies/caready.ts` | ⛔ **Do not copy a headline into this row.** Read `caready.ts` for the current one. This row previously carried a stale headline and, because it is a row that tells an agent what to write, it kept re-seeding the file it had been corrected out of. Never restore a "still in production" or "never replaced" clause. |
 | Case study reflections | same | "I was too aggressive when I joined the core team..." |
 | Case study closing | `src/app/work/[slug]/page.tsx` | "If any of this resonated, say hi." |
 | 404 | `src/app/not-found.tsx` | "This page doesn't exist." |
