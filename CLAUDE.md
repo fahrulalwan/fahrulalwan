@@ -6,6 +6,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio website for an engineering lead, built with Next.js 16 App Router, React 19, and TypeScript. Editorial design system with manifesto-style approach page. Deployed on Vercel.
 
+## ⛔ What belongs in this repo
+
+**This repository is public. Branches are public too** — a pushed branch is readable by anyone, so content is exposed the moment it is pushed, not when it merges.
+
+**The rule: this repo carries the constraint. The private project record carries the case.**
+
+A doc here says what the code and copy must obey, written forward-looking. The evidence behind it — how a claim was verified, what was tried and struck, who wrote which commits — lives in the owner's private notes.
+
+**The test, per line:** *does this tell a reader a standard I hold, or does it tell them something about my employer, a collaborator, or a mistake I made?* The second one does not belong here.
+
+**Never in this repo:**
+
+- **Private or NDA-bound repository names**, and any figure derived from one — commit counts, authorship shares, coverage percentages. If a reader cannot open the source, the number does not appear.
+- **Collaborator, client or family names**, and anything about their businesses. A third party did not consent to being described on a public surface.
+- **Employer internals** — codenames, service names, MR or ticket numbers, headcount, MAU, AUM, incident detail. Only figures the employer has published itself.
+- **Commercial or legal status** — unsettled partnerships, unpaid receivables, disputes. Naming your own exposure publicly is a lever handed to someone else.
+- **The struck-claim history.** A list of claims that were tried and removed is a public record of having overclaimed. Keep the resulting rule, drop the story.
+- **Paths into the private record.** Do not link, name, or describe the location of the vault. A public doc referencing a private one leaks the structure even when the content stays behind.
+
+**Raw case-study drafts are the recurring offender.** They exist precisely to hold unverified claims before they get cut, so they never land here — only the shipped `src/content/case-studies/*.ts` does.
+
+*Split executed 2026-08-09, after the repo's own docs were found carrying a collaborator's commit share, private repo names, and the owner's legal exposure on a public branch. `docs/brand-philosophy.md` and `docs/product-marketing-context.md` were stripped rather than removed; the craft-proof spec and both raw case-study drafts moved out entirely.*
+
 ## Commands
 
 ```bash
