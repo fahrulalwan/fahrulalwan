@@ -190,6 +190,25 @@ Written ground-up, not adapted from the existing site. Every line built from ver
 
 *The label was chosen against `Selected work` (institutional) and `Three things` (dry). The owner's brief on 2026-08-10 — **"I'd like to frame myself inclusive, not exclusive, because I don't want people to be distanced from me"** — rules out the arch options. The third status line is load-bearing: it stops a reader clicking through to CarEADY expecting to find his work.*
 
+**Section 2b — a short list underneath (added 2026-08-10)**
+
+- Heading: **`A few other things`**
+- Three entries, each linking to its repo in a new tab:
+
+> **tuntutan-rakyat** — a place to track protest demands during the unrest. Built quickly with a small team I led, and it ended up cited as a resource on bijakmemantau.id.
+>
+> **this site** — the code behind this page.
+>
+> **ganjil-genap** — a map for checking Jakarta's odd-even plate rule. Small, and it works.
+
+*Three case studies someone thought hard about, then a handful of things they just made. **That combination reads like a person rather than a portfolio**, and it lets a reader find the small stuff without it having been curated at them, which is the inclusive brief in structural form.*
+
+⛔ **`A few other things` was chosen over `Also on GitHub` for a reason that expires.** That heading points at GitHub as a *destination*, and the public account still holds ~25 unpruned repos — a `MoneyPrinterV2` fork, `old-portofolio`, `autofill-form ("ehehe")`, assorted interview tests. **Until that cleanup lands, an invitation to browse works against him.** Once it does, `Also on GitHub` becomes the better heading and it is a one-word change.
+
+⛔ **HARD ORDERING CONSTRAINT — the `this site` entry cannot ship before the branch merges.** `main` still carries the February-2025 site and the old profile README, so that link would point a reader at the thing this rebuild replaced. **Either the link waits, or the page does.**
+
+⛔ **Never attach a commit count to tuntutan-rakyat.** The repo total is not his personal share, and `a small team I led` is both accurate and stronger than any number available.
+
 **Section 4 — one line inherited from `/approach` (locked 2026-08-10)**
 
 > *"Code is usually the easy part. Most of what slows projects down is unclear requirements, people politely agreeing to slightly different things, or teams quietly working toward different definitions of done."*
