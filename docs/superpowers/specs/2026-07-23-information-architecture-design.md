@@ -178,7 +178,31 @@ Written ground-up, not adapted from the existing site. Every line built from ver
 
 *Carries the self-made arc without boasting, and folds the BINUS Information Systems (Magna Cum Laude) credential in as "at night, after work" — verified true, specifically his, and unfakeable by a template. This resolves the credential-placement question: the degree lives inside the story rather than as a bolted-on line.*
 
-**Sections 2, 3, 5 — status**
+**Section 2 — the work (locked 2026-08-10)**
+
+- Label: **`What I've built`**
+- Card order: **fartix first**, then the coverage work, then CarEADY.
+- Each card carries its own status, in a normal voice rather than a badge:
+
+> **fartix.id** · still up, still mine → live link, new tab
+> **The coverage work** · private repo, so this one's a description rather than a link
+> **CarEADY** · 2018, rebuilt by other people since
+
+*The label was chosen against `Selected work` (institutional) and `Three things` (dry). The owner's brief on 2026-08-10 — **"I'd like to frame myself inclusive, not exclusive, because I don't want people to be distanced from me"** — rules out the arch options. The third status line is load-bearing: it stops a reader clicking through to CarEADY expecting to find his work.*
+
+**Section 4 — one line inherited from `/approach` (locked 2026-08-10)**
+
+> *"Code is usually the easy part. Most of what slows projects down is unclear requirements, people politely agreeing to slightly different things, or teams quietly working toward different definitions of done."*
+
+*It sits after the origin paragraph. **Chosen because it is the only sentence on the site that describes a problem other engineers also have rather than describing him** — which is the inclusive brief, in the one form that costs nothing. The other survivor (*"I think a lot about the engineer who'll read this code six months from now. Usually it's me."*) is cut: it is fine, and it is about him, and the page already has enough of that.*
+
+**Section 5 — contact (locked 2026-08-10)**
+
+- **`Say hi.`** Unchanged from the live page.
+
+*Chosen over `The rest is a conversation.`, the 07-24 lean, which reads arch. The owner rejected that register three separate times on 2026-08-10 — a maxim in the opening, a clever headline detail, and this — which is consistent enough to treat as a standing preference rather than three individual calls.*
+
+**Sections 3 — status**
 - **§2 — DECIDED 2026-08-10. One neutral heading, status on each card.**
   - **The heading stops promising.** It was *"the work you can check"*, over three items of which only one is checkable. A heading is a promise, and that one was writing a cheque the section could not cash.
   - **Each card carries its own status** — live, private, or historical — so the honesty moves from the heading into the rows, where it can be accurate per item.
