@@ -148,12 +148,30 @@ Case study pages change structurally not at all.
 
 Written ground-up, not adapted from the existing site. Every line built from verified facts, in a spoken/humble register, no value-prop rhythm, no buzzwords, no em-dashes.
 
-**Section 1 — identity**
+**Section 1 — identity** *(rewritten 2026-08-10, message-led; see the note below)*
 - Eyebrow: `Fahrul Alwan`
-- Headline: **"I've been building software long enough to have strong opinions, and to distrust half of them."**
+- Opening:
+
+> **I lead a frontend team and I'm still in the code most days.**
+>
+> I started working straight out of vocational school, pulling fiber into villas in Bali. Took a pay cut to under half my salary along the way. Did the degree at night, and was leading a team of five at twenty-two, nine months before I finished it.
+>
+> I've only been good at work I actually believed in. That's made some decisions easy and some of them expensive.
+
 - Facts strip: `Software Engineering Lead · Jakarta · UTC+7 · Currently leading frontend at Bareksa`
 
-*Chosen against ~12 alternatives across two register-explorations. The headline is neutral about position (safe while employed at Bareksa), carries the identity load in the strip so the line itself can sound like a person, and its judgment framing is AI-durable by implication without claiming judgment outright. The strip drops "WIB" (local jargon, redundant with UTC+7 for an international reader) and "remote-ready" (an availability plea the overshare rule bans); Jakarta stays as a plain location fact, UTC+7 as the universal overlap signal.*
+*The strip is unchanged and its reasoning stands: it drops "WIB" (local jargon, redundant with UTC+7 for an international reader) and "remote-ready" (an availability plea the overshare rule bans); Jakarta stays as a plain location fact, UTC+7 as the universal overlap signal. It now also carries the whole verifiable-context load, because every sentence in the opening is a claim about private work.*
+
+> [!note] Why the 2026-07-24 headline was replaced, recorded rather than swapped silently.
+> It read *"I've been building software long enough to have strong opinions, and to distrust half of them."* It was locked, reviewed, and chosen against roughly twelve alternatives. **It is also a claim about character with no artifact under it**, which is the exact shape §1 of `docs/brand-philosophy.md` demotes, and it is the same shape as the four disposition lines cut from the live page.
+>
+> **What replaced it is not a better sentence, it is a different job.** The owner's brief on 2026-08-10: he wants the message to land rather than the design, and the message is that he takes work he believes in and it accumulates. Every clause of the opening is now a dated fact from his private career record, and the reader supplies the character conclusion instead of being handed it.
+>
+> ⛔ **Two figures were corrected while writing it, and both had been rounded in his favour.** The Tech Lead promotion preceded graduation by **nine months**, not "a year", and it happened at **twenty-two**, not the twenty-three he recalled. A first-job age was cut entirely rather than guessed, because his birthday falls inside the month the job started and the exact date is not recorded anywhere.
+>
+> **One clause is deliberately weaker than it could be.** *"Took a pay cut to under half my salary along the way"* originally read *"to get into software"*. The pay cut and the pivot are both documented; the causal link between them is a motive only he can confirm, and he has not. The clause returns if he does.
+>
+> **Still open from this rewrite:** the correction commit (*"fix the reason golongan differs, the one I had was wrong"*) was the artifact meant to sit beside the old headline, and it is the strongest single item in the evidence inventory. **It now has no home.** Its natural place is §3, where the merge-gate material lives and where it reads as a gate artifact rather than a personality trait. Decide when §3 is written.
 
 **Section 4 — origin**
 - **"I came up the long way: vocational school, fiber cable in the field, a help desk, a bootcamp. The degree came at night, after work."**
@@ -161,7 +179,13 @@ Written ground-up, not adapted from the existing site. Every line built from ver
 *Carries the self-made arc without boasting, and folds the BINUS Information Systems (Magna Cum Laude) credential in as "at night, after work" — verified true, specifically his, and unfakeable by a template. This resolves the credential-placement question: the degree lives inside the story rather than as a bolted-on line.*
 
 **Sections 2, 3, 5 — status**
-- **§2 (work you can check):** copy is the existing case-study data; only the section label + external-link behaviour remain (light).
+- **§2 — DECIDED 2026-08-10. One neutral heading, status on each card.**
+  - **The heading stops promising.** It was *"the work you can check"*, over three items of which only one is checkable. A heading is a promise, and that one was writing a cheque the section could not cash.
+  - **Each card carries its own status** — live, private, or historical — so the honesty moves from the heading into the rows, where it can be accurate per item.
+  - ⛔ **The live card carries the live URL in that status slot.** This is the fix for a real defect: `featured-work.tsx` links every card to `/work/[slug]`, so **no working link to his own work appears anywhere on the landing page** — while this spec's own argument for leading with fartix is *"the link working is the argument"*. The argument was specified and never rendered. External links open in a new tab, per § The landing page.
+  - ⛔ **The metric tile needs fixing regardless of the heading.** The component prints `results.metrics[0]` in display type; for the coverage study that is `95 / 90`, a number from a config a stranger cannot open, sitting directly above prose arguing against quoting exactly that.
+  - **Two shapes were rejected:** splitting the section in two (makes the promise literally true, but awkward once the section may hold only two items), and leading with the live link as a standalone element (fixes the link problem most directly, biggest component change — the owner chose the cheaper shape with the same outcome).
+  - ⚠️ **Contents are unsettled.** The coverage case study is under rewrite-or-cut, so §2 may end up holding fartix plus caready-as-early-career.
 - **§3 (the gates):** copy lives in the craft-proof spec, kept privately; still gated on that sign-off.
 - **§5 (contact):** light, not yet written.
 
