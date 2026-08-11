@@ -1,76 +1,293 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+@import "tailwindcss";
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+/* The exact complement of Tailwind's own `hover:` variant, which since v4 only
+   applies when the primary input device supports hover. Anything whose only
+   affordance is revealed on hover is invisible on a phone, so `no-hover:` is
+   how a utility states its touch fallback in the markup rather than in an
+   override buried down here. */
+@custom-variant no-hover (@media (hover: none));
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+/* Design system: docs/superpowers/specs/2026-07-23-design-system-design.md
+   Light theme lives here. Dark theme lives in theme.css and nowhere else.
+   Every ratio below was computed against these exact values (spec §1). */
+:root {
+  /* surfaces */
+  --background: hsl(210 18% 97.5%);          /* cool paper */
+  --foreground: hsl(215 26% 12%);            /* 15.98:1 on background */
+
+  --card: hsl(210 18% 97.5%);                /* flat with the page, spec §5 */
+  --card-foreground: hsl(215 26% 12%);
+
+  --popover: hsl(210 24% 99%);               /* lifts above the page */
+  --popover-foreground: hsl(215 26% 12%);    /* 16.52:1 */
+
+  --primary: hsl(215 26% 12%);
+  --primary-foreground: hsl(210 18% 97.5%);  /* 15.98:1 on primary */
+
+  --secondary: hsl(212 16% 94%);
+  --secondary-foreground: hsl(215 26% 12%);  /* 14.73:1 */
+
+  --muted: hsl(212 16% 94%);
+  --muted-foreground: hsl(215 11% 40%);      /* 5.66:1 on bg, 5.21:1 on muted */
+
+  /* NOT the signal colour. --accent is shadcn's neutral hover surface. */
+  --accent: hsl(212 14% 90%);                /* 13.39:1 for foreground */
+  --accent-foreground: hsl(215 26% 12%);
+
+  --destructive: hsl(0 72% 45%);             /* 5.49:1 on background */
+  --destructive-foreground: hsl(210 18% 97.5%);
+
+  /* lines. --border is a decorative hairline and is exempt from contrast minimums.
+     --input must reach 3:1 the moment a real form control exists (spec §1). */
+  --border: hsl(213 16% 87%);
+  --input: hsl(213 16% 87%);
+  --ring: hsl(192 88% 28%);                  /* 5.60:1, clears the 3:1 focus floor */
+
+  /* The signal colour. Appears only where it carries information. */
+  --signal: hsl(192 88% 28%);           /* 5.60:1 on paper */
+  --signal-inverted: hsl(190 70% 62%);  /* 8.94:1 on the inverted block */
+
+  /* Scrim behind an overlay. Needs its own token: --foreground inverts per theme,
+     so bg-foreground/80 would paint a WHITE wash over dark mode. A scrim is
+     always dark, in both themes. */
+  --overlay: hsl(215 26% 12% / 0.72);
+
+  --radius: 0.5rem;
+
+  /* layering, spec §6. Four things used to share z-50. */
+  --z-raised: 1;
+  --z-sticky: 30;
+  --z-overlay: 50;
+  --z-popover: 60;
+  --z-skip: 100;
 }
- 
+
+@theme inline {
+  --font-sans: var(--font-noto);
+  --font-display: var(--font-newsreader);
+  /* Declared so it is a chosen stack rather than an accidental one. No webfont. */
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* type ramp, spec §2 */
+  --text-display-xl: clamp(40px, 6vw, 60px);
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--letter-spacing: -0.02em;
+
+  /* Ghost landmark. Decorative and aria-hidden, so it sits outside the reading
+     ramp and is the one role allowed past the ~88px display cap in spec §2. */
+  --text-ghost: clamp(64px, 12vw, 88px);
+  --text-ghost--line-height: 0.85;
+  --text-ghost--letter-spacing: -0.03em;
+
+  --text-display-l: 32px;
+  --text-display-l--line-height: 1.15;
+  --text-display-l--letter-spacing: -0.015em;
+
+  --text-display-m: 24px;
+  --text-display-m--line-height: 1.25;
+
+  --text-quote: 20px;
+  --text-quote--line-height: 1.5;
+
+  --text-heading: 18px;
+  --text-heading--line-height: 1.4;
+
+  --text-body-l: 17px;
+  --text-body-l--line-height: 1.65;
+
+  --text-body: 15px;
+  --text-body--line-height: 1.7;
+
+  --text-label: 11px;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.16em;
+
+  --text-data: 12px;
+  --text-data--line-height: 1.5;
+
+  /* spacing, spec §3. 3xl between sections, 4xl only before the inverted CTA. */
+  --spacing-2xs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+  --spacing-4xl: 128px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-signal: var(--signal);
+  --color-signal-inverted: var(--signal-inverted);
+  --color-overlay: var(--overlay);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
   }
+}
+
+@keyframes terminal-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 1.06s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-terminal-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.link-underline {
+  position: relative;
+  border-radius: 2px;
+  outline-offset: 4px;
+}
+
+.link-underline:focus-visible {
+  outline: 2px solid var(--ring);
+}
+
+/* Slides in from the left on transform only, per spec §7 (never width). */
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ⛔ A phone has no hover and no focus-visible, so a link whose ONLY affordance
+   is a hover-revealed underline renders as plain text on the device most
+   readers actually hold. This page's whole argument is that its evidence can be
+   opened; hiding every way to open it is the one failure it cannot afford.
+
+   Devices without hover get the underline at rest. Pointer devices keep the
+   slide-in, which is where that motion was designed to live. */
+@media (hover: none) {
+  .link-underline::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-underline::after {
+    transition: none;
+  }
+}
+
+/* Print and Reader mode, spec §11. The goal is not a designed page, it is a page
+   that does not break when someone forwards it as a PDF. */
+@media print {
+  /* Black ink on white paper, whichever theme was on screen. */
+  :root,
+  .dark {
+    --background: #fff;
+    --foreground: #000;
+    --muted-foreground: #444;
+    --secondary: #fff;
+    --muted: #fff;
+    --border: #bbb;
+    --signal: #000;
+    --signal-inverted: #000;
+  }
+
+  /* The inverted blocks are all `.full-bleed bg-foreground text-background`.
+     Left alone they print as a solid black slab, which wastes a cartridge and
+     renders their white text invisible once the tokens flip above. */
+  .full-bleed {
+    width: auto;
+    margin-left: 0;
+  }
+  .full-bleed,
+  .full-bleed * {
+    background: transparent !important;
+    color: #000 !important;
+  }
+
+  /* Screen furniture with no paper equivalent. */
+  header,
+  .animate-terminal-blink,
+  [aria-hidden='true'] {
+    display: none !important;
+  }
+
+  /* The top padding exists to clear the fixed navbar, which is now hidden. */
+  main {
+    padding-top: 0 !important;
+  }
+
+  /* A printed link is a dead end unless it carries its destination. */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  /* Never strand a heading at the foot of a page. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
 }

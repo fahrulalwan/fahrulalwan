@@ -34,3 +34,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent skills (vendor, re-installable)
+.agents/skills/
+
+# superpowers brainstorm sessions
+.superpowers/
+
+# direnv
+.direnv/
+.envrc
+
+# Lighthouse CI output
+.lighthouseci/
+
+# ground-up rebuild marker (local; drives ~/.claude ground-up-gate hook)
+.ground-up

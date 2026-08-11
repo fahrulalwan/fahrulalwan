@@ -1,42 +1,31 @@
 # Mohammad Fahrul Alwan
 
-![GitHub Followers](https://img.shields.io/github/followers/fahrulalwan?style=social)
-![GitHub Stars](https://img.shields.io/github/stars/fahrulalwan?style=social)
-![Profile Views](https://komarev.com/ghpvc/?username=fahrulalwan&color=blue)
+Software engineering lead in Jakarta. Currently at [Bareksa](https://bareksa.com), a fintech. Before that: consulting, a telco, and a few years splicing fiber cables in villas in Bali.
 
-## Table of Contents
+→ **[fahrulalwan.vercel.app](https://fahrulalwan.vercel.app)** — portfolio & case studies
 
-- [Mohammad Fahrul Alwan](#mohammad-fahrul-alwan)
-  - [Table of Contents](#table-of-contents)
-  - [About Me](#about-me)
-  - [Skills](#skills)
-  - [Personal Life](#personal-life)
-  - [Contact](#contact)
-  - [License](#license)
+---
 
-## About Me
+### Currently
 
-Hi! I'm a Senior Frontend Engineer & Tech Lead with over 11 years of IT-focused learning and 7+ years of coding experience. I specialize in creating robust and scalable web applications using modern JavaScript frameworks. I'm passionate about solving complex problems and driving business impact through innovative technology solutions.
+- Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful.
+- Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.
+- Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.
+- Trying to finish more of the books I start instead of adding new ones to the pile.
 
-I'm currently working as a Frontend Engineering Lead at [Bareksa](https://bareksa.com), a leading fintech company in Indonesia. I'm responsible for leading the frontend team, designing and developing web applications, and ensuring the quality of the codebase. I collaborate with cross-functional teams to deliver high-quality products. Currently interested & hyped with AI development!
+### Tech
 
-## Skills
+- **Frontend:** TypeScript · React · Next.js · Angular · Tailwind
+- **Backend:** Node · Hono · Java Spring Boot · Laravel · Python · Rust
+- **Data & infra:** PostgreSQL · MongoDB · Redis · Kafka · Kysely · OpenTelemetry · Docker · Kubernetes · Cloudflare · GCP · AWS · Vercel
 
-- **Frontend Development**: React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS
-- **Backend Development**: Node.js, Express.js, Java - Spring Boot, PostgreSQL
-- **DevOps & Cloud**: Linux, Docker, Kubernetes, Nginx, GCP, AWS
-- **Tools & Practices**: Git, Agile Methodologies, CI/CD, Serverless, Leadership
+### Elsewhere
 
-## Personal Life
+- **LinkedIn** — [linkedin.com/in/fahrulalwan](https://linkedin.com/in/fahrulalwan)
+- **Email** — [fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)
 
-I have a deep passion for learning new things, especially philosophical concepts. Traveling and exploring new places fuels my creativity and broadens my perspective. I'm an avid basketball enthusiast, enjoy hitting the gym, and have a keen interest in photography and classic music. Currently, I'm cultivating a habit of reading books to enrich my knowledge further😬
+---
 
-## Contact
+![Profile views](https://komarev.com/ghpvc/?username=fahrulalwan&color=ea580c&style=flat-square)
 
-- **Website**: [https://fahrulalwan.vercel.app](https://fahrulalwan.vercel.app)
-- **Email**: [fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)
-- **LinkedIn**: [linkedin.com/in/fahrulalwan](https://linkedin.com/in/fahrulalwan)
-
-## License
-
-This repository is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<sub>MIT Licensed — see [LICENSE](LICENSE).</sub>

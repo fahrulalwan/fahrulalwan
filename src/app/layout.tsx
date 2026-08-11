@@ -1,45 +1,62 @@
-import { Noto_Sans } from 'next/font/google';
+import { Newsreader, Noto_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import './theme.css';
-import type { FC, PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Home } from 'lucide-react';
-import ThemeToggle from '@/components/ui/theme-toggle';
+import type { Metadata, Viewport } from 'next';
+import type { FC, PropsWithChildren } from 'react';
+import Footer from '@/components/shared/footer';
+import Navbar from '@/components/shared/navbar';
+import { SITE_URL } from '@/lib/site';
 
-const noto_sans = Noto_Sans({ subsets: ['latin'], variable: '--font-noto' });
+// Font budget, spec §11. `swap` is Next's default; it is stated here because the
+// ≥95 mobile target depends on it rather than on a default staying put.
+const noto_sans = Noto_Sans({
+  subsets: ['latin'],
+  variable: '--font-noto',
+  display: 'swap',
+});
+// Roman only. The italic face was loaded for exactly one 14px line in the footer,
+// and §2 permits italic solely for whole pull-quotes, a role nothing uses yet.
+// Add it back the day a pull-quote actually needs it.
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  display: 'swap',
+});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    // Matches --background in globals.css / theme.css. On a phone this band sits
+    // directly above the page, so a mismatch is the first thing a visitor sees.
+    { media: '(prefers-color-scheme: light)', color: 'hsl(210 18% 97.5%)' },
+    { media: '(prefers-color-scheme: dark)', color: 'hsl(215 18% 6%)' },
+  ],
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fahrulalwan.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    template: '%s | @fahrulalwan',
-    default: '@fahrulalwan',
+    template: '%s | Fahrul Alwan',
+    default: 'Fahrul Alwan',
   },
   generator: 'Next.js',
-  applicationName: "Fahrul Alwan's Portfolio",
+  applicationName: 'Fahrul Alwan',
   description:
-    'Software Engineer with a passion for building delightful user experiences. I specialize in frontend development with React and Next.js.',
+    'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
   keywords: [
     'Mohammad Fahrul Alwan',
+    'Software Engineering Lead',
     'Software Engineer',
-    'Frontend Developer',
-    'Full-stack Developer',
-    'React Developer',
-    'React Engineer',
-    'Lead Developer',
-    'Engineering Lead',
-    'Technical Lead',
-    'Software Developer',
-    'Web Developer',
-    'JavaScript Developer',
-    'TypeScript Developer',
-    'Next.js Developer',
-    'React Native Developer',
-    'Node.js Developer',
+    'Product Engineer',
+    'React',
+    'Next.js',
+    'TypeScript',
   ],
   creator: 'Mohammad Fahrul Alwan',
   alternates: {
@@ -47,14 +64,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'enUS',
-    siteName: '@fahrulalwan',
-    alternateLocale: ['idID'],
+    locale: 'en_US',
+    siteName: 'Fahrul Alwan',
+    alternateLocale: ['id_ID'],
     countryName: 'Indonesia',
     description:
-      'Software Engineer with a passion for building delightful user experiences. I specialize in frontend development with React and Next.js.',
+      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
     emails: 'fahrulalwan@gmail.com',
-    title: '@fahrulalwan',
+    title: 'Fahrul Alwan',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fahrul Alwan',
+    description:
+      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
   },
   robots: {
     follow: true,
@@ -68,6 +91,22 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'x-hello-curious':
+      "if you're reading this in view-source, we should talk. fahrulalwan@gmail.com. i actually read every email.",
+  },
+};
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mohammad Fahrul Alwan',
+  url: SITE_URL,
+  jobTitle: 'Software Engineering Lead',
+  sameAs: [
+    'https://github.com/fahrulalwan',
+    'https://linkedin.com/in/fahrulalwan',
+  ],
 };
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
@@ -75,38 +114,34 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${noto_sans.variable} font-sans`}
+      className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-dvh">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <nav className="fixed top-4 left-4 z-50 flex items-center space-x-4">
-            <Link href="/">
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                className="bg-background/50 backdrop-blur-sm rounded-full"
-              >
-                <Home className="h-5 w-5" />
-                <span className="sr-only">Go to homepage</span>
-              </Button>
-            </Link>
-            <ThemeToggle />
-          </nav>
-          <main className="flex-grow max-w-screen-lg mx-auto px-5 sm:px-4 py-16">
+          <script
+            type="application/ld+json"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from hardcoded constant
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip)] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
+          >
+            Skip to content
+          </a>
+          <Navbar />
+          <main
+            id="main"
+            className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16"
+          >
             {children}
           </main>
-          <footer className="border-t border-border p-4 text-center">
-            <p>
-              &copy; {new Date().getFullYear()} Mohammad Fahrul Alwan. All
-              rights reserved.
-            </p>
-          </footer>
+          <Footer />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
