@@ -117,12 +117,29 @@ const FeaturedWork: FC = () => {
                 </p>
               )}
 
-              {/* Focus parity per spec §9: there is no hover on a phone and a
-                  keyboard user never triggers one, so focus reveals this too.
-                  focus-within rather than focus-visible, because focus now lands
-                  on a descendant link rather than on the card itself. */}
+              {/* This is the only thing on the card that says it can be opened,
+                  so it is visible at rest. It used to start at opacity 0 and
+                  appear on hover, which meant a reader who scrolled without
+                  moving the mouse saw three descriptions and one external link,
+                  and never learned three case studies existed. The headline is
+                  a link but carries no underline, and `fartix.id` below sets a
+                  link convention — brighter, with an arrow — that the headline
+                  does not follow. So nothing at rest said "openable".
+
+                  Phones were already correct via the `no-hover:` variant, which
+                  is what makes this a pointer-device defect rather than a
+                  design choice: the two surfaces disagreed.
+
+                  ⛔ Opacity is not the dimmer to reach for here. At 60% this
+                  text measures about 3.9:1 dark and 3.0:1 light, under the 4.5
+                  the CI gate asserts as an error. Full `text-muted-foreground`
+                  keeps 7.03:1 and 5.66:1.
+
+                  The slide stays as the hover reward, and focus-within triggers
+                  it too, because focus lands on a descendant link rather than
+                  on the card itself. */}
               <div className="mt-3">
-                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 no-hover:opacity-100 no-hover:translate-x-0 transition-[opacity,transform] duration-300">
+                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground -translate-x-1 group-hover:translate-x-0 group-focus-within:translate-x-0 transition-transform duration-300">
                   Read case study <ArrowRight className="size-4" />
                 </span>
               </div>
