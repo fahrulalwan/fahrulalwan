@@ -1,11 +1,4 @@
-import Image from 'next/image';
 import type { FC } from 'react';
-
-const currentItems = [
-  'Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.',
-  'Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.',
-  'Trying to finish more of the books I start instead of adding new ones to the pile.',
-];
 
 const Hero: FC = () => {
   return (
@@ -75,7 +68,13 @@ const Hero: FC = () => {
           <p className="text-sm text-muted-foreground">
             Software Engineering Lead &middot; Jakarta &middot; UTC+7
           </p>
-          <p className="text-sm text-muted-foreground max-w-[52ch]">
+          {/* Foreground, not muted, and it is the only line in this block that
+              is. A dogfood pass found the four facts a recruiter scans for set
+              in the same grey as everything around them, at the smallest size
+              on the screen. This is the most legible sentence on the page for
+              that reader: it names the employer, what the employer is, and how
+              big. Lifting it is the whole fix, and it costs no reordering. */}
+          <p className="text-sm text-foreground max-w-[52ch]">
             Leading frontend at Bareksa &middot; OJK-licensed investment
             platform &middot; 2.5M+ investors
           </p>
@@ -107,51 +106,6 @@ const Hero: FC = () => {
         </nav>
       </div>
 
-      {/* Folded in from its own section. It was answering the same question the
-          opening now answers, one scroll later, so it reads as a coda to the
-          identity rather than a stop of its own.
-
-          The portrait moved here when the Origin section was deleted for
-          telling the hero's story a second time. It sat in that section's
-          `[1fr_2fr]` aside, and the shape is kept because it was never what was
-          wrong there — but the pairing is better: a face beside what someone is
-          doing now reads more directly than a face beside a paragraph about
-          how they started. */}
-      <div className="mt-20 sm:mt-24">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-12">
-          <div>
-            <h2 className="text-label font-medium text-muted-foreground uppercase mb-6">
-              Currently
-            </h2>
-            {/* Source is 192x192, so the portrait box is deliberately small.
-                It does NOT go on the preview card — that surface renders at
-                full size without context, and the background is a Google
-                installation he has no affiliation with. */}
-            <Image
-              src="/profile.webp"
-              alt="Fahrul Alwan"
-              width={192}
-              height={192}
-              className="w-32 h-40 sm:w-36 sm:h-44 rounded-sm object-cover grayscale"
-            />
-          </div>
-
-          <ul className="space-y-6 max-w-[62ch]">
-            {currentItems.map((item) => (
-              <li
-                key={item}
-                className="flex gap-4 text-muted-foreground leading-relaxed"
-              >
-                <span
-                  className="w-3 h-px bg-signal shrink-0 mt-3"
-                  aria-hidden="true"
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
     </section>
   );
 };
