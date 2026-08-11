@@ -58,7 +58,7 @@ The receipts carry the argument without naming it: the agent loop (AI-native —
 | | Claimed | Verified 2026-08-05 |
 |---|---|---|
 | Accessibility | 100 | **100** — but it read **96** first, on a real defect at `footer.tsx:11`. Fixed, then re-measured. |
-| Performance | 98 | **98** — LCP 0.9 s · CLS 0 · TBT 100 ms · Speed Index 0.7 s |
+| Performance | 98 | **96** on the rebuilt page — LCP 2.7 s · CLS 0 · TBT 50 ms · Speed Index 0.9 s. Re-measured in CI 2026-08-12. The 98 was the pre-rebuild page. |
 | SEO | 100 | **100** |
 
 ⛔ **How each was measured matters, because the first attempt gave the wrong answer.** Accessibility and SEO come from a Lighthouse navigation run; **performance comes from the Lighthouse CLI under desktop throttling, against the deployed preview** — an unthrottled localhost trace produces plausible numbers and no score at all, which is what made this claim look unverifiable for a day. **Re-measure this way, or not at all.**

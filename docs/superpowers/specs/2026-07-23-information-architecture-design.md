@@ -17,7 +17,7 @@ Three answers from the owner set every decision below. They are recorded because
 | Checkable by a stranger, and genuinely his | Not his to show live |
 |---|---|
 | fartix.id, live, verified HTTP 200 — his own founded venture, still his build, recent | the coverage ratchet — private repo, current employer |
-| the site itself — accessibility 100, performance 98, measured in CI | the agent loop and its gates — private, and its own spec calls it "unfalsifiable by construction" |
+| the site itself — accessibility 100, performance 96, measured in CI on the rebuilt page (PR #1243, 2026-08-12, mobile) | the agent loop and its gates — private, and its own spec calls it "unfalsifiable by construction" |
 | | caready.co.id — vendor work under a consultancy, and the live site has since been revamped by others, so a click shows work that is not his |
 
 ⚠️ **caready was demoted from checkable evidence on 2026-07-24, after the review closed.** The owner is a vendor who built the 2018 real-time layer under a consultancy, not an owner; and the live site has since been revamped, so the link no longer shows his work and its liveness cannot be claimed for his code. The case-study copy was corrected the same day (the false "still in production eight years later / still active at caready.co.id" claims removed). **caready survives as an early-career story, never as a live "check it, it's mine" link.**
