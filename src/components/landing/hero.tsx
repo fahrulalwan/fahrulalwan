@@ -2,7 +2,6 @@ import Image from 'next/image';
 import type { FC } from 'react';
 
 const currentItems = [
-  'Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful.',
   'Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.',
   'Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.',
   'Trying to finish more of the books I start instead of adding new ones to the pile.',
@@ -21,9 +20,11 @@ const Hero: FC = () => {
 
       <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-[19ch]">
         I lead a frontend team and I&apos;m{' '}
-        <em className="not-italic text-signal">
-          still in the code most days.
-        </em>
+        {/* Four words, not six. CLAUDE.md caps the signal at one or two key
+            words per page and spec §1 at ~3% of a viewport; six words was half
+            the headline. "most days" is the hedge, not the claim, so it reads
+            in the foreground where hedges belong. */}
+        <em className="not-italic text-signal">still in the code</em> most days.
       </h1>
 
       {/* Every clause here is a dated fact from a private career record. The
