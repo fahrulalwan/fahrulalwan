@@ -62,15 +62,24 @@ const Hero: FC = () => {
             An earlier build said only "Currently leading frontend at Bareksa",
             which is unsizeable to anyone outside Indonesia — the reader most
             of this page is written for. */}
-        {/* One run of middot-separated facts that simply wraps. An earlier
-            version put a `hidden sm:block` <br /> here for a two-line desktop
-            shape; JSX collapsed the whitespace around it, so on mobile — where
-            the break is display:none — it rendered "UTC+7Leading". */}
-        <p className="text-sm text-muted-foreground max-w-[54ch]">
-          Software Engineering Lead &middot; Jakarta &middot; UTC+7 &middot;
-          Leading frontend at Bareksa, an OJK-licensed investment platform with
-          2.5M+ investors
-        </p>
+        {/* Two lines because they are two KINDS of thing, and chaining them
+            made the eye switch modes mid-line. The first is three scannable
+            tokens; the second is a sentence that has to be read. Running them
+            together as one middot chain is the comma-chain failure: a set of
+            facts rendered as prose, so the reader parses instead of scanning.
+
+            Two <p> elements rather than a conditional <br />. An earlier
+            version used `hidden sm:block`, and JSX collapsed the whitespace
+            around it, so on mobile it rendered "UTC+7Leading". */}
+        <div className="space-y-1.5">
+          <p className="text-sm text-muted-foreground">
+            Software Engineering Lead &middot; Jakarta &middot; UTC+7
+          </p>
+          <p className="text-sm text-muted-foreground max-w-[52ch]">
+            Leading frontend at Bareksa &middot; OJK-licensed investment
+            platform &middot; 2.5M+ investors
+          </p>
+        </div>
 
         <nav className="flex items-center gap-5 shrink-0" aria-label="Social">
           <a
