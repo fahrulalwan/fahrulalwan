@@ -17,7 +17,10 @@ const things = [
   {
     name: 'this site',
     repo: 'https://github.com/fahrulalwan/fahrulalwan',
-    note: 'The code behind this page.',
+    // Said plainly, because this is the one piece of craft proof that needs
+    // nobody's permission to show. The comments really do carry the arguments,
+    // and several of them record a first answer that was wrong.
+    note: 'The code behind this page. The comments carry the reasoning, including the parts that were wrong first.',
   },
   {
     name: 'ganjil-genap',
