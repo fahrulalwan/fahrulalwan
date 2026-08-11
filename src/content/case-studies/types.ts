@@ -27,5 +27,21 @@ export interface CaseStudy {
     qualitative?: string[];
   };
   reflections: string[];
+
+  /**
+   * What a reader can actually do with this one, said plainly.
+   *
+   * `note` renders next to the card. `href` is present only when the work is
+   * genuinely openable — its absence is the signal that this is described
+   * rather than shown, which the page states out loud rather than hiding.
+   *
+   * Required on purpose: a new case study cannot be added without saying what
+   * a stranger can verify about it.
+   */
+  availability: {
+    note: string;
+    href?: string;
+  };
+
   thumbnail?: string;
 }

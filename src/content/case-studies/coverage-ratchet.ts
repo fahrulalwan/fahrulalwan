@@ -45,6 +45,9 @@ export const coverageRatchetCaseStudy: CaseStudy = {
       'What I am most pleased with is not the number anyway. It is that the exceptions are counted. Every place we knowingly fell short is tracked with a reason attached, so the debt is something you can argue with rather than a feeling.',
     ],
   },
+  availability: {
+    note: "private repo, so this one's a description rather than a link",
+  },
   reflections: [
     'I am not the one who designed the approach here. I decided the work was worth doing, I wrote the rules it had to obey, and I decided what was allowed to merge. That is a real job and it is most of what leading turned out to mean, but it is not the same as having invented the method, and an earlier version of this page said otherwise.',
     'The thresholds we set at the start were wrong, and moving them was the useful part rather than an embarrassment. What I would keep is the habit of writing down why they moved. Without that, the next person just moves them back.',

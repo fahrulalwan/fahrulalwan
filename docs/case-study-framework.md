@@ -74,6 +74,10 @@ interface CaseStudy {
     qualitative?: string[];  // 1-3 bullet reflections on impact
   };
   reflections: string[];     // 2-3 honest takeaways, first-person
+  availability: {            // REQUIRED — what a reader can actually do with this
+    note: string;            // e.g. 'still up, still mine' / '2018, rebuilt by other people since'
+    href?: string;           // Present ONLY when the work is genuinely openable
+  };
   thumbnail?: string;        // Path to hero image, e.g. '/images/case-studies/caready-team.jpeg'
 }
 ```

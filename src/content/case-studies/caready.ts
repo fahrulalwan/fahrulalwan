@@ -49,6 +49,9 @@ export const careadyCaseStudy: CaseStudy = {
       'This was my first real engineering project, fresh out of a coding bootcamp. I was learning the fundamentals on the job, building something none of us had done before.',
     ],
   },
+  availability: {
+    note: '2018, rebuilt by other people since',
+  },
   reflections: [
     "The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I'd invest in best practices earlier instead of discovering them through trial and error.",
     "I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn't know. I think about that a lot now, whenever I'm leading someone who reminds me of how I was back then.",

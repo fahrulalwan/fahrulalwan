@@ -49,6 +49,10 @@ export const fartixCaseStudy: CaseStudy = {
       'Most founder side-projects are a landing page and a payment button. This one took real money from real strangers, at a stadium, under a crowd. The failure modes were operational rather than hypothetical: when checkout breaks, someone does not get through the gate.',
     ],
   },
+  availability: {
+    note: 'still up, still mine',
+    href: 'https://fartix.id',
+  },
   reflections: [
     'As the founder, I let the build run ahead of what we had proven. Ten services and a twenty-table schema for one early client was more than the moment needed. The engineering was sound, but I would have bought that certainty with something smaller first. That call was mine.',
     'The parts that had to work under pressure — payments, the gate, order recovery — deserved the care they got. The parts that could have waited did not always wait. I am better now at telling those apart before I build, not after.',
