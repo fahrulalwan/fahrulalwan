@@ -1,24 +1,28 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
+# Security scanning. CLAUDE.md tells readers this repo is scanned by CodeQL, and
+# until now that was not true: this file has never run once.
 #
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
+# Two independent reasons it could not. It triggered on `master`, a branch that
+# does not exist here — the default is `main` — so neither the push nor the
+# pull_request trigger could ever fire, leaving only the weekly cron. And it
+# pinned github/codeql-action@v1, retired in January 2023, which hard-fails on
+# start, so the cron could not have produced a passing run either.
 #
-# ******** NOTE ********
-# We have attempted to detect the languages in your repository. Please check
-# the `language` matrix defined below to confirm you have the correct set of
-# supported CodeQL languages.
-# ******** NOTE ********
-
-name: "CodeQL"
+# Structure below follows GitHub's current starter template (actions/starter-workflows,
+# code-scanning/codeql.yml) rather than being hand-written: v4 of the action,
+# `javascript-typescript` as one language rather than `javascript`, `build-mode: none`
+# because an interpreted language needs no build, and the explicit permissions block
+# that v4 requires to upload results.
+name: CodeQL
 
 on:
   push:
-    branches: [ master ]
+    branches: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ master ]
+    branches: [main]
   schedule:
+    # Saturday 06:17 UTC. Kept from the original file: an odd minute avoids the
+    # top-of-hour rush on shared runners, and a weekly sweep catches advisories
+    # published against dependencies that have not changed.
     - cron: '17 6 * * 6'
 
 jobs:
@@ -26,43 +30,30 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
 
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
+        include:
+          - language: javascript-typescript
+            build-mode: none
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
-      with:
-        languages: ${{ matrix.language }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
-        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
 
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
-
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 https://git.io/JvXDl
-
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
-    #    and modify them (or add more) to build your code if your project
-    #    uses a compiled language
-
-    #- run: |
-    #   make bootstrap
-    #   make release
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: '/language:${{ matrix.language }}'
