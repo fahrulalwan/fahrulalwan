@@ -162,28 +162,6 @@
   }
 }
 
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-reveal-up {
-  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-reveal-up {
-    animation: none;
-    opacity: 1;
-  }
-}
-
 @keyframes terminal-blink {
   0%, 50% {
     opacity: 1;
@@ -312,17 +290,4 @@
     break-after: avoid;
   }
 
-  .animate-reveal-up {
-    animation: none;
-    opacity: 1;
-  }
-
-  /* The rule above only rescues a section that ALREADY revealed on screen.
-     Print without scrolling the whole page first and every unrevealed section
-     is still at opacity 0 — a blank document below the hero, on a page whose
-     stated job is to be safe to forward to a colleague. */
-  .scroll-reveal {
-    opacity: 1 !important;
-    animation: none !important;
-  }
 }

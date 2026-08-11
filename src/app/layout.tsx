@@ -117,16 +117,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
     >
       <body className="flex flex-col min-h-dvh">
-        {/* Without JS the IntersectionObserver never runs, so every revealed
-            section stays at opacity 0 and the page is blank below the hero.
-            The text is in the DOM either way; this is what makes it visible.
-
-            In <body> rather than <head> on purpose: this layout has no <head>
-            element, and React 19 only hoists a <style> when given both href and
-            precedence, so a bare one stays exactly where it is written. */}
-        <noscript>
-          <style>{`.scroll-reveal{opacity:1!important}`}</style>
-        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

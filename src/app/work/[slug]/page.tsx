@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CaseStudyContent from '@/components/case-study/case-study-content';
 import CaseStudyHeader from '@/components/case-study/case-study-header';
-import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { getAllCaseSlugs, getCaseStudy } from '@/content/case-studies';
 
 export const generateStaticParams = () => {
@@ -70,37 +69,35 @@ const CaseStudyPage = async ({
       <CaseStudyContent caseStudy={caseStudy} />
 
       {/* Inline closing CTA */}
-      <ScrollReveal delay="0.1s">
-        <section className="py-12 sm:py-16 border-t border-border/50">
-          <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[65ch] mb-5">
-            If any of this resonated, say hi.
-          </p>
-          <div className="flex items-center gap-5">
-            <a
-              href="mailto:fahrulalwan@gmail.com"
-              className="link-underline text-sm font-medium transition-colors"
-            >
-              fahrulalwan@gmail.com
-            </a>
-            <a
-              href="https://github.com/fahrulalwan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/fahrulalwan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </section>
-      </ScrollReveal>
+      <section className="py-12 sm:py-16 border-t border-border/50">
+        <p className="text-sm leading-relaxed text-muted-foreground/70 max-w-[65ch] mb-5">
+          If any of this resonated, say hi.
+        </p>
+        <div className="flex items-center gap-5">
+          <a
+            href="mailto:fahrulalwan@gmail.com"
+            className="link-underline text-sm font-medium transition-colors"
+          >
+            fahrulalwan@gmail.com
+          </a>
+          <a
+            href="https://github.com/fahrulalwan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/fahrulalwan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </section>
     </>
   );
 };
