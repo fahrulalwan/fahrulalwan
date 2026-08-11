@@ -1,8 +1,7 @@
-import ApproachTeaser from '@/components/landing/approach-teaser';
-import Currently from '@/components/landing/currently';
 import FeaturedWork from '@/components/landing/featured-work';
 import Hero from '@/components/landing/hero';
-import WhatIBring from '@/components/landing/what-i-bring';
+import Origin from '@/components/landing/origin';
+import OtherThings from '@/components/landing/other-things';
 import CtaSection from '@/components/shared/cta-section';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 
@@ -11,18 +10,18 @@ const LandingPage = () => {
     <>
       <Hero />
       <ScrollReveal>
-        <WhatIBring />
-      </ScrollReveal>
-      <ScrollReveal delay="0.05s">
-        <Currently />
-      </ScrollReveal>
-      <ScrollReveal delay="0.1s">
         <FeaturedWork />
       </ScrollReveal>
-      <ScrollReveal delay="0.2s">
-        <ApproachTeaser />
+      <ScrollReveal delay="0.05s">
+        <OtherThings />
       </ScrollReveal>
-      <ScrollReveal delay="0.3s">
+      {/* A fifth section belongs here, between the work and the origin. It is
+          specced and blocked on a sign-off from outside this project, and it
+          drops in at this point without rearranging anything above or below. */}
+      <ScrollReveal delay="0.1s">
+        <Origin />
+      </ScrollReveal>
+      <ScrollReveal delay="0.2s">
         <CtaSection />
       </ScrollReveal>
     </>

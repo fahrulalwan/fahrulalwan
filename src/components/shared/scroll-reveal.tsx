@@ -19,7 +19,15 @@ export const ScrollReveal: FC<ScrollRevealProps> = ({
   return (
     <div
       ref={ref}
-      className={cn('opacity-0', isVisible && 'animate-reveal-up', className)}
+      /* `scroll-reveal` is a stable hook for CSS that must target an element
+         which has NOT yet revealed. Print and no-JS both need that: the
+         observer never fires, so `animate-reveal-up` is never added, and
+         opacity-0 would otherwise be the permanent state. */
+      className={cn(
+        'scroll-reveal opacity-0',
+        isVisible && 'animate-reveal-up',
+        className,
+      )}
       style={delay ? { animationDelay: delay } : undefined}
     >
       {children}

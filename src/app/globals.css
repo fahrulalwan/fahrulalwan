@@ -296,4 +296,13 @@
     animation: none;
     opacity: 1;
   }
+
+  /* The rule above only rescues a section that ALREADY revealed on screen.
+     Print without scrolling the whole page first and every unrevealed section
+     is still at opacity 0 — a blank document below the hero, on a page whose
+     stated job is to be safe to forward to a colleague. */
+  .scroll-reveal {
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }
