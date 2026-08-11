@@ -126,9 +126,11 @@ const FeaturedWork: FC = () => {
                   link convention — brighter, with an arrow — that the headline
                   does not follow. So nothing at rest said "openable".
 
-                  Phones were already correct via the `no-hover:` variant, which
+                  Phones were already correct, via a touch-only override, which
                   is what makes this a pointer-device defect rather than a
-                  design choice: the two surfaces disagreed.
+                  design choice: the two surfaces disagreed about whether the
+                  affordance existed at all. That override is gone now, because
+                  showing the line at rest makes it the same on both.
 
                   ⛔ Opacity is not the dimmer to reach for here. At 60% this
                   text measures about 3.9:1 dark and 3.0:1 light, under the 4.5

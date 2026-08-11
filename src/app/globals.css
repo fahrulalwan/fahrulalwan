@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-/* The exact complement of Tailwind's own `hover:` variant, which since v4 only
-   applies when the primary input device supports hover. Anything whose only
-   affordance is revealed on hover is invisible on a phone, so `no-hover:` is
-   how a utility states its touch fallback in the markup rather than in an
-   override buried down here. */
-@custom-variant no-hover (@media (hover: none));
-
 /* Design system: docs/superpowers/specs/2026-07-23-design-system-design.md
    Light theme lives here. Dark theme lives in theme.css and nowhere else.
    Every ratio below was computed against these exact values (spec §1). */
