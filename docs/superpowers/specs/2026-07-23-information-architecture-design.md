@@ -64,7 +64,22 @@ A recruiter who wants a CV asks, and receives a tailored copy through the channe
 
 `public/profile.webp` exists (9.9KB). `what-i-bring.tsx:13` looks for `/images/profile.jpg`, does not find it, and renders a grey gradient placeholder beside a `TODO`. **The photo was shot and never connected.**
 
-**Decision: use it**, in section 4 and as the image on the generated preview card. It is the only human element on a page that is otherwise entirely evidence, and its marginal exposure is small — a face carries no contact details and cannot be used to impersonate someone in an application, unlike a CV.
+**Decision: use it in section 4.** It is the only human element on a page that is otherwise entirely evidence, and its marginal exposure is small — a face carries no contact details and cannot be used to impersonate someone in an application, unlike a CV.
+
+⛔ **REVISED 2026-08-10 — it does NOT go on the generated preview card, and the original decision was made without looking at the photograph.** This clause read *"and as the image on the generated preview card"* and weighed exactly one risk: whether a face leaks contact details. **Nobody had looked at the background.** It is a Google-branded floral installation, unmistakably so, with him standing directly in front of it.
+
+The two placements are not equally exposed, which is why one survives and the other does not:
+
+- **Section 4 keeps it.** Small, and `grayscale` kills the brand colours. The reader is already inside the page and has context.
+- **The preview card does not.** It renders at 1200×630, in full colour, in every Slack, WhatsApp and LinkedIn unfurl — in front of people who will never open the page. A glance substitutes for reading there, and a Google logo at that size reads as an affiliation he does not have. On a page whose whole argument is claims without overclaim, that is the one surface where the cost is highest and the context is lowest.
+
+A second, independent reason: the file is **192×192**. A 1200×630 card wants 240–320px for a portrait, so even a tight crop to the face upscales visibly, on the only human element of the page. The card is **typography only** — name, `Software Engineering Lead`, `Jakarta · UTC+7`, in the site's own faces.
+
+⛔ **AND THIS DOCUMENT ALREADY KNEW. Reason #3 for replacing the old card, twenty lines above, is *"The photograph is taken in front of Google branding, which the owner has no affiliation with. On the one artifact that cannot carry a caveat, that is a claim risk rather than a neutral backdrop."*** The spec argued the risk, then reinstated it — in itself, in the same pass — by naming a different file with the same backdrop. **The failure was never missing knowledge. It was a fact stated in one section and not carried into a decision in the next.**
+
+Nothing caught it: not this spec's own three-phase review, not its blindspot pass, not the build plan's Phase 1. It surfaced when a Phase 2 reviewer **opened the image file** rather than reading about it, on 2026-08-10, and the owner ruled the same day.
+
+*The transferable lesson, which is worth more than the fix: a document can hold its own counter-evidence and still decide against it, because a reviewer reads for what a section CLAIMS and not for whether two sections AGREE. `profile.webp` and `opengraph-image.jpeg` are different filenames, so nothing pattern-matched them as the same problem.*
 
 ## The landing page
 
@@ -110,7 +125,7 @@ It also has no navigable structure: four of its sections carry `sr-only` heading
 
 | File | Change |
 |---|---|
-| `next.config.ts` | Add `/approach` → `/`. And ⛔ **repoint the existing `/about` → `/approach` to `/about` → `/` in the same change** — otherwise it becomes a chain ending in 404. |
+| `next.config.ts` | ⛔ **Repoint `/about` → `/approach` to `/about` → `/`. Add NO `/approach` redirect** — see the correction below. |
 | `src/app/approach/page.tsx` | Deleted after its two surviving lines are moved. Carries a `canonical: '/approach'` that dies with it. |
 | `src/app/page.tsx` | Remove the `ApproachTeaser` import and its render. |
 | `src/app/sitemap.ts` | Drop the `/approach` entry. |
@@ -128,13 +143,22 @@ Case study pages change structurally not at all.
 - The landing page renders five sections in the order above
 - The live link in section 2 (fartix.id) returns 200 at review time, checked rather than assumed. A dead link on a verification page is worse than no link, and §15 of the design system spec already scopes a CI link check that would make this continuous rather than one-off. caready is not a live link and carries no 200 requirement.
 - The craft-proof section has a home and its own spec's preconditions are still respected
-- **`curl -I /approach` returns 308 to `/`, and `curl -I /about` returns 308 to `/` in one hop** — the redirect is observed to fire, not just written
-- **`rg /approach src next.config.ts` returns nothing** after the change — all seven references gone
+- **`curl -I /about` returns 308 to `/` in one hop** — observed to fire, not just written. **`curl -I /approach` returns 404, and that is correct** — see the correction below.
+- **`git grep -in approach` finds no route reference** in `src/`, `next.config.ts`, `lighthouserc.json`, `CLAUDE.md` or `.github/`. Case-insensitive and without the leading slash, because two `CLAUDE.md` lines say "approach page" in prose and a `/approach` grep walks straight past them.
+
+> [!warning] ⛔ `/approach` gets NO redirect. Corrected 2026-08-11, on the owner's flag and verified.
+> This spec required one, and the first build plan inherited it. **The route was never deployed.** It is absent from `origin/main`, from main's `sitemap.ts`, and from main's `next.config.ts`; it was created on the `feat/portfolio-refactor` branch in `6508238` and has only ever existed there.
+>
+> **So no bookmark, no index entry and no inbound link to it can exist**, and a redirect would guard a URL the public has never been able to reach. The route is deleted outright.
+>
+> **`/about` is the opposite case and its redirect stays.** `src/app/about/page.tsx` *is* on `origin/main` — genuinely public on the February-2025 site, alongside `/experience`, `/projects`, `/skills` and `/education`. This branch deleted the page and pointed it at `/approach`, so it must be repointed to `/` or it 404s.
+>
+> ⛔ **This is also a correction to the review that produced this spec.** The Phase 2 pressure-test listed *"an old `/approach` bookmark"* as a stress scenario and concluded the 308 was required. **The scenario was impossible** — no such bookmark can exist — and nobody checked whether the route had ever shipped before designing a redirect for it. **A stress scenario is only as good as the premise it assumes**, and this one assumed a deployment history that a single `git ls-tree` against `origin/main` would have refuted.
 - The generated preview card is confirmed by fetching the built image and viewing one real unfurl, not by assuming the file renders
 - **One job title across every surface.** Today the preview card, the JSON-LD and the site copy disagree. Whatever the title is, it appears identically in all three.
 - **The preview card renders from `opengraph-image.tsx` using design tokens**, and no static `opengraph-image.jpeg` / `twitter-image.jpeg` remains
 - **No CV file, link, or "CV on request" line exists anywhere on the site**
-- **`profile.webp` renders**, and no placeholder gradient or `TODO` about a photo survives
+- **`profile.webp` renders in section 4**, grayscaled, and no placeholder gradient or `TODO` about a photo survives. It does **not** appear on the preview card — see the revision above.
 
 ## Open
 
