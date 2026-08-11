@@ -158,7 +158,7 @@ How the site tells a story across pages:
 | Location | File | Key copy |
 |----------|------|----------|
 | Hero headline | `src/components/landing/hero.tsx` | "Lately I've been rewriting code I wrote years ago and wondering what I was thinking." |
-| Hero sub | same | "Engineering lead · Jakarta" |
+| Hero sub | same | "Software Engineering Lead · Jakarta · UTC+7 · Currently leading frontend at Bareksa" |
 | WhatIBring main | `src/components/landing/what-i-bring.tsx` | "...deciding what needs to exist, and keeping the rest useful to the people actually using it." |
 | WhatIBring detail | same | "...splicing fiber cables in Bali. I just kept following the interesting problems." |
 | Currently (Bareksa) | `src/components/landing/currently.tsx` | "Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful." |

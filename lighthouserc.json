@@ -5,7 +5,6 @@
       "startServerReadyPattern": "Ready in",
       "url": [
         "http://localhost:3000/",
-        "http://localhost:3000/approach",
         "http://localhost:3000/work/test-coverage-ratchet"
       ],
       "numberOfRuns": 3

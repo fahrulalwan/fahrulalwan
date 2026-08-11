@@ -4,7 +4,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      { source: '/about', destination: '/approach', permanent: true },
+      { source: '/about', destination: '/', permanent: true },
       { source: '/experience', destination: '/', permanent: true },
       { source: '/projects', destination: '/', permanent: true },
       { source: '/skills', destination: '/', permanent: true },

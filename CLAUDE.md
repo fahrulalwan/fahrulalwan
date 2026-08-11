@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for an engineering lead, built with Next.js 16 App Router, React 19, and TypeScript. Editorial design system with manifesto-style approach page. Deployed on Vercel.
+Personal portfolio website for an engineering lead, built with Next.js 16 App Router, React 19, and TypeScript. Editorial design system, single landing page plus case studies. Deployed on Vercel.
 
 ## ⛔ What belongs in this repo
 
@@ -51,7 +51,7 @@ No test suite is configured. The project uses CodeQL via GitHub Actions for secu
 
 ### Routing
 
-All pages are under `src/app/` using App Router conventions. Routes: `/`, `/approach`, `/work/[slug]`.
+All pages are under `src/app/` using App Router conventions. Routes: `/`, `/work/[slug]`.
 
 Old routes (`/about`, `/experience`, `/projects`, `/skills`, `/education`) are permanently redirected via `next.config.ts`.
 
@@ -63,14 +63,14 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 src/components/
 ├── ui/           → shadcn/ui primitives (Sheet, etc.)
 ├── shared/       → Cross-page components (Navbar, Footer, CTA, ScrollReveal, MobileNav)
-├── landing/      → Landing page sections (Hero, WhatIBring, Currently, FeaturedWork, ApproachTeaser)
+├── landing/      → Landing page sections (Hero, FeaturedWork, OtherThings, Origin)
 └── case-study/   → Case study page components (CaseStudyHeader, CaseStudyContent)
 ```
 
 ### Content Layer
 
 Case studies are typed TypeScript files in `src/content/case-studies/`:
-- `types.ts` — `CaseStudy` interface (includes optional `thumbnail` field)
+- `types.ts` — `CaseStudy` interface (required `availability` field, optional `thumbnail`)
 - `caready.ts` — CarEADY auction platform case study
 - `index.ts` — Barrel export + helpers: `getAllCaseStudies()`, `getCaseStudy(slug)`, `getAllCaseSlugs()`
 
@@ -103,8 +103,7 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 
 ### Page Architecture
 
-- **Landing** — 6 sections in `src/components/landing/` with varied rhythms (Hero → WhatIBring → Currently → FeaturedWork → ApproachTeaser → CTA). Mixes asymmetric grids, mono labels, ghost numbers, full-bleed inverted CTA.
-- **Approach** — manifesto-style, no section labels, continuous flow, inline closing CTA (no `CtaSection`).
+- **Landing** — 4 sections in `src/components/landing/` with varied rhythms (Hero → FeaturedWork → OtherThings → Origin → CTA). Hero folds in the Currently list. A fifth section is specced and blocked on an external sign-off; its slot sits between OtherThings and Origin. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
 - **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, team photo via `thumbnail`, inline closing CTA.
 
 ### Animations
@@ -116,7 +115,7 @@ Scroll-reveal system using `IntersectionObserver` + CSS keyframes (no Framer Mot
 
 ### SEO
 
-- JSON-LD `Person` schema in root layout (`jobTitle: "Frontend Engineering Lead"`), `Article` schema on case study pages
+- JSON-LD `Person` schema in root layout (`jobTitle: "Software Engineering Lead"` — one value across every surface), `Article` schema on case study pages
 - `viewport` export separate from `metadata` (Next.js 14+ requirement)
 - Redirects for old routes in `next.config.ts` (HTTP 308)
 - Dynamic sitemap in `src/app/sitemap.ts` includes case study slugs

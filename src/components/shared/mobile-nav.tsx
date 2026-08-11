@@ -14,7 +14,6 @@ import {
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Approach', href: '/approach' },
   { label: 'Work', href: '/#work' },
 ];
 
