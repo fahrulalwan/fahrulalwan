@@ -42,9 +42,23 @@ const Hero: FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">
-        <p className="text-sm text-muted-foreground">
+        {/* ⛔ The employer is sized, not just named. `brand-philosophy.md:50`
+            calls this the strongest single sentence available and says it
+            LEADS: every element is publicly checkable, and 2.5M+ investors is
+            Bareksa's own published figure, so it clears the NDA rule that only
+            figures the employer has published itself may appear.
+
+            An earlier build said only "Currently leading frontend at Bareksa",
+            which is unsizeable to anyone outside Indonesia — the reader most
+            of this page is written for. */}
+        {/* One run of middot-separated facts that simply wraps. An earlier
+            version put a `hidden sm:block` <br /> here for a two-line desktop
+            shape; JSX collapsed the whitespace around it, so on mobile — where
+            the break is display:none — it rendered "UTC+7Leading". */}
+        <p className="text-sm text-muted-foreground max-w-[54ch]">
           Software Engineering Lead &middot; Jakarta &middot; UTC+7 &middot;
-          Currently leading frontend at Bareksa
+          Leading frontend at Bareksa, an OJK-licensed investment platform with
+          2.5M+ investors
         </p>
 
         <nav className="flex items-center gap-5 shrink-0" aria-label="Social">

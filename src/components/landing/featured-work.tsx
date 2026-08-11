@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { getAllCaseStudies } from '@/content/case-studies';
@@ -76,18 +76,27 @@ const FeaturedWork: FC = () => {
                   relative z-10 lifts this above the stretched overlay so it takes
                   its own click. */}
               {study.availability.href ? (
-                <a
-                  href={study.availability.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 link-underline text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {study.availability.note}
-                </a>
+                /* Spec §2: the live card carries the live URL in this slot.
+                   Naming the domain is what makes it distinguishable from the
+                   two cards that cannot be opened — those render in the same
+                   place, at the same size, in the same colour, so without the
+                   domain a reader cannot tell which one is clickable. */
+                <p className="text-sm text-muted-foreground">
+                  {study.availability.note} &middot;{' '}
+                  <a
+                    href={study.availability.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 link-underline font-medium text-foreground inline-flex items-baseline gap-1"
+                  >
+                    {study.availability.href.replace(/^https?:\/\//, '')}
+                    <ArrowUpRight className="size-3.5 self-center" aria-hidden="true" />
+                  </a>
+                </p>
               ) : (
-                <span className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {study.availability.note}
-                </span>
+                </p>
               )}
 
               {/* Focus parity per spec §9: there is no hover on a phone and a
@@ -95,7 +104,7 @@ const FeaturedWork: FC = () => {
                   focus-within rather than focus-visible, because focus now lands
                   on a descendant link rather than on the card itself. */}
               <div className="mt-3">
-                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 transition-[opacity,transform] duration-300">
+                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 no-hover:opacity-100 no-hover:translate-x-0 transition-[opacity,transform] duration-300">
                   Read case study <ArrowRight className="size-4" />
                 </span>
               </div>
