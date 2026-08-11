@@ -153,6 +153,26 @@
     @apply bg-background text-foreground;
     overflow-x: clip;
   }
+
+  /* The `--ring` token has existed in both themes since the design system
+     landed, with a comment in each stating it clears the 3:1 focus floor. It
+     was only ever wired to `.link-underline`, so everything without that class
+     fell through to the browser default: measured as `auto 1px rgb(0,95,204)`,
+     a blue hairline on a graphite page, on the case-study headline links and
+     both header buttons.
+
+     A token that exists and is not wired is the quieter half of the same
+     failure this page's own dogfood found in the card affordance: defined, and
+     invisible to the person it was for.
+
+     `:focus-visible` rather than `:focus`, so a mouse click never draws it and
+     only keyboard and programmatic focus do. `.link-underline` keeps its own
+     rule below at the same width and offset, so the two agree rather than one
+     overriding the other. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
 }
 
 @keyframes terminal-blink {
