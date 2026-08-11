@@ -9,11 +9,17 @@ const FeaturedWork: FC = () => {
   return (
     <section
       id="work"
-      className="py-16 sm:py-20 scroll-mt-20 border-t border-border/50"
+      className="pt-20 sm:pt-24 pb-4 scroll-mt-20"
     >
-      <h2 className="text-label font-medium text-muted-foreground uppercase mb-12 sm:mb-14">
+      <div className="mb-12 sm:mb-14">
+          <span
+            className="block w-6 h-0.5 bg-signal/60 mb-5"
+            aria-hidden="true"
+          />
+          <h2 className="text-label font-medium text-muted-foreground uppercase mb-0">
         What I&apos;ve built
       </h2>
+        </div>
 
       <div>
         {caseStudies.map((study) => (
@@ -26,7 +32,7 @@ const FeaturedWork: FC = () => {
              breakage is the page's real state whenever JS is off. */
           <article
             key={study.slug}
-            className="group relative isolate py-10 -mx-4 px-4 border-t border-border/50 rounded-lg transition-colors duration-300 hover:bg-muted/30 focus-within:bg-muted/30"
+            className="group relative isolate py-9 first:pt-0 -mx-4 px-4 rounded-lg transition-colors duration-300 hover:bg-muted/30 focus-within:bg-muted/30"
           >
             {/* Ghost landmark. Was a padded 01/02 index, which spec §8 bans as the
                 "hanging header" tell. The year is real data. It stays duplicated in

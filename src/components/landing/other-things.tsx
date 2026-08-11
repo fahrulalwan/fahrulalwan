@@ -29,10 +29,16 @@ const things = [
 
 const OtherThings: FC = () => {
   return (
-    <section className="py-16 sm:py-20 border-t border-border/50">
-      <h2 className="text-label font-medium text-muted-foreground uppercase mb-10 sm:mb-12">
+    <section className="pt-20 sm:pt-24 pb-16 sm:pb-20">
+      <div className="mb-12 sm:mb-14">
+          <span
+            className="block w-6 h-0.5 bg-signal/60 mb-5"
+            aria-hidden="true"
+          />
+          <h2 className="text-label font-medium text-muted-foreground uppercase mb-0">
         A few other things
       </h2>
+        </div>
 
       <ul className="space-y-10 max-w-[65ch]">
         {things.map((thing) => {

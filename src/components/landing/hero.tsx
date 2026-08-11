@@ -9,7 +9,7 @@ const currentItems = [
 
 const Hero: FC = () => {
   return (
-    <section className="pt-12 sm:pt-20 pb-16 sm:pb-24">
+    <section className="pt-12 sm:pt-20 pb-4">
       <p className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
         <span
           className="w-6 h-0.5 bg-signal shrink-0"
@@ -108,7 +108,7 @@ const Hero: FC = () => {
           wrong there — but the pairing is better: a face beside what someone is
           doing now reads more directly than a face beside a paragraph about
           how they started. */}
-      <div className="mt-16 sm:mt-20 pt-10 border-t border-border/50">
+      <div className="mt-20 sm:mt-24">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-12">
           <div>
             <h2 className="text-label font-medium text-muted-foreground uppercase mb-6">
