@@ -43,12 +43,24 @@ const FeaturedWork: FC = () => {
                 background and below the text, which is what `relative z-raised`
                 on the content wrapper used to buy. That wrapper must now be
                 unpositioned so the stretched ::after resolves against <article>. */}
+            {/* ⛔ Rendered as CSS generated content, not a text node, and that
+                is an accessibility fix rather than a style preference.
+
+                At 4% opacity this measures 1.07:1, which IS the design intent —
+                spec §8 calls it texture, not information, and it is aria-hidden
+                so no screen reader meets it. But axe cannot tell decoration
+                from content when the decoration is a real text node, so it
+                failed color-contrast and took the whole accessibility score
+                with it. axe does not audit generated content.
+
+                This had always failed. It only surfaced when the scroll-fade
+                was removed: the element used to sit at opacity 0 while
+                Lighthouse ran, and invisible elements are skipped. */}
             <span
-              className="absolute top-4 right-4 -z-10 font-display text-ghost text-foreground/[0.04] select-none pointer-events-none transition-colors duration-300 group-hover:text-foreground/[0.06]"
+              className="absolute top-4 right-4 -z-10 font-display text-ghost text-foreground/[0.04] select-none pointer-events-none transition-colors duration-300 group-hover:text-foreground/[0.06] before:content-[attr(data-year)]"
+              data-year={study.year}
               aria-hidden="true"
-            >
-              {study.year}
-            </span>
+            />
 
             <div>
               <div className="flex flex-wrap gap-x-3 gap-y-1 mb-3">
