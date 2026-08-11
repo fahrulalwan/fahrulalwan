@@ -8,6 +8,7 @@ import type { Metadata, Viewport } from 'next';
 import type { FC, PropsWithChildren } from 'react';
 import Footer from '@/components/shared/footer';
 import Navbar from '@/components/shared/navbar';
+import { SITE_URL } from '@/lib/site';
 
 // Font budget, spec §11. `swap` is Next's default; it is stated here because the
 // ≥95 mobile target depends on it rather than on a default staying put.
@@ -39,7 +40,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fahrulalwan.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: '%s | Fahrul Alwan',
     default: 'Fahrul Alwan',
@@ -100,7 +101,7 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Mohammad Fahrul Alwan',
-  url: 'https://fahrulalwan.vercel.app',
+  url: SITE_URL,
   jobTitle: 'Software Engineering Lead',
   sameAs: [
     'https://github.com/fahrulalwan',

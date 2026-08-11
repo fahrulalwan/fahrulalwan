@@ -1,9 +1,0 @@
-User-agent: *
-
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-
-Crawl-delay: 10
-
-Sitemap: https://fahrulalwan.vercel.app/sitemap.xml
