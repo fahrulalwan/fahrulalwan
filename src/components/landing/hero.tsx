@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 
 const currentItems = [
@@ -35,9 +36,18 @@ const Hero: FC = () => {
           way. Did the degree at night, and was leading a team of five at
           twenty-two, nine months before I finished it.
         </p>
+        {/* Promoted from the deleted Origin section, and it replaces the belief
+            line that sat here ("I've only been good at work I actually believed
+            in"). That line was pure disposition, pre-defending a record nobody
+            had questioned, in the most expensive space on the page.
+
+            This one earns the slot for the opposite reason: it is the only
+            sentence on the site describing a problem other engineers also have,
+            rather than describing him. */}
         <p className="text-muted-foreground leading-relaxed">
-          I&apos;ve only been good at work I actually believed in. That&apos;s
-          made some decisions easy and some of them expensive.
+          Code is usually the easy part. Most of what slows projects down is
+          unclear requirements, people politely agreeing to slightly different
+          things, or teams quietly working toward different definitions of done.
         </p>
       </div>
 
@@ -89,26 +99,48 @@ const Hero: FC = () => {
 
       {/* Folded in from its own section. It was answering the same question the
           opening now answers, one scroll later, so it reads as a coda to the
-          identity rather than a stop of its own. */}
-      <div className="mt-16 sm:mt-20 pt-10 border-t border-border/50">
-        <h2 className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-10">
-          Currently
-        </h2>
+          identity rather than a stop of its own.
 
-        <ul className="space-y-6 max-w-[65ch]">
-          {currentItems.map((item) => (
-            <li
-              key={item}
-              className="flex gap-4 text-muted-foreground leading-relaxed"
-            >
-              <span
-                className="w-3 h-px bg-signal shrink-0 mt-3"
-                aria-hidden="true"
-              />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+          The portrait moved here when the Origin section was deleted for
+          telling the hero's story a second time. It sat in that section's
+          `[1fr_2fr]` aside, and the shape is kept because it was never what was
+          wrong there — but the pairing is better: a face beside what someone is
+          doing now reads more directly than a face beside a paragraph about
+          how they started. */}
+      <div className="mt-16 sm:mt-20 pt-10 border-t border-border/50">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-12">
+          <div>
+            <h2 className="text-label font-medium text-muted-foreground uppercase mb-6">
+              Currently
+            </h2>
+            {/* Source is 192x192, so the portrait box is deliberately small.
+                It does NOT go on the preview card — that surface renders at
+                full size without context, and the background is a Google
+                installation he has no affiliation with. */}
+            <Image
+              src="/profile.webp"
+              alt="Fahrul Alwan"
+              width={192}
+              height={192}
+              className="w-32 h-40 sm:w-36 sm:h-44 rounded-sm object-cover grayscale"
+            />
+          </div>
+
+          <ul className="space-y-6 max-w-[62ch]">
+            {currentItems.map((item) => (
+              <li
+                key={item}
+                className="flex gap-4 text-muted-foreground leading-relaxed"
+              >
+                <span
+                  className="w-3 h-px bg-signal shrink-0 mt-3"
+                  aria-hidden="true"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
