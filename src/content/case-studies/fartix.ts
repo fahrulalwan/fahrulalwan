@@ -9,7 +9,11 @@ export const fartixCaseStudy: CaseStudy = {
   metadata: {
     role: 'Founder & Product Engineer',
     timeline: 'Dec 2025 – May 2026',
-    teamSize: '5 engineers; I built the consumer platform',
+    // ⛔ Five PEOPLE, not five engineers: two engineers, plus business
+    // development, market research and field support. Keep the noun exact.
+    // Collapsing it to "engineers" inflates the engineering org and misdescribes
+    // a venture whose whole point is that it was small.
+    teamSize: 'Five people, two of us engineers. I built the consumer side.',
   },
   context:
     'I founded a sports-event ticketing venture and signed a Liga-2 football club as the first partner. Match-day ticketing in Indonesian football still mostly runs on paper and cash: slow lines, and no real record of who is actually inside the stadium. We had one season to show a digital gate could hold up in that environment.',
