@@ -1,26 +1,19 @@
 import { careadyCaseStudy } from './caready';
-import { coverageRatchetCaseStudy } from './coverage-ratchet';
 import { fartixCaseStudy } from './fartix';
 import type { CaseStudy } from './types';
 
 export type { CaseStudy, CaseStudyDecision, CaseStudyMetric } from './types';
 
-// Fartix leads because it is the only one a stranger can open: his own
-// venture, his own build, still live. The coverage work follows, described
-// rather than shown because its repo is private. caready last, and it is an
-// early-career story rather than a link — the site it ran on has been rebuilt
-// by other people since.
+// Fartix leads because it is the only one a stranger can open: his own venture,
+// his own build, still live. caready follows, an early-career story rather than
+// a link, since the site it ran on has been rebuilt by other people since.
 //
-// This deliberately is NOT newest-first, and it is not seniority-first either.
-// The previous order led with the coverage work on the grounds that the
-// employed senior work should go first. That reads worse now: it is the piece
-// that asks for the most trust, and it was leading the piece that asks for
-// none.
-const caseStudies: CaseStudy[] = [
-  fartixCaseStudy,
-  coverageRatchetCaseStudy,
-  careadyCaseStudy,
-];
+// ⛔ A study ships only if he stands behind the decisions it narrates in the
+// first person. Work he did not drive can be described or credited, never
+// written as his own reasoning. That rule outranks filling a gap, and there is
+// one: no study here shows employed senior work. The fix is day-job work he
+// actually drove that survives the NDA rule, not a broader reading of this one.
+const caseStudies: CaseStudy[] = [fartixCaseStudy, careadyCaseStudy];
 
 export const getAllCaseStudies = (): CaseStudy[] => caseStudies;
 
