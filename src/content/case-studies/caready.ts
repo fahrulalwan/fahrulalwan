@@ -56,5 +56,4 @@ export const careadyCaseStudy: CaseStudy = {
     "The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I'd invest in best practices earlier instead of discovering them through trial and error.",
     "I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn't know. I think about that a lot now, whenever I'm leading someone who reminds me of how I was back then.",
   ],
-  thumbnail: '/images/case-studies/caready-team.jpeg',
 };

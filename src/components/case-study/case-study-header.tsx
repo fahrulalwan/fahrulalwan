@@ -1,5 +1,4 @@
 import { ArrowLeft } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import type { CaseStudy } from '@/content/case-studies';
@@ -42,18 +41,6 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         <span>{caseStudy.metadata.teamSize}</span>
       </div>
 
-      {caseStudy.thumbnail && (
-        <div className="full-bleed">
-          <Image
-            src={caseStudy.thumbnail}
-            alt="The engineering and client team at the project office"
-            width={1200}
-            height={675}
-            className="w-full h-auto max-h-[480px] object-cover"
-            priority
-          />
-        </div>
-      )}
     </header>
   );
 };

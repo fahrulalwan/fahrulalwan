@@ -78,7 +78,6 @@ interface CaseStudy {
     note: string;            // e.g. 'still up, still mine' / '2018, rebuilt by other people since'
     href?: string;           // Present ONLY when the work is genuinely openable
   };
-  thumbnail?: string;        // Path to hero image, e.g. '/images/case-studies/caready-team.jpeg'
 }
 ```
 
@@ -190,14 +189,21 @@ After raw draft, refine using these rules. The goal: curious, understated, refle
 
 - Descriptive, not keyword-stuffed
 - Don't use the slug or filename — write like a human explaining the image
-- Good: "The engineering and client team at the project office"
+- Good: "The sold-out state on a match-day, rendered on mobile"
 - Bad: "caready-team-photo alt text"
 
-### Thumbnail field
+### ⛔ No photographs of people
 
-- Set `thumbnail` in the `CaseStudy` object to the primary image
-- This renders as the hero image in `CaseStudyHeader`
-- Use a high-quality, wide-aspect image (1200×675 or similar)
+**A group photo is not an artifact. It is thirty-five people who were never asked.**
+
+The anonymization rules above cover *names*. A photograph carries more than a name: faces, branding, and a location, all at once, on a public job-hunting surface.
+
+- **Never ship a photo containing people**, colleagues and client staff alike, however good the picture is.
+- **The client's signage and premises are theirs too.** A shot framed to include a branded wall is a claim about a company that did not agree to appear.
+- **What images are allowed:** the product's own interface, a diagram you drew, a screenshot of output. Things you made.
+- **If a photo feels load-bearing, the section is leaning on atmosphere rather than evidence.** Say what happened instead.
+
+*There is no `thumbnail` field. It was removed along with the last image that used it, because a single hard-coded alt string meant any second image would have inherited a description of the first.*
 
 ### Image compression
 
@@ -217,7 +223,7 @@ After copy is finalized:
 4. [ ] Run `bun run build` — verify new route generates (e.g. `/work/[slug]`)
 5. [ ] Check the page in dev — read through, look for typos, bad line breaks
 6. [ ] Verify metrics look right in the inverted Results section
-7. [ ] Verify thumbnail loads and looks good
+7. [ ] Every image is something you made — no photographs of people, no client premises or signage
 8. [ ] Accessibility check: heading hierarchy, alt text, focus states
 9. [ ] Test in both light and dark mode
 10. [ ] Check the landing page FeaturedWork section — new card should appear

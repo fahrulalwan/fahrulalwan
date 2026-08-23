@@ -42,6 +42,4 @@ export interface CaseStudy {
     note: string;
     href?: string;
   };
-
-  thumbnail?: string;
 }
