@@ -16,7 +16,7 @@ export const fartixCaseStudy: CaseStudy = {
     teamSize: 'Five people, two of us engineers. I built the consumer side.',
   },
   context:
-    'I founded a sports-event ticketing venture and signed a Liga-2 football club as the first partner. Match-day ticketing in Indonesian football still mostly runs on paper and cash: slow lines, and no real record of who is actually inside the stadium. We had one season to show a digital gate could hold up in that environment.',
+    'I founded a sports-event ticketing venture. Our first partner was a Liga-2 football club. Match-day ticketing in Indonesian football still mostly runs on paper and cash: slow lines, and no real record of who is actually inside the stadium. We had one season to show a digital gate could hold up in that environment.',
   challenge:
     'Ticketing reads simple until real people are buying under a deadline. A match sells in a narrow window, on phones, on patchy stadium networks, and every failure is a person who does not get in. The consumer side had to take real payments, recover gracefully when a payment or an order broke, and never show a broken cart to someone about to give up and stay home.',
   decisions: [
@@ -26,9 +26,9 @@ export const fartixCaseStudy: CaseStudy = {
         'The thing that actually stranded people was not a crashed payment. It was mistyping their own email, then having no way to reach the ticket they had already paid for. So the order page carries a WhatsApp contact, and partway through the first live day I moved it on mobile to sit directly under the payment-proof card, because that is where someone who is stuck is already looking. Later I added the same escape hatch to checkout errors and rewrote the error text into plain Indonesian. A buyer with no way through just does not turn up at the match.',
     },
     {
-      title: 'Designed for the messy middle, not the happy path',
+      title: 'Orders expire before people pay',
       description:
-        "Orders expire before people pay. A tier sells out while they are still deciding. I built order lookup so anyone could find their ticket again, and a reorder flow for the ones that timed out. The sold-out state exists because availability went genuinely negative in production: the count oversold, and the honest fix was to render it as sold out rather than hand someone a selector that could not work. The backend owned the limit. My job was making the buyer's side of that limit not feel like a bug.",
+        'Orders expire before people pay, and a tier can sell out while someone is still choosing. Either way they end up with nothing. I built order lookup so people could find a ticket again from whatever they still remembered, and a reorder flow for the ones that had already timed out. When a tier runs out the page says sold out, instead of leaving a selector that fails on submit.',
     },
     {
       title: 'Made it fast to load and easy to find',
@@ -50,7 +50,7 @@ export const fartixCaseStudy: CaseStudy = {
       },
     ],
     qualitative: [
-      'Most founder side-projects are a landing page and a payment button. This one took real money from real strangers, at a stadium, under a crowd. The failure modes were operational rather than hypothetical: when checkout breaks, someone does not get through the gate.',
+      'Most side projects stop at a landing page and a payment button. This one took real money from strangers, online and at the gate on match-day. When checkout broke, someone did not get in.',
     ],
   },
   availability: {
