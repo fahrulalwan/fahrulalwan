@@ -70,7 +70,8 @@ src/components/
 ### Content Layer
 
 Case studies are typed TypeScript files in `src/content/case-studies/`:
-- `types.ts` — `CaseStudy` interface (required `availability` field, optional `thumbnail`)
+- `types.ts` — `CaseStudy` interface. `availability` is required on purpose: a study cannot be added without saying what a stranger can verify about it. There is no image field.
+- `fartix.ts` — Fartix ticketing platform case study
 - `caready.ts` — CarEADY auction platform case study
 - `index.ts` — Barrel export + helpers: `getAllCaseStudies()`, `getCaseStudy(slug)`, `getAllCaseSlugs()`
 
@@ -104,7 +105,7 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 ### Page Architecture
 
 - **Landing** — 4 sections in `src/components/landing/` with varied rhythms (Hero → FeaturedWork → OtherThings → Origin → CTA). Hero folds in the Currently list. A fifth section is specced and blocked on an external sign-off; its slot sits between OtherThings and Origin. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
-- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, team photo via `thumbnail`, inline closing CTA.
+- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, inline closing CTA. No images: the one photo the template carried was removed along with its field, because a single hard-coded alt string meant any second image would have inherited a description of the first.
 
 ### Animations
 
