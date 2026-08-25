@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
       { source: '/projects', destination: '/', permanent: true },
       { source: '/skills', destination: '/', permanent: true },
       { source: '/education', destination: '/', permanent: true },
+      /* Temporary, unlike the five above. Those routes are gone for good; this
+         one is a parent that does not exist yet. Readers trim `/work/<slug>`
+         down to `/work` by habit, and the landing already lists every study —
+         but an index page earns itself once there are more than a few, and a
+         308 cached in every browser would make that hard to take back. */
+      { source: '/work', destination: '/', permanent: false },
     ];
   },
 };
