@@ -32,14 +32,17 @@ A doc here says what the code and copy must obey, written forward-looking. The e
 ## Commands
 
 ```bash
-bun dev          # Start dev server with Turbo mode
-bun run build    # Production build
-bun run lint     # ESLint (next/core-web-vitals + next/typescript)
-bun start        # Start production server
+bun dev            # Start dev server with Turbo mode
+bun run build      # Production build
+bun run lint       # ESLint (next/core-web-vitals + next/typescript)
+bun run typecheck  # tsc --noEmit
+bun start          # Start production server
 bunx biome check --write .  # Format + lint with Biome (no npm script defined)
 ```
 
-No test suite is configured. The project uses CodeQL via GitHub Actions for security scanning.
+No test suite is configured, and there is no test runner to add one to. Two GitHub Actions workflows stand in: CodeQL for security scanning, and a quality gate that builds the site and runs Lighthouse CI against `lighthouserc.json`.
+
+**The quality gate blocks, and it is the only thing here that can fail a change on quality.** Accessibility, SEO, colour contrast, heading order, `html-has-lang`, `meta-viewport` and cumulative layout shift are all asserted at error. Performance and best-practices only warn, deliberately — a score that moves with runner load is a gate people switch off. Run the same assertions locally with `bunx @lhci/cli autorun`.
 
 ## Architecture
 
@@ -61,21 +64,25 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 
 ```
 src/components/
-├── ui/           → shadcn/ui primitives (Sheet, etc.)
-├── shared/       → Cross-page components (Navbar, Footer, CTA, ScrollReveal, MobileNav)
-├── landing/      → Landing page sections (Hero, FeaturedWork, OtherThings, Origin)
-└── case-study/   → Case study page components (CaseStudyHeader, CaseStudyContent)
+├── ui/           → shadcn/ui primitives (Badge, Button, Card, DropdownMenu, Sheet, theme provider + toggle)
+├── shared/       → Cross-page components (Navbar, Footer, CtaSection, MobileNav)
+├── landing/      → Landing page sections (Hero, FeaturedWork, GateAnchor, Currently)
+└── case-study/   → Case study page components (CaseStudyHeader, CaseStudyBlocks)
 ```
 
 ### Content Layer
 
 Case studies are typed TypeScript files in `src/content/case-studies/`:
-- `types.ts` — `CaseStudy` interface. `availability` is required on purpose: a study cannot be added without saying what a stranger can verify about it. There is no image field.
-- `fartix.ts` — Fartix ticketing platform case study
-- `caready.ts` — CarEADY auction platform case study
+- `types.ts` — `CaseStudy` interface, and the `Block` union every study body is written in. `summary`, `blocks` and `availability` are all required on purpose: a study cannot be added without one sentence of meta description, a body, and a plain statement of what a stranger can verify about it.
+- `blocks.ts` — `groupBlocks`, which runs consecutive blocks of the same kind together so a renderer can draw them as one band, and `assertNever` for exhaustiveness.
+- `fartix.ts` · `caready.ts` · `tuntutan-rakyat.ts` — the three studies
 - `index.ts` — Barrel export + helpers: `getAllCaseStudies()`, `getCaseStudy(slug)`, `getAllCaseSlugs()`
 
-To add a new case study: create a new `.ts` file with a `CaseStudy` export, import it in `index.ts` and add to the `caseStudies` array. The `/work/[slug]` route and sitemap auto-update via `generateStaticParams`.
+**The body is a list of blocks, not a set of prose fields.** A study is an ordered `Block[]` drawn from a union — heading, prose, code, image, diagram, trail, metric, quote, review, handoff — and because it is a union rather than a fixed record, two studies can differ in shape entirely: one can run on a dated trail and a code fragment, another on metrics and a quote, and neither has to carry an empty field it has nothing to put in.
+
+Three members currently have renderers and no user: `code`, `diagram` and `image`. They stay because adding a study later should not require a type change.
+
+To add a new case study: create a new `.ts` file with a `CaseStudy` export, import it in `index.ts` and add it to the `caseStudies` array. The `/work/[slug]` route and the sitemap pick it up on their own via `generateStaticParams` — **but the Lighthouse gate does not.** Its URL list in `lighthouserc.json` is written out by hand, so a new study is unaudited until you add its route there too.
 
 ### Design System
 
@@ -84,13 +91,14 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 - `Newsreader` (display/serif, `--font-newsreader`, `font-display`) — used for headlines, statements, editorial moments
 
 **Colors:**
-- Semantic tokens (light/dark): `--background`, `--foreground`, `--muted`, `--border`, etc.
-- Accent warm: `hsl(21 90% 48%)` — orange, used sparingly on key words only via `text-accent-warm`
+- Semantic tokens (light/dark): `--background`, `--foreground`, `--muted`, `--border`, etc. Each carries its measured contrast ratio in a comment — keep that up to date, because the gate asserts contrast at error.
+- Signal: `--signal` (`hsl(192 88% 28%)`, teal) via `text-signal`, and `--signal-inverted` for use on the inverted block. It appears only where it carries information, never as decoration.
+- ⚠️ **`--accent` is not the signal colour.** It is shadcn's neutral hover surface and reads as a near-grey. `globals.css` says so at the token, because the name invites exactly this mistake.
 
 **CSS utilities** (defined in `globals.css`):
 - `.full-bleed` — breaks out of container to viewport width (`width: 100vw; margin-left: calc(50% - 50vw)`)
-- `.link-underline` — animated underline on hover (slide-in from left)
-- `.animate-reveal-up` — scroll-reveal animation with `cubic-bezier(0.16, 1, 0.3, 1)` easing
+- `.link-underline` — animated underline on hover (slides in from the left on transform, never width)
+- `.animate-terminal-blink` — the footer cursor, and the only animation in the codebase. Reduced motion is handled centrally in a `prefers-reduced-motion` media query rather than a `motion-reduce:` variant at each call site, so it holds wherever the utility is used.
 
 **Editorial patterns:**
 - Default to left-aligned + asymmetric. Centered layouts only for manifesto moments — do not center everything.
@@ -104,15 +112,8 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 
 ### Page Architecture
 
-- **Landing** — 4 sections in `src/components/landing/` with varied rhythms (Hero → FeaturedWork → OtherThings → Origin → CTA). Hero folds in the Currently list. A fifth section is specced and blocked on an external sign-off; its slot sits between OtherThings and Origin. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
-- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, inline closing CTA. No images: the one photo the template carried was removed along with its field, because a single hard-coded alt string meant any second image would have inherited a description of the first.
-
-### Animations
-
-Scroll-reveal system using `IntersectionObserver` + CSS keyframes (no Framer Motion):
-- `src/hooks/use-scroll-reveal.ts` — Client hook, respects `prefers-reduced-motion`
-- `src/components/shared/scroll-reveal.tsx` — Wrapper component with optional `delay` prop
-- `src/app/globals.css` — `@keyframes reveal-up` with golden easing
+- **Landing** — `page.tsx` renders Hero → FeaturedWork → GateAnchor → Currently → CtaSection, with varied rhythms. `Currently` is its own section rather than part of Hero, so the opening ends on one screen and the first openable link arrives earlier in the page. A further section is specced and blocked on a sign-off from outside this project; its slot is marked in `page.tsx` directly after FeaturedWork, and it drops in without rearranging anything around it. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
+- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, inline closing CTA. The body renders through `CaseStudyBlocks`. Images are possible but none of the three studies uses one: the union's `image` block carries its own `alt` per image, which is what the old single hard-coded alt string could not do.
 
 ### SEO
 
@@ -127,7 +128,7 @@ Two CSS files define the design token system:
 - `src/app/globals.css` — Tailwind import, light mode variables, `@theme inline` block, base layer styles, utility classes
 - `src/app/theme.css` — Dark mode overrides (imported separately in root layout)
 
-Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g., `--color-accent-warm: var(--accent-warm)`).
+Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g. `--color-signal: var(--signal)`), and also declares the type ramp and the font stacks.
 
 ### Path Aliases
 
@@ -148,7 +149,7 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
 - **Next.js 16 params**: `params` in `page.tsx` and `generateMetadata` is a `Promise` — must use `const { slug } = await params`.
 - **JSON-LD**: Uses `dangerouslySetInnerHTML` with hardcoded constants — requires biome-ignore comment on the prop line.
 - **Full-bleed + container**: Full-bleed sections need internal container (`max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4`) for content alignment.
-- **Accent-warm usage**: Use sparingly — only on 1-2 key words per page to maintain impact.
+- **Signal colour usage**: Use sparingly, and only where it carries information rather than decorates. Reach for `text-signal`, not `text-accent` — `--accent` is shadcn's neutral hover surface and will render a near-grey where you expected teal.
 - **Light mode**: All elements use semantic tokens that auto-flip. `bg-muted/50` (not `/20`) for subtle bg shifts to ensure visibility in light mode.
 - **Dep pins — do NOT `bun update --latest` blindly** (verified 2026-07-23):
   - `typescript` is on **6.0.3** — the latest **stable** 6.x (the last JS-based line; keeps the compiler API `next build` needs + sits inside typescript-eslint's `<6.1.0` range). Verified typecheck+lint+build green 2026-07-23. It is **not** the `latest` npm tag (that's `7.0.2`) on purpose: **TS7 dropped the JS compiler API `next build` uses → build crash**, its fix `experimental.useTypeScriptCli` is canary-only (not in Next 16.2.x), and TS7 also breaks type-aware lint. `@typescript/native-preview` (tsgo) is installed as a side dev-dep for `tsgo --noEmit` speed if wanted; the build compiler stays on 6.0.x.
