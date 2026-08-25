@@ -13,15 +13,15 @@ import type { CaseStudy } from './types';
 export const tuntutanRakyatCaseStudy: CaseStudy = {
   slug: 'tuntutan-rakyat',
   headline:
-    'Three of us built an information site during the 2025 protests, in six days. I found the other two. Most of the code is not mine.',
+    'Five of us built an information site during the 2025 protests, in six days. I found the other four. Most of the code is not mine.',
   tags: ['Next.js', 'Code review', 'Scoping', 'Civic'],
   year: '2025',
   summary:
-    'A protest information site built in six days by three people I brought together: what I scoped, what I handed out, and one rename I caught.',
+    'A protest information site built in six days by five people I brought together: what I scoped, what I handed out, and one rename I caught.',
   metadata: {
     role: 'Led it',
     timeline: '6 days',
-    teamSize: 'Three of us',
+    teamSize: 'Five of us',
   },
   availability: {
     note: 'live, and the repo is public',
@@ -30,11 +30,11 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
   blocks: [
     {
       type: 'prose',
-      text: 'In late August 2025 the protests in Indonesia produced a list of demands, seventeen immediate and eight longer-term, and a lot of people looking for information they could act on: which emergency number to call, what your rights are if you are detained, where to find a lawyer or a psychologist. Three of us built a site for it. The first commit and the last one of that week are six days apart.',
+      text: 'In late August 2025 the protests in Indonesia produced a list of demands, seventeen immediate and eight longer-term, and a lot of people looking for information they could act on: which emergency number to call, what your rights are if you are detained, where to find a lawyer or a psychologist. Five of us built a site for it. The first commit and the last one of that week are six days apart.',
     },
     {
       type: 'prose',
-      text: 'I am second of three by commit count, and that is one query away on a public repo. I wrote the landing page and the section listing the people who were killed. The six days went on deciding what we built, writing it down, handing it out, and reading pull requests before they merged.',
+      text: 'I am second of three by commit count, and that is one query away on a public repo. Only three of the five of us are in that graph: it records the people who wrote code, not the people who were on the thing. I wrote the landing page and the section listing the people who were killed. The six days went on deciding what we built, writing it down, handing it out, and reading pull requests before they merged.',
       href: 'https://github.com/fahrulalwan/tuntutan-rakyat/graphs/contributors',
       hrefLabel: 'Check the split',
     },
@@ -47,7 +47,7 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
        * same standing as the match-day count on the ticketing study.
        */
       type: 'prose',
-      text: 'I brought the other two in. The six days were not only the build: I asked around for ways to get more traffic, and messaged a few accounts who might share it. It drew four to five thousand visits in a week.',
+      text: 'I brought the other four in: three from work, and a designer. The six days were not only the build: I asked around for ways to get more traffic, and messaged a few accounts who might share it. It drew four to five thousand visits in a week.',
     },
     {
       type: 'heading',
@@ -126,12 +126,12 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
       type: 'handoff',
       title: 'Update informasi kontak darurat',
       scope:
-        'A fourteen-line checklist: the medical emergency number, the fire service, the cyber-attack helpline, the missing-persons contact, two legal aid funds, and the accounts posting live updates. Assigned to one of the other two.',
+        'A fourteen-line checklist: the medical emergency number, the fire service, the cyber-attack helpline, the missing-persons contact, two legal aid funds, and the accounts posting live updates. Assigned to someone else.',
       href: 'https://github.com/fahrulalwan/tuntutan-rakyat/issues/29',
     },
     {
       type: 'prose',
-      text: 'Five issues, three of them handed to the other two, one left open for whoever got there first. The one I kept was the section listing the ten people who died during the protests, sourced from two national outlets. I wrote it, took it, and shipped it on the last day. It is the only part of the site I would not have handed to anyone else.',
+      text: 'Five issues, three of them handed out, one left open for whoever got there first. The one I kept was the section listing the ten people who died during the protests, sourced from two national outlets. I wrote it, took it, and shipped it on the last day. It is the only part of the site I would not have handed to anyone else.',
       href: 'https://github.com/fahrulalwan/tuntutan-rakyat/issues/28',
       hrefLabel: 'The one I kept',
     },
