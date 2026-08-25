@@ -38,7 +38,7 @@ const GateAnchor: FC = () => {
           aria-hidden="true"
         />
         <h2 className="text-label font-medium text-muted-foreground uppercase mb-0">
-          The morning it caught me
+          The day it caught me
         </h2>
       </div>
 
