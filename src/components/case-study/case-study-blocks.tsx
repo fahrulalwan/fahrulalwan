@@ -89,7 +89,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
               href={block.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-label font-medium uppercase link-underline text-muted-foreground hover:text-foreground transition-colors"
+              className="text-label font-medium uppercase link-underline text-foreground"
             >
               Read the thread
             </a>
@@ -109,7 +109,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
               href={block.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-label font-medium uppercase link-underline text-muted-foreground hover:text-foreground transition-colors"
+              className="text-label font-medium uppercase link-underline text-foreground"
             >
               Read the issue
             </a>
@@ -129,7 +129,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
                 href={block.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline"
+                className="link-underline font-medium text-foreground"
               >
                 {block.attribution}
               </a>
@@ -152,13 +152,16 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
                 <span className="text-label font-medium text-muted-foreground uppercase">
                   {step.when}
                 </span>
+                {/* A step with a source reads brighter than one without, so a
+                    reader can see which moments they can go and check. They
+                    were identical before, and two of five were links. */}
                 <span className="text-muted-foreground leading-relaxed">
                   {step.href ? (
                     <a
                       href={step.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-underline"
+                      className="link-underline font-medium text-foreground"
                     >
                       {step.what}
                     </a>

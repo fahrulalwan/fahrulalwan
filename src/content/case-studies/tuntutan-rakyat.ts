@@ -21,7 +21,7 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
   metadata: {
     role: 'Led it',
     timeline: '6 days',
-    teamSize: '3',
+    teamSize: 'Three of us',
   },
   availability: {
     note: 'live, and the repo is public',
@@ -30,11 +30,11 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
   blocks: [
     {
       type: 'prose',
-      text: 'In late August 2025 the protests in Indonesia produced a list of demands, seventeen immediate and eight longer-term, and a lot of people looking for information they could act on: which emergency number to call, what your rights are if you are detained, where to find a lawyer or a psychologist. Three of us built a site for it. The first commit and the last one are six days apart.',
+      text: 'In late August 2025 the protests in Indonesia produced a list of demands, seventeen immediate and eight longer-term, and a lot of people looking for information they could act on: which emergency number to call, what your rights are if you are detained, where to find a lawyer or a psychologist. Three of us built a site for it. The first commit and the last one of that week are six days apart.',
     },
     {
       type: 'prose',
-      text: 'Forty-two of the 179 commits are mine, second of three, and that is one query away on a public repo. I wrote the landing page and the section listing the people who were killed. The six days went on deciding what we built, writing it down, handing it out, and reading pull requests before they merged.',
+      text: 'I am second of three by commit count, and that is one query away on a public repo. I wrote the landing page and the section listing the people who were killed. The six days went on deciding what we built, writing it down, handing it out, and reading pull requests before they merged.',
       href: 'https://github.com/fahrulalwan/tuntutan-rakyat/graphs/contributors',
       hrefLabel: 'Check the split',
     },
