@@ -2,7 +2,7 @@ import { careadyCaseStudy } from './caready';
 import { fartixCaseStudy } from './fartix';
 import type { Block, CaseStudy } from './types';
 
-export type { CaseStudy, CaseStudyDecision, CaseStudyMetric } from './types';
+export type { CaseStudy, CaseStudyMetric } from './types';
 
 // Fartix leads because it is the only one a stranger can open: his own venture,
 // his own build, still live. caready follows, an early-career story rather than

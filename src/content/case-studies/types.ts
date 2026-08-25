@@ -152,11 +152,6 @@ export interface CaseStudyMetric {
   context?: string;
 }
 
-export interface CaseStudyDecision {
-  title: string;
-  description: string;
-}
-
 export interface CaseStudy {
   slug: string;
   headline: string;
@@ -169,13 +164,13 @@ export interface CaseStudy {
    *
    * ⛔ Load-bearing on the CI gate, not just the page: `lighthouserc.json`
    * asserts `categories:seo` at ERROR with minScore 1, and a missing meta
-   * description drops SEO below 100. `page.tsx` reads `context` today, and a
-   * later task deletes that field.
+   * description drops SEO below 100. Required for that reason — there is no
+   * other field left for `page.tsx` to fall back to.
    */
-  summary?: string;
+  summary: string;
 
-  /** The body. Optional only until the old fields go, so both studies compile. */
-  blocks?: Block[];
+  /** The body. Every study is written as blocks; there is no other shape. */
+  blocks: Block[];
 
   /**
    * Render only the fields that exist, and drop the row when none do.
@@ -189,14 +184,6 @@ export interface CaseStudy {
     timeline?: string;
     teamSize?: string;
   };
-  context: string;
-  challenge: string;
-  decisions: CaseStudyDecision[];
-  results: {
-    metrics: CaseStudyMetric[];
-    qualitative?: string[];
-  };
-  reflections: string[];
 
   /**
    * What a reader can actually do with this one, said plainly.
