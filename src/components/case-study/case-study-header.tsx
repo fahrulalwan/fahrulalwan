@@ -33,13 +33,30 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         {caseStudy.headline}
       </h1>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground mb-10 sm:mb-14">
-        <span>{caseStudy.metadata.role}</span>
-        <span>&middot;</span>
-        <span>{caseStudy.metadata.timeline}</span>
-        <span>&middot;</span>
-        <span>{caseStudy.metadata.teamSize}</span>
-      </div>
+      {/* Only the fields that exist, and no row at all when none do. A study
+          with no recorded role says nothing rather than inventing one. */}
+      {(() => {
+        const facts = [
+          caseStudy.metadata.role,
+          caseStudy.metadata.timeline,
+          caseStudy.metadata.teamSize,
+        ].filter((fact): fact is string => Boolean(fact));
+
+        if (facts.length === 0) {
+          return null;
+        }
+
+        return (
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground mb-10 sm:mb-14">
+            {facts.map((fact, index) => (
+              <span key={fact} className="flex gap-x-6">
+                {index > 0 && <span aria-hidden="true">&middot;</span>}
+                {fact}
+              </span>
+            ))}
+          </div>
+        );
+      })()}
 
     </header>
   );

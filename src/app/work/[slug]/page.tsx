@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import CaseStudyBlocks from '@/components/case-study/case-study-blocks';
 import CaseStudyContent from '@/components/case-study/case-study-content';
 import CaseStudyHeader from '@/components/case-study/case-study-header';
 import { getAllCaseSlugs, getCaseStudy } from '@/content/case-studies';
@@ -20,7 +21,15 @@ export const generateMetadata = async ({
     return {};
   }
 
-  const description = caseStudy.context.slice(0, 160);
+  /**
+   * `summary` is written for this job — one sentence, no markup, under the
+   * length a meta description gets truncated at. `context` is a body field and
+   * Task 7 deletes it; this fallback exists only until then.
+   *
+   * lighthouserc.json asserts categories:seo at error with minScore 1, so a
+   * missing meta description fails the gate rather than just the page.
+   */
+  const description = caseStudy.summary ?? caseStudy.context.slice(0, 160);
 
   return {
     title: caseStudy.headline,
@@ -66,7 +75,11 @@ const CaseStudyPage = async ({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <CaseStudyHeader caseStudy={caseStudy} />
-      <CaseStudyContent caseStudy={caseStudy} />
+      {caseStudy.blocks ? (
+        <CaseStudyBlocks blocks={caseStudy.blocks} />
+      ) : (
+        <CaseStudyContent caseStudy={caseStudy} />
+      )}
 
       {/* Inline closing CTA */}
       <section className="py-12 sm:py-16 border-t border-border/50">
