@@ -58,28 +58,37 @@ export const fartixCaseStudy: CaseStudy = {
       text: "A match sells in a narrow window, so the site had to be quick, and it had to show up when someone searched the fixture. I built a caching strategy on Cloudflare's edge with partner pages cached and key routes prefetched, then did the SEO groundwork properly: structured data, a generated sitemap, search-action markup. Unglamorous work that decides whether someone finds the ticket at all.",
     },
     {
-      type: 'metric',
-      label: 'Live match-days',
-      value: '9',
-      context: 'Real payments, real crowds, one Liga-2 season',
-    },
-    {
+      /* ⛔ No metric block, and it is not an oversight.
+         This closed on `Live match-days: 9` in the full-bleed inverted band.
+         Nine is a real number, unlike the "3 roles" the caready study used to
+         show — but nothing a reader can open confirms it, and `fartix.id`
+         proves the site is live rather than that it ran nine match-days.
+
+         It was also the THIRD statement of the same fact: the headline says
+         "nine match-days, real money at the gate" and `summary` repeats it
+         verbatim. Moving the number into prose would have made four. The band
+         went and the number stayed where it is already read. */
       type: 'prose',
       text: "It is still online, still mine, still running on Cloudflare's edge.",
       href: 'https://fartix.id',
       hrefLabel: 'fartix.id',
     },
     {
-      type: 'prose',
-      text: 'Most side projects stop at a landing page and a payment button. This one took real money from strangers, online and at the gate on match-day. When checkout broke, someone did not get in.',
-    },
-    {
+      /* One closing reflection, down from three, and the two that went are
+         worth naming so they do not come back.
+
+         "Most side projects stop at a landing page and a payment button" was
+         cut for comparing himself favourably to unnamed others — the site
+         states and lets the reader conclude — and its concrete half, a broken
+         checkout meaning someone does not get in, is already made above where
+         it belongs.
+
+         "The parts that had to work under pressure got the care they deserved"
+         was a softer restatement of this paragraph, ending on a claim about
+         being better now. This one owns the same mistake with the numbers
+         attached and no claim of having outgrown it. */
       type: 'prose',
       text: 'As the founder, I let the build run ahead of what we had proven. Ten services and a twenty-table schema for one early client was more than the moment needed. The engineering was sound, but I would have bought that certainty with something smaller first. That call was mine.',
-    },
-    {
-      type: 'prose',
-      text: 'The parts that had to work under pressure got the care they deserved: payments, the gate, order recovery. The parts that could have waited did not always wait. I am better now at telling those apart before I build, not after.',
     },
   ],
 };

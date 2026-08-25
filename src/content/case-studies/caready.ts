@@ -47,23 +47,28 @@ export const careadyCaseStudy: CaseStudy = {
     },
     {
       type: 'prose',
-      text: "After launch, WebSocket connections would silently die after a few minutes. No error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn't eliminate the problem entirely, but it made auctions reliable enough to run without interruption.",
+      text: "After launch, WebSocket connections would silently die after a few minutes. No error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn't eliminate the problem entirely, but it made auctions reliable enough to run without interruption. The project delivered late, and a good part of that was me learning on the job what a more experienced engineer would have known on day one.",
     },
     {
-      type: 'metric',
-      label: 'Kept in sync',
-      value: '3 roles',
-      context: 'Auctioneer, online bidders, in-room bidders, one live state',
-    },
-    {
-      type: 'prose',
-      text: 'This was my first real engineering project, fresh out of a coding bootcamp. I was learning the fundamentals on the job, building something none of us had done before.',
-    },
-    {
-      type: 'prose',
-      text: "The project delivered late. I was learning fundamentals on the job that a more experienced engineer would have known on day one. If I did it again, I'd invest in best practices earlier instead of discovering them through trial and error.",
-    },
-    {
+      /* ⛔ No metric block here, and the absence is the decision.
+         This study used to close its body on one: label "Kept in sync", value
+         "3 roles", context naming the auctioneer and the two kinds of bidder.
+         That is a count of design categories, not an outcome, and nothing
+         behind it could be opened — while `metric` renders as the page's
+         full-bleed inverted band, its loudest treatment. A number a reader is
+         asked to take on trust does not appear at all, so the band went.
+
+         Nothing replaced it. This one's evidence is a story: 2018, a private
+         repository, and a site other people have since rebuilt. `availability`
+         already says so and carries no href. */
+      /* The close, and the only reflection left of three.
+         The other two said what the headline already says — first real project,
+         fresh out of a bootcamp — and the deleted `reflections[]` array is why
+         there were three: it specified "2-3 honest takeaways", so both older
+         studies end on a wall of first-person paragraphs. That wall is the
+         clearest thing left of the old template, and it is what made these
+         pages read like a talk. One reflection, the one that reaches the
+         present. */
       type: 'prose',
       text: "I was too aggressive when I joined the core team. Eager and driven, but not humble enough about what I didn't know. I think about that a lot now, whenever I'm leading someone who reminds me of how I was back then.",
     },
