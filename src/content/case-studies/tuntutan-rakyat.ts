@@ -34,7 +34,10 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
     teamSize: 'Five of us',
   },
   availability: {
-    note: 'live, and the repo is public',
+    /* "code", not "repo". This string renders on the landing card, the most
+       read surface on the site, and a reader with no engineering background
+       does not have the word. */
+    note: 'live, and the code is public',
     href: 'https://tuntutanrakyat.space',
   },
   blocks: [

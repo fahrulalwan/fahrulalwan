@@ -26,8 +26,14 @@ export const careadyCaseStudy: CaseStudy = {
       text: 'Real-time bidding has no room for lag. Even a couple of seconds means bids get disputed and people stop trusting the platform. The system had to keep three types of participants in sync over unreliable networks: the auctioneer, online bidders, and people physically in the room.',
     },
     {
+      /* ⛔ All three headings in this study opened on a technical term, which
+         put the jargon in the largest type on the page. Reordered 2026-08-25
+         so the plain half leads. `WebSocket` is kept in this one — it is the
+         study's actual technical claim and an engineer scans for it — but
+         `PoC` and `heartbeat` moved down into the prose, where a reader who
+         does not know them has already been given the point. */
       type: 'heading',
-      text: 'Chose WebSocket after weeks of independent research',
+      text: 'Weeks of research before I committed to WebSocket',
     },
     {
       type: 'prose',
@@ -35,7 +41,7 @@ export const careadyCaseStudy: CaseStudy = {
     },
     {
       type: 'heading',
-      text: 'Proved it with a two-machine PoC first',
+      text: 'Proved it between two machines before designing the rest',
     },
     {
       type: 'prose',
@@ -43,7 +49,7 @@ export const careadyCaseStudy: CaseStudy = {
     },
     {
       type: 'heading',
-      text: 'Handled silent connection drops with heartbeat and reconnect',
+      text: 'The connections were dying silently, so we made them check in',
     },
     {
       type: 'prose',

@@ -28,7 +28,11 @@ import type { FC } from 'react';
 const Colophon: FC = () => {
   return (
     <p className="text-sm text-muted-foreground pt-16 sm:pt-20">
-      The code behind this site is public, and the reasoning is in the comments.{' '}
+      {/* "written into the code itself", not "in the comments". A reader with
+          no engineering background reads "comments" as a comment section, so
+          the line pointed at something that does not exist on this site. */}
+      The code behind this site is public, and the reasoning is written into the
+      code itself.{' '}
       <a
         href="https://github.com/fahrulalwan/fahrulalwan"
         target="_blank"
