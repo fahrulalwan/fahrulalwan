@@ -167,16 +167,22 @@ User's #1 recurring feedback: reject AI-sounding copy. Before writing or editing
 - **Bareksa NDA** — current employer. Do not spill specifics about internal work, architecture, or metrics.
 - **CarEADY claims** — ⛔ **do not claim it is still running, still in production, still active at caready.co.id, or that the architecture was never replaced. Do not claim user volume.** Demoted from checkable evidence 2026-07-24: he was a vendor under a consultancy rather than an owner, and the site has since been revamped by other people, so nothing running there today is his. **An early-career story, never a check-it-yourself link.** *(This line previously opened "system still runs at caready.co.id", asserting the very claim it exists to prevent. Corrected 2026-08-05.)*
   - ⛔ **The company is alive and that is exactly why the ban holds.** `caready.co.id` returns 200 and trades as *Balai Lelang Caready* — verified 2026-08-12, and owner-confirmed the same day: the business runs, the platform was revamped, and his code has likely been removed or replaced outright. **A living site is a stronger temptation than a dead one, not a weaker one**, because the link works, so the reader assumes what loads is what he built. The 2018 real-time layer is the claim; the domain is not evidence for it. Site copy stays at *"2018, rebuilt by other people since"* — true, and it points nobody at a page that would mislead them.
-- **Bio source of truth** — `docs/product-marketing-context.md` holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76), career timeline. Update it when facts shift; do not duplicate here.
+- **Bio source of truth** — the marketing-context document, which **moved to the owner's private vault on 2026-08-25** and is no longer readable from this repo. It holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76) and the career timeline. **Ask him rather than reconstructing any of it**, and do not copy it back here.
 
 ## Workflow
+
+⛔ **Generated documents do not go in this repo. They go in the owner's private project vault.** Owner directive, 2026-08-25: *"never put any document into repo, only in project vault."*
+
+That means specs, plans, drafts, research, audits and design notes — anything written **about** the work rather than shipped **as** the work. **This repository is public, and a pushed branch is readable immediately**, so the rule is a disclosure boundary before it is a filing preference. What belongs here is code, and the instruction files a contributor needs to work in it: this `CLAUDE.md`, the `README`, and the authoring rules a case study must obey.
+
+⚠️ **Steps 2 and 3 below used to name `docs/superpowers/specs/` and `docs/superpowers/plans/`, and that instruction is what put a plan in this repo on 2026-08-25.** It is corrected rather than deleted, so nobody restores it from memory. The routing that governs is `~/.claude/rules/superpowers-output.md`, which has always sent both to the vault; this file was overriding it.
 
 Non-trivial features go through brainstorm → spec → plan → implement, using `superpowers` skills:
 
 1. **Brainstorm** (`superpowers:brainstorming`) — clarify intent, explore approaches, present design section-by-section.
-2. **Spec** — write to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`, run spec-document-reviewer loop until approved.
-3. **Plan** (`superpowers:writing-plans`) — task breakdown in `docs/superpowers/plans/YYYY-MM-DD-<topic>.md`, run plan-reviewer loop.
-4. **Implement** — execute plan tasks, update CLAUDE.md when patterns/gotchas emerge.
+2. **Spec** — written to the project's vault folder, then reviewed through the three-phase pipeline until it carries a `review-closure:` line.
+3. **Plan** (`superpowers:writing-plans`) — task breakdown, also in the vault, then run through the plan-review pipeline. An executor reads it from there and writes only code.
+4. **Implement** — execute plan tasks, update this file when patterns or gotchas emerge.
 
 For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and commit.
 
@@ -199,7 +205,8 @@ For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and 
 
 ## Project Context
 
-- Product marketing + bio: `docs/product-marketing-context.md`
-- Case study framework: `docs/case-study-framework.md`
-- Design specs: `docs/superpowers/specs/`
-- Implementation plans: `docs/superpowers/plans/`
+⛔ **There is no `docs/` directory. It was emptied on 2026-08-25 and the folder removed.** All eleven documents — the brand philosophy, the case-study framework, the marketing context, the skills list, and seven superseded specs and plans — moved to the owner's private project vault under the directive in § Workflow. **This repo holds code and this file. Nothing else.**
+
+**What that costs, said plainly rather than discovered later:** the case-study authoring rules and the bio facts are no longer readable from inside this repo. An agent working here has them only if the owner is in the session, which he normally is. **A contributor who is not him cannot write a case study from this repo alone**, and that is the accepted trade.
+
+**If you are looking for something that used to be in `docs/`:** ask the owner. Do not reconstruct it from the code, and do not re-create it here.
