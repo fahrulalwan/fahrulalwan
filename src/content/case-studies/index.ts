@@ -1,19 +1,30 @@
 import { careadyCaseStudy } from './caready';
 import { fartixCaseStudy } from './fartix';
+import { tuntutanRakyatCaseStudy } from './tuntutan-rakyat';
 import type { Block, CaseStudy } from './types';
 
 export type { CaseStudy, CaseStudyMetric } from './types';
 
-// Fartix leads because it is the only one a stranger can open: his own venture,
-// his own build, still live. caready follows, an early-career story rather than
-// a link, since the site it ran on has been rebuilt by other people since.
+// Fartix leads because it is the only one a stranger can open: his own
+// venture, his own build, still live. tuntutan-rakyat follows, and it is the
+// only study whose evidence is other people's threads rather than his own
+// commits. caready is last, an early-career story rather than a link, since
+// the site it ran on has been rebuilt by other people since.
 //
 // ⛔ A study ships only if he stands behind the decisions it narrates in the
 // first person. Work he did not drive can be described or credited, never
 // written as his own reasoning. That rule outranks filling a gap, and there is
 // one: no study here shows employed senior work. The fix is day-job work he
 // actually drove that survives the NDA rule, not a broader reading of this one.
-const caseStudies: CaseStudy[] = [fartixCaseStudy, careadyCaseStudy];
+//
+// ⛔ And no study puts a person as the subject of a fault. The threads
+// tuntutan-rakyat links are public and a reader can see who wrote what, but
+// nothing on this site frames a colleague as having made a mistake.
+const caseStudies: CaseStudy[] = [
+  fartixCaseStudy,
+  tuntutanRakyatCaseStudy,
+  careadyCaseStudy,
+];
 
 export const getAllCaseStudies = (): CaseStudy[] => caseStudies;
 
