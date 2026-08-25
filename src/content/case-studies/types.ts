@@ -132,20 +132,6 @@ export interface HandoffBlock {
   href: string;
 }
 
-/**
- * The landing page's gate anchor.
- *
- * ⛔ Deliberately NOT a Block. It is not a case study, it renders in exactly
- * one place, and putting it in the union would leave a member no study could
- * ever use — which is what happened to the `run` type in the first draft.
- */
-export interface GateAnchorContent {
-  check: string;
-  value: string;
-  runHref: string;
-  sourceHref: string;
-}
-
 export interface CaseStudyMetric {
   label: string;
   value: string;
