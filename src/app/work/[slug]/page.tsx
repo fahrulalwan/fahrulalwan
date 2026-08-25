@@ -23,8 +23,8 @@ export const generateMetadata = async ({
 
   /**
    * `summary` is written for this job — one sentence, no markup, under the
-   * length a meta description gets truncated at. `context` is a body field and
-   * Task 7 deletes it; this fallback exists only until then.
+   * length a meta description gets truncated at. `context` is a body field on
+   * the way out; this fallback exists only until the last study stops using it.
    *
    * lighthouserc.json asserts categories:seo at error with minScore 1, so a
    * missing meta description fails the gate rather than just the page.
