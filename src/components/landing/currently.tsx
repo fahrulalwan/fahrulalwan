@@ -18,7 +18,7 @@ const currentItems = [
  * someone who already wants to know what he is up to, and that reader scrolls.
  * The two who do not scroll are the two who came for evidence.
  *
- * It sits after the short list rather than directly after the case studies, so
+ * It sits after the gate anchor rather than directly after the case studies, so
  * the two evidence sections stay adjacent and the reserved slot in page.tsx
  * stays where its comment says it belongs.
  */
