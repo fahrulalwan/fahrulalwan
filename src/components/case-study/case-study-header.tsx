@@ -40,6 +40,12 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
           caseStudy.metadata.role,
           caseStudy.metadata.timeline,
           caseStudy.metadata.teamSize,
+          // Only when the work cannot be opened. A study whose work a reader
+          // can open already says so through its own checkable blocks, so
+          // repeating the note there would be noise. Without this, the note
+          // lives only on the landing card and someone arriving from search
+          // is told nothing about what they can and cannot check.
+          caseStudy.availability.href ? undefined : caseStudy.availability.note,
         ].filter((fact): fact is string => Boolean(fact));
 
         if (facts.length === 0) {
