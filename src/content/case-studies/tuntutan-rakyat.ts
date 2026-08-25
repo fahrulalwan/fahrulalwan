@@ -13,11 +13,11 @@ import type { CaseStudy } from './types';
 export const tuntutanRakyatCaseStudy: CaseStudy = {
   slug: 'tuntutan-rakyat',
   headline:
-    'Three of us built an information site during the 2025 protests, in six days. Most of the code is not mine. The rest of what I did is in the issues and the review threads.',
+    'Three of us built an information site during the 2025 protests, in six days. I found the other two. Most of the code is not mine.',
   tags: ['Next.js', 'Code review', 'Scoping', 'Civic'],
   year: '2025',
   summary:
-    'A protest information site three of us built in six days: what I scoped, what I handed out, and one rename I caught before it shipped.',
+    'A protest information site built in six days by three people I brought together: what I scoped, what I handed out, and one rename I caught.',
   metadata: {
     role: 'Led it',
     timeline: '6 days',
@@ -37,6 +37,17 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
       text: 'I am second of three by commit count, and that is one query away on a public repo. I wrote the landing page and the section listing the people who were killed. The six days went on deciding what we built, writing it down, handing it out, and reading pull requests before they merged.',
       href: 'https://github.com/fahrulalwan/tuntutan-rakyat/graphs/contributors',
       hrefLabel: 'Check the split',
+    },
+    {
+      /**
+       * ⛔ Nothing here carries a link, and that is not an oversight. Finding
+       * people, asking around, and messaging accounts leave their trace in
+       * direct messages and in stories that expire. The rule this site holds
+       * is that a claim never pretends to be checkable when it is not — the
+       * same standing as the match-day count on the ticketing study.
+       */
+      type: 'prose',
+      text: 'I brought the other two in. The six days were not only the build: I asked around for ways to get more traffic, and messaged a few accounts who might share it. It drew four to five thousand visits in a week.',
     },
     {
       type: 'heading',
