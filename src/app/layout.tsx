@@ -84,9 +84,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      // ⛔ Deliberate, decided 2026-08-26: the portrait is not to be indexed.
+      // The site has exactly one image, public/profile.webp, and this keeps it
+      // out of Google Images.
+      //
+      // `max-image-preview: 'large'` used to sit directly below this line and
+      // pulled the other way — it asks Google for a big image preview of a page
+      // whose images it has just been told not to index. Removed so the file
+      // states one intention instead of two. Do not add it back without
+      // reversing the line above.
       noimageindex: true,
       'max-video-preview': -1,
-      'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
@@ -96,12 +104,84 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * The entity, not a rich result. `Person` is not in Google's supported
+ * rich-result gallery — checked against the primary source — so nothing here
+ * changes how a search result looks. It exists so that a machine asked "who is
+ * this" resolves to one person rather than to the several better-known people
+ * who share the surname.
+ *
+ * ⛔ Every value is traceable to text a visitor can see, because Google requires
+ * structured data to match the visible page and discounts it when it does not:
+ *   description  the hero's own two claims, and the meta line under them
+ *   jobTitle     "Software Engineering Lead · Jakarta · UTC+7", hero meta line
+ *   worksFor     "Leading frontend at Bareksa", hero
+ *   knowsAbout   the tag rows on the three case-study cards, verbatim
+ *
+ * ⛔ Three fields the SEO notes ask for are deliberately absent.
+ *
+ * `alumniOf` — decided 2026-08-26 not to publish the university. "Which
+ * university did you attend" is a standard knowledge-based authentication
+ * question, and no public source ties it to this name today, so the site would
+ * be the first. Weighed against that: the disambiguation primitive here is
+ * `sameAs`, which schema.org defines as the identity assertion, not `alumniOf`.
+ * A real authentication secret for a garnish on the wrong field.
+ *
+ * `image` — the site sets `noimageindex` on purpose (see the robots block
+ * above), so pointing the entity at a portrait would re-introduce exactly the
+ * two-minds problem that removing `max-image-preview` just resolved.
+ *
+ * `sameAs` stays at two entries. It is an identity ASSERTION, so a guessed URL
+ * that 404s or belongs to someone else damages the disambiguation it is meant to
+ * help. Widening it needs the owner to name real profiles, not a hunt.
+ *
+ * ⚠️ `@id` is meant to be a permanent identifier and this one is not yet. It
+ * derives from SITE_URL, which is still a `.vercel.app` subdomain, so it moves
+ * the day an owned domain lands and any machine holding the old value sees a
+ * different entity. That is not a new problem — `url`, `metadataBase` and the
+ * canonical all move with it — but `@id` is the one field whose whole job is to
+ * stay put, so it is the sharpest argument in this file for registering the
+ * domain before the entity has time to be cached under a rented address.
+ */
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${SITE_URL}/#person`,
   name: 'Mohammad Fahrul Alwan',
   url: SITE_URL,
   jobTitle: 'Software Engineering Lead',
+  description:
+    'Software engineering lead in Jakarta, leading frontend at Bareksa. Still in the code most days.',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Bareksa',
+    url: 'https://bareksa.com',
+  },
+  // ⛔ Exactly the twelve tags rendered on the three case-study cards, in card
+  // order, spelled as they appear. Nothing curated in and nothing curated out.
+  //
+  // The first draft of this array added "TypeScript", "Frontend architecture"
+  // and "Engineering leadership" — all plausible, none of them text a visitor
+  // can find on this site. That is the drift the rule above exists to stop, and
+  // it happened in the same edit that wrote the rule. If a topic belongs here,
+  // put it on a page first.
+  //
+  // Angular and Java Spring Boot are 2018 and stay. Trimming them would be a
+  // decision about what to be found for, which is the owner's, not a tidy-up.
+  knowsAbout: [
+    'React 19',
+    'Payments UX',
+    'Cloudflare Edge',
+    'TanStack Router',
+    'Next.js',
+    'Code review',
+    'Scoping',
+    'Civic',
+    'WebSocket',
+    'Real-time Architecture',
+    'Angular',
+    'Java Spring Boot',
+  ],
   sameAs: [
     'https://github.com/fahrulalwan',
     'https://linkedin.com/in/fahrulalwan',

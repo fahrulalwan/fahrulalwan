@@ -20,6 +20,12 @@ import { ImageResponse } from 'next/og';
  * what a visitor downloads.
  */
 
+// ⛔ Unaffected by the `noimageindex` in layout.tsx, and the distinction matters
+// because the two look like they should collide. `noimageindex` is a directive to
+// Google's crawler about indexing images in image search. A social unfurl on
+// LinkedIn, X or Slack is not a crawl — those platforms read the `og:image` meta
+// tag and obey no robots directive at all. So the portrait stays out of Google
+// Images and this card still renders wherever the link is pasted.
 export const alt = 'Fahrul Alwan, Software Engineering Lead in Jakarta';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
