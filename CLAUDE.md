@@ -83,7 +83,9 @@ src/components/
 
 ⛔ **The navbar owns the site's only navigation landmark.** It had none at all — the links sat in a bare `div`, so there was no `<nav>` to jump to.
 
-⛔ **`components.json` is now entirely stale and is kept only as a record.** It still names a `tailwind.config.ts` that does not exist (Tailwind 4 is CSS-first here), a `utils` alias pointing at a deleted file, and a `ui` alias pointing at a deleted directory. **Do not run `bunx shadcn@latest add` against it** — see Code Conventions.
+⛔ **`components.json` is entirely stale, and keeping it is a decision rather than an oversight — do not "fix" it and do not delete it.** It names a `tailwind.config.ts` that does not exist (Tailwind 4 is CSS-first here), a `utils` alias pointing at a deleted file, and a `ui` alias pointing at a deleted directory. Nothing in the repo reads it, CI never touches it, and only the shadcn CLI does. It was checked for removal on 2026-08-26 and deliberately kept as the record that this site once ran on shadcn.
+
+**The cost of keeping it is real and was accepted with eyes open:** someone skims it, believes there is a `ui/` directory and a `cn()` helper, and runs `bunx shadcn@latest add` — which pulls Radix into a site that currently has no component library at all. That is the one thing this file can cause, and Code Conventions carries the warning.
 
 ### Content Layer
 
@@ -122,6 +124,10 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 - Ghost typography: ultra-large text at 4% opacity as visual landmarks
 - Full-bleed inverted blocks: `bg-foreground text-background` for visual punctuation
 - Hairline separators: `w-10 h-px bg-border/50`
+
+⛔ **Page length is 3.06 screens, that is longer than every reference this site was built against, and it is a settled decision — not a finding waiting to be actioned.** Measured 2026-08-26 at 2,897px on a 947px viewport, against milhamakbarjr 2,333px, harrygeorge 2,323px, and karrisaarinen 1,431px. **No standard is broken** — neither the Founder Playbook nor the reference library names a length — so the only thing out of step is the comparison itself.
+
+The section breakdown, so a future measurement does not have to re-derive it: hero 723px, `#work` 1,265px, Currently 326px, `#contact` 279px, colophon 100px, footer 61px. **Hero and `#work` are 68.6% of the page between them and are the argument**; the only cuttable block of any size is Currently, at 326px, and cutting it was declined. Currently is also the one section on the page with zero links — a real inconsistency with a site whose thesis is checkable evidence, weighed against it holding the only photograph on the site, and the photograph won.
 
 **References:** Design language takes its **restraint** from [milhamakbarjr.com](https://www.milhamakbarjr.com/) (layout carries the design — stock shadcn tokens, untouched; hero dropped to the bottom third of the fold) and [harrygeorge.design](https://www.harrygeorge.design/) (one face, one weight, emphasis by dimming rather than colour). **The editorial serif voice is this site's own — neither reference uses a serif at all.** When adding sections, match their restraint, not generic portfolio aesthetics. Measured DNA for both: `~/.claude/design-taste/library/`.
 
