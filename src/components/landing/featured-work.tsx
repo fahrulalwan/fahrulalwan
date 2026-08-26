@@ -7,19 +7,16 @@ const FeaturedWork: FC = () => {
   const caseStudies = getAllCaseStudies();
 
   return (
-    <section
-      id="work"
-      className="pt-20 sm:pt-24 pb-4 scroll-mt-20"
-    >
+    <section id="work" className="pt-20 sm:pt-24 pb-4 scroll-mt-20">
       <div className="mb-12 sm:mb-14">
-          <span
-            className="block w-6 h-0.5 bg-signal/60 mb-5"
-            aria-hidden="true"
-          />
-          <h2 className="text-label font-medium text-muted-foreground uppercase mb-0">
-        What I&apos;ve built
-      </h2>
-        </div>
+        <span
+          className="block w-6 h-0.5 bg-signal/60 mb-5"
+          aria-hidden="true"
+        />
+        <h2 className="text-label font-medium text-muted-foreground uppercase mb-0">
+          What I&apos;ve built
+        </h2>
+      </div>
 
       <div>
         {caseStudies.map((study) => (
@@ -72,9 +69,16 @@ const FeaturedWork: FC = () => {
                     {tag}
                   </span>
                 ))}
-                <span className="text-label font-medium text-muted-foreground uppercase">
+                {/* <time>, not <span>. The year is a date, and this is the one
+                    element that says so to a machine — a crawler, an assistant
+                    reading the page, a reader-mode extractor. It costs one tag
+                    and a dateTime attribute. */}
+                <time
+                  dateTime={study.year}
+                  className="text-label font-medium text-muted-foreground uppercase"
+                >
                   &middot; {study.year}
-                </span>
+                </time>
               </div>
 
               <h3 className="font-display text-display-l font-medium mb-4 max-w-[22ch] transition-colors duration-300 group-hover:text-signal">
@@ -108,7 +112,10 @@ const FeaturedWork: FC = () => {
                     className="relative z-10 link-underline font-medium text-foreground inline-flex items-baseline gap-1"
                   >
                     {study.availability.href.replace(/^https?:\/\//, '')}
-                    <ArrowUpRight className="size-3.5 self-center" aria-hidden="true" />
+                    <ArrowUpRight
+                      className="size-3.5 self-center"
+                      aria-hidden="true"
+                    />
                   </a>
                 </p>
               ) : (
@@ -140,11 +147,13 @@ const FeaturedWork: FC = () => {
                   The slide stays as the hover reward, and focus-within triggers
                   it too, because focus lands on a descendant link rather than
                   on the card itself. */}
-              <div className="mt-3">
-                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground -translate-x-1 group-hover:translate-x-0 group-focus-within:translate-x-0 transition-transform duration-300">
-                  Read case study <ArrowRight className="size-4" />
-                </span>
-              </div>
+              {/* The wrapping <div className="mt-3"> is gone. It held one child
+                  and one margin class, and an inline-flex element takes a top
+                  margin perfectly well on its own — so the div was a render-tree
+                  node that bought nothing. Three of these existed, one per card. */}
+              <span className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground -translate-x-1 group-hover:translate-x-0 group-focus-within:translate-x-0 transition-transform duration-300">
+                Read case study <ArrowRight className="size-4" />
+              </span>
             </div>
           </article>
         ))}

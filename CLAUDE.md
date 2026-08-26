@@ -48,7 +48,9 @@ No test suite is configured, and there is no test runner to add one to. Two GitH
 
 - **Framework**: Next.js 16 App Router + React 19 + TypeScript (strict)
 - **Package manager**: Bun
-- **Styling**: Tailwind CSS 4, CSS variables (HSL), dark mode via `next-themes` (default: dark)
+- **Styling**: Tailwind CSS 4, CSS variables (HSL), dark mode driven by the operating system
+  - ⛔ **There is no theme switcher and no `next-themes`.** Dark mode is a `prefers-color-scheme` media query in `theme.css`; nothing writes a class to `<html>`. Do not re-add a toggle, and do not reach for a `.dark` selector — it does not exist. Before this, `defaultTheme="dark"` meant the site *never* followed the OS: a visitor in light mode still got the dark palette.
+  - There are **zero `dark:` Tailwind variants** in the codebase. The only four lived in the deleted theme toggle, so no `@custom-variant dark` is defined or needed. Adding a `dark:` utility now would resolve against Tailwind's default `prefers-color-scheme` behaviour, which is correct here — but prefer a token so both themes stay in one place.
 - **UI**: shadcn/ui (New York, zinc) on **Base UI** primitives (`@base-ui/react`) — migrated off Radix 2026-07-23; per-component migration notes in `.migration/`. `lucide-react` icons, CVA variants, `cn()` in `@/lib/utils`
 - **Monitoring**: Sentry (tunnel `/monitoring`), Vercel Analytics + Speed Insights
 
@@ -64,11 +66,17 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 
 ```
 src/components/
-├── ui/           → shadcn/ui primitives (Badge, Button, Card, DropdownMenu, Sheet, theme provider + toggle)
+├── ui/           → shadcn/ui primitives on Base UI: Button, Sheet. That is all of them.
 ├── shared/       → Cross-page components (Navbar, Footer, CtaSection, MobileNav)
-├── landing/      → Landing page sections (Hero, FeaturedWork, GateAnchor, Currently)
+├── landing/      → Landing page sections (Hero, FeaturedWork, Currently, Colophon)
 └── case-study/   → Case study page components (CaseStudyHeader, CaseStudyBlocks)
 ```
+
+**Four components used to be here and are not.** `theme-provider` and `theme-toggle` went with the switcher; `dropdown-menu` existed only to hold that toggle's menu; `card` and `badge` were never imported by anything. `gate-anchor` was a landing section, replaced by the one-line `colophon` — the reasoning is in that file's own comment, and it ends with "do not grow this back into a section."
+
+⛔ **Deleting them is why the JS bundle dropped.** Re-adding a shadcn component is not free: per the note in Code Conventions, `bunx shadcn@latest add` delivers the **Radix** variant and re-introduces Radix alongside Base UI. If a `Card` is genuinely needed later, hand-migrate it or copy from the Base UI registry.
+
+⛔ **The navbar owns the site's only navigation landmark.** It had none at all — the links sat in a bare `div`, so there was no `<nav>` to jump to. The landmark now wraps both the desktop row and the mobile trigger, so a phone is never without one, and the sheet's contents are a `<ul>` rather than a second unlabelled `nav`.
 
 ### Content Layer
 
@@ -126,9 +134,15 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 
 Two CSS files define the design token system:
 - `src/app/globals.css` — Tailwind import, light mode variables, `@theme inline` block, base layer styles, utility classes
-- `src/app/theme.css` — Dark mode overrides (imported separately in root layout)
+- `src/app/theme.css` — Dark mode overrides, inside `@media screen and (prefers-color-scheme: dark)` on `:root` (imported separately in root layout)
 
-Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g. `--color-signal: var(--signal)`), and also declares the type ramp and the font stacks.
+Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g. `--color-signal: var(--signal)`), the type ramp, the font stacks, and the layer scale (`z-sticky`, `z-overlay`, `z-popover`, `z-skip` — use those, not `z-[var(--z-sticky)]`).
+
+⛔ **`screen and` on the dark block is load-bearing, not decoration.** Those tokens used to sit on a bare `.dark` class with no media query, so they also applied when printing — and because `theme.css` is imported *after* `globals.css`, they beat the `@media print` block at equal specificity. Every printed page came out graphite-on-white regardless of the reader's scheme. Verified before and after: print now yields `#fff` / `#000` in both schemes. Do not remove the `screen and`, and do not reorder the imports to "fix" something.
+
+**`color-scheme: light dark` is declared on `:root` in `globals.css`.** `next-themes` used to set it as an inline style on `<html>`; nothing does now, so it is declared once in CSS. It is what makes scrollbars, form controls, and the overscroll canvas match the active scheme.
+
+**`global-error.tsx` follows the OS for free now.** It has no provider and never could get a `.dark` class, so its comment recorded an accepted tradeoff: a branded light page on a crash. Moving the tokens into a media query retired the tradeoff instead of paying it.
 
 ### Path Aliases
 
@@ -146,6 +160,7 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
 ## Gotchas
 
 - **Biome CSS errors**: `bunx biome check` always reports ~7 parse errors in `globals.css` due to Tailwind-specific syntax (`@theme inline`, `@layer`). These are expected and harmless.
+- ⛔ **Agent worktrees are gitignored, and that is a build correctness fix rather than tidiness.** `.claude/worktrees/` was untracked but *not* ignored, which put it inside the reach of two tools that scan the directory rather than the git index. Tailwind 4's automatic content detection generated utilities from those stale copies of the source and **shipped them in the CSS every visitor downloads** — a real selector for a class string that no longer existed anywhere in `src/`. Measured: ignoring the directory took the built CSS from 48.9 KB to 44.0 KB raw. It also stopped `biome check .` aborting on the nested `biome.json` each worktree carries. If a scan ever picks up dead classes again, this is the shape of the cause.
 - **Next.js 16 params**: `params` in `page.tsx` and `generateMetadata` is a `Promise` — must use `const { slug } = await params`.
 - **JSON-LD**: Uses `dangerouslySetInnerHTML` with hardcoded constants — requires biome-ignore comment on the prop line.
 - **Full-bleed + container**: Full-bleed sections need internal container (`max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4`) for content alignment.
@@ -155,6 +170,7 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
   - `typescript` is on **6.0.3** — the latest **stable** 6.x (the last JS-based line; keeps the compiler API `next build` needs + sits inside typescript-eslint's `<6.1.0` range). Verified typecheck+lint+build green 2026-07-23. It is **not** the `latest` npm tag (that's `7.0.2`) on purpose: **TS7 dropped the JS compiler API `next build` uses → build crash**, its fix `experimental.useTypeScriptCli` is canary-only (not in Next 16.2.x), and TS7 also breaks type-aware lint. `@typescript/native-preview` (tsgo) is installed as a side dev-dep for `tsgo --noEmit` speed if wanted; the build compiler stays on 6.0.x.
   - `eslint` is on **10.x** ✅. eslint 10 removed `context.getFilename()`, which `eslint-plugin-react`'s React-version auto-detection called → crash. Fixed by pinning the version in `eslint.config.mjs`: `{ settings: { react: { version: '19' } } }` (skips auto-detection). Per Next.js issue #89764.
   - Re-check trigger for TS: Next stable ships `experimental.useTypeScriptCli` · typescript-eslint supports TS7. Everything else tracks latest.
+  - ⛔ **Re-checked 2026-08-26 and the two gates now disagree — one is open, one is shut, and the pin holds on the second alone.** The line above says the `useTypeScriptCli` fix is canary-only; **that is out of date.** It ships in stable **Next 16.3.3** — `grep useTypeScriptCli node_modules/next/dist/server/config-schema.js` finds it in the validated config. **The blocker is now entirely typescript-eslint:** version 8.68.0, its parser and `typescript-estree` all declare `"typescript": ">=4.8.4 <6.1.0"`, so TS 7.0.2 falls outside the peer range and type-aware lint breaks. Do not read "the Next gate opened" as permission to bump; check the peer range first, and re-verify both rather than trusting either of these paragraphs.
 - **Base UI vs Radix**: primitives are `@base-ui/react` now. `asChild` is gone — use the `render` prop (`<Trigger render={<Button/>} />`). Menu items highlight via `data-highlighted` not `:focus`; dialog/sheet animate via `data-starting-style`/`data-ending-style` (transition-based, not keyframe). Base UI `Menu.Item` closes on click; `CheckboxItem`/`RadioItem` default `closeOnClick={false}`.
 
 ## Content & Copy
@@ -211,3 +227,13 @@ For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and 
 **What that costs, said plainly rather than discovered later:** the case-study authoring rules and the bio facts are no longer readable from inside this repo. An agent working here has them only if the owner is in the session, which he normally is. **A contributor who is not him cannot write a case study from this repo alone**, and that is the accepted trade.
 
 **If you are looking for something that used to be in `docs/`:** ask the owner. Do not reconstruct it from the code, and do not re-create it here.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
