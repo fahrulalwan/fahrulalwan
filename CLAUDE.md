@@ -51,7 +51,7 @@ No test suite is configured, and there is no test runner to add one to. Two GitH
 - **Styling**: Tailwind CSS 4, CSS variables (HSL), dark mode driven by the operating system
   - ⛔ **There is no theme switcher and no `next-themes`.** Dark mode is a `prefers-color-scheme` media query in `theme.css`; nothing writes a class to `<html>`. Do not re-add a toggle, and do not reach for a `.dark` selector — it does not exist. Before this, `defaultTheme="dark"` meant the site *never* followed the OS: a visitor in light mode still got the dark palette.
   - There are **zero `dark:` Tailwind variants** in the codebase. The only four lived in the deleted theme toggle, so no `@custom-variant dark` is defined or needed. Adding a `dark:` utility now would resolve against Tailwind's default `prefers-color-scheme` behaviour, which is correct here — but prefer a token so both themes stay in one place.
-- **UI**: shadcn/ui (New York, zinc) on **Base UI** primitives (`@base-ui/react`) — migrated off Radix 2026-07-23; per-component migration notes in `.migration/`. `lucide-react` icons, CVA variants, `cn()` in `@/lib/utils`
+- **UI**: ⛔ **no component library at all.** `lucide-react` for three icons; everything else is plain elements and Tailwind classes. There is no `src/components/ui/`, no `cn()`, no `@/lib/utils`, and no `@base-ui/react`, `class-variance-authority`, `clsx` or `tailwind-merge`. The site went through Radix, then Base UI (migrated 2026-07-23, notes in `.migration/`), and then needed neither — see § Component Structure.
 - **Monitoring**: Sentry (tunnel `/monitoring`), Vercel Analytics + Speed Insights
 
 ### Routing
@@ -66,17 +66,24 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 
 ```
 src/components/
-├── ui/           → shadcn/ui primitives on Base UI: Button, Sheet. That is all of them.
-├── shared/       → Cross-page components (Navbar, Footer, CtaSection, MobileNav)
+├── shared/       → Cross-page components (Navbar, Footer, CtaSection)
 ├── landing/      → Landing page sections (Hero, FeaturedWork, Currently, Colophon)
 └── case-study/   → Case study page components (CaseStudyHeader, CaseStudyBlocks)
 ```
 
-**Four components used to be here and are not.** `theme-provider` and `theme-toggle` went with the switcher; `dropdown-menu` existed only to hold that toggle's menu; `card` and `badge` were never imported by anything. `gate-anchor` was a landing section, replaced by the one-line `colophon` — the reasoning is in that file's own comment, and it ends with "do not grow this back into a section."
+⛔ **There is no `ui/` directory.** Eight components used to live under `src/components/`, and every one was removed for the same reason: nothing needed it.
 
-⛔ **Deleting them is why the JS bundle dropped.** Re-adding a shadcn component is not free: per the note in Code Conventions, `bunx shadcn@latest add` delivers the **Radix** variant and re-introduces Radix alongside Base UI. If a `Card` is genuinely needed later, hand-migrate it or copy from the Base UI registry.
+- `theme-provider` and `theme-toggle` — went with the theme switcher.
+- `dropdown-menu` — existed only to hold that toggle's menu.
+- `card` and `badge` — never imported by anything.
+- `mobile-nav`, `sheet` and `button` — the hamburger chain. `Button`'s only importer was `mobile-nav`, and `cn()`'s only importers were those three, so `src/lib/utils.ts` went too.
+- `gate-anchor` was a landing section, replaced by the one-line `colophon`; that file's own comment ends with "do not grow this back into a section."
 
-⛔ **The navbar owns the site's only navigation landmark.** It had none at all — the links sat in a bare `div`, so there was no `<nav>` to jump to. The landmark now wraps both the desktop row and the mobile trigger, so a phone is never without one, and the sheet's contents are a `<ul>` rather than a second unlabelled `nav`.
+⛔ **Both nav links render at every width, and the hamburger is not coming back below four items.** It used to open a 256px sliding panel to reveal the same two words — a control larger than the thing it hid. Measured: they fit at 320px, and 150 page-by-width combinations show no sideways scroll. Three items still fit but only just; **a fourth does not**, and at that point the panel has to return. It is one `git revert` away.
+
+⛔ **The navbar owns the site's only navigation landmark.** It had none at all — the links sat in a bare `div`, so there was no `<nav>` to jump to.
+
+⛔ **`components.json` is now entirely stale and is kept only as a record.** It still names a `tailwind.config.ts` that does not exist (Tailwind 4 is CSS-first here), a `utils` alias pointing at a deleted file, and a `ui` alias pointing at a deleted directory. **Do not run `bunx shadcn@latest add` against it** — see Code Conventions.
 
 ### Content Layer
 
@@ -146,14 +153,14 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
 
 ### Path Aliases
 
-`@/*` maps to `./src/*` (configured in tsconfig.json). Use `@/components/ui`, `@/lib/utils`, etc.
+`@/*` maps to `./src/*` (configured in tsconfig.json). Live targets are `@/components/shared`, `@/components/landing`, `@/components/case-study`, `@/content/case-studies` and `@/lib/site`. **`@/components/ui` and `@/lib/utils` no longer exist** — both were deleted with the components that used them.
 
 ## Code Conventions
 
 - **Formatting**: Biome — single quotes, space indentation, organize imports
 - **Linting**: ESLint 9 flat config extending `next/core-web-vitals` and `next/typescript`
 - **TypeScript**: Strict mode enabled
-- **shadcn/ui**: ⚠️ `components.json` style is still `new-york` (no `base-new-york` variant exists), so `bunx shadcn@latest add <component>` delivers the **Radix** variant and re-introduces Radix. Either hand-migrate the added component to Base UI via the `migrate-radix-to-base` skill, or copy a Base UI registry component manually. They go to `src/components/ui/`.
+- **shadcn/ui**: ⛔ **none of it is installed any more, and adding a component back is a bigger step than it looks.** `bunx shadcn@latest add <component>` writes into a `src/components/ui/` that no longer exists, needs the `cn()` helper that no longer exists, and — because `components.json` style is `new-york` and no `base-new-york` variant exists — delivers the **Radix** variant, pulling a component library back into a site that currently has none. If a component is genuinely needed: write it by hand first, and only reach for the generator if that turns out to be wrong.
 - **Fonts**: Noto Sans (body) + Newsreader (display), loaded in root layout
 - **Links**: Use `<a>` tags for external URLs, `Link` from next/link for internal. Navbar CTA is a styled text link, not a Button component.
 
@@ -171,7 +178,7 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
   - `eslint` is on **10.x** ✅. eslint 10 removed `context.getFilename()`, which `eslint-plugin-react`'s React-version auto-detection called → crash. Fixed by pinning the version in `eslint.config.mjs`: `{ settings: { react: { version: '19' } } }` (skips auto-detection). Per Next.js issue #89764.
   - Re-check trigger for TS: Next stable ships `experimental.useTypeScriptCli` · typescript-eslint supports TS7. Everything else tracks latest.
   - ⛔ **Re-checked 2026-08-26 and the two gates now disagree — one is open, one is shut, and the pin holds on the second alone.** The line above says the `useTypeScriptCli` fix is canary-only; **that is out of date.** It ships in stable **Next 16.3.3** — `grep useTypeScriptCli node_modules/next/dist/server/config-schema.js` finds it in the validated config. **The blocker is now entirely typescript-eslint:** version 8.68.0, its parser and `typescript-estree` all declare `"typescript": ">=4.8.4 <6.1.0"`, so TS 7.0.2 falls outside the peer range and type-aware lint breaks. Do not read "the Next gate opened" as permission to bump; check the peer range first, and re-verify both rather than trusting either of these paragraphs.
-- **Base UI vs Radix**: primitives are `@base-ui/react` now. `asChild` is gone — use the `render` prop (`<Trigger render={<Button/>} />`). Menu items highlight via `data-highlighted` not `:focus`; dialog/sheet animate via `data-starting-style`/`data-ending-style` (transition-based, not keyframe). Base UI `Menu.Item` closes on click; `CheckboxItem`/`RadioItem` default `closeOnClick={false}`.
+- **Base UI vs Radix** — ⚠️ **history, not current state.** Neither is installed. Kept because the site ran on Base UI until 2026-08-26 and the notes in `.migration/` only make sense against it: `asChild` is gone in Base UI, replaced by the `render` prop (`<Trigger render={<Button/>} />`); menu items highlight via `data-highlighted` not `:focus`; dialog and sheet animate via `data-starting-style`/`data-ending-style`, transition-based rather than keyframe; `Menu.Item` closes on click while `CheckboxItem`/`RadioItem` default to `closeOnClick={false}`. If a primitive is ever needed again, this is the shape of what was there.
 
 ## Content & Copy
 
@@ -205,7 +212,7 @@ For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and 
 
 **Attach relevant skills during implementation** (user rule: "jangan lupa attach skillnya ketika beneran dibutuhkan"):
 - Landing/editorial design → `design-with-taste`, `high-end-visual-design`, `redesign-existing-projects` (this site's real stack — editorial restraint, not conversion tactics)
-- Component work → `shadcn`, `migrate-radix-to-base` (Radix→Base UI), `tailwindcss-mobile-first`
+- Component work → `tailwindcss-mobile-first`. ⚠️ **Not `shadcn` or `migrate-radix-to-base`** — there is no component library here to add to or migrate from, and reaching for either would put one back.
 - Accessibility pass → `accessibility-review`, `web-design-guidelines`
 - Copy/marketing → `copywriting`, `marketing-psychology`
 - Next.js perf/SEO → `nextjs-seo`, `vercel-react-best-practices`

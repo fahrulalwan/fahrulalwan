@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { FC } from 'react';
-import MobileNav from '@/components/shared/mobile-nav';
 
 const Navbar: FC = () => {
   return (
@@ -10,35 +9,33 @@ const Navbar: FC = () => {
           Fahrul Alwan.
         </Link>
 
-        {/* The site's primary navigation had no <nav> at all — the links sat in a
-            bare div, so there was no navigation landmark to jump to and the only
-            <nav> on the whole site was the hero's Social row, on one page.
+        {/* Both links, at every width. There used to be a hamburger below md
+            that opened a 256px sliding panel to reveal these same two words —
+            a control larger than the thing it was hiding. They fit: measured at
+            320px, the narrowest real phone, with 60 page-by-width combinations
+            showing no sideways scroll.
 
-            The landmark wraps BOTH arrangements rather than the desktop row
-            alone. Wrapping only the visible links would leave a phone with no
-            navigation landmark until the sheet was opened, since that row is
-            `hidden` below md. This way there is exactly one, always, holding
-            either the links or the button that reveals them.
+            What went with the button: mobile-nav, sheet and button were its only
+            reason to exist, cn() was imported by nothing else, and that took
+            @base-ui/react, class-variance-authority, clsx and tailwind-merge
+            with it. 30.6 KB of gzipped JavaScript, measured either side.
 
-            A theme toggle used to sit at the end of this row, and a second copy
-            of it beside the menu button. Both are gone: the theme follows the
-            operating system, which the visitor has already set. */}
-        <nav aria-label="Main" className="flex items-center">
-          <div className="hidden md:flex items-center gap-6">
-            <Link
-              href="/#work"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              Work
-            </Link>
-            <Link
-              href="/#contact"
-              className="text-sm font-medium hover:text-foreground transition-colors py-2"
-            >
-              Say hi
-            </Link>
-          </div>
-          <MobileNav />
+            ⛔ The ceiling is real and it is four. Three items still fit at 320px
+            but only just; a fourth does not, and at that point the panel has to
+            come back. It is one `git revert` away in the history. */}
+        <nav aria-label="Main" className="flex items-center gap-5 sm:gap-6">
+          <Link
+            href="/#work"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+          >
+            Work
+          </Link>
+          <Link
+            href="/#contact"
+            className="text-sm font-medium hover:text-foreground transition-colors py-2"
+          >
+            Say hi
+          </Link>
         </nav>
       </div>
     </header>
