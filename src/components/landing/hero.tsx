@@ -4,10 +4,7 @@ const Hero: FC = () => {
   return (
     <section className="pt-12 sm:pt-20 pb-4">
       <p className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
-        <span
-          className="w-6 h-0.5 bg-signal shrink-0"
-          aria-hidden="true"
-        />
+        <span className="w-6 h-0.5 bg-signal shrink-0" aria-hidden="true" />
         Fahrul Alwan
       </p>
 
@@ -46,20 +43,33 @@ const Hero: FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">
-        {/* ⛔ The employer is sized, not just named. `brand-philosophy.md:50`
-            calls this the strongest single sentence available and says it
-            LEADS: every element is publicly checkable, and 2.5M+ investors is
-            Bareksa's own published figure, so it clears the NDA rule that only
-            figures the employer has published itself may appear.
+        {/* ⛔ The employer is NAMED, not sized. Reversed 2026-08-26, owner's
+            call, and this comment used to argue the opposite — it cited
+            `brand-philosophy.md` § 4 calling the sized version "the strongest
+            single sentence available". That bullet was rewritten the same day.
 
-            An earlier build said only "Currently leading frontend at Bareksa",
-            which is unsizeable to anyone outside Indonesia — the reader most
-            of this page is written for. */}
-        {/* Two lines because they are two KINDS of thing, and chaining them
-            made the eye switch modes mid-line. The first is three scannable
-            tokens; the second is a sentence that has to be read. Running them
-            together as one middot chain is the comma-chain failure: a set of
-            facts rendered as prose, so the reader parses instead of scanning.
+            It read: "Leading frontend at Bareksa · OJK-licensed investment
+            platform · 2.5M+ investors". Every element was true and publicly
+            checkable. The problem was never accuracy: a licence and a user
+            count are things BAREKSA achieved, standing where his own evidence
+            should be, on a page whose whole argument is that it does not ask
+            to be taken on trust. Owner: "im not proud of it."
+
+            Evidence behind the call, in `research/2026-08-26-github-profile-readme.md`:
+            of thirteen well-known engineers' profile READMEs, three name an
+            employer and NONE explains one. Addy Osmani writes "Google" and
+            stops.
+
+            ⚠️ The cost is real and was accepted rather than solved: "Bareksa"
+            does not size itself to a reader outside Indonesia, which is the
+            reader most of this page is written for. Two softer options were
+            offered — keeping the category ("an Indonesian investment
+            platform") or swapping in a figure about his own work — and both
+            were declined in favour of the bare name. Do not quietly restore a
+            qualifier to fix the sizing; that decision has been made twice. */}
+        {/* Two lines because they are two kinds of thing: where he is, then
+            what he does. Chaining them into one middot run made the eye switch
+            modes mid-line.
 
             Two <p> elements rather than a conditional <br />. An earlier
             version used `hidden sm:block`, and JSX collapsed the whitespace
@@ -68,15 +78,12 @@ const Hero: FC = () => {
           <p className="text-sm text-muted-foreground">
             Software Engineering Lead &middot; Jakarta &middot; UTC+7
           </p>
-          {/* Foreground, not muted, and it is the only line in this block that
-              is. A dogfood pass found the four facts a recruiter scans for set
-              in the same grey as everything around them, at the smallest size
-              on the screen. This is the most legible sentence on the page for
-              that reader: it names the employer, what the employer is, and how
-              big. Lifting it is the whole fix, and it costs no reordering. */}
+          {/* Foreground, not muted, and the only line in this block that is.
+              A dogfood pass found the fact a recruiter scans for set in the
+              same grey as everything around it, at the smallest size on the
+              screen. */}
           <p className="text-sm text-foreground max-w-[52ch]">
-            Leading frontend at Bareksa &middot; OJK-licensed investment
-            platform &middot; 2.5M+ investors
+            Leading frontend at Bareksa
           </p>
         </div>
 
@@ -105,7 +112,6 @@ const Hero: FC = () => {
           </a>
         </nav>
       </div>
-
     </section>
   );
 };
