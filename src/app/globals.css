@@ -4,6 +4,12 @@
    Light theme lives here. Dark theme lives in theme.css and nowhere else.
    Every ratio below was computed against these exact values (spec §1). */
 :root {
+  /* Tells the UA which scheme the page is painted in, so scrollbars, form
+     controls and the canvas behind an overscroll match. next-themes used to set
+     this as an inline style on <html>; nothing does now, so it is declared here.
+     `light dark` means "this page handles both" — the UA follows the OS. */
+  color-scheme: light dark;
+
   /* surfaces */
   --background: hsl(210 18% 97.5%);          /* cool paper */
   --foreground: hsl(215 26% 12%);            /* 15.98:1 on background */
@@ -140,6 +146,17 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* The layer scale, bridged so it produces real `z-sticky` / `z-overlay` /
+     `z-popover` / `z-skip` utilities. The tokens existed in :root but were never
+     exported here, so all four consumers reached for `z-[var(--z-sticky)]` — an
+     arbitrary-value escape hatch used only because the theme had no name for a
+     value the theme already held. --z-raised stays unbridged: nothing uses it as
+     a class, and a utility nobody writes is a utility nobody should generate. */
+  --z-index-sticky: var(--z-sticky);
+  --z-index-overlay: var(--z-overlay);
+  --z-index-popover: var(--z-popover);
+  --z-index-skip: var(--z-skip);
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -268,9 +285,10 @@
 /* Print and Reader mode, spec §11. The goal is not a designed page, it is a page
    that does not break when someone forwards it as a PDF. */
 @media print {
-  /* Black ink on white paper, whichever theme was on screen. */
-  :root,
-  .dark {
+  /* Black ink on white paper, whichever theme was on screen. There is no `.dark`
+     class to override any more: theme.css scopes its tokens to `screen`, so this
+     block is the only thing setting them on paper. */
+  :root {
     --background: #fff;
     --foreground: #000;
     --muted-foreground: #444;
