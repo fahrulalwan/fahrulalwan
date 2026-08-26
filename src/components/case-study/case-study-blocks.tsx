@@ -55,7 +55,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
 
     case 'prose':
       return (
-        <p className="text-muted-foreground leading-relaxed max-w-[65ch] mb-6">
+        <p className="text-muted-foreground leading-relaxed max-w-prose mb-6">
           {block.text}
           {block.href && block.hrefLabel && (
             <>
@@ -76,7 +76,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
     case 'review':
       /* The file is the subject, never a person. */
       return (
-        <figure className="border-l-2 border-signal/40 pl-5 sm:pl-6 my-8 max-w-[65ch]">
+        <figure className="border-l-2 border-signal/40 pl-5 sm:pl-6 my-8 max-w-prose">
           <p className="text-label font-medium text-muted-foreground uppercase mb-3">
             On {block.onWhat} &middot;{' '}
             <span className="font-mono normal-case">{block.where}</span>
@@ -99,7 +99,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
 
     case 'handoff':
       return (
-        <figure className="border-t border-border/50 pt-6 my-8 max-w-[65ch]">
+        <figure className="border-t border-border/50 pt-6 my-8 max-w-prose">
           <p className="font-medium mb-2">{block.title}</p>
           <blockquote className="text-muted-foreground leading-relaxed whitespace-pre-line mb-3">
             {block.scope}
@@ -119,7 +119,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
 
     case 'quote':
       return (
-        <figure className="my-8 max-w-[65ch]">
+        <figure className="my-8 max-w-prose">
           <blockquote className="font-mono text-sm leading-relaxed whitespace-pre-line text-foreground mb-2">
             {block.text}
           </blockquote>
@@ -142,7 +142,7 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
 
     case 'trail':
       return (
-        <div className="my-8 max-w-[65ch]">
+        <div className="my-8 max-w-prose">
           <ol className="space-y-5">
             {block.steps.map((step) => (
               <li

@@ -43,7 +43,7 @@ const Currently: FC = () => {
           />
         </div>
 
-        <ul className="space-y-6 max-w-[62ch]">
+        <ul className="space-y-6 max-w-prose-tight">
           {currentItems.map((item) => (
             <li
               key={item}

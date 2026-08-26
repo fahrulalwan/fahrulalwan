@@ -35,7 +35,7 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         </time>
       </div>
 
-      <h1 className="font-display text-display-l font-medium mb-8 max-w-[22ch]">
+      <h1 className="font-display text-display-l font-medium mb-8 max-w-title">
         {caseStudy.headline}
       </h1>
 

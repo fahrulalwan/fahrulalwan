@@ -8,7 +8,7 @@ const Hero: FC = () => {
         Fahrul Alwan
       </p>
 
-      <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-[19ch]">
+      <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-headline">
         I lead a frontend team and I&apos;m{' '}
         {/* Four words, not six. CLAUDE.md caps the signal at one or two key
             words per page and spec §1 at ~3% of a viewport; six words was half
@@ -20,7 +20,7 @@ const Hero: FC = () => {
       {/* Every clause here is a dated fact from a private career record. The
           reader draws the character conclusion; the page does not hand it over.
           That is why the strip below now carries the whole verifiable load. */}
-      <div className="space-y-4 max-w-[62ch] mb-10 sm:mb-14">
+      <div className="space-y-4 max-w-prose-tight mb-10 sm:mb-14">
         <p className="text-body-l">
           I started working straight out of vocational school, pulling fiber
           into villas in Bali. Took a pay cut to under half my salary along the
@@ -82,9 +82,13 @@ const Hero: FC = () => {
               A dogfood pass found the fact a recruiter scans for set in the
               same grey as everything around it, at the smallest size on the
               screen. */}
-          <p className="text-sm text-foreground max-w-[52ch]">
-            Leading frontend at Bareksa
-          </p>
+          {/* No measure cap. There was a `max-w-[52ch]` here, and it was inert:
+              measured, the line's own text is 186px wide against a 416px cap, so
+              the cap never once decided a line break. It was load-bearing when
+              this line was longer — it carried an employer qualifier that was cut
+              on 2026-08-26 — and became decoration the moment the line got short.
+              Do not add one back unless this text grows past a full line. */}
+          <p className="text-sm text-foreground">Leading frontend at Bareksa</p>
         </div>
 
         <nav className="flex items-center gap-5 shrink-0" aria-label="Social">

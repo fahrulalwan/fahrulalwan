@@ -43,11 +43,11 @@ const GlobalError = ({
               Error
             </p>
 
-            <h1 className="font-display text-display-xl font-medium mb-6 max-w-[19ch]">
+            <h1 className="font-display text-display-xl font-medium mb-6 max-w-headline">
               Something broke on my end.
             </h1>
 
-            <p className="text-muted-foreground leading-relaxed max-w-[65ch] mb-8">
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-8">
               Not your fault. It has been reported and I will see it. Reloading
               usually works.
             </p>

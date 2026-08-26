@@ -146,6 +146,28 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Line lengths, named. Sixteen sites carried five raw `max-w-[NNch]` values
+     between them, so nothing said which measure belonged to which role and a new
+     page had to guess a number.
+
+     ⛔ `ch` on purpose, and do NOT convert these to px. `ch` is the width of the
+     current font's "0", so a ch-based cap holds a constant CHARACTER count while
+     the pixel width moves — which is the thing that governs reading comfort, and
+     the reason 65ch renders at 595px on 16px text and 521px on 14px text while
+     both fit the same 77 characters. Converting to px would freeze the pixels and
+     let the character count drift, which is backwards. It would also break
+     --container-headline outright: that sits on a clamp(40px, 6vw, 60px) heading,
+     so its cap breathes from 446px to 670px and keeps roughly nineteen characters
+     per line at every viewport. A fixed pixel value would destroy that.
+
+     Landing prose is deliberately tighter than case-study prose — 66 characters
+     against 77 — so the difference reads as a choice. It used to be 74 against
+     77, three characters, which reads as nothing. */
+  --container-headline: 19ch;
+  --container-title: 22ch;
+  --container-prose: 65ch;
+  --container-prose-tight: 56ch;
+
   /* The layer scale, bridged so it produces real `z-sticky` / `z-overlay` /
      `z-popover` / `z-skip` utilities. The tokens existed in :root but were never
      exported here, so all four consumers reached for `z-[var(--z-sticky)]` — an

@@ -81,7 +81,7 @@ const FeaturedWork: FC = () => {
                 </time>
               </div>
 
-              <h3 className="font-display text-display-l font-medium mb-4 max-w-[22ch] transition-colors duration-300 group-hover:text-signal">
+              <h3 className="font-display text-display-l font-medium mb-4 max-w-title transition-colors duration-300 group-hover:text-signal">
                 <Link
                   href={`/work/${study.slug}`}
                   className="after:absolute after:inset-0 after:content-['']"

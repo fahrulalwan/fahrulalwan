@@ -90,7 +90,7 @@ const CaseStudyPage = async ({
         aria-label="Get in touch"
         className="py-12 sm:py-16 border-t border-border/50"
       >
-        <p className="text-sm leading-relaxed text-muted-foreground max-w-[65ch] mb-5">
+        <p className="text-sm leading-relaxed text-muted-foreground max-w-prose mb-5">
           If any of this resonated, say hi.
         </p>
         {/* `flex-wrap` is the whole reason this page fits a 320px phone. The email
