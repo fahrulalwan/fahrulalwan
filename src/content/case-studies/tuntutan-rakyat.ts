@@ -22,12 +22,38 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
    * because the humility is the point and it is checkable; it just stopped
    * being the final clause.
    */
-  headline:
-    'Five of us built an information site during the 2025 protests, in six days. Most of the code is someone else’s. I brought the four of them in and decided what we built.',
+  headline: 'Six days, five people',
   tags: ['Next.js', 'Code review', 'Scoping', 'Civic'],
   year: '2025',
+  // ⛔ The authorship disclosure lives in this sentence and must not leave it.
+  // `capability-evidence.md` lists this repo's commit total as a DO-NOT-CLAIM —
+  // his share is 42 of 179 — so a version of "I did not write most of it" has to
+  // be somewhere a reader meets. Until 2026-08-27 it was in the headline; that
+  // headline was cut to a title the same day, and `summary` is now rendered as
+  // the visible dek, so the fact sits on the page and in the search snippet
+  // instead of inside an h1 nobody skims.
+  //
+  // ⛔ Two owner decisions are baked in here. Do not undo either by accident.
+  //
+  // (1) The disclosure is SUBORDINATE, not its own sentence. It read "Most of
+  // the code is someone else's." and was softened on 2026-08-27 to the trailing
+  // clause below. The tradeoff was named at the time and accepted: a skimmer is
+  // likelier to miss it this way. He chose that over a blunter line, having
+  // already seen the alternatives that keep it as a standalone sentence.
+  //
+  // (2) It never ends the sentence. That rule is older than this edit — the
+  // original headline used to close on "Most of the code is not mine", and on
+  // the landing card that was the last thing a reader took away, so the one
+  // study whose job is to show he LED something read as "he did not do much".
+  // The clause stays; it just may not be final. Here the sentence ends on
+  // deciding what was built, which is the point of the study.
+  //
+  // Also traded away, same session: "and caught the change that broke a shared
+  // link" — the one concrete technical detail — went, to hold this under the
+  // ~160-char point where search snippets truncate. It survives in the blocks
+  // below, in more depth than it had here.
   summary:
-    'A protest information site five of us built in six days. I brought the team in, decided what we built, and caught the change that broke a shared link.',
+    'A protest information site five of us built in six days. I brought the team in and decided what we built, more than I wrote the code.',
   metadata: {
     role: 'Led it',
     timeline: '6 days',

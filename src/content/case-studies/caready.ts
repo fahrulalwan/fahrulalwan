@@ -2,8 +2,12 @@ import type { CaseStudy } from './types';
 
 export const careadyCaseStudy: CaseStudy = {
   slug: 'caready-auction-platform',
-  headline:
-    'Live car auctions need everyone to see the same bid at the same instant. I built that real-time layer in 2018, fresh out of a bootcamp.',
+  // A title, not a sentence. Cut 2026-08-27 from 26 words — and this file was
+  // the clearest case: `headline` and `summary` were BYTE-IDENTICAL, so the
+  // study carried its description twice and its name zero times. The date is in
+  // the title deliberately; it does the early-career framing before anyone
+  // reads a word, and this study is a 2018 story rather than a live system.
+  headline: 'A real-time layer, 2018',
   tags: ['WebSocket', 'Real-time Architecture', 'Angular', 'Java Spring Boot'],
   year: '2018',
   summary:

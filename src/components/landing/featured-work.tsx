@@ -81,7 +81,7 @@ const FeaturedWork: FC = () => {
                 </time>
               </div>
 
-              <h3 className="font-display text-display-l font-medium mb-4 max-w-title transition-colors duration-300 group-hover:text-signal">
+              <h3 className="font-display text-display-l font-medium mb-3 max-w-title transition-colors duration-300 group-hover:text-signal">
                 <Link
                   href={`/work/${study.slug}`}
                   className="after:absolute after:inset-0 after:content-['']"
@@ -89,6 +89,31 @@ const FeaturedWork: FC = () => {
                   {study.headline}
                 </Link>
               </h3>
+
+              {/* ⛔ Added 2026-08-27, and it is a repair rather than an addition.
+                  The headlines used to be whole sentences — 21, 26 and 33 words
+                  — so the card explained itself. They were cut to real titles
+                  the same day, and this card had never rendered `summary`, so
+                  the cut left three names sitting on a page with nothing saying
+                  what any of them was. The owner caught it: "keliatan contextless
+                  deh. isinya much richer than the title itself."
+
+                  So the card carries the same pair the detail page now carries:
+                  `headline` names the study, `summary` explains it.
+
+                  ⚠️ It sits ABOVE the availability line on purpose. That line is
+                  a STATUS ("still up, still mine"), and a status is unreadable
+                  before you know what it is the status of.
+
+                  No `relative z-10` here, deliberately — unlike the availability
+                  link below. This text sits under the headline's stretched
+                  ::after so the whole card stays one click target. The cost is
+                  that this sentence is not selectable, which is already true of
+                  the availability note and is the standard stretched-link
+                  tradeoff. */}
+              <p className="text-muted-foreground leading-relaxed max-w-prose mb-4">
+                {study.summary}
+              </p>
 
               {/* Replaces the metric tile. Spec §2: each card carries its own
                   status, because the heading no longer promises checkability and
