@@ -90,27 +90,11 @@ const FeaturedWork: FC = () => {
                 </Link>
               </h3>
 
-              {/* ⛔ Added 2026-08-27, and it is a repair rather than an addition.
-                  The headlines used to be whole sentences — 21, 26 and 33 words
-                  — so the card explained itself. They were cut to real titles
-                  the same day, and this card had never rendered `summary`, so
-                  the cut left three names sitting on a page with nothing saying
-                  what any of them was. The owner caught it: "keliatan contextless
-                  deh. isinya much richer than the title itself."
-
-                  So the card carries the same pair the detail page now carries:
-                  `headline` names the study, `summary` explains it.
-
-                  ⚠️ It sits ABOVE the availability line on purpose. That line is
-                  a STATUS ("still up, still mine"), and a status is unreadable
-                  before you know what it is the status of.
-
-                  No `relative z-10` here, deliberately — unlike the availability
-                  link below. This text sits under the headline's stretched
-                  ::after so the whole card stays one click target. The cost is
-                  that this sentence is not selectable, which is already true of
-                  the availability note and is the standard stretched-link
-                  tradeoff. */}
+              {/* Above the availability line on purpose: that line is a status,
+                  and a status means nothing before you know what it describes.
+                  No `relative z-10` here, so it stays under the headline's
+                  stretched ::after and the whole card remains one click target
+                  — at the cost of not being selectable. */}
               <p className="text-muted-foreground leading-relaxed max-w-prose mb-4">
                 {study.summary}
               </p>

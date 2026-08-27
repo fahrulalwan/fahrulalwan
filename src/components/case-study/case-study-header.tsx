@@ -39,24 +39,9 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         {caseStudy.headline}
       </h1>
 
-      {/* The sentence under the headline, and it is load-bearing rather than
-          decoration.
-
-          `summary` was previously rendered NOWHERE — it existed only as the meta
-          description in `page.tsx`. That was survivable while `headline` carried
-          a whole sentence, because the sentence was on the page either way. On
-          2026-08-27 the headlines were cut to real titles (21/26/33 words down to
-          5/4/4), and without this element that edit would have deleted the
-          explanation from the visible page instead of moving it.
-
-          So the two fields now do two jobs, which is what the type always
-          allowed: `headline` names the study, `summary` explains it. Before that
-          split they were near-duplicates — on `caready.ts` the two strings were
-          byte-identical, and on `fartix.ts` they differed by one word.
-
-          ⛔ Do not remove this without first giving `headline` its sentence back.
-          A reader arriving from search would otherwise get a four-word title and
-          go straight into the blocks with no idea what the project was. */}
+      {/* ⛔ Do not remove without giving `headline` its sentence back. The
+          headlines are four-word titles; this is the only thing on the page that
+          says what the project was. */}
       <p className="text-body-l text-muted-foreground leading-relaxed mb-8 max-w-prose">
         {caseStudy.summary}
       </p>

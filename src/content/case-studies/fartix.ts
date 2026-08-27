@@ -2,10 +2,7 @@ import type { CaseStudy } from './types';
 
 export const fartixCaseStudy: CaseStudy = {
   slug: 'fartix-ticketing-platform',
-  // A title, not a sentence. `summary` below carries the explanation and is now
-  // rendered as the sentence under this one; see `case-study-header.tsx`. Cut
-  // 2026-08-27 from 21 words, which was a paragraph wearing a headline's
-  // clothes.
+  // A title. `summary` carries the explanation and renders beneath it.
   headline: 'Real money at the gate',
   tags: ['React 19', 'Payments UX', 'Cloudflare Edge', 'TanStack Router'],
   year: '2026',
