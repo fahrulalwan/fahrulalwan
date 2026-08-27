@@ -105,44 +105,23 @@ export const metadata: Metadata = {
 };
 
 /**
- * The entity, not a rich result. `Person` is not in Google's supported
- * rich-result gallery — checked against the primary source — so nothing here
- * changes how a search result looks. It exists so that a machine asked "who is
- * this" resolves to one person rather than to the several better-known people
- * who share the surname.
+ * Entity disambiguation, not a rich result — `Person` is not in Google's
+ * rich-result gallery, so nothing here changes how a search result looks.
  *
- * ⛔ Every value is traceable to text a visitor can see, because Google requires
- * structured data to match the visible page and discounts it when it does not:
- *   description  the hero's own two claims, and the meta line under them
- *   jobTitle     "Software Engineering Lead · Jakarta · UTC+7", hero meta line
- *   worksFor     "Leading frontend at Bareksa", hero
- *   knowsAbout   the tag rows on the three case-study cards, verbatim
+ * ⛔ Every value must be traceable to text a visitor can see; Google discounts
+ * structured data that does not match the visible page.
  *
- * ⛔ Three fields the SEO notes ask for are deliberately absent.
+ * ⛔ Three absences are deliberate, not gaps:
+ *   alumniOf  the university is a knowledge-based authentication answer, and
+ *             no public source ties it to this name today
+ *   image     the robots block sets `noimageindex`; pointing the entity at a
+ *             portrait would contradict it
+ *   sameAs    two entries, decided 2026-08-27. GitLab and dev.to exist but are
+ *             empty, no npm account, X declined. Add one only if it has content
  *
- * `alumniOf` — decided 2026-08-26 not to publish the university. "Which
- * university did you attend" is a standard knowledge-based authentication
- * question, and no public source ties it to this name today, so the site would
- * be the first. Weighed against that: the disambiguation primitive here is
- * `sameAs`, which schema.org defines as the identity assertion, not `alumniOf`.
- * A real authentication secret for a garnish on the wrong field.
- *
- * `image` — the site sets `noimageindex` on purpose (see the robots block
- * above), so pointing the entity at a portrait would re-introduce exactly the
- * two-minds problem that removing `max-image-preview` just resolved.
- *
- * `sameAs` is an identity assertion, so a dead or wrong URL hurts more than a
- * missing one. Two entries is deliberate, decided 2026-08-27: GitLab and dev.to
- * exist but are empty, no npm account, X declined. Add a profile only if it has
- * content on it.
- *
- * ⚠️ `@id` is meant to be a permanent identifier and this one is not yet. It
- * derives from SITE_URL, which is still a `.vercel.app` subdomain, so it moves
- * the day an owned domain lands and any machine holding the old value sees a
- * different entity. That is not a new problem — `url`, `metadataBase` and the
- * canonical all move with it — but `@id` is the one field whose whole job is to
- * stay put, so it is the sharpest argument in this file for registering the
- * domain before the entity has time to be cached under a rented address.
+ * ⚠️ `@id` is supposed to be permanent and is not: it derives from SITE_URL,
+ * still a `.vercel.app` subdomain, so it changes the day a domain lands and any
+ * machine holding the old value sees a different entity.
  */
 const personJsonLd = {
   '@context': 'https://schema.org',

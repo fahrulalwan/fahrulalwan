@@ -8,19 +8,9 @@ const currentItems = [
 ];
 
 /**
- * This lived inside the opening until a dogfood pass measured what it cost
- * there: 513px on a phone, sitting between the claim and the first thing a
- * reader could actually open. The first openable link was 48% down the page.
- * Moving this block below the work puts it at 35%, and the opening then ends
- * on one screen.
- *
- * Nothing here changed except where it sits. The reader this section is for is
- * someone who already wants to know what he is up to, and that reader scrolls.
- * The two who do not scroll are the two who came for evidence.
- *
- * It sits after the gate anchor rather than directly after the case studies, so
- * the two evidence sections stay adjacent and the reserved slot in page.tsx
- * stays where its comment says it belongs.
+ * ⛔ Belongs below the work, not inside the opening. Above it, the first
+ * openable link sat 48% down the page; here it is 35% and the opening ends on
+ * one screen.
  */
 const Currently: FC = () => {
   return (

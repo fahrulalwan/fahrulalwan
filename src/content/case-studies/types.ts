@@ -27,12 +27,9 @@ export interface HeadingBlock {
 /**
  * A paragraph. Asserted, unless `href` gives the reader somewhere to check.
  *
- * ⛔ `href` and `hrefLabel` travel together, enforced by the type rather than
- * by a comment. An earlier draft made both optional and wrote "Required
- * whenever `href` is set" above them; the renderer needs BOTH to draw a link,
- * so a block with `href` and no `hrefLabel` built green and rendered no link
- * at all — while the evidence assertion counted it as evidence. The study
- * advertised openable work and the reader could open nothing.
+ * ⛔ `href` and `hrefLabel` travel together, enforced by the type. The renderer
+ * needs both to draw a link, so making them independently optional builds green
+ * and silently renders no link while still counting as evidence.
  */
 export type ProseBlock = {
   type: 'prose';

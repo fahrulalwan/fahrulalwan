@@ -28,17 +28,11 @@ export const groupBlocks = (blocks: Block[]): RenderGroup[] => {
 };
 
 /**
- * ⛔ This exists because TypeScript will NOT catch an unhandled union member
- * on its own here, and an earlier draft assumed it would.
- *
- * React 19 types a function component's return as `ReactNode`, which includes
- * `undefined`, and this repo does not set `noImplicitReturns`. So a `switch`
- * with a missing case compiles clean and renders a blank space. Measured
- * against this repo's exact compiler options and React types on 2026-08-25.
- *
- * Passing the unhandled value into a `never` parameter is what actually fails
- * the build. Add an eleventh block type without a case, and this line is the
- * error.
+ * ⛔ Do not delete as redundant. TypeScript will NOT catch a missing union case
+ * here on its own: React 19 types a component's return as `ReactNode`, which
+ * includes `undefined`, and this repo does not set `noImplicitReturns`, so a
+ * `switch` with a gap compiles clean and renders blank. Passing the value into
+ * a `never` parameter is what actually fails the build.
  */
 export const assertNever = (value: never): null => {
   void value;

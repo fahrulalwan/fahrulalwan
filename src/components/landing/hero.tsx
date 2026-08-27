@@ -10,16 +10,13 @@ const Hero: FC = () => {
 
       <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-headline">
         I lead a frontend team and I&apos;m{' '}
-        {/* Four words, not six. CLAUDE.md caps the signal at one or two key
-            words per page and spec §1 at ~3% of a viewport; six words was half
-            the headline. "most days" is the hedge, not the claim, so it reads
-            in the foreground where hedges belong. */}
+        {/* Four words, not six — the signal colour is capped at ~3% of a
+            viewport. "most days" is the hedge, so it stays outside it. */}
         <em className="not-italic text-signal">still in the code</em> most days.
       </h1>
 
-      {/* Every clause here is a dated fact from a private career record. The
-          reader draws the character conclusion; the page does not hand it over.
-          That is why the strip below now carries the whole verifiable load. */}
+      {/* Every clause is a dated fact. The reader draws the conclusion; the page
+          does not state it. */}
       <div className="space-y-4 max-w-prose-tight mb-10 sm:mb-14">
         <p className="text-body-l">
           I started working straight out of vocational school, pulling fiber
@@ -27,14 +24,9 @@ const Hero: FC = () => {
           way. Did the degree at night, and was leading a team of five at
           twenty-two, nine months before I finished it.
         </p>
-        {/* Promoted from the deleted Origin section, and it replaces the belief
-            line that sat here ("I've only been good at work I actually believed
-            in"). That line was pure disposition, pre-defending a record nobody
-            had questioned, in the most expensive space on the page.
-
-            This one earns the slot for the opposite reason: it is the only
-            sentence on the site describing a problem other engineers also have,
-            rather than describing him. */}
+        {/* ⛔ Keep this pointed at a problem other engineers share, not at him.
+            It replaced a disposition line ("I've only been good at work I
+            believed in") that pre-defended a record nobody had questioned. */}
         <p className="text-muted-foreground leading-relaxed">
           Code is usually the easy part. Most of what slows projects down is
           unclear requirements, people politely agreeing to slightly different
@@ -43,51 +35,22 @@ const Hero: FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">
-        {/* ⛔ The employer is NAMED, not sized. Reversed 2026-08-26, owner's
-            call, and this comment used to argue the opposite — it cited
-            `brand-philosophy.md` § 4 calling the sized version "the strongest
-            single sentence available". That bullet was rewritten the same day.
-
-            It read: "Leading frontend at Bareksa · OJK-licensed investment
-            platform · 2.5M+ investors". Every element was true and publicly
-            checkable. The problem was never accuracy: a licence and a user
-            count are things BAREKSA achieved, standing where his own evidence
-            should be, on a page whose whole argument is that it does not ask
-            to be taken on trust. Owner: "im not proud of it."
-
-            Evidence behind the call, in `research/2026-08-26-github-profile-readme.md`:
-            of thirteen well-known engineers' profile READMEs, three name an
-            employer and NONE explains one. Addy Osmani writes "Google" and
-            stops.
-
-            ⚠️ The cost is real and was accepted rather than solved: "Bareksa"
-            does not size itself to a reader outside Indonesia, which is the
-            reader most of this page is written for. Two softer options were
-            offered — keeping the category ("an Indonesian investment
-            platform") or swapping in a figure about his own work — and both
-            were declined in favour of the bare name. Do not quietly restore a
-            qualifier to fix the sizing; that decision has been made twice. */}
-        {/* Two lines because they are two kinds of thing: where he is, then
-            what he does. Chaining them into one middot run made the eye switch
-            modes mid-line.
-
-            Two <p> elements rather than a conditional <br />. An earlier
-            version used `hidden sm:block`, and JSX collapsed the whitespace
-            around it, so on mobile it rendered "UTC+7Leading". */}
+        {/* ⛔ The employer is NAMED, not sized — decided twice, most recently
+            2026-08-26. It read "Bareksa · OJK-licensed investment platform ·
+            2.5M+ investors": all true, all things Bareksa achieved standing
+            where his own evidence should be. The cost is known and accepted —
+            "Bareksa" does not size itself to a foreign reader. Do not restore a
+            qualifier to fix that. */}
+        {/* ⛔ Two <p> elements, not a conditional <br />. A `hidden sm:block`
+            version had JSX collapse the whitespace around it, rendering
+            "UTC+7Leading" on mobile. */}
         <div className="space-y-1.5">
           <p className="text-sm text-muted-foreground">
             Software Engineering Lead &middot; Jakarta &middot; UTC+7
           </p>
-          {/* Foreground, not muted, and the only line in this block that is.
-              A dogfood pass found the fact a recruiter scans for set in the
-              same grey as everything around it, at the smallest size on the
-              screen. */}
-          {/* No measure cap. There was a `max-w-[52ch]` here, and it was inert:
-              measured, the line's own text is 186px wide against a 416px cap, so
-              the cap never once decided a line break. It was load-bearing when
-              this line was longer — it carried an employer qualifier that was cut
-              on 2026-08-26 — and became decoration the moment the line got short.
-              Do not add one back unless this text grows past a full line. */}
+          {/* Foreground, not muted — it is the fact a recruiter scans for, and
+              a dogfood pass found it lost in the surrounding grey. No measure
+              cap: at 186px against a 416px cap it never decided a break. */}
           <p className="text-sm text-foreground">Leading frontend at Bareksa</p>
         </div>
 

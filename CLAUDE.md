@@ -163,6 +163,7 @@ Both files use raw HSL values in CSS custom properties. The `@theme inline` bloc
 
 ## Code Conventions
 
+- **Comments**: ⛔ **state the constraint, not the story.** The test on every comment is *what breaks if this is gone?* — that answer is the comment. The ban, the trap someone would re-introduce, a non-obvious why in a line or two: those stay. The alternatives declined, the measurements, what it used to say, who decided it and when: those go in the owner's project vault, which is the source of truth for how a decision was reached. **The tell is a comment with paragraphs** — a blank line inside a block usually means the second half is history. *Measured 2026-08-27 before a deliberate cut: `lib/site.ts` was 90% comment, `sitemap.ts` 67%, `colophon.tsx` 58%, `hero.tsx` 45%.* This does not weaken the site's own claim that its reasoning is readable in the source; the reader still finds *why* beside the thing, minus the account of how it got there.
 - **Formatting**: Biome — single quotes, space indentation, organize imports
 - **Linting**: ESLint 9 flat config extending `next/core-web-vitals` and `next/typescript`
 - **TypeScript**: Strict mode enabled

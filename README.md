@@ -10,4 +10,4 @@ I lead the frontend team at Bareksa. I started straight out of vocational school
 
 ---
 
-This repo is that site. Most decisions are explained in a comment next to the thing they govern.
+This repo is that site.
