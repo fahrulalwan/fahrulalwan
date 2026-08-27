@@ -39,7 +39,8 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         {caseStudy.headline}
       </h1>
 
-      {/* The dek, and it is load-bearing rather than decoration.
+      {/* The sentence under the headline, and it is load-bearing rather than
+          decoration.
 
           `summary` was previously rendered NOWHERE — it existed only as the meta
           description in `page.tsx`. That was survivable while `headline` carried

@@ -30,8 +30,8 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
   // his share is 42 of 179 — so a version of "I did not write most of it" has to
   // be somewhere a reader meets. Until 2026-08-27 it was in the headline; that
   // headline was cut to a title the same day, and `summary` is now rendered as
-  // the visible dek, so the fact sits on the page and in the search snippet
-  // instead of inside an h1 nobody skims.
+  // the visible sentence under the title, so the fact sits on the page and in
+  // the search snippet instead of inside an h1 nobody skims.
   //
   // ⛔ Two owner decisions are baked in here. Do not undo either by accident.
   //
