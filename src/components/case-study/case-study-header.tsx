@@ -80,7 +80,15 @@ const CaseStudyHeader: FC<CaseStudyHeaderProps> = ({ caseStudy }) => {
         }
 
         return (
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground mb-10 sm:mb-14">
+          /* No bottom margin. The <header> already ends on `pb-12 sm:pb-16`,
+             and this row used to add `mb-10 sm:mb-14` on top of it — about
+             110px of stacked dead space on desktop before the first block.
+             That was always wrong and was simply invisible: the headlines ran
+             21 to 33 words, so the header was tall enough that the gap read as
+             proportion. Cutting them to titles on 2026-08-27 left the hole
+             sitting in the open. Spacing below the header belongs to the
+             header's own padding, in one place. */
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {facts.map((fact, index) => (
               <span key={fact} className="flex gap-x-6">
                 {index > 0 && <span aria-hidden="true">&middot;</span>}
