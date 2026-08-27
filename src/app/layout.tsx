@@ -131,9 +131,29 @@ export const metadata: Metadata = {
  * above), so pointing the entity at a portrait would re-introduce exactly the
  * two-minds problem that removing `max-image-preview` just resolved.
  *
- * `sameAs` stays at two entries. It is an identity ASSERTION, so a guessed URL
- * that 404s or belongs to someone else damages the disambiguation it is meant to
- * help. Widening it needs the owner to name real profiles, not a hunt.
+ * `sameAs` stays at two entries, and that is now a SETTLED DECISION rather than
+ * an open question. It is an identity ASSERTION, so a guessed URL that 404s or
+ * belongs to someone else damages the disambiguation it is meant to help.
+ *
+ * The search was run on 2026-08-27 so nobody has to run it again:
+ *   gitlab.com/fahrulalwan   real, titled "Mohammad Fahrul Alwan" — but ZERO
+ *                            public projects
+ *   dev.to/fahrulalwan       real, titled "Mohammad Fahrul Alwan" — but ZERO
+ *                            articles
+ *   npm                      no account under fahrulalwan / miyawho / nawlayo
+ *   medium, stackoverflow    403 to scripted checks, unverified either way
+ *
+ * ⛔ The two real profiles were REJECTED because they are empty. Linking them
+ * would point a reader at abandoned accounts, and the dev.to one is worse than
+ * neutral: an empty blog reads as started-and-stopped, on a site whose whole
+ * argument is that it does not overclaim.
+ *
+ * The owner's X account was verified as genuinely his and declined on 2026-08-27
+ * — deliberately, not by oversight. Its handle carries no name, and wiring the
+ * professional entity to a personal social presence is permanent in practice
+ * because machines cache this. Two strong links beat three mixed ones.
+ *
+ * Re-open only if a NEW profile appears with actual content on it.
  *
  * ⚠️ `@id` is meant to be a permanent identifier and this one is not yet. It
  * derives from SITE_URL, which is still a `.vercel.app` subdomain, so it moves
