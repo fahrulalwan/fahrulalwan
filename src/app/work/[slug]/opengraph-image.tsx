@@ -91,7 +91,17 @@ const Image = async ({ params }: { params: Promise<{ slug: string }> }) => {
           letterSpacing: '0.01em',
         }}
       >
-        {caseStudy ? `Fahrul Alwan · Case study · ${caseStudy.year}` : 'Fahrul Alwan'}
+        {caseStudy
+          ? [
+              'Fahrul Alwan',
+              'Case study',
+              // ⛔ Only when the headline does not already carry it. "A
+              // real-time layer, 2018" printed 2018 twice, six lines apart.
+              caseStudy.headline.includes(caseStudy.year) ? null : caseStudy.year,
+            ]
+              .filter(Boolean)
+              .join(' · ')
+          : 'Fahrul Alwan'}
       </div>
     </div>,
     {
