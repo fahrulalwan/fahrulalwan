@@ -1,5 +1,4 @@
 import { Newsreader, Noto_Sans } from 'next/font/google';
-import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import './theme.css';
 import { Analytics } from '@vercel/analytics/react';
@@ -85,9 +84,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      // ⛔ Deliberate, decided 2026-08-26: the portrait is not to be indexed.
+      // The site has exactly one image, public/profile.webp, and this keeps it
+      // out of Google Images.
+      //
+      // `max-image-preview: 'large'` used to sit directly below this line and
+      // pulled the other way — it asks Google for a big image preview of a page
+      // whose images it has just been told not to index. Removed so the file
+      // states one intention instead of two. Do not add it back without
+      // reversing the line above.
       noimageindex: true,
       'max-video-preview': -1,
-      'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
@@ -97,12 +104,64 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Entity disambiguation, not a rich result — `Person` is not in Google's
+ * rich-result gallery, so nothing here changes how a search result looks.
+ *
+ * ⛔ Every value must be traceable to text a visitor can see; Google discounts
+ * structured data that does not match the visible page.
+ *
+ * ⛔ Three absences are deliberate, not gaps:
+ *   alumniOf  the university is a knowledge-based authentication answer, and
+ *             no public source ties it to this name today
+ *   image     the robots block sets `noimageindex`; pointing the entity at a
+ *             portrait would contradict it
+ *   sameAs    two entries, decided 2026-08-27. GitLab and dev.to exist but are
+ *             empty, no npm account, X declined. Add one only if it has content
+ *
+ * ⚠️ `@id` is supposed to be permanent and is not: it derives from SITE_URL,
+ * still a `.vercel.app` subdomain, so it changes the day a domain lands and any
+ * machine holding the old value sees a different entity.
+ */
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${SITE_URL}/#person`,
   name: 'Mohammad Fahrul Alwan',
   url: SITE_URL,
   jobTitle: 'Software Engineering Lead',
+  description:
+    'Software engineering lead in Jakarta, leading frontend at Bareksa. Still in the code most days.',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Bareksa',
+    url: 'https://bareksa.com',
+  },
+  // ⛔ Exactly the twelve tags rendered on the three case-study cards, in card
+  // order, spelled as they appear. Nothing curated in and nothing curated out.
+  //
+  // The first draft of this array added "TypeScript", "Frontend architecture"
+  // and "Engineering leadership" — all plausible, none of them text a visitor
+  // can find on this site. That is the drift the rule above exists to stop, and
+  // it happened in the same edit that wrote the rule. If a topic belongs here,
+  // put it on a page first.
+  //
+  // Angular and Java Spring Boot are 2018 and stay. Trimming them would be a
+  // decision about what to be found for, which is the owner's, not a tidy-up.
+  knowsAbout: [
+    'React 19',
+    'Payments UX',
+    'Cloudflare Edge',
+    'TanStack Router',
+    'Next.js',
+    'Code review',
+    'Scoping',
+    'Civic',
+    'WebSocket',
+    'Real-time Architecture',
+    'Angular',
+    'Java Spring Boot',
+  ],
   sameAs: [
     'https://github.com/fahrulalwan',
     'https://linkedin.com/in/fahrulalwan',
@@ -111,38 +170,34 @@ const personJsonLd = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
+    // No `suppressHydrationWarning`. It was here only because next-themes wrote a
+    // class onto <html> before React hydrated, which made server and client markup
+    // disagree by design. Nothing writes to <html> now, so suppressing the warning
+    // would only hide a real mismatch if one ever appeared.
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
     >
       <body className="flex flex-col min-h-dvh">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from hardcoded constant
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-skip focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
         >
-          <script
-            type="application/ld+json"
-            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from hardcoded constant
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-          />
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip)] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
-          >
-            Skip to content
-          </a>
-          <Navbar />
-          <main
-            id="main"
-            className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16"
-          >
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+          Skip to content
+        </a>
+        <Navbar />
+        <main
+          id="main"
+          className="grow max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4 pt-20 pb-16"
+        >
+          {children}
+        </main>
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -1,31 +1,13 @@
 # Mohammad Fahrul Alwan
 
-Software engineering lead in Jakarta. Currently at [Bareksa](https://bareksa.com), a fintech. Before that: consulting, a telco, and a few years splicing fiber cables in villas in Bali.
+Software Engineering Lead · Jakarta · UTC+7
 
-→ **[fahrulalwan.vercel.app](https://fahrulalwan.vercel.app)** — portfolio & case studies
+I lead the frontend team at Bareksa. I started straight out of vocational school, pulling fiber into villas in Bali, and took a pay cut to under half my salary along the way. Did the degree at night, and was leading a team of five at twenty-two — nine months before I finished it.
 
----
+**[fahrulalwan.vercel.app](https://fahrulalwan.vercel.app)** — three case studies, with the work behind them open where it can be.
 
-### Currently
-
-- Leading a frontend team at Bareksa, trying to keep my hands on enough code to stay useful.
-- Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.
-- Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.
-- Trying to finish more of the books I start instead of adding new ones to the pile.
-
-### Tech
-
-- **Frontend:** TypeScript · React · Next.js · Angular · Tailwind
-- **Backend:** Node · Hono · Java Spring Boot · Laravel · Python · Rust
-- **Data & infra:** PostgreSQL · MongoDB · Redis · Kafka · Kysely · OpenTelemetry · Docker · Kubernetes · Cloudflare · GCP · AWS · Vercel
-
-### Elsewhere
-
-- **LinkedIn** — [linkedin.com/in/fahrulalwan](https://linkedin.com/in/fahrulalwan)
-- **Email** — [fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)
+[LinkedIn](https://linkedin.com/in/fahrulalwan) · [fahrulalwan@gmail.com](mailto:fahrulalwan@gmail.com)
 
 ---
 
-![Profile views](https://komarev.com/ghpvc/?username=fahrulalwan&color=ea580c&style=flat-square)
-
-<sub>MIT Licensed — see [LICENSE](LICENSE).</sub>
+This repo is that site.

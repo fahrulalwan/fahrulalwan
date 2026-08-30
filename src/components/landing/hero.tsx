@@ -1,50 +1,32 @@
-import Image from 'next/image';
 import type { FC } from 'react';
-
-const currentItems = [
-  'Building a side project on Hono at Cloudflare Workers. The edge runtime keeps surprising me in small ways.',
-  'Following AI agent tools lately, poking at OpenClaw and whatever else people keep releasing. Trying to spot what is actually useful.',
-  'Trying to finish more of the books I start instead of adding new ones to the pile.',
-];
 
 const Hero: FC = () => {
   return (
     <section className="pt-12 sm:pt-20 pb-4">
       <p className="text-label font-medium text-muted-foreground uppercase mb-8 sm:mb-12 flex items-center gap-3.5">
-        <span
-          className="w-6 h-0.5 bg-signal shrink-0"
-          aria-hidden="true"
-        />
+        <span className="w-6 h-0.5 bg-signal shrink-0" aria-hidden="true" />
         Fahrul Alwan
       </p>
 
-      <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-[19ch]">
-        I lead a frontend team and I&apos;m{' '}
-        {/* Four words, not six. CLAUDE.md caps the signal at one or two key
-            words per page and spec §1 at ~3% of a viewport; six words was half
-            the headline. "most days" is the hedge, not the claim, so it reads
-            in the foreground where hedges belong. */}
+      <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-headline">
+        I lead a frontend team. I&apos;m{' '}
+        {/* Four words, not six — the signal colour is capped at ~3% of a
+            viewport. "most days" is the hedge, so it stays outside it. */}
         <em className="not-italic text-signal">still in the code</em> most days.
       </h1>
 
-      {/* Every clause here is a dated fact from a private career record. The
-          reader draws the character conclusion; the page does not hand it over.
-          That is why the strip below now carries the whole verifiable load. */}
-      <div className="space-y-4 max-w-[62ch] mb-10 sm:mb-14">
+      {/* Every clause is a dated fact. The reader draws the conclusion; the page
+          does not state it. */}
+      <div className="space-y-4 max-w-prose-tight mb-10 sm:mb-14">
         <p className="text-body-l">
           I started working straight out of vocational school, pulling fiber
           into villas in Bali. Took a pay cut to under half my salary along the
           way. Did the degree at night, and was leading a team of five at
           twenty-two, nine months before I finished it.
         </p>
-        {/* Promoted from the deleted Origin section, and it replaces the belief
-            line that sat here ("I've only been good at work I actually believed
-            in"). That line was pure disposition, pre-defending a record nobody
-            had questioned, in the most expensive space on the page.
-
-            This one earns the slot for the opposite reason: it is the only
-            sentence on the site describing a problem other engineers also have,
-            rather than describing him. */}
+        {/* ⛔ Keep this pointed at a problem other engineers share, not at him.
+            It replaced a disposition line ("I've only been good at work I
+            believed in") that pre-defended a record nobody had questioned. */}
         <p className="text-muted-foreground leading-relaxed">
           Code is usually the easy part. Most of what slows projects down is
           unclear requirements, people politely agreeing to slightly different
@@ -53,32 +35,23 @@ const Hero: FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-12">
-        {/* ⛔ The employer is sized, not just named. `brand-philosophy.md:50`
-            calls this the strongest single sentence available and says it
-            LEADS: every element is publicly checkable, and 2.5M+ investors is
-            Bareksa's own published figure, so it clears the NDA rule that only
-            figures the employer has published itself may appear.
-
-            An earlier build said only "Currently leading frontend at Bareksa",
-            which is unsizeable to anyone outside Indonesia — the reader most
-            of this page is written for. */}
-        {/* Two lines because they are two KINDS of thing, and chaining them
-            made the eye switch modes mid-line. The first is three scannable
-            tokens; the second is a sentence that has to be read. Running them
-            together as one middot chain is the comma-chain failure: a set of
-            facts rendered as prose, so the reader parses instead of scanning.
-
-            Two <p> elements rather than a conditional <br />. An earlier
-            version used `hidden sm:block`, and JSX collapsed the whitespace
-            around it, so on mobile it rendered "UTC+7Leading". */}
+        {/* ⛔ The employer is NAMED, not sized — decided twice, most recently
+            2026-08-26. It read "Bareksa · OJK-licensed investment platform ·
+            2.5M+ investors": all true, all things Bareksa achieved standing
+            where his own evidence should be. The cost is known and accepted —
+            "Bareksa" does not size itself to a foreign reader. Do not restore a
+            qualifier to fix that. */}
+        {/* ⛔ Two <p> elements, not a conditional <br />. A `hidden sm:block`
+            version had JSX collapse the whitespace around it, rendering
+            "UTC+7Leading" on mobile. */}
         <div className="space-y-1.5">
           <p className="text-sm text-muted-foreground">
             Software Engineering Lead &middot; Jakarta &middot; UTC+7
           </p>
-          <p className="text-sm text-muted-foreground max-w-[52ch]">
-            Leading frontend at Bareksa &middot; OJK-licensed investment
-            platform &middot; 2.5M+ investors
-          </p>
+          {/* Foreground, not muted — it is the fact a recruiter scans for, and
+              a dogfood pass found it lost in the surrounding grey. No measure
+              cap: at 186px against a 416px cap it never decided a break. */}
+          <p className="text-sm text-foreground">Leading frontend at Bareksa</p>
         </div>
 
         <nav className="flex items-center gap-5 shrink-0" aria-label="Social">
@@ -105,52 +78,6 @@ const Hero: FC = () => {
             Email
           </a>
         </nav>
-      </div>
-
-      {/* Folded in from its own section. It was answering the same question the
-          opening now answers, one scroll later, so it reads as a coda to the
-          identity rather than a stop of its own.
-
-          The portrait moved here when the Origin section was deleted for
-          telling the hero's story a second time. It sat in that section's
-          `[1fr_2fr]` aside, and the shape is kept because it was never what was
-          wrong there — but the pairing is better: a face beside what someone is
-          doing now reads more directly than a face beside a paragraph about
-          how they started. */}
-      <div className="mt-20 sm:mt-24">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-12">
-          <div>
-            <h2 className="text-label font-medium text-muted-foreground uppercase mb-6">
-              Currently
-            </h2>
-            {/* Source is 192x192, so the portrait box is deliberately small.
-                It does NOT go on the preview card — that surface renders at
-                full size without context, and the background is a Google
-                installation he has no affiliation with. */}
-            <Image
-              src="/profile.webp"
-              alt="Fahrul Alwan"
-              width={192}
-              height={192}
-              className="w-32 h-40 sm:w-36 sm:h-44 rounded-sm object-cover grayscale"
-            />
-          </div>
-
-          <ul className="space-y-6 max-w-[62ch]">
-            {currentItems.map((item) => (
-              <li
-                key={item}
-                className="flex gap-4 text-muted-foreground leading-relaxed"
-              >
-                <span
-                  className="w-3 h-px bg-signal shrink-0 mt-3"
-                  aria-hidden="true"
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );

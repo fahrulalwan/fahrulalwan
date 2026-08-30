@@ -32,21 +32,26 @@ A doc here says what the code and copy must obey, written forward-looking. The e
 ## Commands
 
 ```bash
-bun dev          # Start dev server with Turbo mode
-bun run build    # Production build
-bun run lint     # ESLint (next/core-web-vitals + next/typescript)
-bun start        # Start production server
+bun dev            # Start dev server with Turbo mode
+bun run build      # Production build
+bun run lint       # ESLint (next/core-web-vitals + next/typescript)
+bun run typecheck  # tsc --noEmit
+bun start          # Start production server
 bunx biome check --write .  # Format + lint with Biome (no npm script defined)
 ```
 
-No test suite is configured. The project uses CodeQL via GitHub Actions for security scanning.
+No test suite is configured, and there is no test runner to add one to. Two GitHub Actions workflows stand in: CodeQL for security scanning, and a quality gate that builds the site and runs Lighthouse CI against `lighthouserc.json`.
+
+**The quality gate blocks, and it is the only thing here that can fail a change on quality.** Accessibility, SEO, colour contrast, heading order, `html-has-lang`, `meta-viewport` and cumulative layout shift are all asserted at error. Performance and best-practices only warn, deliberately — a score that moves with runner load is a gate people switch off. Run the same assertions locally with `bunx @lhci/cli autorun`.
 
 ## Architecture
 
 - **Framework**: Next.js 16 App Router + React 19 + TypeScript (strict)
 - **Package manager**: Bun
-- **Styling**: Tailwind CSS 4, CSS variables (HSL), dark mode via `next-themes` (default: dark)
-- **UI**: shadcn/ui (New York, zinc) on **Base UI** primitives (`@base-ui/react`) — migrated off Radix 2026-07-23; per-component migration notes in `.migration/`. `lucide-react` icons, CVA variants, `cn()` in `@/lib/utils`
+- **Styling**: Tailwind CSS 4, CSS variables (HSL), dark mode driven by the operating system
+  - ⛔ **There is no theme switcher and no `next-themes`.** Dark mode is a `prefers-color-scheme` media query in `theme.css`; nothing writes a class to `<html>`. Do not re-add a toggle, and do not reach for a `.dark` selector — it does not exist. Before this, `defaultTheme="dark"` meant the site *never* followed the OS: a visitor in light mode still got the dark palette.
+  - There are **zero `dark:` Tailwind variants** in the codebase. The only four lived in the deleted theme toggle, so no `@custom-variant dark` is defined or needed. Adding a `dark:` utility now would resolve against Tailwind's default `prefers-color-scheme` behaviour, which is correct here — but prefer a token so both themes stay in one place.
+- **UI**: ⛔ **no component library at all.** `lucide-react` for three icons; everything else is plain elements and Tailwind classes. There is no `src/components/ui/`, no `cn()`, no `@/lib/utils`, and no `@base-ui/react`, `class-variance-authority`, `clsx` or `tailwind-merge`. The site went through Radix, then Base UI (migrated 2026-07-23, notes in `.migration/`), and then needed neither — see § Component Structure.
 - **Monitoring**: Sentry (tunnel `/monitoring`), Vercel Analytics + Speed Insights
 
 ### Routing
@@ -61,20 +66,40 @@ Content data lives in `src/content/` as typed TypeScript files. Case study data 
 
 ```
 src/components/
-├── ui/           → shadcn/ui primitives (Sheet, etc.)
-├── shared/       → Cross-page components (Navbar, Footer, CTA, ScrollReveal, MobileNav)
-├── landing/      → Landing page sections (Hero, FeaturedWork, OtherThings, Origin)
-└── case-study/   → Case study page components (CaseStudyHeader, CaseStudyContent)
+├── shared/       → Cross-page components (Navbar, Footer, CtaSection)
+├── landing/      → Landing page sections (Hero, FeaturedWork, Currently, Colophon)
+└── case-study/   → Case study page components (CaseStudyHeader, CaseStudyBlocks)
 ```
+
+⛔ **There is no `ui/` directory.** Eight components used to live under `src/components/`, and every one was removed for the same reason: nothing needed it.
+
+- `theme-provider` and `theme-toggle` — went with the theme switcher.
+- `dropdown-menu` — existed only to hold that toggle's menu.
+- `card` and `badge` — never imported by anything.
+- `mobile-nav`, `sheet` and `button` — the hamburger chain. `Button`'s only importer was `mobile-nav`, and `cn()`'s only importers were those three, so `src/lib/utils.ts` went too.
+- `gate-anchor` was a landing section, replaced by the one-line `colophon`; that file's own comment ends with "do not grow this back into a section."
+
+⛔ **Both nav links render at every width, and the hamburger is not coming back below four items.** It used to open a 256px sliding panel to reveal the same two words — a control larger than the thing it hid. Measured: they fit at 320px, and 150 page-by-width combinations show no sideways scroll. Three items still fit but only just; **a fourth does not**, and at that point the panel has to return. It is one `git revert` away.
+
+⛔ **The navbar owns the site's only navigation landmark.** It had none at all — the links sat in a bare `div`, so there was no `<nav>` to jump to.
+
+⛔ **`components.json` is entirely stale, and keeping it is a decision rather than an oversight — do not "fix" it and do not delete it.** It names a `tailwind.config.ts` that does not exist (Tailwind 4 is CSS-first here), a `utils` alias pointing at a deleted file, and a `ui` alias pointing at a deleted directory. Nothing in the repo reads it, CI never touches it, and only the shadcn CLI does. It was checked for removal on 2026-08-26 and deliberately kept as the record that this site once ran on shadcn.
+
+**The cost of keeping it is real and was accepted with eyes open:** someone skims it, believes there is a `ui/` directory and a `cn()` helper, and runs `bunx shadcn@latest add` — which pulls Radix into a site that currently has no component library at all. That is the one thing this file can cause, and Code Conventions carries the warning.
 
 ### Content Layer
 
 Case studies are typed TypeScript files in `src/content/case-studies/`:
-- `types.ts` — `CaseStudy` interface (required `availability` field, optional `thumbnail`)
-- `caready.ts` — CarEADY auction platform case study
+- `types.ts` — `CaseStudy` interface, and the `Block` union every study body is written in. `summary`, `blocks` and `availability` are all required on purpose: a study cannot be added without one sentence of meta description, a body, and a plain statement of what a stranger can verify about it.
+- `blocks.ts` — `groupBlocks`, which runs consecutive blocks of the same kind together so a renderer can draw them as one band, and `assertNever` for exhaustiveness.
+- `fartix.ts` · `caready.ts` · `tuntutan-rakyat.ts` — the three studies
 - `index.ts` — Barrel export + helpers: `getAllCaseStudies()`, `getCaseStudy(slug)`, `getAllCaseSlugs()`
 
-To add a new case study: create a new `.ts` file with a `CaseStudy` export, import it in `index.ts` and add to the `caseStudies` array. The `/work/[slug]` route and sitemap auto-update via `generateStaticParams`.
+**The body is a list of blocks, not a set of prose fields.** A study is an ordered `Block[]` drawn from a union — heading, prose, code, image, diagram, trail, metric, quote, review, handoff — and because it is a union rather than a fixed record, two studies can differ in shape entirely: one can run on a dated trail and a code fragment, another on metrics and a quote, and neither has to carry an empty field it has nothing to put in.
+
+Three members currently have renderers and no user: `code`, `diagram` and `image`. They stay because adding a study later should not require a type change.
+
+To add a new case study: create a new `.ts` file with a `CaseStudy` export, import it in `index.ts` and add it to the `caseStudies` array. The `/work/[slug]` route and the sitemap pick it up on their own via `generateStaticParams` — **but the Lighthouse gate does not.** Its URL list in `lighthouserc.json` is written out by hand, so a new study is unaudited until you add its route there too.
 
 ### Design System
 
@@ -83,13 +108,14 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 - `Newsreader` (display/serif, `--font-newsreader`, `font-display`) — used for headlines, statements, editorial moments
 
 **Colors:**
-- Semantic tokens (light/dark): `--background`, `--foreground`, `--muted`, `--border`, etc.
-- Accent warm: `hsl(21 90% 48%)` — orange, used sparingly on key words only via `text-accent-warm`
+- Semantic tokens (light/dark): `--background`, `--foreground`, `--muted`, `--border`, etc. Each carries its measured contrast ratio in a comment — keep that up to date, because the gate asserts contrast at error.
+- Signal: `--signal` (`hsl(192 88% 28%)`, teal) via `text-signal`, and `--signal-inverted` for use on the inverted block. It appears only where it carries information, never as decoration.
+- ⚠️ **`--accent` is not the signal colour.** It is shadcn's neutral hover surface and reads as a near-grey. `globals.css` says so at the token, because the name invites exactly this mistake.
 
 **CSS utilities** (defined in `globals.css`):
 - `.full-bleed` — breaks out of container to viewport width (`width: 100vw; margin-left: calc(50% - 50vw)`)
-- `.link-underline` — animated underline on hover (slide-in from left)
-- `.animate-reveal-up` — scroll-reveal animation with `cubic-bezier(0.16, 1, 0.3, 1)` easing
+- `.link-underline` — animated underline on hover (slides in from the left on transform, never width)
+- `.animate-terminal-blink` — the footer cursor, and the only animation in the codebase. Reduced motion is handled centrally in a `prefers-reduced-motion` media query rather than a `motion-reduce:` variant at each call site, so it holds wherever the utility is used.
 
 **Editorial patterns:**
 - Default to left-aligned + asymmetric. Centered layouts only for manifesto moments — do not center everything.
@@ -99,19 +125,16 @@ To add a new case study: create a new `.ts` file with a `CaseStudy` export, impo
 - Full-bleed inverted blocks: `bg-foreground text-background` for visual punctuation
 - Hairline separators: `w-10 h-px bg-border/50`
 
+⛔ **Page length is 3.06 screens, that is longer than every reference this site was built against, and it is a settled decision — not a finding waiting to be actioned.** Measured 2026-08-26 at 2,897px on a 947px viewport, against milhamakbarjr 2,333px, harrygeorge 2,323px, and karrisaarinen 1,431px. **No standard is broken** — neither the Founder Playbook nor the reference library names a length — so the only thing out of step is the comparison itself.
+
+The section breakdown, so a future measurement does not have to re-derive it: hero 723px, `#work` 1,265px, Currently 326px, `#contact` 279px, colophon 100px, footer 61px. **Hero and `#work` are 68.6% of the page between them and are the argument**; the only cuttable block of any size is Currently, at 326px, and cutting it was declined. Currently is also the one section on the page with zero links — a real inconsistency with a site whose thesis is checkable evidence, weighed against it holding the only photograph on the site, and the photograph won.
+
 **References:** Design language takes its **restraint** from [milhamakbarjr.com](https://www.milhamakbarjr.com/) (layout carries the design — stock shadcn tokens, untouched; hero dropped to the bottom third of the fold) and [harrygeorge.design](https://www.harrygeorge.design/) (one face, one weight, emphasis by dimming rather than colour). **The editorial serif voice is this site's own — neither reference uses a serif at all.** When adding sections, match their restraint, not generic portfolio aesthetics. Measured DNA for both: `~/.claude/design-taste/library/`.
 
 ### Page Architecture
 
-- **Landing** — 4 sections in `src/components/landing/` with varied rhythms (Hero → FeaturedWork → OtherThings → Origin → CTA). Hero folds in the Currently list. A fifth section is specced and blocked on an external sign-off; its slot sits between OtherThings and Origin. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
-- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, team photo via `thumbnail`, inline closing CTA.
-
-### Animations
-
-Scroll-reveal system using `IntersectionObserver` + CSS keyframes (no Framer Motion):
-- `src/hooks/use-scroll-reveal.ts` — Client hook, respects `prefers-reduced-motion`
-- `src/components/shared/scroll-reveal.tsx` — Wrapper component with optional `delay` prop
-- `src/app/globals.css` — `@keyframes reveal-up` with golden easing
+- **Landing** — `page.tsx` renders Hero → FeaturedWork → GateAnchor → Currently → CtaSection, with varied rhythms. `Currently` is its own section rather than part of Hero, so the opening ends on one screen and the first openable link arrives earlier in the page. A further section is specced and blocked on a sign-off from outside this project; its slot is marked in `page.tsx` directly after FeaturedWork, and it drops in without rearranging anything around it. Mixes asymmetric grids, mono labels, ghost year, full-bleed inverted CTA.
+- **Case study** — editorial layout, asymmetric grids, full-bleed inverted results, inline closing CTA. The body renders through `CaseStudyBlocks`. Images are possible but none of the three studies uses one: the union's `image` block carries its own `alt` per image, which is what the old single hard-coded alt string could not do.
 
 ### SEO
 
@@ -124,36 +147,45 @@ Scroll-reveal system using `IntersectionObserver` + CSS keyframes (no Framer Mot
 
 Two CSS files define the design token system:
 - `src/app/globals.css` — Tailwind import, light mode variables, `@theme inline` block, base layer styles, utility classes
-- `src/app/theme.css` — Dark mode overrides (imported separately in root layout)
+- `src/app/theme.css` — Dark mode overrides, inside `@media screen and (prefers-color-scheme: dark)` on `:root` (imported separately in root layout)
 
-Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g., `--color-accent-warm: var(--accent-warm)`).
+Both files use raw HSL values in CSS custom properties. The `@theme inline` block in `globals.css` bridges CSS vars to Tailwind colors (e.g. `--color-signal: var(--signal)`), the type ramp, the font stacks, and the layer scale (`z-sticky`, `z-overlay`, `z-popover`, `z-skip` — use those, not `z-[var(--z-sticky)]`).
+
+⛔ **`screen and` on the dark block is load-bearing, not decoration.** Those tokens used to sit on a bare `.dark` class with no media query, so they also applied when printing — and because `theme.css` is imported *after* `globals.css`, they beat the `@media print` block at equal specificity. Every printed page came out graphite-on-white regardless of the reader's scheme. Verified before and after: print now yields `#fff` / `#000` in both schemes. Do not remove the `screen and`, and do not reorder the imports to "fix" something.
+
+**`color-scheme: light dark` is declared on `:root` in `globals.css`.** `next-themes` used to set it as an inline style on `<html>`; nothing does now, so it is declared once in CSS. It is what makes scrollbars, form controls, and the overscroll canvas match the active scheme.
+
+**`global-error.tsx` follows the OS for free now.** It has no provider and never could get a `.dark` class, so its comment recorded an accepted tradeoff: a branded light page on a crash. Moving the tokens into a media query retired the tradeoff instead of paying it.
 
 ### Path Aliases
 
-`@/*` maps to `./src/*` (configured in tsconfig.json). Use `@/components/ui`, `@/lib/utils`, etc.
+`@/*` maps to `./src/*` (configured in tsconfig.json). Live targets are `@/components/shared`, `@/components/landing`, `@/components/case-study`, `@/content/case-studies` and `@/lib/site`. **`@/components/ui` and `@/lib/utils` no longer exist** — both were deleted with the components that used them.
 
 ## Code Conventions
 
+- **Comments**: ⛔ **state the constraint, not the story.** The test on every comment is *what breaks if this is gone?* — that answer is the comment. The ban, the trap someone would re-introduce, a non-obvious why in a line or two: those stay. The alternatives declined, the measurements, what it used to say, who decided it and when: those go in the owner's project vault, which is the source of truth for how a decision was reached. **The tell is a comment with paragraphs** — a blank line inside a block usually means the second half is history. *Measured 2026-08-27 before a deliberate cut: `lib/site.ts` was 90% comment, `sitemap.ts` 67%, `colophon.tsx` 58%, `hero.tsx` 45%.* This does not weaken the site's own claim that its reasoning is readable in the source; the reader still finds *why* beside the thing, minus the account of how it got there.
 - **Formatting**: Biome — single quotes, space indentation, organize imports
 - **Linting**: ESLint 9 flat config extending `next/core-web-vitals` and `next/typescript`
 - **TypeScript**: Strict mode enabled
-- **shadcn/ui**: ⚠️ `components.json` style is still `new-york` (no `base-new-york` variant exists), so `bunx shadcn@latest add <component>` delivers the **Radix** variant and re-introduces Radix. Either hand-migrate the added component to Base UI via the `migrate-radix-to-base` skill, or copy a Base UI registry component manually. They go to `src/components/ui/`.
+- **shadcn/ui**: ⛔ **none of it is installed any more, and adding a component back is a bigger step than it looks.** `bunx shadcn@latest add <component>` writes into a `src/components/ui/` that no longer exists, needs the `cn()` helper that no longer exists, and — because `components.json` style is `new-york` and no `base-new-york` variant exists — delivers the **Radix** variant, pulling a component library back into a site that currently has none. If a component is genuinely needed: write it by hand first, and only reach for the generator if that turns out to be wrong.
 - **Fonts**: Noto Sans (body) + Newsreader (display), loaded in root layout
 - **Links**: Use `<a>` tags for external URLs, `Link` from next/link for internal. Navbar CTA is a styled text link, not a Button component.
 
 ## Gotchas
 
 - **Biome CSS errors**: `bunx biome check` always reports ~7 parse errors in `globals.css` due to Tailwind-specific syntax (`@theme inline`, `@layer`). These are expected and harmless.
+- ⛔ **Agent worktrees are gitignored, and that is a build correctness fix rather than tidiness.** `.claude/worktrees/` was untracked but *not* ignored, which put it inside the reach of two tools that scan the directory rather than the git index. Tailwind 4's automatic content detection generated utilities from those stale copies of the source and **shipped them in the CSS every visitor downloads** — a real selector for a class string that no longer existed anywhere in `src/`. Measured: ignoring the directory took the built CSS from 48.9 KB to 44.0 KB raw. It also stopped `biome check .` aborting on the nested `biome.json` each worktree carries. If a scan ever picks up dead classes again, this is the shape of the cause.
 - **Next.js 16 params**: `params` in `page.tsx` and `generateMetadata` is a `Promise` — must use `const { slug } = await params`.
 - **JSON-LD**: Uses `dangerouslySetInnerHTML` with hardcoded constants — requires biome-ignore comment on the prop line.
 - **Full-bleed + container**: Full-bleed sections need internal container (`max-w-(--breakpoint-lg) mx-auto px-5 sm:px-4`) for content alignment.
-- **Accent-warm usage**: Use sparingly — only on 1-2 key words per page to maintain impact.
+- **Signal colour usage**: Use sparingly, and only where it carries information rather than decorates. Reach for `text-signal`, not `text-accent` — `--accent` is shadcn's neutral hover surface and will render a near-grey where you expected teal.
 - **Light mode**: All elements use semantic tokens that auto-flip. `bg-muted/50` (not `/20`) for subtle bg shifts to ensure visibility in light mode.
 - **Dep pins — do NOT `bun update --latest` blindly** (verified 2026-07-23):
   - `typescript` is on **6.0.3** — the latest **stable** 6.x (the last JS-based line; keeps the compiler API `next build` needs + sits inside typescript-eslint's `<6.1.0` range). Verified typecheck+lint+build green 2026-07-23. It is **not** the `latest` npm tag (that's `7.0.2`) on purpose: **TS7 dropped the JS compiler API `next build` uses → build crash**, its fix `experimental.useTypeScriptCli` is canary-only (not in Next 16.2.x), and TS7 also breaks type-aware lint. `@typescript/native-preview` (tsgo) is installed as a side dev-dep for `tsgo --noEmit` speed if wanted; the build compiler stays on 6.0.x.
   - `eslint` is on **10.x** ✅. eslint 10 removed `context.getFilename()`, which `eslint-plugin-react`'s React-version auto-detection called → crash. Fixed by pinning the version in `eslint.config.mjs`: `{ settings: { react: { version: '19' } } }` (skips auto-detection). Per Next.js issue #89764.
   - Re-check trigger for TS: Next stable ships `experimental.useTypeScriptCli` · typescript-eslint supports TS7. Everything else tracks latest.
-- **Base UI vs Radix**: primitives are `@base-ui/react` now. `asChild` is gone — use the `render` prop (`<Trigger render={<Button/>} />`). Menu items highlight via `data-highlighted` not `:focus`; dialog/sheet animate via `data-starting-style`/`data-ending-style` (transition-based, not keyframe). Base UI `Menu.Item` closes on click; `CheckboxItem`/`RadioItem` default `closeOnClick={false}`.
+  - ⛔ **Re-checked 2026-08-26 and the two gates now disagree — one is open, one is shut, and the pin holds on the second alone.** The line above says the `useTypeScriptCli` fix is canary-only; **that is out of date.** It ships in stable **Next 16.3.3** — `grep useTypeScriptCli node_modules/next/dist/server/config-schema.js` finds it in the validated config. **The blocker is now entirely typescript-eslint:** version 8.68.0, its parser and `typescript-estree` all declare `"typescript": ">=4.8.4 <6.1.0"`, so TS 7.0.2 falls outside the peer range and type-aware lint breaks. Do not read "the Next gate opened" as permission to bump; check the peer range first, and re-verify both rather than trusting either of these paragraphs.
+- **Base UI vs Radix** — ⚠️ **history, not current state.** Neither is installed. Kept because the site ran on Base UI until 2026-08-26 and the notes in `.migration/` only make sense against it: `asChild` is gone in Base UI, replaced by the `render` prop (`<Trigger render={<Button/>} />`); menu items highlight via `data-highlighted` not `:focus`; dialog and sheet animate via `data-starting-style`/`data-ending-style`, transition-based rather than keyframe; `Menu.Item` closes on click while `CheckboxItem`/`RadioItem` default to `closeOnClick={false}`. If a primitive is ever needed again, this is the shape of what was there.
 
 ## Content & Copy
 
@@ -165,22 +197,29 @@ User's #1 recurring feedback: reject AI-sounding copy. Before writing or editing
 - **Offer variants** — when proposing copy, give 2-4 options across tones/POVs. User always asks for variants anyway.
 - **Bareksa NDA** — current employer. Do not spill specifics about internal work, architecture, or metrics.
 - **CarEADY claims** — ⛔ **do not claim it is still running, still in production, still active at caready.co.id, or that the architecture was never replaced. Do not claim user volume.** Demoted from checkable evidence 2026-07-24: he was a vendor under a consultancy rather than an owner, and the site has since been revamped by other people, so nothing running there today is his. **An early-career story, never a check-it-yourself link.** *(This line previously opened "system still runs at caready.co.id", asserting the very claim it exists to prevent. Corrected 2026-08-05.)*
-- **Bio source of truth** — `docs/product-marketing-context.md` holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76), career timeline. Update it when facts shift; do not duplicate here.
+  - ⛔ **The company is alive and that is exactly why the ban holds.** `caready.co.id` returns 200 and trades as *Balai Lelang Caready* — verified 2026-08-12, and owner-confirmed the same day: the business runs, the platform was revamped, and his code has likely been removed or replaced outright. **A living site is a stronger temptation than a dead one, not a weaker one**, because the link works, so the reader assumes what loads is what he built. The 2018 real-time layer is the claim; the domain is not evidence for it. Site copy stays at *"2018, rebuilt by other people since"* — true, and it points nobody at a page that would mislead them.
+- **Bio source of truth** — the marketing-context document, which **moved to the owner's private vault on 2026-08-25** and is no longer readable from this repo. It holds positioning, full name (Mohammad Fahrul Alwan), education (BINUS 2018–2022, Magna Cum Laude 3.76) and the career timeline. **Ask him rather than reconstructing any of it**, and do not copy it back here.
 
 ## Workflow
+
+⛔ **Generated documents do not go in this repo. They go in the owner's private project vault.** Owner directive, 2026-08-25: *"never put any document into repo, only in project vault."*
+
+That means specs, plans, drafts, research, audits and design notes — anything written **about** the work rather than shipped **as** the work. **This repository is public, and a pushed branch is readable immediately**, so the rule is a disclosure boundary before it is a filing preference. What belongs here is code, and the instruction files a contributor needs to work in it: this `CLAUDE.md`, the `README`, and the authoring rules a case study must obey.
+
+⚠️ **Steps 2 and 3 below used to name `docs/superpowers/specs/` and `docs/superpowers/plans/`, and that instruction is what put a plan in this repo on 2026-08-25.** It is corrected rather than deleted, so nobody restores it from memory. The routing that governs is `~/.claude/rules/superpowers-output.md`, which has always sent both to the vault; this file was overriding it.
 
 Non-trivial features go through brainstorm → spec → plan → implement, using `superpowers` skills:
 
 1. **Brainstorm** (`superpowers:brainstorming`) — clarify intent, explore approaches, present design section-by-section.
-2. **Spec** — write to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`, run spec-document-reviewer loop until approved.
-3. **Plan** (`superpowers:writing-plans`) — task breakdown in `docs/superpowers/plans/YYYY-MM-DD-<topic>.md`, run plan-reviewer loop.
-4. **Implement** — execute plan tasks, update CLAUDE.md when patterns/gotchas emerge.
+2. **Spec** — written to the project's vault folder, then reviewed through the three-phase pipeline until it carries a `review-closure:` line.
+3. **Plan** (`superpowers:writing-plans`) — task breakdown, also in the vault, then run through the plan-review pipeline. An executor reads it from there and writes only code.
+4. **Implement** — execute plan tasks, update this file when patterns or gotchas emerge.
 
 For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and commit.
 
 **Attach relevant skills during implementation** (user rule: "jangan lupa attach skillnya ketika beneran dibutuhkan"):
 - Landing/editorial design → `design-with-taste`, `high-end-visual-design`, `redesign-existing-projects` (this site's real stack — editorial restraint, not conversion tactics)
-- Component work → `shadcn`, `migrate-radix-to-base` (Radix→Base UI), `tailwindcss-mobile-first`
+- Component work → `tailwindcss-mobile-first`. ⚠️ **Not `shadcn` or `migrate-radix-to-base`** — there is no component library here to add to or migrate from, and reaching for either would put one back.
 - Accessibility pass → `accessibility-review`, `web-design-guidelines`
 - Copy/marketing → `copywriting`, `marketing-psychology`
 - Next.js perf/SEO → `nextjs-seo`, `vercel-react-best-practices`
@@ -197,7 +236,18 @@ For small fixes (typos, copy tweaks, dep bumps) skip the loop — just edit and 
 
 ## Project Context
 
-- Product marketing + bio: `docs/product-marketing-context.md`
-- Case study framework: `docs/case-study-framework.md`
-- Design specs: `docs/superpowers/specs/`
-- Implementation plans: `docs/superpowers/plans/`
+⛔ **There is no `docs/` directory. It was emptied on 2026-08-25 and the folder removed.** All eleven documents — the brand philosophy, the case-study framework, the marketing context, the skills list, and seven superseded specs and plans — moved to the owner's private project vault under the directive in § Workflow. **This repo holds code and this file. Nothing else.**
+
+**What that costs, said plainly rather than discovered later:** the case-study authoring rules and the bio facts are no longer readable from inside this repo. An agent working here has them only if the owner is in the session, which he normally is. **A contributor who is not him cannot write a case study from this repo alone**, and that is the accepted trade.
+
+**If you are looking for something that used to be in `docs/`:** ask the owner. Do not reconstruct it from the code, and do not re-create it here.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -5,7 +5,9 @@
       "startServerReadyPattern": "Ready in",
       "url": [
         "http://localhost:3000/",
-        "http://localhost:3000/work/test-coverage-ratchet"
+        "http://localhost:3000/work/fartix-ticketing-platform",
+        "http://localhost:3000/work/caready-auction-platform",
+        "http://localhost:3000/work/tuntutan-rakyat"
       ],
       "numberOfRuns": 3
     },

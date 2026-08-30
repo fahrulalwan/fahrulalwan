@@ -7,7 +7,7 @@ import './globals.css';
 import './theme.css';
 
 // global-error replaces the root layout entirely, so it inherits nothing: no
-// stylesheet, no fonts, no ThemeProvider. Everything it needs is declared here.
+// stylesheet, no fonts. Everything it needs is declared here.
 const noto_sans = Noto_Sans({ subsets: ['latin'], variable: '--font-noto' });
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -22,10 +22,12 @@ const GlobalError = ({
   }, [error]);
 
   return (
-    // No ThemeProvider means no `.dark` class, so this renders in the light
-    // palette regardless of system preference. Accepted: a branded light page on a
-    // crash beats Next's unstyled default, and duplicating the whole dark token
-    // set for a page this rare is not worth the drift risk.
+    // This page now follows the operating system like every other one, and it got
+    // that for free. The dark tokens used to need a `.dark` class that only the
+    // theme provider could add, and this page has no provider — so it always
+    // rendered light, which was written up here as an accepted tradeoff. Moving
+    // those tokens into a `prefers-color-scheme` query retired the tradeoff
+    // instead of paying it: the import of theme.css below is now sufficient.
     <html
       lang="en"
       className={`${noto_sans.variable} ${newsreader.variable} font-sans`}
@@ -41,11 +43,11 @@ const GlobalError = ({
               Error
             </p>
 
-            <h1 className="font-display text-display-xl font-medium mb-6 max-w-[19ch]">
+            <h1 className="font-display text-display-xl font-medium mb-6 max-w-headline">
               Something broke on my end.
             </h1>
 
-            <p className="text-muted-foreground leading-relaxed max-w-[65ch] mb-8">
+            <p className="text-muted-foreground leading-relaxed max-w-prose mb-8">
               Not your fault. It has been reported and I will see it. Reloading
               usually works.
             </p>

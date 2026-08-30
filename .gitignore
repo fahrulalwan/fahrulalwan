@@ -50,3 +50,11 @@ next-env.d.ts
 
 # ground-up rebuild marker (local; drives ~/.claude ground-up-gate hook)
 .ground-up
+
+# Agent worktrees. Untracked but not ignored, these were being read by two tools
+# that scan the project directory rather than the git index: Tailwind's automatic
+# content detection generated utilities from their stale copies of the source and
+# shipped them in the CSS every visitor downloads, and `biome check .` aborted on
+# the biome.json each one carries. Ignoring the directory fixes both and keeps the
+# worktrees themselves, which is the point — they are deliberate, not debris.
+.claude/worktrees/

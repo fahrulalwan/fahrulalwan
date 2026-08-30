@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
-/* The exact complement of Tailwind's own `hover:` variant, which since v4 only
-   applies when the primary input device supports hover. Anything whose only
-   affordance is revealed on hover is invisible on a phone, so `no-hover:` is
-   how a utility states its touch fallback in the markup rather than in an
-   override buried down here. */
-@custom-variant no-hover (@media (hover: none));
-
 /* Design system: docs/superpowers/specs/2026-07-23-design-system-design.md
    Light theme lives here. Dark theme lives in theme.css and nowhere else.
    Every ratio below was computed against these exact values (spec §1). */
 :root {
+  /* Tells the UA which scheme the page is painted in, so scrollbars, form
+     controls and the canvas behind an overscroll match. next-themes used to set
+     this as an inline style on <html>; nothing does now, so it is declared here.
+     `light dark` means "this page handles both" — the UA follows the OS. */
+  color-scheme: light dark;
+
   /* surfaces */
   --background: hsl(210 18% 97.5%);          /* cool paper */
   --foreground: hsl(215 26% 12%);            /* 15.98:1 on background */
@@ -147,6 +146,39 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Line lengths, named. Sixteen sites carried five raw `max-w-[NNch]` values
+     between them, so nothing said which measure belonged to which role and a new
+     page had to guess a number.
+
+     ⛔ `ch` on purpose, and do NOT convert these to px. `ch` is the width of the
+     current font's "0", so a ch-based cap holds a constant CHARACTER count while
+     the pixel width moves — which is the thing that governs reading comfort, and
+     the reason 65ch renders at 595px on 16px text and 521px on 14px text while
+     both fit the same 77 characters. Converting to px would freeze the pixels and
+     let the character count drift, which is backwards. It would also break
+     --container-headline outright: that sits on a clamp(40px, 6vw, 60px) heading,
+     so its cap breathes from 446px to 670px and keeps roughly nineteen characters
+     per line at every viewport. A fixed pixel value would destroy that.
+
+     Landing prose is deliberately tighter than case-study prose — 66 characters
+     against 77 — so the difference reads as a choice. It used to be 74 against
+     77, three characters, which reads as nothing. */
+  --container-headline: 19ch;
+  --container-title: 22ch;
+  --container-prose: 65ch;
+  --container-prose-tight: 56ch;
+
+  /* The layer scale, bridged so it produces real `z-sticky` / `z-overlay` /
+     `z-popover` / `z-skip` utilities. The tokens existed in :root but were never
+     exported here, so all four consumers reached for `z-[var(--z-sticky)]` — an
+     arbitrary-value escape hatch used only because the theme had no name for a
+     value the theme already held. --z-raised stays unbridged: nothing uses it as
+     a class, and a utility nobody writes is a utility nobody should generate. */
+  --z-index-sticky: var(--z-sticky);
+  --z-index-overlay: var(--z-overlay);
+  --z-index-popover: var(--z-popover);
+  --z-index-skip: var(--z-skip);
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -160,21 +192,53 @@
     @apply bg-background text-foreground;
     overflow-x: clip;
   }
-}
 
-@keyframes terminal-blink {
-  0%, 50% {
-    opacity: 1;
+  /* The `--ring` token has existed in both themes since the design system
+     landed, with a comment in each stating it clears the 3:1 focus floor. It
+     was only ever wired to `.link-underline`, so everything without that class
+     fell through to the browser default: measured as `auto 1px rgb(0,95,204)`,
+     a blue hairline on a graphite page, on the case-study headline links and
+     both header buttons.
+
+     A token that exists and is not wired is the quieter half of the same
+     failure this page's own dogfood found in the card affordance: defined, and
+     invisible to the person it was for.
+
+     `:focus-visible` rather than `:focus`, so a mouse click never draws it and
+     only keyboard and programmatic focus do. `.link-underline` keeps its own
+     rule below at the same width and offset, so the two agree rather than one
+     overriding the other. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
   }
-  50.01%, 100% {
-    opacity: 0;
+}
+
+/* The cursor in the footer. Defined through the `--animate-*` namespace rather
+   than as a hand-written class, which is what generates `animate-terminal-blink`
+   as a real utility. `@theme` and not `@theme inline` here: inline substitutes a
+   variable's value at each use site, which is right for the colour bridge above
+   and wrong for an animation, whose keyframes have to be emitted once.
+
+   step-end holds each state rather than fading, which is what makes it read as
+   a terminal cursor instead of a pulse. */
+@theme {
+  --animate-terminal-blink: terminal-blink 1.06s step-end infinite;
+
+  @keyframes terminal-blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    50.01%, 100% {
+      opacity: 0;
+    }
   }
 }
 
-.animate-terminal-blink {
-  animation: terminal-blink 1.06s step-end infinite;
-}
-
+/* Reduced motion stops the blink and leaves the cursor solid rather than
+   hiding it, since it is a visual anchor and not decoration. This stays a
+   media query rather than the `motion-reduce:` variant so it holds wherever
+   the utility is used, without every call site having to remember. */
 @media (prefers-reduced-motion: reduce) {
   .animate-terminal-blink {
     animation: none;
@@ -182,65 +246,71 @@
   }
 }
 
-.full-bleed {
+@utility full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
 
-.link-underline {
+/* An `@utility` rather than a plain class, which is v4's replacement for what
+   `@layer components` used to do: it sorts against real utilities by property
+   count, so a one-off `no-underline` on a single link can still win without an
+   `!important` fight.
+
+   The outline and its offset used to be declared here as well. They are gone
+   because the base rule above now gives every focusable element the same ring,
+   and repeating it here would mean two places to change it. Only the radius
+   stays, so the ring hugs the text rather than boxing it. */
+@utility link-underline {
   position: relative;
   border-radius: 2px;
-  outline-offset: 4px;
-}
 
-.link-underline:focus-visible {
-  outline: 2px solid var(--ring);
-}
+  /* Slides in from the left on transform only, per spec §7 (never width). */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-/* Slides in from the left on transform only, per spec §7 (never width). */
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.link-underline:hover::after,
-.link-underline:focus-visible::after {
-  transform: scaleX(1);
-}
-
-/* ⛔ A phone has no hover and no focus-visible, so a link whose ONLY affordance
-   is a hover-revealed underline renders as plain text on the device most
-   readers actually hold. This page's whole argument is that its evidence can be
-   opened; hiding every way to open it is the one failure it cannot afford.
-
-   Devices without hover get the underline at rest. Pointer devices keep the
-   slide-in, which is where that motion was designed to live. */
-@media (hover: none) {
-  .link-underline::after {
+  &:hover::after,
+  &:focus-visible::after {
     transform: scaleX(1);
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .link-underline::after {
-    transition: none;
+  /* ⛔ A phone has no hover and no focus-visible, so a link whose ONLY
+     affordance is a hover-revealed underline renders as plain text on the
+     device most readers actually hold. This page's whole argument is that its
+     evidence can be opened; hiding every way to open it is the one failure it
+     cannot afford.
+
+     Devices without hover get the underline at rest. Pointer devices keep the
+     slide-in, which is where that motion was designed to live. */
+  @media (hover: none) {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      transition: none;
+    }
   }
 }
 
 /* Print and Reader mode, spec §11. The goal is not a designed page, it is a page
    that does not break when someone forwards it as a PDF. */
 @media print {
-  /* Black ink on white paper, whichever theme was on screen. */
-  :root,
-  .dark {
+  /* Black ink on white paper, whichever theme was on screen. There is no `.dark`
+     class to override any more: theme.css scopes its tokens to `screen`, so this
+     block is the only thing setting them on paper. */
+  :root {
     --background: #fff;
     --foreground: #000;
     --muted-foreground: #444;
