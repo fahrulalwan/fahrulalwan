@@ -84,7 +84,7 @@ export const tuntutanRakyatCaseStudy: CaseStudy = {
     },
     {
       type: 'prose',
-      text: 'The emergency contacts page was the one page somebody might open in a hurry, and the short version of its address was the link being shared. A tidy-up changed how that address was handled, and the short version quietly started showing “page not found” instead. The longer version, with a region on the end, still worked — which is why nothing looked broken.',
+      text: 'The emergency contacts page was the one page somebody might open in a hurry, and the short version of its address was the link being shared. A tidy-up changed how that address was handled, and the short version quietly started showing “page not found” instead. The longer version, with a region on the end, still worked, which is why nothing looked broken.',
     },
     {
       type: 'review',
