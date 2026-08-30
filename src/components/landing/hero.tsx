@@ -9,7 +9,7 @@ const Hero: FC = () => {
       </p>
 
       <h1 className="font-display text-display-xl font-medium mb-8 sm:mb-10 max-w-headline">
-        I lead a frontend team and I&apos;m{' '}
+        I lead a frontend team. I&apos;m{' '}
         {/* Four words, not six — the signal colour is capped at ~3% of a
             viewport. "most days" is the hedge, so it stays outside it. */}
         <em className="not-italic text-signal">still in the code</em> most days.
