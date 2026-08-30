@@ -138,7 +138,9 @@ The section breakdown, so a future measurement does not have to re-derive it: he
 
 ### SEO
 
-- JSON-LD `Person` schema in root layout (`jobTitle: "Software Engineering Lead"` — one value across every surface), `Article` schema on case study pages
+- JSON-LD `Person` schema in root layout (`jobTitle: "Senior Product Engineer"` — one value across every surface), `Article` schema on case study pages
+  - ⛔ **Five surfaces carry that title and they must agree**: the JSON-LD `jobTitle`, the metadata `description` and `keywords` in `layout.tsx`, the `alt` and rendered line in `opengraph-image.tsx`, the hero line in `hero.tsx`, and `README.md` (this repo is also the GitHub profile README). Five surfaces disagreeing is the defect the OG card was built to replace, and `opengraph-image.tsx` carries a comment saying so.
+  - The hero's second line, "Leading frontend at Bareksa", is the **held job title and stays exact**. The first line is positioning. A reader seeing both learns what he offers and what he currently does, which is the honest pair rather than a contradiction.
 - `viewport` export separate from `metadata` (Next.js 14+ requirement)
 - Redirects for old routes in `next.config.ts` (HTTP 308)
 - Dynamic sitemap in `src/app/sitemap.ts` includes case study slugs

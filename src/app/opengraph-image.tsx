@@ -26,7 +26,7 @@ import { ImageResponse } from 'next/og';
 // LinkedIn, X or Slack is not a crawl — those platforms read the `og:image` meta
 // tag and obey no robots directive at all. So the portrait stays out of Google
 // Images and this card still renders wherever the link is pasted.
-export const alt = 'Fahrul Alwan, Software Engineering Lead in Jakarta';
+export const alt = 'Fahrul Alwan, Senior Product Engineer in Jakarta';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -88,7 +88,7 @@ const OpengraphImage = async () => {
           letterSpacing: '0.01em',
         }}
       >
-        Software Engineering Lead · Jakarta · UTC+7
+        Senior Product Engineer · Jakarta · UTC+7
       </div>
     </div>,
     {

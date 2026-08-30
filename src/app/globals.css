@@ -246,9 +246,20 @@
   }
 }
 
+/* ⛔ Do not add `width: 100vw` back. It gave Safari a 40px horizontal scroll on
+   the landing page at every phone width while Chrome showed nothing.
+
+   `main` is a flex item of a `flex-col` body, and a declared `100vw` on a
+   descendant joins that item's content-based minimum. WebKit propagates the
+   floor and Blink does not, so main's content box sat at the full viewport
+   width and its `px-5` pushed the element 40px past the screen.
+
+   Symmetric negative margins reach the same width declaring nothing, so no
+   intrinsic width survives to propagate. `min-width: 0`, `overflow-x: clip` and
+   `100dvw` do not fix it. */
 @utility full-bleed {
-  width: 100vw;
   margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 /* An `@utility` rather than a plain class, which is v4's replacement for what
@@ -327,6 +338,10 @@
   .full-bleed {
     width: auto;
     margin-left: 0;
+    /* Pairs with the `margin-right` the utility now sets. Without this the
+       right negative margin survives into print and pulls the block off the
+       page edge. */
+    margin-right: 0;
   }
   .full-bleed,
   .full-bleed * {

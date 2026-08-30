@@ -46,7 +46,7 @@ const Hero: FC = () => {
             "UTC+7Leading" on mobile. */}
         <div className="space-y-1.5">
           <p className="text-sm text-muted-foreground">
-            Software Engineering Lead &middot; Jakarta &middot; UTC+7
+            Senior Product Engineer &middot; Jakarta &middot; UTC+7
           </p>
           {/* Foreground, not muted — it is the fact a recruiter scans for, and
               a dogfood pass found it lost in the surrounding grey. No measure

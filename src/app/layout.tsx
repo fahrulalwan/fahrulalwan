@@ -47,12 +47,13 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   applicationName: 'Fahrul Alwan',
   description:
-    'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+    'Fahrul Alwan, senior product engineer in Jakarta. Fintech, product engineering, and mostly deciding what not to build.',
   keywords: [
     'Mohammad Fahrul Alwan',
-    'Software Engineering Lead',
-    'Software Engineer',
+    'Senior Product Engineer',
     'Product Engineer',
+    'Software Engineer',
+    'Software Engineering Lead',
     'React',
     'Next.js',
     'TypeScript',
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     alternateLocale: ['id_ID'],
     countryName: 'Indonesia',
     description:
-      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+      'Fahrul Alwan, senior product engineer in Jakarta. Fintech, product engineering, and mostly deciding what not to build.',
     emails: 'fahrulalwan@gmail.com',
     title: 'Fahrul Alwan',
   },
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Fahrul Alwan',
     description:
-      'Fahrul Alwan, software engineering lead in Jakarta. Frontend systems, fintech, and mostly deciding what not to build.',
+      'Fahrul Alwan, senior product engineer in Jakarta. Fintech, product engineering, and mostly deciding what not to build.',
   },
   robots: {
     follow: true,
@@ -129,9 +130,9 @@ const personJsonLd = {
   '@id': `${SITE_URL}/#person`,
   name: 'Mohammad Fahrul Alwan',
   url: SITE_URL,
-  jobTitle: 'Software Engineering Lead',
+  jobTitle: 'Senior Product Engineer',
   description:
-    'Software engineering lead in Jakarta, leading frontend at Bareksa. Still in the code most days.',
+    'Senior product engineer in Jakarta, leading frontend at Bareksa. Still in the code most days.',
   worksFor: {
     '@type': 'Organization',
     name: 'Bareksa',
