@@ -218,11 +218,51 @@ const BlockBody: FC<{ block: Exclude<Block, MetricBlock> }> = ({ block }) => {
       );
 
     case 'diagram':
+      /* A diagram runs to the full article measure, wider than the prose it
+         sits between. Review, quote, trail and handoff all hold max-w-prose
+         because they are text and a reading measure is what text wants. A
+         drawing is a picture, and pictures break wider than the column in
+         editorial layouts. 992px at desktop: --breakpoint-lg is 64rem, less
+         the sm:px-4 padding <main> carries.
+
+         ⛔ The drawings are AUTHORED at 992, not stretched to it. An SVG has one
+         coordinate space, so rendered label size = viewBox font size × (rendered
+         width ÷ viewBox width). Stretching a 640-wide drawing to 992 magnifies
+         every label to 1.55× and the hairlines with them. Widening the viewBox
+         instead, and sizing the type inside it to land at 16px and 14px, is what
+         turns the extra room into spacing rather than zoom.
+
+         overflow-x-auto because these are wide-format drawings: below the
+         min-width the SVG would scale its own labels down past legibility, so
+         it holds that floor and scrolls inside the figure. The page itself must
+         never scroll sideways.
+
+         ⛔ contain-inline-size is what keeps that promise, and removing it
+         breaks the PAGE rather than this figure. The SVG's min-width climbs
+         figure → div → article → main, and <main> is a flex item of a flex
+         column <body>, so it will not shrink below its content's min-content
+         width. Measured in a real 390px window: main went to 584px and the
+         document overflowed. overflow-x-auto alone does not stop the climb,
+         and neither does min-w-0 or width:100% — all three were measured and
+         all three left main at 584. Only inline-size containment, which makes
+         the figure's width independent of its contents, brought it back to
+         390 with the SVG scrolling inside.
+
+         ⛔ The scroll container is the same element that carries the accessible
+         name, and it is focusable. A region that scrolls with no focusable
+         descendant is axe's scrollable-region-focusable, which Lighthouse
+         scores under accessibility — and lighthouserc.json asserts that
+         category at error with minScore 1, so leaving it off can fail CI.
+         Ahead of that it is a real defect: below the min-width the drawing
+         genuinely scrolls, and a keyboard-only visitor could not reach it. */
       return (
-        <figure className="my-8">
+        <figure className="my-8 max-w-(--breakpoint-lg)">
           <div
             role="img"
             aria-label={block.alt}
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable region must be keyboard-reachable even though role="img" is non-interactive — see the comment above
+            tabIndex={0}
+            className="contain-inline-size overflow-x-auto"
             // biome-ignore lint/security/noDangerouslySetInnerHtml: inline SVG authored in this repo, never user input
             dangerouslySetInnerHTML={{ __html: block.svg }}
           />

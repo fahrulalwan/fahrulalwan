@@ -45,16 +45,114 @@ export const careadyCaseStudy: CaseStudy = {
       text: 'Proved it between two machines before designing the rest',
     },
     {
+      /* ⛔ A diagram earns its slot by DELETING prose, never by illustrating
+         it. This one replaced the two sentences that described the two-machine
+         proof and the scale-out. If a drawing is ever added here that leaves
+         the text it depicts in place, it is decoration and it does not ship.
+
+         Colours come from the theme tokens, so it follows light and dark. Do
+         not hard-code a hex. aria-hidden because the wrapping figure already
+         carries role="img" and this block's alt. */
+      type: 'diagram',
+      svg: `<svg viewBox="-24 0 1040 210" style="display:block;width:100%;height:auto;min-width:48rem" aria-hidden="true" focusable="false">
+  <g stroke="var(--muted-foreground)" stroke-width="1.5" fill="none">
+    <rect x="1" y="78" width="150" height="52" rx="4"/>
+    <rect x="251" y="78" width="150" height="52" rx="4"/>
+    <rect x="551" y="78" width="140" height="52" rx="4"/>
+    <rect x="812" y="16" width="180" height="46" rx="4"/>
+    <rect x="812" y="81" width="180" height="46" rx="4"/>
+    <rect x="812" y="146" width="180" height="46" rx="4"/>
+    <path d="M441 104 H505" stroke-dasharray="5 5"/>
+    <path d="M499 99 L505 104 L499 109"/>
+    <path d="M691 104 H751 V39 H812"/>
+    <path d="M691 104 H812"/>
+    <path d="M691 104 H751 V169 H812"/>
+  </g>
+  <path d="M151 104 H251" stroke="var(--signal)" stroke-width="1.5" fill="none"/>
+  <circle cx="201" cy="104" r="3.5" fill="var(--signal)"/>
+  <g font-size="16" fill="var(--foreground)" text-anchor="middle">
+    <text x="76" y="110">Machine</text>
+    <text x="326" y="110">Machine</text>
+    <text x="621" y="110">Server</text>
+    <text x="902" y="45">Auctioneer</text>
+    <text x="902" y="110">Online bidder</text>
+    <text x="902" y="175">In the room</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.96" fill="var(--muted-foreground)">
+    <text x="1" y="30">FIRST</text>
+    <text x="551" y="30">THEN</text>
+  </g>
+  <text x="201" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.96" fill="var(--signal)">IT WORKS</text>
+</svg>`,
+      alt: 'Two machines with a connection proven between them, then the same connection scaled out: a server feeding an auctioneer, an online bidder, and a bidder in the room.',
+      caption:
+        'Proved between two machines first, then scaled to the three kinds of participant.',
+    },
+    {
       type: 'prose',
-      text: 'Instead of designing the full system on paper, my partner and I proved it worked between two machines first. Once that succeeded, we scaled to the multi-party architecture. Every message carried a role identifier so the system could distinguish an auctioneer from an online buyer from an offline buyer.',
+      text: 'Every message carried a role identifier so the system could distinguish an auctioneer from an online buyer from an offline buyer.',
     },
     {
       type: 'heading',
       text: 'The connections were dying silently, so we made them check in',
     },
     {
+      /* This sentence was cut when the diagram landed and put back after a
+         design review. The drawing shows the heartbeat, the silence and the
+         reconnect. It cannot show that this happened in production, after
+         launch, with no error raised, and that is the part that makes the
+         section land. A caption is skim-tier; this belongs in the body. */
       type: 'prose',
-      text: "After launch, WebSocket connections would silently die after a few minutes. No error, just silence. We implemented ping-pong heartbeats and automatic reconnection on timeout. It didn't eliminate the problem entirely, but it made auctions reliable enough to run without interruption. The project delivered late, and a good part of that was me learning on the job what a more experienced engineer would have known on day one.",
+      text: 'After launch, connections started dying a few minutes in. No error, just silence.',
+    },
+    {
+      /* Replaced the three sentences describing the silent death, the
+         heartbeat and the reconnect. A timeline is the one shape that can
+         show SILENCE — a gap where a reply should be. The two sentences left
+         below are the ones no drawing can carry. */
+      type: 'diagram',
+      svg: `<svg viewBox="-24 0 1040 170" style="display:block;width:100%;height:auto;min-width:48rem" aria-hidden="true" focusable="false">
+  <g stroke="var(--muted-foreground)" stroke-width="1.5" fill="none">
+    <path d="M0 94 H992"/>
+    <path d="M60 94 V68"/>
+    <path d="M124 94 V120"/>
+    <path d="M228 94 V68"/>
+    <path d="M292 94 V120"/>
+    <path d="M440 94 V68"/>
+    <path d="M456 120 H660" stroke-dasharray="4 5"/>
+  </g>
+  <g fill="var(--muted-foreground)">
+    <circle cx="60" cy="94" r="3.5"/>
+    <circle cx="124" cy="94" r="3.5"/>
+    <circle cx="228" cy="94" r="3.5"/>
+    <circle cx="292" cy="94" r="3.5"/>
+    <circle cx="440" cy="94" r="3.5"/>
+  </g>
+  <g stroke="var(--signal)" stroke-width="1.5" fill="none">
+    <path d="M706 76 V112"/>
+    <path d="M730 94 H900"/>
+    <path d="M894 89 L900 94 L894 99"/>
+  </g>
+  <circle cx="900" cy="94" r="3.5" fill="var(--signal)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.96" fill="var(--muted-foreground)" text-anchor="middle">
+    <text x="60" y="56">PING</text>
+    <text x="124" y="142">PONG</text>
+    <text x="228" y="56">PING</text>
+    <text x="292" y="142">PONG</text>
+    <text x="440" y="56">PING</text>
+    <text x="558" y="142">NO REPLY</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="1.96" fill="var(--signal)" text-anchor="middle">
+    <text x="706" y="56">TIMEOUT</text>
+    <text x="815" y="78">RECONNECT</text>
+  </g>
+</svg>`,
+      alt: 'A timeline of ping and pong pairs, then a ping that gets no reply, a timeout, and a reconnection.',
+      caption: 'The heartbeat caught the silence and the client reconnected.',
+    },
+    {
+      type: 'prose',
+      text: "The heartbeats didn't eliminate the problem entirely, but they made auctions reliable enough to run without interruption. The project delivered late, and a good part of that was me learning on the job what a more experienced engineer would have known on day one.",
     },
     {
       /* ⛔ No metric block here, and the absence is the decision.
